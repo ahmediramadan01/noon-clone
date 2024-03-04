@@ -1,9 +1,11 @@
-import { CarouselDefault } from "./components/carousel";
+// import { CarouselDefault } from "../components/carousel";
+import { MegaMenuWithHover } from "../components/navbar";
 
 export default function Home() {
 	return (
 		<>
-			<CarouselDefault></CarouselDefault>
+			{/* <CarouselDefault></CarouselDefault> */}
+			<MegaMenuWithHover></MegaMenuWithHover>
 		</>
 	);
 }
