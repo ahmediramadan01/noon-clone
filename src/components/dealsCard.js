@@ -47,7 +47,7 @@ export function DealsCard() {
                         </div>
 
                     </div>
-                    <div className="bg-red-300 w-1/3 ms-2">
+                    <div className="bg-red-300 w-1/3 ms-2 ">
                         <img className="  w-full p-1" src="/Megadeals.avif" alt="img1" />
 
                         {/* <div className=""></div> */}
