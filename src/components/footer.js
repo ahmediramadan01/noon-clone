@@ -1,4 +1,4 @@
-gi"use client";
+"use client";
 import { IconButton } from "@material-tailwind/react";
 
 
