@@ -9,10 +9,15 @@ import Image7 from "../../public/images/carousel-main-07.jpg";
 
 const carouselImages = [Image1, Image2, Image3, Image4, Image5, Image6, Image7];
 
+import { DealsCard } from "@/components/deals-card";
+import { ProductCard } from "@/components/product-card";
+
 export default function Home() {
 	return (
 		<>
 			<CarouselMain images={carouselImages}></CarouselMain>
+			<ProductCard></ProductCard>
+			<DealsCard></DealsCard>
 		</>
 	);
 }
