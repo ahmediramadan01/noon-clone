@@ -6,13 +6,15 @@ import Image4 from "../../public/images/carousel-main-04.jpg";
 import Image5 from "../../public/images/carousel-main-05.jpg";
 import Image6 from "../../public/images/carousel-main-06.jpg";
 import Image7 from "../../public/images/carousel-main-07.jpg";
+import { ProductCard } from "@/components/product-card";
 
 const carouselImages = [Image1, Image2, Image3, Image4, Image5, Image6, Image7];
 
 export default function Home() {
 	return (
 		<>
-			<CarouselMain images={carouselImages}></CarouselMain>
+			{/* <CarouselMain images={carouselImages}></CarouselMain> */}
+			<ProductCard></ProductCard>
 		</>
 	);
 }
