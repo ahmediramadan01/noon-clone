@@ -15,6 +15,7 @@ export default function Home() {
 		<>
 			{/* <CarouselMain images={carouselImages}></CarouselMain> */}
 			<WishList></WishList>
+
 		</>
 	);
 }
