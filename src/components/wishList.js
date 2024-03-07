@@ -13,6 +13,7 @@ import {
     DialogBody,
     DialogFooter,
     Input,
+    Textarea,
 
 
     Checkbox
@@ -31,13 +32,16 @@ export function WishList() {
     const [openn, setOpenn] = React.useState(false);
 
     const handleOpen = () => setOpenn(!openn);
+    const [openshare, setOpenshare] = React.useState(false);
+
+    const handleOpenshare = () => setOpenshare(!openshare);
 
 
     return (
         <>
 
-            <div className="container mx-auto  ">
-                <div className="bg-gray-50">
+            <div className="container mx-auto px-4 ms:max-width: 640px ">
+                <div className="bg-gray-50 w-full">
                     <hr className="mt-3"></hr>
                     <div className="flex w-full h-16 mt-5" >
                         <div className="text-xl text-left font-bold mt-2 ms-4">
@@ -104,7 +108,7 @@ export function WishList() {
                             </div>
                         </div>
                         <div className="h-800 border-l border-gray-200"></div>
-                        <div className="basis-2/3 md:basis-2/4 ">
+                        <div className="basis-2/3   ">
                             <div className="w-full ">
                                 <div className="flex mt-4 ms-4">
                                     <div className="w-48">
@@ -116,16 +120,93 @@ export function WishList() {
 
 
                                     <div className="w-28 ms-auto">
-                                        <button className="rounded-full  border-2 mt-2  border-black-50  text-black w-24 flex">
+                                        <button className="rounded-full ms-40  border-2 mt-2  border-black-50  text-black w-24 flex" onClick={handleOpenshare}>
                                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 48 48" className="mt-1">
                                                 <path d="M 36 5 C 32.151772 5 29 8.1517752 29 12 C 29 12.585766 29.198543 13.109464 29.335938 13.654297 L 17.345703 19.652344 C 16.059118 18.073938 14.181503 17 12 17 C 8.1517722 17 5 20.151775 5 24 C 5 27.848225 8.1517722 31 12 31 C 14.181503 31 16.059118 29.926062 17.345703 28.347656 L 29.335938 34.345703 C 29.198543 34.890536 29 35.414234 29 36 C 29 39.848225 32.151772 43 36 43 C 39.848228 43 43 39.848225 43 36 C 43 32.151775 39.848228 29 36 29 C 33.818497 29 31.940882 30.073938 30.654297 31.652344 L 18.664062 25.654297 C 18.801457 25.109464 19 24.585766 19 24 C 19 23.414234 18.801457 22.890536 18.664062 22.345703 L 30.654297 16.347656 C 31.940882 17.926062 33.818497 19 36 19 C 39.848228 19 43 15.848225 43 12 C 43 8.1517752 39.848228 5 36 5 z M 36 8 C 38.226909 8 40 9.7730927 40 12 C 40 14.226907 38.226909 16 36 16 C 33.773091 16 32 14.226907 32 12 C 32 9.7730927 33.773091 8 36 8 z M 12 20 C 14.226909 20 16 21.773093 16 24 C 16 26.226907 14.226909 28 12 28 C 9.7730915 28 8 26.226907 8 24 C 8 21.773093 9.7730915 20 12 20 z M 36 32 C 38.226909 32 40 33.773093 40 36 C 40 38.226907 38.226909 40 36 40 C 33.773091 40 32 38.226907 32 36 C 32 33.773093 33.773091 32 36 32 z"></path>
                                             </svg>
                                             <p className=" ms-2 ">Share</p>
                                         </button>
+                                        <Dialog open={openshare} className="opacity-100" size="sm" handler={handleOpenshare}>
+                                            <div className="flex items-center justify-between">
+                                                <DialogHeader className="flex flex-col items-start">
+                                                    {" "}
+                                                    <Typography className="mb-1" variant="h4">
+                                                        Want others to see your wishlist?
+                                                    </Typography>
+
+                                                </DialogHeader>
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 24 24"
+                                                    fill="currentColor"
+                                                    className="mr-3 h-5 w-5"
+                                                    onClick={handleOpenshare}
+                                                >
+                                                    <path
+                                                        fillRule="evenodd"
+                                                        d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z"
+                                                        clipRule="evenodd"
+                                                    />
+                                                </svg>
+
+                                            </div>
+
+
+                                            <DialogBody className=" overflow-scroll">
+                                                <p className="mt-0 text-sm">Your list privacy will be changed to "Public"</p>
+                                                <hr></hr>
+                                                <div className="w-full mt-3">
+                                                    {/* <Textarea label="Message" /> */}
+                                                    <div className="border-2 border-gray-500 h-24 rounded-lg">
+                                                        <div className="flex mt-4">
+                                                            <p className="text-black">menna ismail</p>
+                                                            <button className="rounded-full bg-blue-700 ms-8 text-white w-24">Default</button>
+
+                                                        </div>
+                                                        <div className="flex mt-3">
+                                                            <p > 2 items</p>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 30 30" className="ms-4">
+                                                                <path d="M 15 2 C 11.145666 2 8 5.1456661 8 9 L 8 11 L 6 11 C 4.895 11 4 11.895 4 13 L 4 25 C 4 26.105 4.895 27 6 27 L 24 27 C 25.105 27 26 26.105 26 25 L 26 13 C 26 11.895 25.105 11 24 11 L 22 11 L 22 9 C 22 5.2715823 19.036581 2.2685653 15.355469 2.0722656 A 1.0001 1.0001 0 0 0 15 2 z M 15 4 C 17.773666 4 20 6.2263339 20 9 L 20 11 L 10 11 L 10 9 C 10 6.2263339 12.226334 4 15 4 z"></path>
+                                                            </svg>
+
+
+                                                        </div>
+
+
+                                                    </div>
+
+                                                </div>
+                                                <br />
+
+                                                <hr></hr>
+                                                <div className="flex">
+
+                                                    <svg className="mt-4" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M8.91638 4.80921L10.7199 3.0057C11.1146 2.61096 11.5832 2.29784 12.099 2.08421C12.6147 1.87059 13.1675 1.76063 13.7257 1.76063C14.284 1.76063 14.8367 1.87059 15.3525 2.08421C15.8682 2.29784 16.3369 2.61096 16.7316 3.0057C17.1263 3.40043 17.4394 3.86905 17.6531 4.38479C17.8667 4.90054 17.9767 5.45331 17.9767 6.01155C17.9767 6.56978 17.8667 7.12256 17.6531 7.6383C17.4394 8.15405 17.1263 8.62266 16.7316 9.0174L14.9281 10.8209M11.3211 14.4279L9.51755 16.2314C9.12282 16.6262 8.6542 16.9393 8.13845 17.1529C7.62271 17.3665 7.06994 17.4765 6.5117 17.4765C5.38429 17.4765 4.30305 17.0286 3.50585 16.2314C2.70865 15.4342 2.26079 14.353 2.26079 13.2256C2.26079 12.0982 2.70865 11.0169 3.50585 10.2197L5.30936 8.41623" stroke="#3866DF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M7.71484 12.0225L12.5242 7.2131" stroke="#3866DF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+
+                                                    <p className="mt-4 ms-3">Copy link</p>
+
+                                                </div>
+                                                <div className="flex">
+
+                                                    <svg className="mt-4" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M4.59209 4.59277H19.4069C20.4254 4.59277 21.2588 5.42611 21.2588 6.44463V17.5557C21.2588 18.5743 20.4254 19.4076 19.4069 19.4076H4.59209C3.57357 19.4076 2.74023 18.5743 2.74023 17.5557V6.44463C2.74023 5.42611 3.57357 4.59277 4.59209 4.59277Z" stroke="#3866DF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M21.2588 6.44434L11.9995 12.9258L2.74023 6.44434" stroke="#3866DF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+
+                                                    <p className="mt-4 ms-3">Email</p>
+
+                                                </div>
+
+                                            </DialogBody>
+
+                                        </Dialog>
                                     </div>
 
                                     <div className=" h-28 ms-auto">
-                                        <Button className="rounded-full  border-2 bg-gray-100  absolute right-20   border-black-50  text-black w-24" onClick={toggleOpen}>...More</Button>
+                                        <button className="rounded-full mt-2  border-2 bg-gray-100  absolute right-20   border-black-50  text-black w-24" onClick={toggleOpen}>...More</button>
                                         <Collapse open={open}>
                                             <Card className="my-4 mx-auto w-52">
                                                 <CardBody>
@@ -160,7 +241,7 @@ export function WishList() {
                             <hr className="mt-2"></hr>
                             <div className="flex w-full ">
                                 <div className="basis-1/4">
-                                    <Card className="w-60  max-w-[26rem] shadow-lg ms-3 mt-2 ">
+                                    <Card className="lg:w-60 md:w-40 sm:w-20 max-w-[26rem] shadow-lg ms-3 mt-2 ">
                                         <CardHeader floated={false} color="transparent" className="flex justify-center">
                                             <Image src={ProductImage} width="200" height="200" alt="Product Image" className="m-10" />
                                             <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-black/5 " />
@@ -244,7 +325,7 @@ export function WishList() {
                                     </Card>
                                 </div>
                                 <div className="basis-3/4">
-                                    <Card className="w-60 max-w-[26rem] shadow-lg ms-3 mt-2 ">
+                                    <Card className="lg:w-60 md:w-40 sm:w-20 max-w-[26rem] shadow-lg ms-3 mt-2 ">
                                         <CardHeader floated={false} color="transparent" className="flex justify-center">
                                             <Image src={ProductImage} width="200" height="200" alt="Product Image" className="m-10" />
                                             <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-black/5 " />
