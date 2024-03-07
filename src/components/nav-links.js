@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Menu, MenuList, MenuItem, MenuHandler, Button } from "@material-tailwind/react";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
+import LinksSwiper from "./LinksSwiper";
 
 export const MegaMenuWithHover = () => {
 	return (
@@ -18,7 +19,7 @@ export const MegaMenuWithHover = () => {
 					>
 						<MenuHandler>
 							<Button className="text-black bg-white rounded-none border-none">
-								<a href="#" className="nav-link flex items-center px-5 w-50">
+								<a href="#" className="nav-link flex items-center px-5 w-50 text-sm text-nowrap">
 									ALL CATEGORIES
 									<span className="ml-2">
 										<ChevronDownIcon className="h-5 w-5" />
@@ -81,38 +82,41 @@ export const MegaMenuWithHover = () => {
 						</MenuList>
 					</Menu>
 				</div>
-				<div className="col-10 justify-left items-center main-links flex">
-					<a href="#" className="nav-link p-2 text-sm md:text-base">
-						Electronics
-					</a>
-					<a href="#" className="nav-link p-2 text-sm md:text-base">
-						Mobile
-					</a>
-					<a href="#" className="nav-link p-2 text-sm md:text-base">
-						Men
-					</a>
-					<a href="#" className="nav-link p-2 text-sm md:text-base">
-						Women
-					</a>
-					<a href="#" className="nav-link p-2 text-sm md:text-base">
-						Home
-					</a>
-					<a href="#" className="nav-link p-2 text-sm md:text-base">
-						Beauty and Healthy
-					</a>
-					<a href="#" className="nav-link p-2 text-sm md:text-base">
-						Baby and Toys
-					</a>
-					<a href="#" className="nav-link p-2 text-sm md:text-base">
-						Super Market
-					</a>
-					<a href="#" className="nav-link p-2 text-sm md:text-base">
-						Sell on Noon
-					</a>
-					<a href="#" className="nav-link p-2 text-sm md:text-base text-red-500">
-						Deals
-					</a>
+
+				<div className="main-links overflow-hidden flex items-center px-2">
+        <LinksSwiper />
+            {/* <a href="#" className="nav-link p-2 text-sm md:text-base">
+              Electronics
+            </a>
+            <a href="#" className="nav-link p-2 text-sm md:text-base">
+              Mobile
+            </a>
+            <a href="#" className="nav-link p-2 text-sm md:text-base">
+              Men
+            </a>
+            <a href="#" className="nav-link p-2 text-sm md:text-base">
+              Women
+            </a>
+            <a href="#" className="nav-link p-2 text-sm md:text-base">
+              Home
+            </a>
+            <a href="#" className="nav-link p-2 text-sm md:text-base">
+              Beauty and Healthy
+            </a>
+            <a href="#" className="nav-link p-2 text-sm md:text-base">
+              Baby and Toys
+            </a>
+            <a href="#" className="nav-link p-2 text-sm md:text-base">
+              Super Market
+            </a>
+            <a href="#" className="nav-link p-2 text-sm md:text-base">
+              Sell on Noon
+            </a>
+            <a href="#" className="nav-link p-2 text-sm md:text-base text-red-500">
+              Deals
+            </a> */}
 				</div>
+        
 			</div>
 		</div>
 	);
