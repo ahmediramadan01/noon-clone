@@ -13,6 +13,7 @@ const carouselImages = [Image1, Image2, Image3, Image4, Image5, Image6, Image7];
 
 import { DealsCard } from "@/components/deals-card";
 import { ProductCard } from "@/components/product-card";
+import { Footer } from "@/components/footer";
 
 export default function Home() {
 	return (
@@ -22,6 +23,7 @@ export default function Home() {
 			<CarouselMain images={carouselImages}></CarouselMain>
 			<ProductCard></ProductCard>
 			<DealsCard></DealsCard>
+			<Footer></Footer>
 		</>
 	);
 }
