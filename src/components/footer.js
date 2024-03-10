@@ -122,7 +122,7 @@ export function Footer() {
                 </div>
                 <div className=" justify-between flex xl:flex-row lg:flex-row items-center md:flex-col sm:flex-col bg-gray-200 px-5 py-6">
                     <div className="w-full mx-auto py-6 px-5 items-center  md:flex md:w-full sm:w-full ">
-                        <div className="w-1/2 flex clg-w-96 sm:flex-1 sm:w-full justify-center">
+                        <div className="w-1/2 flex clg-w-96 sm:flex-1 sm:w-full justify-center sm:justify-between">
                             <div className="text-sm text-[#7E859B] font-normal mt-1 bg-zinc-400 mr-10 cursor-pointer sm:justify-between">© 2024 noon. All Rights Reserved</div>
                             <div className="flex justify-center gap-8">
                                 {imgIcons.map((item) => (
