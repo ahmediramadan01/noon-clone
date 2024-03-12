@@ -10,6 +10,7 @@ import Image7 from "../../public/images/carousel-main-07.jpg";
 
 import { Profile } from "./profile/page";
 import { WishListt } from "./wishlist/page";
+import { MainCard } from "@/components/mainCard";
 
 const carouselImages = [Image1, Image2, Image3, Image4, Image5, Image6, Image7];
 
@@ -18,8 +19,9 @@ export default function Home() {
 		<>
 			{/* <CarouselMain images={carouselImages}></CarouselMain> */}
 
-			{/* <WishListt></WishListt> */}
-			<Profile></Profile>
+			<WishListt></WishListt>
+			{/* <Profile></Profile> */}
+			{/* <MainCard></MainCard> */}
 
 		</>
 	);
