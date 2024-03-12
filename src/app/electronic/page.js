@@ -1,15 +1,15 @@
+"use client";
 import Image from "next/image";
 //==> ==//> // Components Of Electronic Page
 import { CarouselMain } from "@/components/carousel-main";
 import { MegaMenuWithHover } from "@/components/nav-links";
-import { ProductCard } from "@/components/product-card";
-import { SmallCarsoel } from "@/components/smllCarsouel";
-import { DealsCard } from "@/components/deals-card";
 import { SectionTwo } from "@/components/electronicSecTwo";
 import { ElectronForEvery } from "@/components/electronicForEvery";
 import { Footer } from "@/components/footer";
 import { NavbarSimple } from "@/components/nav-bar";
 import { ElectronicSecFive } from "@/components/electronicSecFive";
+import { Cards } from "@/components/cards";
+import { SmallCarousel } from "@/components/smllCarsouel";
 
 //==> ==//> // Images Of Electronic Page
 import Image1 from "../../../public/images/carousel-main-01.jpg";
@@ -63,7 +63,6 @@ import sectionLargesmall4 from "../../../public/Section5/Sec5SmallImg3.png";
 import AnnonceMent from "../../../public/Section5/sliderAnnoncement.png";
 
 const carouselImages = [Image1, Image2, Image3, Image4, Image5, Image6, Image7];
-const smallSliderImg = [smallImg1, smallImg2, smallImg3, smallImg4, smallImg5, smallImg6, smallImg7, smallImg8, smallImg9, smallImg10, smallImg11, smallImg12, smallImg1, smallImg2, smallImg3, smallImg4, smallImg5, smallImg6, smallImg5, smallImg6, smallImg7, smallImg8, smallImg9, smallImg10];
 const secTwo = [
     { title: "TELEVISION DEALSS", description: "  This is The Description  of TELEVISION DEALSS", pricebefore: "1569", priceAfter: "865", imgSrc: imgsec1, imgalt: "hhhh" },
     { title: "Mobile Iphone", description: " This is The Description  of Mobile Iphone", pricebefore: "1120", priceAfter: "875", imgSrc: imgsec2, imgalt: "hhhh1" },
@@ -113,6 +112,8 @@ function ImageList({ items }) {
 
     );
 }
+const smallSliderImg = [smallImg1, smallImg2, smallImg3, smallImg4, smallImg5, smallImg6, smallImg7, smallImg8, smallImg9, smallImg10, smallImg11, smallImg12, smallImg1, smallImg2, smallImg3, smallImg4, smallImg5, smallImg6, smallImg5, smallImg6, smallImg7, smallImg8, smallImg9, smallImg10];
+
 export default function ElectronicPage() {
     return (
         <div className="">
@@ -122,7 +123,7 @@ export default function ElectronicPage() {
                 <Image className=" cursor-pointer  w-full" src={AnnonceMent} alt="hhhkjy" />
             </div>
             <CarouselMain images={carouselImages} />
-            <SmallCarsoel images={smallSliderImg} />
+            <SmallCarousel images={smallSliderImg} />
             <div className="flex-col bg-[#fef08a]">
                 <div className="font-extrabold text-bold align-top p-5"> Mega Deals</div>
                 <div className="flex grid-cols-3">
@@ -137,26 +138,7 @@ export default function ElectronicPage() {
                     </button>
                 </div>
             </div>
-            <div className="grid 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2   xl:gap-8 lg:gap-6 p-5 md:gap-2 sm:gap-3">
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-            </div>
+            <Cards />
             <ElectronForEvery items={ElectronicSecFour} />
             <div className="w-full flex justify-between pb-0 p-6">
                 <div className="text-lg	font-extrabold	">Best Deals </div>
@@ -166,26 +148,8 @@ export default function ElectronicPage() {
                     </button>
                 </div>
             </div>
-            <div className="grid 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2   xl:gap-8 lg:gap-6 p-5 md:gap-2 sm:gap-3">
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-            </div>
+            <Cards />
+
             <div className="w-full flex justify-between pb-0 p-6">
                 <div className="text-lg	font-extrabold	">Best Deals </div>
                 <div className="">
@@ -194,26 +158,7 @@ export default function ElectronicPage() {
                     </button>
                 </div>
             </div>
-            <div className="grid 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2   xl:gap-8 lg:gap-6 p-5 md:gap-2 sm:gap-3">
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-            </div>
+            <Cards />
             <div className="w-full flex justify-between pb-0 p-6">
                 <div className="text-lg	font-extrabold	">Best Deals </div>
                 <div className="">
@@ -222,26 +167,7 @@ export default function ElectronicPage() {
                     </button>
                 </div>
             </div>
-            <div className="grid 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2   xl:gap-8 lg:gap-6 p-5 md:gap-2 sm:gap-3">
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-            </div>
+            <Cards />
             <ElectronForEvery items={ElectronicSecFour} />
             <div className="w-full flex justify-between pb-0 p-6">
                 <div className="text-lg	font-extrabold	">Best Deals </div>
@@ -251,26 +177,7 @@ export default function ElectronicPage() {
                     </button>
                 </div>
             </div>
-            <div className="grid 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2   xl:gap-8 lg:gap-6 p-5 md:gap-2 sm:gap-3">
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-            </div>
+            <Cards />
             <div className="mt-3 flex-col bg-[#e5e5e5] py-5" >
                 <div>
                     <Image className=" " src={Sec4Slider1} alt="hhhkjy" />
@@ -283,10 +190,8 @@ export default function ElectronicPage() {
                         <Image className=" cursor-pointer" src={Sec4Slider3} alt="hhhkjy" />
                     </div>
                 </div>
-                <div className=" grid xl:grid-cols-8 lg:grid-cols-8 lg:gap-5   md:grid-cols-4 md:gap-1 sm:grid-cols-3 sm:gap-1 my-4 ml-7 ">
-
+                <div className="grid xl:grid-cols-8 xl:gap-5 lg:grid-cols-8 lg:gap-5 md:grid-cols-4 md:gap-1 sm:grid-cols-3 sm:gap-1 my-4 ml-7 ">
                     <ImageList items={imgListData} />
-
                 </div>
             </div>
             <div className="w-full flex justify-between pb-0 p-6">
@@ -297,26 +202,7 @@ export default function ElectronicPage() {
                     </button>
                 </div>
             </div>
-            <div className="grid 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2   xl:gap-8 lg:gap-6 p-5 md:gap-2 sm:gap-3">
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-            </div>
+            <Cards />
             <div className="w-full flex justify-between pb-0 p-6">
                 <div className="text-lg	font-extrabold	">Best Deals </div>
                 <div className="">
@@ -325,26 +211,7 @@ export default function ElectronicPage() {
                     </button>
                 </div>
             </div>
-            <div className="grid 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2   xl:gap-8 lg:gap-6 p-5 md:gap-2 sm:gap-3">
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-            </div>
+            <Cards />
             <div className="">
                 <ElectronicSecFive className="flex justify-center" items={ElectronicSecFiveData} />
             </div>
@@ -356,26 +223,7 @@ export default function ElectronicPage() {
                     </button>
                 </div>
             </div>
-            <div className="grid 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2   xl:gap-8 lg:gap-6 p-5 md:gap-2 sm:gap-3">
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-            </div>
+            <Cards />
             <div className="w-full flex justify-between pb-0 p-6">
                 <div className="text-lg	font-extrabold	">Best Deals </div>
                 <div className="">
@@ -384,26 +232,7 @@ export default function ElectronicPage() {
                     </button>
                 </div>
             </div>
-            <div className="grid 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2   xl:gap-8 lg:gap-6 p-5 md:gap-2 sm:gap-3">
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-            </div>
+            <Cards />
             <div className="">
                 <ElectronicSecFive className="flex justify-center" items={ElectronicSecFiveData} />
             </div>
@@ -415,40 +244,7 @@ export default function ElectronicPage() {
                     </button>
                 </div>
             </div>
-            <div className="grid 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2   xl:gap-8 lg:gap-6 p-5 md:gap-2 sm:gap-3">
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-            </div>
-            <div className="flex justify-between ">
-                <div></div>
-                <div className=" flex gap-2 ">
-                    <div>
-                        <DealsCard />
-                        <DealsCard />
-                    </div>
-                    <div>
-                        <DealsCard />
-                        <DealsCard />
-                    </div>
-                </div>
-                <div></div>
-            </div>
+            <Cards />
             <Footer />
         </div >
     )

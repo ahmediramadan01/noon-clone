@@ -10,19 +10,19 @@ export function ElectronicSecFive({ items }) {
                             <Image className="" src={item.SliderImgSrc.img} alt={item.SliderImgSrc.alt} />
                         )}
                     </div>
-                    <div className="flex w-full p-0 sm:flex-row flex-col sm:p-6">
-                        <div className="w-1/2 my-7  justify-center mx-auto sx:ml-0">
+                    <div className="flex flex-col w-full p-0   md:flex-row sm:p-6">
+                        <div className="w-1/2 my-7  justify-center mx-auto sx:ml-0  sm:justify-center">
                             {item.SmallImgSrc.slice(0, 1).map((src, i) => (
                                 <Image key={i} className="cursor-pointer" src={src} alt={item.SmallImgAlt[i]} />
                             ))}
                         </div>
-                        <div className="w-1/2 flex-col mr-8 my-5 sm:justify-center md:justify-center lg:justify-center xl:justify-center">
-                            <div className="flex">
+                        <div className="md:w-1/2 w-full flex flex-col  my-5 items-center  ">
+                            <div className="flex ">
                                 {item.SmallImgSrc.slice(1, 3).map((src, i) => (
                                     <Image key={i} className="cursor-pointer ml-5" src={src} alt={item.SmallImgAlt[i + 1]} />
                                 ))}
                             </div>
-                            <div className="flex">
+                            <div className="flex ">
                                 {item.SmallImgSrc.slice(3).map((src, i) => (
                                     <Image key={i} className="cursor-pointer ml-5" src={src} alt={item.SmallImgAlt[i + 3]} />
                                 ))}
