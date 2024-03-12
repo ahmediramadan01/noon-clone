@@ -1,11 +1,13 @@
+"use client"
 import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import SwiperCore, { Navigation } from "swiper";
+import SwiperCore from "swiper/core";
+import { Navigation } from "swiper";
 
-SwiperCore.use([Navigation]);
+// SwiperCore.use([Navigation]);
 
 const LinksSwiper = () => {
 	const [slidesPerView, setSlidesPerView] = useState(3); // Default slides per view
@@ -56,8 +58,7 @@ const LinksSwiper = () => {
 						}`}
 					>
 						{link.title}
-					</a>{" "}
-					{/* Responsive font size and text centering */}
+					</a>
 				</SwiperSlide>
 			))}
 		</Swiper>
