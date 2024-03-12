@@ -7,7 +7,8 @@ import { MegaMenuWithHover } from "@/components/nav-links";
 import { ProductGallery } from "@/components/product-gallery";
 import Image from "next/image";
 import { HeartIcon } from "@heroicons/react/24/outline";
-
+import { Overview } from "@/components/overview";
+import { Freatures } from "@/components/Features";
 function ProductDetails() {
 	const productImages = ["/ps5-1.png", "/ps5-2.png", "/ps5-3.png", "/ps5-4.png"];
 
@@ -59,6 +60,7 @@ function ProductDetails() {
 			<MegaMenuWithHover />
 
 			<div className="container mx-auto my-2">
+
 				<div className="flex flex-wrap">
 					<div className="w-full md:w-1/2 lg:w-1/3 px-2">
 						{/* product images gallery */}
@@ -118,6 +120,8 @@ function ProductDetails() {
 								<HeartIcon className="w-6 h-6 m-auto" />
 							</div>
 						</div>
+
+						{/* releated products */}
 					</div>
 
 					{/* seller and warranty info */}
@@ -192,6 +196,21 @@ function ProductDetails() {
 						</div>
 					</div>
 				</div>
+
+				{/* overview section */}
+				<div>
+					<Overview 
+					overviewText="lorem ipsum dort playstation 5 for gaming and fun for my team 5 best group ever iam happy to work with you and i expect to be the best projcet lorem ipsum dort playstation 5 for gaming and fun for my team 5 best group everiam happy to work with you and i expect to be the best projcet"
+					
+					productData={{ brand: "Sony", name: "PlayStation 5", color: "Black", modelNo: "PS5-1234" }}
+					/>
+				</div>
+
+				{/* product features section */}
+				<div>
+					<Freatures />
+				</div>
+
 			</div>
 
 			<Footer />
@@ -224,3 +243,5 @@ function WarrantyInfo() {
 		</div>
 	);
 }
+
+
