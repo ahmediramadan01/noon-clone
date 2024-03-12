@@ -8,7 +8,8 @@ import { ProductGallery } from "@/components/product-gallery";
 import Image from "next/image";
 import { HeartIcon } from "@heroicons/react/24/outline";
 import { Overview } from "@/components/overview";
-import { Freatures } from "@/components/Features";
+import { Freatures } from "@/components/features";
+import { ProductCard } from "@/components/product-card";
 function ProductDetails() {
 	const productImages = ["/ps5-1.png", "/ps5-2.png", "/ps5-3.png", "/ps5-4.png"];
 
@@ -40,7 +41,7 @@ function ProductDetails() {
 		));
 	};
 
-	// Data for repeated divs
+	// Data for delivery info divs
 	const DeliveryInfo = [
 		{ imgSrc: "/secure_transaction.png", text: "Delivery by noon" },
 		{ imgSrc: "/delivery_by_noon.png", text: "High Rated Seller" },
@@ -60,7 +61,6 @@ function ProductDetails() {
 			<MegaMenuWithHover />
 
 			<div className="container mx-auto my-2">
-
 				<div className="flex flex-wrap">
 					<div className="w-full md:w-1/2 lg:w-1/3 px-2">
 						{/* product images gallery */}
@@ -172,9 +172,8 @@ function ProductDetails() {
 
 						{/* shipping info */}
 						<div className="shadow-md rounded-md px-5 py-5 flex flex-col gap-4 ml-4">
-
 							<div className="flex items-start gap-2">
-								<img src="/shipping-truck.svg" alt="shipping truck" className="w-8 h-8"/>
+								<img src="/shipping-truck.svg" alt="shipping truck" className="w-8 h-8" />
 								<div className="">
 									<p className="text-sm text-black">TRUSTED SHIPPING</p>
 									<p className=" text-gray-600 text-xs">
@@ -184,33 +183,42 @@ function ProductDetails() {
 							</div>
 
 							<div className="flex items-start gap-2">
-								<img src="/secure_usp.svg" alt="shipping truck" className="w-8 h-8"/>
+								<img src="/secure_usp.svg" alt="shipping truck" className="w-8 h-8" />
 								<div className="">
 									<p className="text-sm text-black">SECURE SHOPPING</p>
-									<p className=" text-gray-600 text-xs">
-										Your data is always protected
-									</p>
+									<p className=" text-gray-600 text-xs">Your data is always protected</p>
 								</div>
 							</div>
-
 						</div>
 					</div>
 				</div>
 
 				{/* overview section */}
 				<div>
-					<Overview 
-					overviewText="lorem ipsum dort playstation 5 for gaming and fun for my team 5 best group ever iam happy to work with you and i expect to be the best projcet lorem ipsum dort playstation 5 for gaming and fun for my team 5 best group everiam happy to work with you and i expect to be the best projcet"
-					
-					productData={{ brand: "Sony", name: "PlayStation 5", color: "Black", modelNo: "PS5-1234" }}
+					<Overview
+						overviewText="lorem ipsum dort playstation 5 for gaming and fun for my team 5 best group ever iam happy to work with you and i expect to be the best projcet lorem ipsum dort playstation 5 for gaming and fun for my team 5 best group everiam happy to work with you and i expect to be the best projcet"
+						productData={{ brand: "Sony", name: "PlayStation 5", color: "Black", modelNo: "PS5-1234" }}
 					/>
 				</div>
 
 				{/* product features section */}
-				<div>
-					<Freatures />
+				<div className="my-5">
+					<Freatures featuresImgSrc="/ps5-features.jpg" />
 				</div>
 
+				{/* related products */}
+				<div className="my-10">
+					<h1 className="text-2xl font-semibold text-gray-900 h-20 flex items-center px-2">More Form Sony</h1>
+
+					<div className="my-10 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
+						<ProductCard />
+						<ProductCard />
+						<ProductCard />
+						<ProductCard />
+						<ProductCard />
+					</div>
+
+				</div>
 			</div>
 
 			<Footer />
@@ -243,5 +251,3 @@ function WarrantyInfo() {
 		</div>
 	);
 }
-
-
