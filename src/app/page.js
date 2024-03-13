@@ -21,6 +21,7 @@ export default function Home() {
 			<NavbarSimple></NavbarSimple>
 			<MegaMenuWithHover></MegaMenuWithHover>
 			<CarouselMain images={carouselImages}></CarouselMain>
+
 			<ProductCard></ProductCard>
 			<DealsCard></DealsCard>
 			<Footer></Footer>

@@ -1,9 +1,7 @@
 "use client";
-"use client";
 import React from "react";
 import { Footer } from "@/components/footer";
 import { NavbarSimple } from "@/components/nav-bar";
-import { MegaMenuWithHover } from "@/components/nav-links";
 import { ProductGallery } from "@/components/product-gallery";
 import Image from "next/image";
 import { HeartIcon } from "@heroicons/react/24/outline";
@@ -13,6 +11,7 @@ import { ProductCard } from "@/components/product-card";
 import DeliveryInfoItems from "@/components/delivery-info";
 import ProductPrice from "@/components/product-price";
 import WarrantyInfo from "@/components/warranty-info";
+import MegaMenuWithHover from "@/components/nav-links";
 function ProductDetails() {
 	const productImages = ["/ps5-1.png", "/ps5-2.png", "/ps5-3.png", "/ps5-4.png"];
 

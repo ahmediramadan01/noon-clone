@@ -15,31 +15,31 @@ function NavList() {
 				</a>
 			</li>
 
-			<li className="px-2 font-medium border-black h-6 flex items-center" style={{ borderLeftWidth: "1px" }}>
+			<li className="px-2 font-medium border-black h-6 w-32 flex items-center" style={{ borderLeftWidth: "1px" }}>
 				<a href="#" className="flex items-center hover:text-blue-500 transition-colors">
 					<span className="font-bold text-left text-sm">
-						<span className="text-xs font-normal">Ahlan Ahmed!</span>
+						<span className="text-xs font-light whitespace-no-wrap">Ahlan Ahmed!</span>
 						<br />
-						<span>My Account</span>
+						<span className="whitespace-no-wrap">My Account</span>
 					</span>
 						<ChevronDownIcon className="w-5 h-5 ml-1" />
 				</a>
 			</li>
 
-			{/* <li className="px-2 font-medium border-black h-6 flex items-center" style={{ borderLeftWidth: "1px" }}>
+			{/* <li className="px-2 font-medium border-black h-6 w-32 flex items-center" style={{ borderLeftWidth: "1px" }}>
 				<a href="#" className="flex items-center hover:text-blue-500 transition-colors">
 					<span className="font-bold text-sm">Login</span>
 					<UserIcon className="w-5 h-5 ml-1" />
 				</a>
 			</li> */}
 
-			<li className="px-2 font-medium border-black h-6 flex items-center" style={{ borderLeftWidth: "1px" }}>
+			<li className="px-2 font-medium border-black h-6 w-auto flex items-center" style={{ borderLeftWidth: "1px" }}>
 				<a href="#" className="flex items-center hover:text-blue-500 transition-colors">
 					<span className="font-bold text-sm">Wishlist</span>
 					<HeartIcon className="w-5 h-5 ml-1" />
 				</a>
 			</li>
-			<li className="px-2 font-medium border-black h-6 flex items-center" style={{ borderLeftWidth: "1px" }}>
+			<li className="px-2 font-medium border-black h-6 w-auto flex items-center" style={{ borderLeftWidth: "1px" }}>
 				<a href="#" className="flex items-center hover:text-blue-500 transition-colors">
 					<span className="font-bold text-sm">Cart</span>
 					<ShoppingCartIcon className="w-5 h-5 ml-1" />
