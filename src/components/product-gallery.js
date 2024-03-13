@@ -2,6 +2,9 @@
 import React, { useState } from 'react';
 
 export const ProductGallery = ({ images }) => {
+
+  // images props will be array of images src's
+  
   const [selectedImage, setSelectedImage] = useState(images[0]);
 
   const handleImageClick = (image) => {
@@ -23,7 +26,7 @@ export const ProductGallery = ({ images }) => {
         ))}
       </div>
       <div className="main-image w-full mx-2">
-        <img src={selectedImage} alt="Main Image" className="w-full" />
+        <img src={selectedImage} alt="Main Image" className="w-full transition-all ease-out" />
       </div>
     </div>
   );

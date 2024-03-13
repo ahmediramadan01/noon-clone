@@ -10,6 +10,9 @@ import { HeartIcon } from "@heroicons/react/24/outline";
 import { Overview } from "@/components/overview";
 import { Freatures } from "@/components/features";
 import { ProductCard } from "@/components/product-card";
+import DeliveryInfoItems from "@/components/delivery-info";
+import ProductPrice from "@/components/product-price";
+import WarrantyInfo from "@/components/warranty-info";
 function ProductDetails() {
 	const productImages = ["/ps5-1.png", "/ps5-2.png", "/ps5-3.png", "/ps5-4.png"];
 
@@ -19,27 +22,6 @@ function ProductDetails() {
 		{ label: "Now", currency: "EGP", amount: "400", className: "current-price font-extrabold" },
 		{ label: "Saving", currency: "EGP", amount: "100", className: "saving-amount" },
 	];
-
-	// Reusable function to render price divs
-	const renderPriceDivs = (prices) => {
-		return prices.map((price, index) => (
-			<div key={index} className={`${price.className} my-3`}>
-				<span className="text-gray-600">{price.label}: </span>
-				<span className="text-gray-900">{price.currency} </span>
-				<span className="text-gray-900">{price.amount}</span>
-			</div>
-		));
-	};
-
-	// Reusable function to render repeated divs
-	const deliveryInfoItems = (data) => {
-		return data.map((item, index) => (
-			<div className="text-center" key={index}>
-				<img src={item.imgSrc} alt={`Image ${index}`} className="w-8 h-8 rounded-full mx-auto" />
-				<p className="mt-2 text-xs">{item.text}</p>
-			</div>
-		));
-	};
 
 	// Data for delivery info divs
 	const DeliveryInfo = [
@@ -72,8 +54,8 @@ function ProductDetails() {
 						<span className="brand">Sony</span>
 						<h1 className="font-semibold text-2xl my-5">PlayStation 5 Console (Disc Version) With Controller</h1>
 
-						{/* Render price divs */}
-						{renderPriceDivs(pricesData)}
+						{/* product price */}
+						<ProductPrice prices={pricesData} />
 
 						<div className="delivery my-5 flex">
 							<Image src={"/express.svg"} width={80} height={20}></Image>
@@ -102,7 +84,9 @@ function ProductDetails() {
 
 						{/* Render delivery info card */}
 						<div className="container mx-auto my-5 rounded p-6 shadow-md">
-							<div className="flex justify-between items-center space-x-4">{deliveryInfoItems(DeliveryInfo)}</div>
+							<div className="flex justify-between items-center space-x-4">
+							<DeliveryInfoItems data={DeliveryInfo} />
+							</div>
 						</div>
 
 						{/* add to cart/wishlist buttons */}
@@ -127,7 +111,7 @@ function ProductDetails() {
 					{/* seller and warranty info */}
 					<div className="w-full md:w-1/2 lg:w-1/3 px-2">
 						{/* Content for the third column */}
-						<WarrantyInfo />
+						<WarrantyInfo items={warrantyInfoItems}/>
 
 						{/* seller info and rating*/}
 						<div className="shadow-md w-9/10 ml-4 my-7 py-4 rounded-md">
@@ -228,26 +212,4 @@ function ProductDetails() {
 
 export default ProductDetails;
 
-function WarrantyInfo() {
-	const warrantyInfoItems = [
-		{ icon: "/warranty.svg", text: "1 year warranty", href: "#" },
-		{ icon: "/noon-locker.svg", text: "Free delivery on Pickup Points", href: "#" },
-		{ icon: "/non_returnable.svg", text: "This item cannot be exchanged or returned", href: "#" },
-	];
 
-	return (
-		<div className="w-full">
-			{warrantyInfoItems.map((item, index) => (
-				<div key={index} className="flex items-center my-5 ml-4 border shadow-sm rounded-lg h-10">
-					<img src={item.icon} alt={item.text} className="w-6 h-6 mr-3" />
-					<p className="text-sm text-gray-600">
-						{item.text}
-						<a href={item.href} className="text-sm text-blue-900 underline ml-4">
-							Learn More
-						</a>
-					</p>
-				</div>
-			))}
-		</div>
-	);
-}

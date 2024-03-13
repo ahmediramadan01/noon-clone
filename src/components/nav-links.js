@@ -84,39 +84,8 @@ export const MegaMenuWithHover = () => {
 				</div>
 
 				<div className="main-links overflow-hidden flex items-center px-2">
-        <LinksSwiper />
-            {/* <a href="#" className="nav-link p-2 text-sm md:text-base">
-              Electronics
-            </a>
-            <a href="#" className="nav-link p-2 text-sm md:text-base">
-              Mobile
-            </a>
-            <a href="#" className="nav-link p-2 text-sm md:text-base">
-              Men
-            </a>
-            <a href="#" className="nav-link p-2 text-sm md:text-base">
-              Women
-            </a>
-            <a href="#" className="nav-link p-2 text-sm md:text-base">
-              Home
-            </a>
-            <a href="#" className="nav-link p-2 text-sm md:text-base">
-              Beauty and Healthy
-            </a>
-            <a href="#" className="nav-link p-2 text-sm md:text-base">
-              Baby and Toys
-            </a>
-            <a href="#" className="nav-link p-2 text-sm md:text-base">
-              Super Market
-            </a>
-            <a href="#" className="nav-link p-2 text-sm md:text-base">
-              Sell on Noon
-            </a>
-            <a href="#" className="nav-link p-2 text-sm md:text-base text-red-500">
-              Deals
-            </a> */}
+					<LinksSwiper />
 				</div>
-        
 			</div>
 		</div>
 	);
