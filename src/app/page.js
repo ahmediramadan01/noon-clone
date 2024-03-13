@@ -1,3 +1,6 @@
+import Image from "next/image";
+
+import bankInstallmentsImage from "../../public/images/bank-installments.jpg";
 import { CarouselMain } from "@/components/carousel-main";
 import Image1 from "../../public/images/carousel-main-01.jpg";
 import Image2 from "../../public/images/carousel-main-02.jpg";
@@ -14,15 +17,18 @@ const carouselImages = [Image1, Image2, Image3, Image4, Image5, Image6, Image7];
 import { DealsCard } from "@/components/deals-card";
 import { ProductCard } from "@/components/product-card";
 import { Footer } from "@/components/footer";
+import { CategorySwiper } from "@/components/categorySwiper";
 
 export default function Home() {
 	return (
 		<>
 			<NavbarSimple></NavbarSimple>
 			<MegaMenuWithHover></MegaMenuWithHover>
-			<CarouselMain images={carouselImages}></CarouselMain>
-			<ProductCard></ProductCard>
-			<DealsCard></DealsCard>
+			<div class="container mx-auto">
+				<Image src={bankInstallmentsImage}></Image>
+				<CarouselMain images={carouselImages}></CarouselMain>
+				<CategorySwiper></CategorySwiper>
+			</div>
 			<Footer></Footer>
 		</>
 	);
