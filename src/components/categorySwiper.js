@@ -26,9 +26,9 @@ export function CategorySwiper() {
 	return (
 		<>
 			<Swiper
-				className="bg-[#fff1e2]"
+				className="bg-[#fff1e2] py-5"
 				modules={[Navigation, Pagination, Scrollbar, A11y]}
-				spaceBetween={4}
+				spaceBetween={12}
 				slidesPerView={12}
 				navigation
 				onSwiper={(swiper) => console.log(swiper)}

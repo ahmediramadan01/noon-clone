@@ -18,8 +18,8 @@ export function ProductCard() {
 			<CardHeader floated={false} color="transparent" className="flex justify-center">
 				<Image src={ProductImage} width="auto" height="auto" alt="Product Image" className="m-10" />
 				<div className="to-bg-black-10 absolute inset-0 h-full w-full bg-black/5 " />
-				<IconButton size="lg" color="white" variant="text" className="!absolute top-4 right-4 bg-white shadow-lg">
-					<svg width="30" height="30" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<IconButton size="md" color="white" variant="text" className="!absolute top-4 right-4 bg-white shadow-lg">
+					<svg width="25" height="25" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path
 							d="M17.3667 3.84172C16.941 3.41589 16.4357 3.0781 15.8795 2.84763C15.3232 2.61716 14.7271 2.49854 14.125 2.49854C13.5229 2.49854 12.9268 2.61716 12.3705 2.84763C11.8143 3.0781 11.309 3.41589 10.8833 3.84172L10 4.72506L9.11666 3.84172C8.25692 2.98198 7.09086 2.49898 5.875 2.49898C4.65914 2.49898 3.49307 2.98198 2.63333 3.84172C1.77359 4.70147 1.29059 5.86753 1.29059 7.08339C1.29059 8.29925 1.77359 9.46531 2.63333 10.3251L3.51666 11.2084L10 17.6917L16.4833 11.2084L17.3667 10.3251C17.7925 9.89943 18.1303 9.39407 18.3608 8.83785C18.5912 8.28164 18.7099 7.68546 18.7099 7.08339C18.7099 6.48132 18.5912 5.88514 18.3608 5.32893C18.1303 4.77271 17.7925 4.26735 17.3667 3.84172V3.84172Z"
 							stroke="#7E859B"
@@ -29,8 +29,8 @@ export function ProductCard() {
 						/>
 					</svg>
 				</IconButton>
-				<IconButton size="lg" color="white" variant="text" className="!absolute bottom-4 right-4 bg-white shadow-lg">
-					<svg width="30" height="30" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<IconButton size="md" color="white" variant="text" className="!absolute bottom-4 right-4 bg-white shadow-lg">
+					<svg width="25" height="25" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path
 							d="M1.125 4.56689H3.18573L3.803 7.31653L5.13521 13.2495H14.7469L16.3343 7.87281"
 							stroke="#454956"
@@ -69,17 +69,17 @@ export function ProductCard() {
 			</CardHeader>
 			<CardBody>
 				<div className="mb-3 flex items-center justify-between">
-					<Typography variant="h5" color="blue-gray" className="font-medium">
+					<Typography variant="h6" color="blue-gray" className="font-medium text-sm">
 						Sony PlayStation 5 Console (Disc Version) With Controller
 					</Typography>
 				</div>
-				<p>
-					EGP <span className="font-bold text-xl">38,700</span> <span className="line-through">40,999</span>{" "}
+				<p className="text-xs">
+					EGP <span className="font-bold text-sm">38,700</span> <span className="line-through">40,999</span>{" "}
 					<span className="text-green-700 font-semibold">5%</span>
 				</p>
 			</CardBody>
 			<CardFooter className="pt-3">
-				<svg width="82" height="22" viewBox="0 0 82 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<svg width="60" height="20" viewBox="0 0 82 22" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path
 						d="M82 0C81.6986 1.14758 78.4111 13.3232 77.4248 16.2901C76.603 18.8372 73.9729 21.4682 69.2608 22C68.8498 21.972 11.9447 22 11.1228 22H10.7667C10.6023 22 10.4379 22 10.2736 22C4.54776 21.7481 0 16.9338 0 11.028C0 7.9771 1.20543 5.2341 3.15056 3.24682C5.09569 1.23155 7.80791 0 10.7667 0H82Z"
 						fill="#FEEE00"

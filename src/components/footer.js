@@ -168,84 +168,86 @@ function FooterColumn({ title, items }) {
 export function Footer() {
 	return (
 		<>
-			<footer className="bg-white-900 text-black p-5">
+			<footer className="bg-white-900 text-black py-5">
 				{/* Main content */}
-				<div className="flex justify-between flex-col md:flex-row w-full">
-					<div className="w-full justify-between items-center mx-auto p-5 bg-gray-200 md:flex sm:flex ">
-						<div className="flex flex-col xl:w-full lg:w-full sm:h-auto md:h-auto  sm:w-full md:w-full">
-							<p className="  text-xl text-[#404553] mb-4   ">We're Always Here To Help</p>
-							<p className=" text-[#7E859B] bg-zinc-400 mb-4 ">Reach out to us through any of these support channels</p>
-						</div>
-						{/* <div className=" w-1/2 flex flex-row rounded-full   p-2"> */}
-						<div className="xl:flex xl:flex-row lg:flex lg:flex-row rounded-full lg:w-full xl:w-full p-2 justify-around  mt-4 md:mt-0 ">
-							<FooterIcon items={footerIcons} />
-						</div>
-					</div>
-				</div>
-				<div className="">
-					{/* <div className="w-[113] grid grid-cols-1 md:grid-cols-6 gap-8 p-5"> */}
-					<div className="grid sm:grid-cols-3  md:grid-cols-6 xl:gap-8 lg:gap-6 p-5 md:gap-2 sm:gap-3">
-						<div className="md:col-span-1 ">
-							<FooterColumn
-								title="Electronics"
-								items={["Mobiles", "Laptops", "Cameras", "Televisone", "HeadPhones", "Videpo Games"]}
-							/>
-						</div>
-						<div className="md:col-span-1">
-							<FooterColumn
-								title="FASHION"
-								items={[
-									"Women's Fashion",
-									"Men's Fashion",
-									"Girl's Fashion",
-									"Women's Watches",
-									"Home Appliances Tools",
-									"Home Improvement",
-									"EyaWear",
-									"Bags & Luggags",
-								]}
-							/>
-						</div>
-						<div className="md:col-span-1">
-							<FooterColumn
-								title="HOME AND KITCHEN"
-								items={["Beding", "Path", "Home Appliances Tools", "Home Improvement", , "Home And Decor"]}
-							/>
-						</div>
-						<div className="md:col-span-1">
-							<FooterColumn title="BEAUTY" items={["Women's Fragrance", "Men's Fragrance", "Make-Up", "Haircare"]} />
-						</div>
-						<div className="md:col-span-1">
-							<FooterColumn
-								title="KIDS & BABY TOYS"
-								items={["Strollers", "Car Seats", "Baby Clothing", "Feeding", "Bathing & Skincare"]}
-							/>
-						</div>
-						<div className="md:col-span-1">
-							<FooterColumn
-								title="TOP BRADS"
-								items={["Apple", "Samsung", "Nike", "Ray-Ban", "Tefal", "L'Oreal Paris"]}
-							/>
+				<div className="container mx-auto">
+					<div className="flex justify-between flex-col md:flex-row w-full">
+						<div className="w-full justify-between items-center mx-auto p-5 bg-gray-200 md:flex sm:flex ">
+							<div className="flex flex-col xl:w-full lg:w-full sm:h-auto md:h-auto  sm:w-full md:w-full">
+								<p className="text-xl text-[#404553] mb-4">We're Always Here To Help</p>
+								<p className="text-[#7E859B] bg-zinc-400 mb-4">Reach out to us through any of these support channels</p>
+							</div>
+							{/* <div className=" w-1/2 flex flex-row rounded-full   p-2"> */}
+							<div className="xl:flex xl:flex-row lg:flex lg:flex-row rounded-full lg:w-full xl:w-full p-2 justify-around  mt-4 md:mt-0 ">
+								<FooterIcon items={footerIcons} />
+							</div>
 						</div>
 					</div>
-				</div>
-				<div className="flex justify-center items-center lg:flex-row xl:flex-row md:flex-row sm:flex-col  mt-4 mb-6 p-5">
-					<div className="flex flex-col justify-center w-full md:w-1/2">
-						<p className="text-center mb-2 text-[#404553] font-bold">SHOP ON THE GO</p>
-						<div className="flex justify-center gap-1.5 sm:gap-8">
-							{ImgAltData.map((item) => (
-								<Image className="cursor-pointer " src={item.imgSrc} alt={item.imgAlt} width={113} height={35} />
-							))}
+					<div className="">
+						{/* <div className="w-[113] grid grid-cols-1 md:grid-cols-6 gap-8 p-5"> */}
+						<div className="grid sm:grid-cols-3  md:grid-cols-6 xl:gap-8 lg:gap-6 p-5 md:gap-2 sm:gap-3">
+							<div className="md:col-span-1 ">
+								<FooterColumn
+									title="Electronics"
+									items={["Mobiles", "Laptops", "Cameras", "Televisone", "HeadPhones", "Videpo Games"]}
+								/>
+							</div>
+							<div className="md:col-span-1">
+								<FooterColumn
+									title="FASHION"
+									items={[
+										"Women's Fashion",
+										"Men's Fashion",
+										"Girl's Fashion",
+										"Women's Watches",
+										"Home Appliances Tools",
+										"Home Improvement",
+										"EyaWear",
+										"Bags & Luggags",
+									]}
+								/>
+							</div>
+							<div className="md:col-span-1">
+								<FooterColumn
+									title="HOME AND KITCHEN"
+									items={["Beding", "Path", "Home Appliances Tools", "Home Improvement", , "Home And Decor"]}
+								/>
+							</div>
+							<div className="md:col-span-1">
+								<FooterColumn title="BEAUTY" items={["Women's Fragrance", "Men's Fragrance", "Make-Up", "Haircare"]} />
+							</div>
+							<div className="md:col-span-1">
+								<FooterColumn
+									title="KIDS & BABY TOYS"
+									items={["Strollers", "Car Seats", "Baby Clothing", "Feeding", "Bathing & Skincare"]}
+								/>
+							</div>
+							<div className="md:col-span-1">
+								<FooterColumn
+									title="TOP BRADS"
+									items={["Apple", "Samsung", "Nike", "Ray-Ban", "Tefal", "L'Oreal Paris"]}
+								/>
+							</div>
 						</div>
 					</div>
-					<div className="flex flex-col justify-center w-full md:w-1/2 mt-4 md:mt-0">
-						<p className="text-center mb-2 text-[#404553] font-bold">Connect With Us</p>
-						<div className="flex justify-center gap-3 sm:gap-7">
-							{svgSocialIcons.map((item, index) => (
-								<div key={index} className="w-11 h-11 hover:opacity-[0.7] cursor-pointer">
-									{item}
-								</div>
-							))}
+					<div className="flex justify-center items-center lg:flex-row xl:flex-row md:flex-row sm:flex-col  mt-4 mb-6 p-5">
+						<div className="flex flex-col justify-center w-full md:w-1/2">
+							<p className="text-center mb-2 text-[#404553] font-bold">SHOP ON THE GO</p>
+							<div className="flex justify-center gap-1.5 sm:gap-8">
+								{ImgAltData.map((item) => (
+									<Image className="cursor-pointer " src={item.imgSrc} alt={item.imgAlt} width={113} height={35} />
+								))}
+							</div>
+						</div>
+						<div className="flex flex-col justify-center w-full md:w-1/2 mt-4 md:mt-0">
+							<p className="text-center mb-2 text-[#404553] font-bold">Connect With Us</p>
+							<div className="flex justify-center gap-3 sm:gap-7">
+								{svgSocialIcons.map((item, index) => (
+									<div key={index} className="w-11 h-11 hover:opacity-[0.7] cursor-pointer">
+										{item}
+									</div>
+								))}
+							</div>
 						</div>
 					</div>
 				</div>
