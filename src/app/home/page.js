@@ -329,12 +329,12 @@ export default function HomePage() {
 		<>
 			<Header></Header>
 			<div className="container mx-auto">
-				<Image src={bankInstallmentsImage}></Image>
+				<Image src={bankInstallmentsImage} className="w-full"></Image>
 				<CarouselMain images={carouselImages}></CarouselMain>
 				<CategorySwiper></CategorySwiper>
 				<div className="grid grid-cols-3 gap-4 mt-4">
 					<div className="bg-white py-2">
-						<Image src={reasonsImage0}></Image>
+						<Image src={reasonsImage0} className="w-full"></Image>
 						<div className="grid grid-cols-2 gap-4 px-4">
 							<Image src={reasonsImage1}></Image>
 							<Image src={reasonsImage2}></Image>
@@ -343,7 +343,7 @@ export default function HomePage() {
 						</div>
 					</div>
 					<div className="bg-[#ffddb2] py-2">
-						<Image src={reasonsImage0}></Image>
+						<Image src={reasonsImage0} className="w-full"></Image>
 						<div className="grid grid-cols-2">
 							<DealsCard></DealsCard>
 							<DealsCard></DealsCard>
@@ -352,10 +352,10 @@ export default function HomePage() {
 						</div>
 					</div>
 					<div className="bg-white py-2">
-						<Image src={focusImage0} className="pb-4"></Image>
+						<Image src={focusImage0} className="pb-4 w-full"></Image>
 						<div className="flex flex-col items-center gap-4">
-							<Image src={focusImage1}></Image>
-							<Image src={focusImage2}></Image>
+							<Image src={focusImage1} className="w-full"></Image>
+							<Image src={focusImage2} className="w-full"></Image>
 						</div>
 					</div>
 				</div>
@@ -363,40 +363,40 @@ export default function HomePage() {
 					<h2 className="text-2xl font-bold my-5">Recommended for you</h2>
 					<ProductSwiper></ProductSwiper>
 				</div>
-				<Image src={sponsoredImage} className="my-4"></Image>
+				<Image src={sponsoredImage} className="my-4 w-full"></Image>
 				<CategoriesCards images={mothersdayImages} bgColor="#fff1f1"></CategoriesCards>
 				<div className="bg-[#f1e8c5] py-2">
-					<Image src={joyImage} className="pb-4"></Image>
+					<Image src={joyImage} className="pb-4 w-full"></Image>
 					<div className="p-4">
 						<ProductSwiper></ProductSwiper>
 					</div>
 				</div>
 				<CategoriesCards images={offersImages} bgColor="#fff1e2]"></CategoriesCards>
 				<div className="bg-white py-2">
-					<Image src={ramadanDealsImage} className="pb-4"></Image>
+					<Image src={ramadanDealsImage} className="pb-4 w-full"></Image>
 					<div className="p-4">
 						<ProductSwiper></ProductSwiper>
 					</div>
 				</div>
 				<CategoriesCards images={savingsImages} bgColor="#fff3e4"></CategoriesCards>
-				<Image src={wellnessImage} className="my-4 bg-[#fff3e4]"></Image>
+				<Image src={wellnessImage} className="my-4 bg-[#fff3e4] w-full"></Image>
 				<CategoriesCards images={supermarketImages} bgColor="#fffcef"></CategoriesCards>
 				<div className="bg-[#fffcef] py-2">
-					<Image src={ramadanGroceriesImage} className="pb-4"></Image>
+					<Image src={ramadanGroceriesImage} className="pb-4 w-full"></Image>
 					<div className="p-4">
 						<ProductSwiper></ProductSwiper>
 					</div>
 				</div>
 				<CategoriesCards images={kitchenImages} bgColor="#fff2e2"></CategoriesCards>
 				<div className="bg-[#fff2e2] py-2">
-					<Image src={ramadanEssentialsImage} className="pb-4"></Image>
+					<Image src={ramadanEssentialsImage} className="pb-4 w-full"></Image>
 					<div className="p-4">
 						<ProductSwiper></ProductSwiper>
 					</div>
 				</div>
 				<CategoriesCards images={appliancesImages} bgColor="#fffcef"></CategoriesCards>
 				<div className="bg-[#fffcef] py-2">
-					<Image src={topAppliancesImage} className="pb-4"></Image>
+					<Image src={topAppliancesImage} className="pb-4 w-full"></Image>
 					<div className="p-4">
 						<ProductSwiper></ProductSwiper>
 					</div>
@@ -406,33 +406,33 @@ export default function HomePage() {
 				<CategoriesCards images={mensFashionImages} bgColor="#fff2e2"></CategoriesCards>
 				<CategoriesCards images={kidsFashionImages} bgColor="#fff2e2"></CategoriesCards>
 				<div className="grid grid-cols-2">
-					<Image src={eyewareImage}></Image>
-					<Image src={watchesImage}></Image>
+					<Image src={eyewareImage} className="w-full"></Image>
+					<Image src={watchesImage} className="w-full"></Image>
 				</div>
 				<CategoriesCards images={ramadanMustHaveImages} bgColor="#fffcef"></CategoriesCards>
 				<div className="bg-[#fffcef] py-2">
-					<Image src={topBeautyDealsImage} className="pb-4"></Image>
+					<Image src={topBeautyDealsImage} className="pb-4 w-full"></Image>
 					<div className="p-4">
 						<ProductSwiper></ProductSwiper>
 					</div>
 				</div>
 				<CategoriesCards images={electronicsImages} bgColor="#fff2e2"></CategoriesCards>
 				<div className="bg-[#fff2e2] py-2">
-					<Image src={topElectronicsDealsImage} className="pb-4"></Image>
+					<Image src={topElectronicsDealsImage} className="pb-4 w-full"></Image>
 					<div className="p-4">
 						<ProductSwiper></ProductSwiper>
 					</div>
 				</div>
 				<CategoriesCards images={babyImages} bgColor="#fffcef"></CategoriesCards>
 				<div className="bg-[#fffcef] py-2">
-					<Image src={topBabyDealsImage} className="pb-4"></Image>
+					<Image src={topBabyDealsImage} className="pb-4 w-full"></Image>
 					<div className="p-4">
 						<ProductSwiper></ProductSwiper>
 					</div>
 				</div>
 				<CategoriesCards images={automotiveImages} bgColor="#fff2e2"></CategoriesCards>
 				<div className="bg-[#fff2e2] py-2">
-					<Image src={topAutomotiveDealsImage} className="pb-4"></Image>
+					<Image src={topAutomotiveDealsImage} className="pb-4 w-full"></Image>
 					<div className="p-4">
 						<ProductSwiper></ProductSwiper>
 					</div>

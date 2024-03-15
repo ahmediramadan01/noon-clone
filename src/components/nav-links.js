@@ -17,7 +17,7 @@ export function MegaMenuWithHover() {
 		{ title: "Men", href: "#" },
 		{ title: "Women", href: "#" },
 		{ title: "Market", href: "#" },
-		{ title: "Home", href: "#" },
+		{ title: "Home", href: "/" },
 		{ title: "Sell on Noon", href: "#" },
 		{ title: "Deals", href: "#" },
 	];
