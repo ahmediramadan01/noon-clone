@@ -27,7 +27,7 @@ function NavList() {
 				</a>
 			</li>
 			<li className="px-2 font-medium border-black" style={{ borderLeftWidth: "1px" }}>
-				<a href="#" className="flex items-center hover:text-blue-500 transition-colors">
+				<a href="/cart" className="flex items-center hover:text-blue-500 transition-colors">
 					<span className="font-bold">Cart</span>
 					<ShoppingCartIcon className="w-5 h-5 ml-1" />
 				</a>
