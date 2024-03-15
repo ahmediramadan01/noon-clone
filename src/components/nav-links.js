@@ -1,11 +1,46 @@
 "use client";
-
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import { Menu, MenuList, MenuItem, MenuHandler, Button } from "@material-tailwind/react";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
-import LinksSwiper from "./LinksSwiper";
 
-export const MegaMenuWithHover = () => {
+const MegaMenuWithHover = () => {
+	// Define the links array
+	const links = [
+		{ title: "Electronics", href: "#" },
+		{ title: "Mobile", href: "#" },
+		{ title: "Baby Toys", href: "#" },
+		{ title: "Men", href: "#" },
+		{ title: "Women", href: "#" },
+		{ title: "Market", href: "#" },
+		{ title: "Home", href: "#" },
+		{ title: "Sell on Noon", href: "#" },
+		{ title: "Deals", href: "#" },
+	];
+
+	const [slidesPerView, setSlidesPerView] = useState(3); // Default slides per view
+
+	useEffect(() => {
+		// Update slides per view based on screen size
+		const handleResize = () => {
+			if (window.innerWidth >= 1024) {
+				setSlidesPerView(9); // Large screens
+			} else if (window.innerWidth >= 768) {
+				setSlidesPerView(4); // Medium screens
+			} else {
+				setSlidesPerView(3); // Small screens
+			}
+		};
+
+		handleResize(); // Call once on initial render
+		window.addEventListener("resize", handleResize); // Listen for window resize events
+
+		return () => window.removeEventListener("resize", handleResize); // Cleanup on unmount
+	}, []);
+
 	return (
 		<div className="nav-links">
 			<div className="container-fluid flex">
@@ -30,94 +65,44 @@ export const MegaMenuWithHover = () => {
 						</MenuHandler>
 
 						<MenuList className="w-full bg-white text-black text-md">
-							<MenuItem>
-								<a href="#" className="nav-link">
-									Electronics
-								</a>
-							</MenuItem>
-							<MenuItem>
-								<a href="#" className="nav-link">
-									Mobiles
-								</a>
-							</MenuItem>
-							<MenuItem>
-								<a href="#" className="nav-link">
-									Men
-								</a>
-							</MenuItem>
-							<MenuItem>
-								<a href="#" className="nav-link">
-									Women
-								</a>
-							</MenuItem>
-							<MenuItem>
-								<a href="#" className="nav-link">
-									Home
-								</a>
-							</MenuItem>
-							<MenuItem>
-								<a href="#" className="nav-link">
-									Beauty & Health
-								</a>
-							</MenuItem>
-							<MenuItem>
-								<a href="#" className="nav-link">
-									Baby & Toys
-								</a>
-							</MenuItem>
-							<MenuItem>
-								<a href="#" className="nav-link">
-									Supermarket
-								</a>
-							</MenuItem>
-							<MenuItem>
-								<a href="#" className="nav-link">
-									Sell on noon
-								</a>
-							</MenuItem>
-							<MenuItem>
-								<a href="#" className="nav-link text-danger">
-									Deals
-								</a>
-							</MenuItem>
+							{links.map((link, index) => (
+								<MenuItem key={index}>
+									<a
+										href={link.href}
+										className={`nav-link ${index === links.length - 1 ? " text-red-500 font-semibold" : ""}`}
+									>
+										{link.title}
+									</a>
+								</MenuItem>
+							))}
 						</MenuList>
 					</Menu>
 				</div>
 
 				<div className="main-links overflow-hidden flex items-center px-2">
-					<LinksSwiper />
-					{/* <a href="#" className="nav-link p-2 text-sm md:text-base">
-              Electronics
-            </a>
-            <a href="#" className="nav-link p-2 text-sm md:text-base">
-              Mobile
-            </a>
-            <a href="#" className="nav-link p-2 text-sm md:text-base">
-              Men
-            </a>
-            <a href="#" className="nav-link p-2 text-sm md:text-base">
-              Women
-            </a>
-            <a href="#" className="nav-link p-2 text-sm md:text-base">
-              Home
-            </a>
-            <a href="#" className="nav-link p-2 text-sm md:text-base">
-              Beauty and Healthy
-            </a>
-            <a href="#" className="nav-link p-2 text-sm md:text-base">
-              Baby and Toys
-            </a>
-            <a href="#" className="nav-link p-2 text-sm md:text-base">
-              Super Market
-            </a>
-            <a href="#" className="nav-link p-2 text-sm md:text-base">
-              Sell on Noon
-            </a>
-            <a href="#" className="nav-link p-2 text-sm md:text-base text-red-500">
-              Deals
-            </a> */}
+					<Swiper
+						slidesPerView={slidesPerView}
+						spaceBetween={1} // Adjust the space between slides here
+						navigation={false}
+						speed={400}
+					>
+						{links.map((link, index) => (
+							<SwiperSlide key={index}>
+								<a
+									href={link.href}
+									className={`nav-link text-xs md:text-base lg:text-base text-nowrap block text-center font-bold ${
+										index === links.length - 1 ? " text-red-500 font-semibold" : ""
+									}`}
+								>
+									{link.title}
+								</a>
+							</SwiperSlide>
+						))}
+					</Swiper>
 				</div>
 			</div>
 		</div>
 	);
 };
+
+export default MegaMenuWithHover;

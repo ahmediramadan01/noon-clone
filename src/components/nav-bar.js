@@ -1,34 +1,54 @@
 "use client";
-
 import React from "react";
 
-import { Navbar, Collapse, IconButton, Input } from "@material-tailwind/react";
-import { Bars3Icon, HeartIcon, ShoppingCartIcon, UserIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Navbar, Collapse, Typography, IconButton, Input } from "@material-tailwind/react";
+import {
+	Bars3Icon,
+	ChevronDownIcon,
+	HeartIcon,
+	ShoppingCartIcon,
+	UserIcon,
+	XMarkIcon,
+} from "@heroicons/react/24/outline";
 import Image from "next/image";
+import { ArrowDownIcon } from "@heroicons/react/24/solid";
 
 function NavList() {
 	return (
 		<ul className="my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-4">
-			<li className="p-1 font-medium">
+			<li className="p-1 font-medium text-sm">
 				<a href="#" className="flex items-center hover:text-blue-500 transition-colors">
 					<span className="font-bold">العربية</span>
 				</a>
 			</li>
-			<li className="px-2 font-medium border-black" style={{ borderLeftWidth: "1px" }}>
+
+			<li className="px-2 font-medium border-black h-6 w-32 flex items-center" style={{ borderLeftWidth: "1px" }}>
 				<a href="#" className="flex items-center hover:text-blue-500 transition-colors">
-					<span className="font-bold">Login</span>
-					<UserIcon className="w-5 h-5 ml-1" />
+					<span className="font-bold text-left text-sm">
+						<span className="text-xs font-light whitespace-no-wrap">Ahlan Ahmed!</span>
+						<br />
+						<span className="whitespace-no-wrap">My Account</span>
+					</span>
+					<ChevronDownIcon className="w-5 h-5 ml-1" />
 				</a>
 			</li>
-			<li className="px-2 font-medium border-black" style={{ borderLeftWidth: "1px" }}>
+
+			{/* <li className="px-2 font-medium border-black h-6 w-32 flex items-center" style={{ borderLeftWidth: "1px" }}>
 				<a href="#" className="flex items-center hover:text-blue-500 transition-colors">
-					<span className="font-bold">Wishlist</span>
+					<span className="font-bold text-sm">Login</span>
+					<UserIcon className="w-5 h-5 ml-1" />
+				</a>
+			</li> */}
+
+			<li className="px-2 font-medium border-black h-6 w-auto flex items-center" style={{ borderLeftWidth: "1px" }}>
+				<a href="#" className="flex items-center hover:text-blue-500 transition-colors">
+					<span className="font-bold text-sm">Wishlist</span>
 					<HeartIcon className="w-5 h-5 ml-1" />
 				</a>
 			</li>
-			<li className="px-2 font-medium border-black" style={{ borderLeftWidth: "1px" }}>
-				<a href="/cart" className="flex items-center hover:text-blue-500 transition-colors">
-					<span className="font-bold">Cart</span>
+			<li className="px-2 font-medium border-black h-6 w-auto flex items-center" style={{ borderLeftWidth: "1px" }}>
+				<a href="#" className="flex items-center hover:text-blue-500 transition-colors">
+					<span className="font-bold text-sm">Cart</span>
 					<ShoppingCartIcon className="w-5 h-5 ml-1" />
 				</a>
 			</li>
@@ -53,11 +73,10 @@ export function NavbarSimple() {
 		<Navbar
 			className="w-full text-black mx-auto px-4 py-4 rounded-none"
 			style={{ backgroundColor: "#FEEE00", boxShadow: "none" }}
-			fullWidth={true}
+			fullWidth="true"
 		>
 			<div className="flex items-center justify-between text-blue-gray-900">
 				<a href="#">
-					{/* <img src={"/noon-logo-en.svg"} alt="Noon Logo" className="mr-4 cursor-pointer w-20 h-auto" /> */}
 					<Image
 						src={"/noon-logo-en.svg"}
 						alt="Noon Logo"
