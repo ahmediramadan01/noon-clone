@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import { NavbarSimple } from "@/components/nav-bar";
 import { MegaMenuWithHover } from "@/components/nav-links";
@@ -9,7 +8,7 @@ import CartCard2 from "@/components/CartCard2";
 import CartCard3 from "@/components/CartCard3";
 import CartCard4 from "@/components/CartCard4";
 
-export default function page() {
+export default function CartPage() {
 	return (
 		<>
 			<NavbarSimple></NavbarSimple>
