@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-
+import Link from "next/link";
 import { Navbar, Collapse, Typography, IconButton, Input } from "@material-tailwind/react";
 import {
 	Bars3Icon,
@@ -23,14 +23,14 @@ function NavList() {
 			</li>
 
 			<li className="px-2 font-medium border-black h-6 w-32 flex items-center" style={{ borderLeftWidth: "1px" }}>
-				<a href="#" className="flex items-center hover:text-blue-500 transition-colors">
+				<Link href="/profile" className="flex items-center hover:text-blue-500 transition-colors">
 					<span className="font-bold text-left text-sm">
 						<span className="text-xs font-light whitespace-no-wrap">Ahlan Ahmed!</span>
 						<br />
 						<span className="whitespace-no-wrap">My Account</span>
 					</span>
 					<ChevronDownIcon className="w-5 h-5 ml-1" />
-				</a>
+				</Link>
 			</li>
 
 			{/* <li className="px-2 font-medium border-black h-6 w-32 flex items-center" style={{ borderLeftWidth: "1px" }}>
@@ -41,16 +41,16 @@ function NavList() {
 			</li> */}
 
 			<li className="px-2 font-medium border-black h-6 w-auto flex items-center" style={{ borderLeftWidth: "1px" }}>
-				<a href="#" className="flex items-center hover:text-blue-500 transition-colors">
+				<Link href="/wishlist" className="flex items-center hover:text-blue-500 transition-colors">
 					<span className="font-bold text-sm">Wishlist</span>
 					<HeartIcon className="w-5 h-5 ml-1" />
-				</a>
+				</Link>
 			</li>
 			<li className="px-2 font-medium border-black h-6 w-auto flex items-center" style={{ borderLeftWidth: "1px" }}>
-				<a href="#" className="flex items-center hover:text-blue-500 transition-colors">
+				<Link href="/cart" className="flex items-center hover:text-blue-500 transition-colors">
 					<span className="font-bold text-sm">Cart</span>
 					<ShoppingCartIcon className="w-5 h-5 ml-1" />
-				</a>
+				</Link>
 			</li>
 		</ul>
 	);
@@ -76,7 +76,7 @@ export function NavbarSimple() {
 			fullWidth="true"
 		>
 			<div className="flex items-center justify-between text-blue-gray-900">
-				<a href="#">
+				<Link href="/">
 					<Image
 						src={"/noon-logo-en.svg"}
 						alt="Noon Logo"
@@ -84,7 +84,7 @@ export function NavbarSimple() {
 						height={10}
 						className="mr-4 cursor-pointer w-20 h-auto"
 					></Image>
-				</a>
+				</Link>
 
 				<div className="px-1 w-2/3 relative flex gap-2 ">
 					<Input

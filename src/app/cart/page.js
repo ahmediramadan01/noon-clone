@@ -1,18 +1,18 @@
+"use client";
+
 import React from "react";
-import { NavbarSimple } from "@/components/nav-bar";
-import { MegaMenuWithHover } from "@/components/nav-links";
 import { Footer } from "@/components/footer";
 import Image from "next/image";
 import CartCard from "@/components/CartCard";
 import CartCard2 from "@/components/CartCard2";
 import CartCard3 from "@/components/CartCard3";
 import CartCard4 from "@/components/CartCard4";
+import { Header } from "@/components/header";
 
 export default function CartPage() {
 	return (
 		<>
-			<NavbarSimple></NavbarSimple>
-			<MegaMenuWithHover></MegaMenuWithHover>
+			<Header></Header>
 			<div className="container bg-gray-100 mx-auto px-6 ">
 				<div className="flex flex-wrap ">
 					<div className="w-full md:w-8/12 px-4">

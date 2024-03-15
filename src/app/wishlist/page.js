@@ -21,8 +21,10 @@ import Image from "next/image";
 import ProductImage from "/public/images/product.jpg";
 import Script from "next/script";
 import { MainCard } from "@/components/mainCard";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 
-export function WishlistPage() {
+export default function WishlistPage() {
 	const [open, setOpen] = React.useState(false);
 
 	const toggleOpen = () => setOpen((cur) => !cur);
@@ -35,6 +37,7 @@ export function WishlistPage() {
 
 	return (
 		<>
+			<Header></Header>
 			<div className="container mx-auto px-4 ms:max-width: 640px ">
 				<div className="bg-gray-50 w-full">
 					<hr className="mt-3"></hr>
@@ -236,6 +239,7 @@ export function WishlistPage() {
 					</div>
 				</div>
 			</div>
+			<Footer></Footer>
 		</>
 	);
 }

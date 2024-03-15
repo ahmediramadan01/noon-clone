@@ -2,6 +2,7 @@
 
 import { Card, CardHeader, CardBody, CardFooter, Typography, IconButton } from "@material-tailwind/react";
 import Image from "next/image";
+import Link from "next/link";
 import ProductImage from "/public/images/product.jpg";
 
 export function ProductCard() {
@@ -61,9 +62,11 @@ export function ProductCard() {
 			</CardHeader>
 			<CardBody>
 				<div className="mb-3 flex items-center justify-between">
-					<Typography variant="h6" color="blue-gray" className="font-medium text-sm">
-						Sony PlayStation 5 Console (Disc Version) With Controller
-					</Typography>
+					<Link href="/product">
+						<Typography variant="h6" color="blue-gray" className="font-medium text-sm">
+							Sony PlayStation 5 Console (Disc Version) With Controller
+						</Typography>
+					</Link>
 				</div>
 				<p className="text-xs">
 					EGP <span className="font-bold text-sm">38,700</span> <span className="line-through">40,999</span>{" "}

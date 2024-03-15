@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -7,10 +8,10 @@ import "swiper/css/pagination";
 import { Menu, MenuList, MenuItem, MenuHandler, Button } from "@material-tailwind/react";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 
-const MegaMenuWithHover = () => {
+export function MegaMenuWithHover() {
 	// Define the links array
 	const links = [
-		{ title: "Electronics", href: "#" },
+		{ title: "Electronics", href: "/category" },
 		{ title: "Mobile", href: "#" },
 		{ title: "Baby Toys", href: "#" },
 		{ title: "Men", href: "#" },
@@ -103,6 +104,4 @@ const MegaMenuWithHover = () => {
 			</div>
 		</div>
 	);
-};
-
-export default MegaMenuWithHover;
+}

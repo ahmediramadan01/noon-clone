@@ -17,11 +17,14 @@ import React from "react";
 
 import Image from "next/image";
 import Link from "next/link";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 
-export function ProfilePage() {
+export default function ProfilePage() {
 	const { countries } = useCountries();
 	return (
 		<>
+			<Header></Header>
 			<div className="container mx-auto bg-blue-gray-50">
 				<div className="flex ">
 					<div className="lg:basis-1/6 md:basis-1/5  flex-col ">
@@ -526,7 +529,9 @@ export function ProfilePage() {
 					</div>
 				</div>
 				<hr></hr>
-				<div className="flex h-12 w-full bg-white">
+			</div>
+			<div className="flex h-12 w-full bg-white">
+				<div className="container mx-auto flex">
 					<p className="text-sm mt-2 text-gray-500 ms-2 w-3/6">© 2024 noon. All rights reserved</p>
 					<Link href={"#"} className="mt-2 ms-32 text-gray-700 text-xs hover:underline w-1/6 ">
 						Help Center Articles

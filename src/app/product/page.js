@@ -12,6 +12,7 @@ import DeliveryInfoItems from "@/components/delivery-info";
 import ProductPrice from "@/components/product-price";
 import WarrantyInfo from "@/components/warranty-info";
 import MegaMenuWithHover from "@/components/nav-links";
+import { Header } from "@/components/header";
 
 function ProductPage() {
 	const productImages = ["/ps5-1.png", "/ps5-2.png", "/ps5-3.png", "/ps5-4.png"];
@@ -39,9 +40,7 @@ function ProductPage() {
 
 	return (
 		<>
-			<NavbarSimple />
-			<MegaMenuWithHover />
-
+			<Header></Header>
 			<div className="container mx-auto my-2">
 				<div className="flex flex-wrap">
 					<div className="w-full md:w-1/2 lg:w-1/3 px-2">
