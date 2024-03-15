@@ -1,7 +1,8 @@
 "use client";
+
 import React from "react";
 
-import { Navbar, Collapse, Typography, IconButton, Input } from "@material-tailwind/react";
+import { Navbar, Collapse, IconButton, Input } from "@material-tailwind/react";
 import { Bars3Icon, HeartIcon, ShoppingCartIcon, UserIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 

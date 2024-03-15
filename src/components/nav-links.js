@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+
+import React from "react";
 import { Menu, MenuList, MenuItem, MenuHandler, Button } from "@material-tailwind/react";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import LinksSwiper from "./LinksSwiper";
@@ -84,8 +85,8 @@ export const MegaMenuWithHover = () => {
 				</div>
 
 				<div className="main-links overflow-hidden flex items-center px-2">
-        <LinksSwiper />
-            {/* <a href="#" className="nav-link p-2 text-sm md:text-base">
+					<LinksSwiper />
+					{/* <a href="#" className="nav-link p-2 text-sm md:text-base">
               Electronics
             </a>
             <a href="#" className="nav-link p-2 text-sm md:text-base">
@@ -116,7 +117,6 @@ export const MegaMenuWithHover = () => {
               Deals
             </a> */}
 				</div>
-        
 			</div>
 		</div>
 	);

@@ -9,8 +9,6 @@ import Image4 from "../../../public/images/carousel-main-04.jpg";
 import Image5 from "../../../public/images/carousel-main-05.jpg";
 import Image6 from "../../../public/images/carousel-main-06.jpg";
 import Image7 from "../../../public/images/carousel-main-07.jpg";
-import { NavbarSimple } from "@/components/nav-bar";
-import { MegaMenuWithHover } from "@/components/nav-links";
 
 const carouselImages = [Image1, Image2, Image3, Image4, Image5, Image6, Image7];
 

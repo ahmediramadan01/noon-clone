@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -8,24 +10,23 @@ import SwiperCore, { Navigation } from "swiper";
 SwiperCore.use([Navigation]);
 
 const LinksSwiper = () => {
-	const [slidesPerView, setSlidesPerView] = useState(3); // Default slides per view
+	const [slidesPerView, setSlidesPerView] = useState(3);
 
 	useEffect(() => {
-		// Update slides per view based on screen size
 		const handleResize = () => {
 			if (window.innerWidth >= 1024) {
-				setSlidesPerView(9); // Large screens
+				setSlidesPerView(9);
 			} else if (window.innerWidth >= 768) {
-				setSlidesPerView(4); // Medium screens
+				setSlidesPerView(4);
 			} else {
-				setSlidesPerView(3); // Small screens
+				setSlidesPerView(3);
 			}
 		};
 
 		handleResize(); // Call once on initial render
-		window.addEventListener("resize", handleResize); // Listen for window resize events
+		window.addEventListener("resize", handleResize);
 
-		return () => window.removeEventListener("resize", handleResize); // Cleanup on unmount
+		return () => window.removeEventListener("resize", handleResize);
 	}, []);
 
 	const links = [
@@ -41,12 +42,7 @@ const LinksSwiper = () => {
 	];
 
 	return (
-		<Swiper
-			slidesPerView={slidesPerView}
-			spaceBetween={1} // Adjust the space between slides here
-			navigation={false}
-			speed={400}
-		>
+		<Swiper slidesPerView={slidesPerView} spaceBetween={1} navigation={false} speed={400}>
 			{links.map((link, index) => (
 				<SwiperSlide key={index}>
 					<a

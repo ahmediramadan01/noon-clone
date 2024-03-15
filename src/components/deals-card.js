@@ -1,8 +1,9 @@
 "use client";
+
 import Image1 from "../../public/images/fashion.png";
 import Image2 from "../../public/images/fashion2.jpg";
 import Image from "next/image";
-import { Card, CardHeader, CardBody, CardFooter, Typography } from "@material-tailwind/react";
+import { Card, CardBody, CardFooter, Typography } from "@material-tailwind/react";
 
 export function DealsCard() {
 	return (

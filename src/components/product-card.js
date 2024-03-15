@@ -1,14 +1,6 @@
 "use client";
-import {
-	Card,
-	CardHeader,
-	CardBody,
-	CardFooter,
-	Typography,
-	Button,
-	Tooltip,
-	IconButton,
-} from "@material-tailwind/react";
+
+import { Card, CardHeader, CardBody, CardFooter, Typography, IconButton } from "@material-tailwind/react";
 import Image from "next/image";
 import ProductImage from "/public/images/product.jpg";
 
@@ -64,7 +56,7 @@ export function ProductCard() {
 							clipRule="evenodd"
 						/>
 					</svg>
-					<p className="text-gray-400">(8.1K)</p>
+					<span className="text-gray-400">(8.1K)</span>
 				</Typography>
 			</CardHeader>
 			<CardBody>
