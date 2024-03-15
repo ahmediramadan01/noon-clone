@@ -12,7 +12,8 @@ import DeliveryInfoItems from "@/components/delivery-info";
 import ProductPrice from "@/components/product-price";
 import WarrantyInfo from "@/components/warranty-info";
 import MegaMenuWithHover from "@/components/nav-links";
-function ProductDetails() {
+
+function ProductPage() {
 	const productImages = ["/ps5-1.png", "/ps5-2.png", "/ps5-3.png", "/ps5-4.png"];
 
 	// Data for price divs
@@ -84,7 +85,7 @@ function ProductDetails() {
 						{/* Render delivery info card */}
 						<div className="container mx-auto my-5 rounded p-6 shadow-md">
 							<div className="flex justify-between items-center space-x-4">
-							<DeliveryInfoItems data={DeliveryInfo} />
+								<DeliveryInfoItems data={DeliveryInfo} />
 							</div>
 						</div>
 
@@ -110,7 +111,7 @@ function ProductDetails() {
 					{/* seller and warranty info */}
 					<div className="w-full md:w-1/2 lg:w-1/3 px-2">
 						{/* Content for the third column */}
-						<WarrantyInfo items={warrantyInfoItems}/>
+						<WarrantyInfo items={warrantyInfoItems} />
 
 						{/* seller info and rating*/}
 						<div className="shadow-md w-9/10 ml-4 my-7 py-4 rounded-md">
@@ -200,7 +201,6 @@ function ProductDetails() {
 						<ProductCard />
 						<ProductCard />
 					</div>
-
 				</div>
 			</div>
 
@@ -209,6 +209,4 @@ function ProductDetails() {
 	);
 }
 
-export default ProductDetails;
-
-
+export default ProductPage;
