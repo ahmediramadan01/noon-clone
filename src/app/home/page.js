@@ -328,7 +328,7 @@ export default function HomePage() {
 	return (
 		<>
 			<Header></Header>
-			<div className="container mx-auto">
+			<div className="mx-auto">
 				<Image src={bankInstallmentsImage} className="w-full"></Image>
 				<CarouselMain images={carouselImages}></CarouselMain>
 				<CategorySwiper></CategorySwiper>

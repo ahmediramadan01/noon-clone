@@ -38,7 +38,7 @@ export default function WishlistPage() {
 	return (
 		<>
 			<Header></Header>
-			<div className="container mx-auto px-4 ms:max-width: 640px ">
+			<div className="mx-auto px-4 ms:max-width: 640px ">
 				<div className="bg-gray-50 w-full">
 					<hr className="mt-3"></hr>
 					<div className="w-full">

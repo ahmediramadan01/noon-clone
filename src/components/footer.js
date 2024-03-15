@@ -171,7 +171,7 @@ export function Footer() {
 		<>
 			<footer className="bg-white-900 text-black py-5">
 				{/* Main content */}
-				<div className="container mx-auto">
+				<div className="mx-auto">
 					<div className="flex justify-between flex-col md:flex-row w-full">
 						<div className="w-full justify-between items-center mx-auto p-5 bg-gray-200 md:flex sm:flex ">
 							<div className="flex flex-col xl:w-full lg:w-full sm:h-auto md:h-auto  sm:w-full md:w-full">

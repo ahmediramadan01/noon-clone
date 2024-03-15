@@ -13,7 +13,7 @@ export default function CartPage() {
 	return (
 		<>
 			<Header></Header>
-			<div className="container bg-gray-100 mx-auto px-6 ">
+			<div className="bg-gray-100 mx-auto px-6 ">
 				<div className="flex flex-wrap ">
 					<div className="w-full md:w-8/12 px-4">
 						<div className=" p-4 ">

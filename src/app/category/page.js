@@ -194,7 +194,7 @@ export default function CategoryPage() {
 		<>
 			<NavbarSimple />
 			<MegaMenuWithHover />
-			<div className="container mx-auto">
+			<div className="mx-auto">
 				<div className="w-full ">
 					<Image className=" cursor-pointer  w-full" src={AnnonceMent} alt="hhhkjy" />
 				</div>

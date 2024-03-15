@@ -41,7 +41,7 @@ function ProductPage() {
 	return (
 		<>
 			<Header></Header>
-			<div className="container mx-auto my-2">
+			<div className="mx-auto my-2">
 				<div className="flex flex-wrap">
 					<div className="w-full md:w-1/2 lg:w-1/3 px-2">
 						{/* product images gallery */}
@@ -82,7 +82,7 @@ function ProductPage() {
 						</div>
 
 						{/* Render delivery info card */}
-						<div className="container mx-auto my-5 rounded p-6 shadow-md">
+						<div className="mx-auto my-5 rounded p-6 shadow-md">
 							<div className="flex justify-between items-center space-x-4">
 								<DeliveryInfoItems data={DeliveryInfo} />
 							</div>

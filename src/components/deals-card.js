@@ -7,7 +7,7 @@ import { Card, CardBody, CardFooter, Typography } from "@material-tailwind/react
 
 export function DealsCard() {
 	return (
-		<div className="container mx-auto">
+		<div>
 			<Card className="mt-2 ms-3 justify-center h-56 w-52">
 				<Typography className="flex justify-end px-0 pt-0 mt-2">
 					{/* <img src="/public/images/fashion.png" alt="fashion" /> */}
