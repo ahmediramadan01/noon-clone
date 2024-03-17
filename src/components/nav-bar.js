@@ -73,7 +73,7 @@ export function NavbarSimple() {
 		<Navbar
 			className="w-full text-black mx-auto px-4 py-4 rounded-none"
 			style={{ backgroundColor: "#FEEE00", boxShadow: "none" }}
-			fullWidth="true"
+			fullWidth={true}
 		>
 			<div className="flex items-center justify-between text-blue-gray-900">
 				<Link href="/">
