@@ -87,7 +87,7 @@ export default function WishlistPage() {
 						</div>
 						<hr className="mt-4"></hr>
 						<div className="flex w-full">
-							<div className="basis-1/3 ">
+							<div className="basis-1/3 hidden md:flex flex-col">
 								<div className=" p-1 bg-gray-200 mr-9 mt-4">
 									<div className="flex mt-4">
 										<p className="font-bold">menna ismail</p>
@@ -200,7 +200,7 @@ export default function WishlistPage() {
 																	<path d="M 14.925781 2 C 14.813054 1.9991672 14.748047 2.0058594 14.748047 2.0058594 A 0.50005 0.50005 0 0 0 14.378906 2.2207031 L 4.2558594 16.998047 A 0.50005 0.50005 0 0 0 4.1699219 17.253906 L 4 20.474609 A 0.50005 0.50005 0 0 0 4.7128906 20.953125 L 7.6328125 19.585938 A 0.50005 0.50005 0 0 0 7.8320312 19.416016 L 17.955078 4.6386719 A 0.50005 0.50005 0 0 0 18.021484 4.2109375 C 18.021484 4.2109375 17.722643 3.2071312 16.755859 2.5566406 C 16.031006 2.0689324 15.263963 2.0024984 14.925781 2 z M 15.019531 3.0546875 C 15.173987 3.0505575 15.632727 3.0068745 16.197266 3.3867188 C 16.759177 3.7647948 16.88795 4.2002352 16.943359 4.3476562 L 15.902344 5.8652344 L 13.980469 4.5703125 L 15.019531 3.0546875 z M 13.416016 5.3964844 L 15.337891 6.6914062 L 7.0859375 18.736328 L 5.0429688 19.693359 L 5.1601562 17.447266 L 13.416016 5.3964844 z M 11.5 20 A 0.5 0.5 0 0 0 11.5 21 A 0.5 0.5 0 0 0 11.5 20 z M 14.5 20 A 0.5 0.5 0 0 0 14.5 21 A 0.5 0.5 0 0 0 14.5 20 z M 17.5 20 A 0.5 0.5 0 0 0 17.5 21 A 0.5 0.5 0 0 0 17.5 20 z"></path>
 																</svg>
 
-																<p>Edit</p>
+																{/* <p>Edit</p> */}
 															</div>
 															<hr></hr>
 															<div className="flex">
@@ -224,13 +224,13 @@ export default function WishlistPage() {
 											</Collapse>
 										</div>
 									</div>
-									{/* <hr className="mt-2 w-3/4 lg:w-96"></hr> */}
+
 								</div>
 
-								<hr className="mt-2 w-full"></hr>
+								<hr className="mt-2 w-full sm:w-full"></hr>
 								<div className="flex w-full ">
-									<hr className="mt-2 "></hr>
-									<div className="basis-1/4">
+
+									<div className="w-full">
 										<MainCard></MainCard>
 									</div>
 								</div>
@@ -239,7 +239,7 @@ export default function WishlistPage() {
 					</div>
 				</div>
 			</div>
-			<Footer></Footer>
+			{/* <Footer></Footer> */}
 		</>
 	);
 }

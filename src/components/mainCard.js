@@ -10,8 +10,8 @@ export function MainCard() {
 			<div>
 				<div className="flex w-full ">
 					<hr className="mt-2 "></hr>
-					<div className="basis-1/4">
-						<Card className="lg:w-60 md:w-40 sm:w-30 max-w-[26rem] shadow-lg ms-3 mt-2 rounded-none">
+					<div className="basis-1/4 ">
+						<Card className="lg:w-60 md:w-40 sm:w-60    max-w-[26rem] shadow-lg ms-3 mt-2 rounded-none">
 							<CardHeader floated={false} color="transparent" className="relative rounded-none">
 								<div className="flex justify-center">
 									<Image src={ProductImage} width="200" height="200" alt="Product Image" className="m-10" />
@@ -95,8 +95,8 @@ export function MainCard() {
 							</CardFooter>
 						</Card>
 					</div>
-					<div className="basis-1/4">
-						<Card className="lg:w-60 md:w-40 sm:w-30 max-w-[26rem] shadow-lg ms-3 mt-2 rounded-none ">
+					<div className="basis-1/4 ">
+						<Card className="lg:w-60 md:w-40 sm:w-60   max-w-[26rem] shadow-lg ms-3 mt-2 rounded-none ">
 							<CardHeader floated={false} color="transparent" className="flex justify-center rounded-none">
 								<Image src={ProductImage} width="200" height="200" alt="Product Image" className="m-10" />
 								<div className="to-bg-black-10 absolute inset-0 h-full w-full bg-black/5 " />
