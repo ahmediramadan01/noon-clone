@@ -265,9 +265,9 @@ export function Footer() {
 							</div>
 						</div>
 					</div>
-					<div className="w-1/2 flex flex-row rounded-full gap-4 sm:gap-8 justify-center p-2 mt-4 md:mt-0 sm:w-full sm:pt-3">
+					<div className=" w-1/2 flex flex-row rounded-full gap-4 sm:gap-8 justify-center p-2 mt-4 md:mt-0 sm:w-full sm:pt-3">
 						{linkFooter.map((item) => (
-							<p className="text-[#404553] text-sm h-[19.6]	w-fit cursor-pointer hover:underline ">{item}</p>
+							<p className="text-[8px] sm:text-sm text-[#404553] text-sm h-[19.6]	w-fit cursor-pointer hover:underline ">{item}</p>
 						))}
 					</div>
 				</div>

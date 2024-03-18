@@ -55,9 +55,7 @@ export function ImageList({ items }) {
                         </div>
                     </SwiperSlide>
                 ))}
-
             </Swiper>
-
         </>
     );
 }
