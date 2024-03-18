@@ -135,10 +135,10 @@ const footerIcons = [
 ];
 function FooterIcon({ items }) {
 	return (
-		<div className=" xl:flex-row lg:flex-row flex flex-row items-center gap-5 md-flex sm-flex  sm-h-auto xl:flex lg:flex md:justify-around  md:items-center  md:flex-wrap  sm:justify-around sm:items-center sm:flex-wrap sm:w-full md:w-full">
+		<div className=" flex flex-col  items-center md:flex-row  sm:flex-col gap-5">
 			{items.map((item, index) => (
 				<>
-					<div className="flex flex-row rounded-ful  gap- p-2 hover:opacity-[0.6] ">
+					<div className="flex flex-row md:flex-col rounded-full   hover:opacity-[0.6] ">
 						<IconButton key={index} variant="outlined" className="rounded-full bg-white border-none w-28 h-28">
 							{item.icon}
 						</IconButton>
@@ -179,9 +179,9 @@ export function Footer() {
 								<p className="text-[#7E859B] bg-zinc-400 mb-4">Reach out to us through any of these support channels</p>
 							</div>
 							{/* <div className=" w-1/2 flex flex-row rounded-full   p-2"> */}
-							<div className="xl:flex xl:flex-row lg:flex lg:flex-row rounded-full lg:w-full xl:w-full p-2 justify-around  mt-4 md:mt-0 ">
+							{/* <div className="xl:flex xl:flex-row lg:flex lg:flex-row rounded-full lg:w-full xl:w-full p-2 justify-around  mt-4 md:mt-0 "> */}
 								<FooterIcon items={footerIcons} />
-							</div>
+							{/* </div> */}
 						</div>
 					</div>
 					<div className="">
@@ -231,7 +231,7 @@ export function Footer() {
 							</div>
 						</div>
 					</div>
-					<div className="flex justify-center items-center lg:flex-row xl:flex-row md:flex-row sm:flex-col  mt-4 mb-6 p-5">
+					<div className="flex flex-col md:flex-row justify-center items-center   mt-4 mb-6 p-5">
 						<div className="flex flex-col justify-center w-full md:w-1/2">
 							<p className="text-center mb-2 text-[#404553] font-bold">SHOP ON THE GO</p>
 							<div className="flex justify-center gap-1.5 sm:gap-8">
@@ -252,9 +252,9 @@ export function Footer() {
 						</div>
 					</div>
 				</div>
-				<div className=" justify-between flex xl:flex-row lg:flex-row items-center md:flex-col sm:flex-col bg-gray-200 px-5 py-6">
-					<div className="w-full mx-auto py-6 px-5 items-center  md:flex md:w-full sm:w-full ">
-						<div className="w-1/2 flex clg-w-96 sm:flex-1 sm:w-full justify-center">
+				<div className="flex flex-col gap-2   lg:flex-row justify-between  items-center  bg-gray-200 ">
+					<div className="w-full  justify-between mx-auto py-6 px-5 items-center  md:flex md:w-full sm:w-full ">
+						<div className="w-full flex flex-col gap-4  sm:flex-row sm:w-full justify-center">
 							<div className="text-sm text-[#7E859B] font-normal mt-1 bg-zinc-400 mr-10 cursor-pointer sm:justify-between">
 								© 2024 noon. All Rights Reserved
 							</div>
@@ -265,9 +265,9 @@ export function Footer() {
 							</div>
 						</div>
 					</div>
-					<div className="w-1/2 flex flex-row rounded-full gap-4 p-2 mt-4 md:mt-0 sm:w-full sm:pt-3">
+					<div className="w-1/2 flex flex-row rounded-full gap-4 sm:gap-8 justify-center p-2 mt-4 md:mt-0 sm:w-full sm:pt-3">
 						{linkFooter.map((item) => (
-							<p className="text-[#404553] text-sm h-[19.6]	cursor-pointer hover:underline ">{item}</p>
+							<p className="text-[#404553] text-sm h-[19.6]	w-fit cursor-pointer hover:underline ">{item}</p>
 						))}
 					</div>
 				</div>
