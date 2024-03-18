@@ -55,10 +55,10 @@ export default function CartCard3() {
 						<div className="me-5">
 							{" "}
 							<Button
-								className="mt-2 relative  border-2 rounded-lg text-blue-900 bg-inherit px-44 py-5 "
+								className="mt-2 relative   border-2 rounded-lg text-blue-900 bg-inherit px-44 py-5 "
 								onClick={handleOpen}
 							>
-								<div className="flex pb-3 absolute left-1 bottom-0 ">
+								<div className="flex pb-3  absolute left-1 bottom-0 ">
 									<Image className="px-1 " src="/cart-8.svg" width="25" height="25"></Image>
 									<span className="text-xs capitalize   "> view available offers</span>
 								</div>
