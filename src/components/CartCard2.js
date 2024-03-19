@@ -5,7 +5,7 @@ import { Card, CardBody, Typography, Button } from "@material-tailwind/react";
 export default function () {
 	return (
 		<>
-			<Card className="w-full max-w-[50rem] flex-row rounded-none py-2">
+			<Card className="lg:w-full flex-row rounded-none py-2">
 				<CardBody className="flex">
 					<Typography color="gray" className=" font-thin text-sm">
 						Like so many organizations these days, Autodesk is a company in transition. It was until recently a

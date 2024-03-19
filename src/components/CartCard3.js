@@ -20,20 +20,20 @@ export default function CartCard3() {
 	const handleOpen = () => setOpen((cur) => !cur);
 	return (
 		<>
-			<Card className="mt-3 rounded-none w-100 ">
-				<CardBody>
+			<Card className="mt-3 rounded-none  lg:w-100 overflow-hidden   ">
+				<CardBody className=" ">
 					<Typography variant="h5" color="blue-gray" className="mb-2">
 						Order Summary
 					</Typography>
-					<Typography>
-						<div className="relative flex w-full max-w-[24rem]">
-							<Menu className="" placement="">
+					<Typography className="   ">
+						<div className="  lg:relative  flex lg:w-full  md:w-36 2xl:w-full">
+							<Menu className="    sm:relative  md:relative  " placement="">
 								<MenuHandler>
 									<Button
 										// ripple={false}
 										// variant="text"
 										// color="blue"
-										className="  h-10 text-center text-white absolute right-0 gap-2 rounded-l-none border border-l-0 border-blue-gray-200 bg-light-blue-800 pl-3"
+										className="  lg:h-10  md:h-9 text-center text-white z-10  xs:absolute xs:right-0    sm:absolute sm:right-4   md:absolute md:right-0  lg:absolute lg:right-0  xl:absolute xl:right-0     rounded-l-none border border-l-0 border-blue-gray-200 bg-light-blue-800   md:p-2 lg:pl-3  "
 									>
 										APPLY{" "}
 									</Button>
@@ -42,7 +42,7 @@ export default function CartCard3() {
 							<Input
 								type="tel"
 								placeholder="coupon code"
-								className="rounded-l-sm h-13 !border-blue-gray-200  "
+								className="rounded-l-sm lg:h-13 md:h-9  md:w-full   lg:w-full  2xl:w-full  !border-blue-gray-200 sm:!border-r-0  md:!border-r-0 lg:!border-r-0 "
 								labelProps={{
 									className: "before:content-none after:content-none",
 								}}
@@ -52,18 +52,26 @@ export default function CartCard3() {
 							/>
 						</div>
 
-						<div className="me-5">
+						<div className="me-5  ">
 							{" "}
 							<Button
-								className="mt-2 relative  border-2 rounded-lg text-blue-900 bg-inherit px-44 py-5 "
+								className="mt-2 relative  w-full border-2 rounded-lg text-blue-900 bg-inherit  xl:px-36 xl:py-4  2xl:px-44 2xl:py-5"
 								onClick={handleOpen}
 							>
-								<div className="flex pb-3 absolute left-1 bottom-0 ">
+								<div className="flex md:pb-1 lg:pb-3 absolute left-1 bottom-0 ">
 									<Image className="px-1 " src="/cart-8.svg" width="25" height="25"></Image>
-									<span className="text-xs capitalize   "> view available offers</span>
+									<span className=" sm:text-xs sm:capitalize   ">
+										{" "}
+										view available <span className=" sm:hidden   xl:inline">offers</span>{" "}
+									</span>
 								</div>
 								<div className="">
-									<Image className="absolute right-2 bottom-2 " src="/cart-9.svg" width="20" height="20"></Image>
+									<Image
+										className="xs:hidden sm:hidden  absolute sm:right-1 sm:bottom-1 md:right-2 md:bottom-2 2xl:right-2 2xl:bottom-2 "
+										src="/cart-9.svg"
+										width="20"
+										height="20"
+									></Image>
 								</div>
 							</Button>
 						</div>
@@ -93,7 +101,7 @@ export default function CartCard3() {
 											</CardBody>
 										</Card>
 
-										<Card className="w-full rounded-lg  border border-cyan-800	 max-w-[50rem] flex-row  mt-2">
+										<Card className="lg:w-full rounded-lg  border border-cyan-800	 lg:max-w-[50rem] flex-row  mt-2">
 											<CardBody className="flex ">
 												<Typography color="gray" className=" flex font-thin text-sm">
 													<Image className=" " src="/cart-11.svg" width="60" height="60"></Image>
@@ -131,13 +139,16 @@ export default function CartCard3() {
 
 						<hr />
 						<div className="mt-2 flex text-xl font-extrabold   w-full justify-between">
-							<h2 className="+  text-black">
-								Total<span className="text-gray-500 text-sm font-thin mx-1">(Inclusive of VAT)</span>{" "}
+							<h2 className="sm:text-xs  md:text-sm lg:text-sm  xl:text-xl text-black">
+								Total
+								<span className="text-gray-500 sm:text-xs  md:text-sm lg:text-sm  font-thin mx-1">
+									(Inclusive of VAT)
+								</span>{" "}
 							</h2>
-							<h4 className="ml-5 text-black">EGP 94108.90</h4>
+							<h4 className="ml-5 sm:text-xs  md:text-xs lg:text-sm  xl:text-xl text-black">EGP 94108.90</h4>
 						</div>
 
-						<Card className="w-full max-w-[50rem] flex-row rounded-none py-2">
+						<Card className="w-full  flex-row rounded-none py-2">
 							<CardBody className="flex">
 								<Typography color="gray" className=" flex font-thin text-sm">
 									<Image className="mx-1 " src="/cart-10.svg" width="20" height="20"></Image>
@@ -151,10 +162,12 @@ export default function CartCard3() {
 							</CardBody>
 						</Card>
 
-						<Button className=" bg-light-blue-800 px-32 rounded-sm  text-lg ">CHECKOUT</Button>
+						<Button className=" w-full  bg-light-blue-800  rounded-sm  md:text-sm  2xl:text-xl ">
+							<span className=" inline-block">CHECKOUT</span>
+						</Button>
 					</Typography>
 				</CardBody>
-			</Card>
+			</Card>{" "}
 		</>
 	);
 }
