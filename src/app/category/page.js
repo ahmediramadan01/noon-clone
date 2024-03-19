@@ -7,8 +7,9 @@ import { ElectronForEvery } from "@/components/electronicForEvery";
 import { Footer } from "@/components/footer";
 import { NavbarSimple } from "@/components/nav-bar";
 import { ElectronicSecFive } from "@/components/electronicSecFive";
-import { Cards } from "@/components/cards";
 import { SmallCarousel } from "@/components/smllCarsouel";
+import {ProductSwiper} from "@/components/productsSwiper";
+import { ImageList } from "@/components/imageList";
 
 //==> ==//> // Images Of Electronic Page
 import Image1 from "../../../public/images/carousel-main-01.jpg";
@@ -148,20 +149,17 @@ const imgListData = [
 	{ img: SecImg9, alt: "Slider Section Five Main Slider 6" },
 	{ img: SecImg10, alt: "Slider Section Five Main Slider 7" },
 	{ img: SecImg11, alt: "Slider Section Five Main Slider 8" },
+	{ img: Sec4Img5, alt: "Slider Section Five Main Slider 1" },
+	{ img: Sec4Img4, alt: "Slider Section Five Main Slider 2" },
+	{ img: Sec4Img6, alt: "Slider Section Five Main Slider 3" },
+	{ img: Sec4Img7, alt: "Slider Section Five Main Slider 4" },
+	{ img: Sec4Img8, alt: "Slider Section Five Main Slider 5" },
+	{ img: SecImg9, alt: "Slider Section Five Main Slider 6" },
+	{ img: SecImg10, alt: "Slider Section Five Main Slider 7" },
+	{ img: SecImg11, alt: "Slider Section Five Main Slider 8" },
+	{ img: Sec4Img5, alt: "Slider Section Five Main Slider 1" },
 ];
 
-function ImageList({ items }) {
-	console.log(items);
-	return (
-		<>
-			{items.map((item, index) => (
-				<div key={index}>
-					<Image className="cursor-pointer" src={item.img} alt={item.alt} width={120} height={90} />
-				</div>
-			))}
-		</>
-	);
-}
 const smallSliderImg = [
 	smallImg1,
 	smallImg2,
@@ -214,7 +212,7 @@ export default function CategoryPage() {
 						</button>
 					</div>
 				</div>
-				<Cards />
+				<ProductSwiper  />
 				<ElectronForEvery items={ElectronicSecFour} />
 				<div className="w-full flex justify-between pb-0 p-6">
 					<div className="text-lg	font-extrabold	">Best Deals </div>
@@ -224,7 +222,7 @@ export default function CategoryPage() {
 						</button>
 					</div>
 				</div>
-				<Cards />
+				<ProductSwiper  />
 
 				<div className="w-full flex justify-between pb-0 p-6">
 					<div className="text-lg	font-extrabold	">Best Deals </div>
@@ -234,7 +232,7 @@ export default function CategoryPage() {
 						</button>
 					</div>
 				</div>
-				<Cards />
+				<ProductSwiper  />
 				<div className="w-full flex justify-between pb-0 p-6">
 					<div className="text-lg	font-extrabold	">Best Deals </div>
 					<div className="">
@@ -243,7 +241,7 @@ export default function CategoryPage() {
 						</button>
 					</div>
 				</div>
-				<Cards />
+				<ProductSwiper  />
 				<ElectronForEvery items={ElectronicSecFour} />
 				<div className="w-full flex justify-between pb-0 p-6">
 					<div className="text-lg	font-extrabold	">Best Deals </div>
@@ -253,7 +251,7 @@ export default function CategoryPage() {
 						</button>
 					</div>
 				</div>
-				<Cards />
+				<ProductSwiper  />
 				<div className="mt-3 flex-col bg-[#e5e5e5] py-5">
 					<div>
 						<Image className=" " src={Sec4Slider1} alt="hhhkjy" />
@@ -266,9 +264,7 @@ export default function CategoryPage() {
 							<Image className=" cursor-pointer" src={Sec4Slider3} alt="hhhkjy" />
 						</div>
 					</div>
-					<div className="grid xl:grid-cols-8 xl:gap-5 lg:grid-cols-8 lg:gap-5 md:grid-cols-4 md:gap-1 sm:grid-cols-3 sm:gap-1 my-4 ml-7 ">
 						<ImageList items={imgListData} />
-					</div>
 				</div>
 				<div className="w-full flex justify-between pb-0 p-6">
 					<div className="text-lg	font-extrabold	">Best Deals </div>
@@ -278,7 +274,7 @@ export default function CategoryPage() {
 						</button>
 					</div>
 				</div>
-				<Cards />
+				<ProductSwiper  />
 				<div className="w-full flex justify-between pb-0 p-6">
 					<div className="text-lg	font-extrabold	">Best Deals </div>
 					<div className="">
@@ -287,7 +283,8 @@ export default function CategoryPage() {
 						</button>
 					</div>
 				</div>
-				<Cards />
+
+				<ProductSwiper  />
 				<div className="">
 					<ElectronicSecFive className="flex justify-center" items={ElectronicSecFiveData} />
 				</div>
@@ -299,7 +296,7 @@ export default function CategoryPage() {
 						</button>
 					</div>
 				</div>
-				<Cards />
+				<ProductSwiper  />
 				<div className="w-full flex justify-between pb-0 p-6">
 					<div className="text-lg	font-extrabold	">Best Deals </div>
 					<div className="">
@@ -308,7 +305,7 @@ export default function CategoryPage() {
 						</button>
 					</div>
 				</div>
-				<Cards />
+				<ProductSwiper  />
 				<div className="">
 					<ElectronicSecFive className="flex justify-center" items={ElectronicSecFiveData} />
 				</div>
@@ -320,7 +317,7 @@ export default function CategoryPage() {
 						</button>
 					</div>
 				</div>
-				<Cards />
+				<ProductSwiper  />
 			</div>
 			<Footer />
 		</>
