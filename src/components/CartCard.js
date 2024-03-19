@@ -6,13 +6,17 @@ import Image from "next/image";
 export default function CartCard() {
 	return (
 		<>
-			<Card className="w-full max-w-[50rem] rounded-none  flex-row mt-2">
+			<Card className="w-full rounded-none  flex-row mt-2">
 				<CardHeader shadow={false} floated={false} className="m-0 w-1/5 shrink-0 rounded-r-none">
 					<Image className=" object-cover ps-3 pt-3 " src="/cart-2.avif" width="140" height="140"></Image>
 				</CardHeader>
 				<CardBody>
-					<Typography variant="h6" color="blue-gray" className="mb-2">
-						El Maleka Pasta Vermicelli 1kg
+					<Typography
+						variant=" md:h6"
+						color="blue-gray"
+						className="md:mb-2 sm:text-sm sm:font-bold md:text-sm md:font-bold"
+					>
+						El Maleka Pasta
 					</Typography>
 					<Typography color="gray" className="mb-8 text-xs font-xs">
 						Order in the next 57 m <br />
@@ -39,7 +43,7 @@ export default function CartCard() {
 							</button>
 						</div>
 						<div className=" absolute right-3 ">
-							<label className="text-xs px-2" for="op">
+							<label className="   text-xs  sm:px-0 md:px-1 lg:px-2" for="op">
 								Qty
 							</label>
 							<select id="op" className="p-2 px-3 bg-white border-2 text-sm text-center rounded-md">
@@ -52,7 +56,7 @@ export default function CartCard() {
 
 					<div className="absolute top-4 right-1">
 						<p>
-							<h2 className="font-extrabold text-xl text-black">
+							<h2 className=" xl:font-extrabold xl:text-xl sm:text-sm text-black">
 								<span className="text-xs font-thin">EGP </span> 34
 							</h2>{" "}
 							<span className="line-through text-xs">40,999</span>{" "}
