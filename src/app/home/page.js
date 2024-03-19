@@ -344,7 +344,7 @@ export default function HomePage() {
 					</div>
 					<div className="bg-[#ffddb2] py-2">
 						<Image src={reasonsImage0} className="w-full"></Image>
-						<div className="grid grid-cols-2">
+						<div className="grid grid-cols-2 gap-4 px-4">
 							<DealsCard></DealsCard>
 							<DealsCard></DealsCard>
 							<DealsCard></DealsCard>
