@@ -8,59 +8,59 @@ import { Footer } from "@/components/footer";
 import { NavbarSimple } from "@/components/nav-bar";
 import { ElectronicSecFive } from "@/components/electronicSecFive";
 import { SmallCarousel } from "@/components/smllCarsouel";
-import {ProductSwiper} from "@/components/productsSwiper";
+import { ProductSwiper } from "@/components/productsSwiper";
 import { ImageList } from "@/components/imageList";
 
 //==> ==//> // Images Of Electronic Page
-import Image1 from "../../../public/images/carousel-main-01.jpg";
-import Image2 from "../../../public/images/carousel-main-02.jpg";
-import Image3 from "../../../public/images/carousel-main-03.jpg";
-import Image4 from "../../../public/images/carousel-main-04.jpg";
-import Image5 from "../../../public/images/carousel-main-05.jpg";
-import Image6 from "../../../public/images/carousel-main-06.jpg";
-import Image7 from "../../../public/images/carousel-main-07.jpg";
-import imgsec1 from "../../../public/imgSection/sction2_img1.jpg";
-import imgsec2 from "../../../public/imgSection/sction2_img2.jpg";
-import imgsec3 from "../../../public/imgSection/sction2_img3.jpg";
-import imgsec4 from "../../../public/imgSection/sction2_img4.jpg";
-import imgsec5 from "../../../public/imgSection/sction2_img5.jpg";
-import imgsec6 from "../../../public/imgSection/sction2_img6.jpg";
-import smallImg1 from "../../../public/imgSlider/a.png";
-import smallImg2 from "../../../public/imgSlider/b.png";
-import smallImg3 from "../../../public/imgSlider/c.png";
-import smallImg4 from "../../../public/imgSlider/d.png";
-import smallImg5 from "../../../public/imgSlider/e.png";
-import smallImg6 from "../../../public/imgSlider/f.png";
-import smallImg7 from "../../../public/imgSlider/g.png";
-import smallImg8 from "../../../public/imgSlider/h.png";
-import smallImg9 from "../../../public/imgSlider/i.png";
-import smallImg10 from "../../../public/imgSlider/j.png";
-import smallImg11 from "../../../public/imgSlider/k.png";
-import smallImg12 from "../../../public/imgSlider/l.png";
-import slidersho from "../../../public/slid1.png";
-import slidersho1 from "../../../public/section3/to1png.png";
-import slidersho2 from "../../../public/section3/to2png.png";
-import slidersho3 from "../../../public/section3/to3png.png";
-import slidersho4 from "../../../public/section3/to4png.png";
-import Sec4Slider1 from "../../../public/section4/sec4slide1.png";
-import Sec4Slider2 from "../../../public/section4/sec4slider2.png";
-import Sec4Slider3 from "../../../public/section4/sec4slider3.png";
-import Sec4Img4 from "../../../public/section4/sec4slider4.png";
-import Sec4Img5 from "../../../public/section4/sec4img5.png";
-import Sec4Img6 from "../../../public/section4/sec4img6.png";
-import Sec4Img7 from "../../../public/section4/sec4img7.png";
-import Sec4Img8 from "../../../public/section4/sec4img11.png";
-import SecImg9 from "../../../public/section4/sec4img8.png";
-import SecImg10 from "../../../public/section4/sec4img9.png";
-import SecImg11 from "../../../public/section4/sec4img10.png";
+import Image1 from "/public/images/carousel-main-01.jpg";
+import Image2 from "/public/images/carousel-main-02.jpg";
+import Image3 from "/public/images/carousel-main-03.jpg";
+import Image4 from "/public/images/carousel-main-04.jpg";
+import Image5 from "/public/images/carousel-main-05.jpg";
+import Image6 from "/public/images/carousel-main-06.jpg";
+import Image7 from "/public/images/carousel-main-07.jpg";
+import imgsec1 from "/public/imgSection/sction2_img1.jpg";
+import imgsec2 from "/public/imgSection/sction2_img2.jpg";
+import imgsec3 from "/public/imgSection/sction2_img3.jpg";
+import imgsec4 from "/public/imgSection/sction2_img4.jpg";
+import imgsec5 from "/public/imgSection/sction2_img5.jpg";
+import imgsec6 from "/public/imgSection/sction2_img6.jpg";
+import smallImg1 from "/public/imgSlider/a.png";
+import smallImg2 from "/public/imgSlider/b.png";
+import smallImg3 from "/public/imgSlider/c.png";
+import smallImg4 from "/public/imgSlider/d.png";
+import smallImg5 from "/public/imgSlider/e.png";
+import smallImg6 from "/public/imgSlider/f.png";
+import smallImg7 from "/public/imgSlider/g.png";
+import smallImg8 from "/public/imgSlider/h.png";
+import smallImg9 from "/public/imgSlider/i.png";
+import smallImg10 from "/public/imgSlider/j.png";
+import smallImg11 from "/public/imgSlider/k.png";
+import smallImg12 from "/public/imgSlider/l.png";
+import slidersho from "/public/slid1.png";
+import slidersho1 from "/public/section3/to1png.png";
+import slidersho2 from "/public/section3/to2png.png";
+import slidersho3 from "/public/section3/to3png.png";
+import slidersho4 from "/public/section3/to4png.png";
+import Sec4Slider1 from "/public/section4/sec4slide1.png";
+import Sec4Slider2 from "/public/section4/sec4slider2.png";
+import Sec4Slider3 from "/public/section4/sec4slider3.png";
+import Sec4Img4 from "/public/section4/sec4slider4.png";
+import Sec4Img5 from "/public/section4/sec4img5.png";
+import Sec4Img6 from "/public/section4/sec4img6.png";
+import Sec4Img7 from "/public/section4/sec4img7.png";
+import Sec4Img8 from "/public/section4/sec4img11.png";
+import SecImg9 from "/public/section4/sec4img8.png";
+import SecImg10 from "/public/section4/sec4img9.png";
+import SecImg11 from "/public/section4/sec4img10.png";
 //Section 5
-import SectionSliderImg5 from "../../../public/Section5/Sec5Slider1.png";
-import sectionLargeImg5 from "../../../public/Section5/Sec5LargeImg.png";
-import sectionLargesmall1 from "../../../public/Section5/Sec5SmallImg.png";
-import sectionLargesmall2 from "../../../public/Section5/Sec5Smallimg2.png";
-import sectionLargesmall3 from "../../../public/Section5/Sec5Smallimg2.png";
-import sectionLargesmall4 from "../../../public/Section5/Sec5SmallImg3.png";
-import AnnonceMent from "../../../public/Section5/sliderAnnoncement.png";
+import SectionSliderImg5 from "/public/Section5/Sec5Slider1.png";
+import sectionLargeImg5 from "/public/Section5/Sec5LargeImg.png";
+import sectionLargesmall1 from "/public/Section5/Sec5SmallImg.png";
+import sectionLargesmall2 from "/public/Section5/Sec5Smallimg2.png";
+import sectionLargesmall3 from "/public/Section5/Sec5Smallimg2.png";
+import sectionLargesmall4 from "/public/Section5/Sec5SmallImg3.png";
+import AnnonceMent from "/public/Section5/sliderAnnoncement.png";
 
 const carouselImages = [Image1, Image2, Image3, Image4, Image5, Image6, Image7];
 const secTwo = [
@@ -212,7 +212,7 @@ export default function CategoryPage() {
 						</button>
 					</div>
 				</div>
-				<ProductSwiper  />
+				<ProductSwiper />
 				<ElectronForEvery items={ElectronicSecFour} />
 				<div className="w-full flex justify-between pb-0 p-6">
 					<div className="text-lg	font-extrabold	">Best Deals </div>
@@ -222,7 +222,7 @@ export default function CategoryPage() {
 						</button>
 					</div>
 				</div>
-				<ProductSwiper  />
+				<ProductSwiper />
 
 				<div className="w-full flex justify-between pb-0 p-6">
 					<div className="text-lg	font-extrabold	">Best Deals </div>
@@ -232,7 +232,7 @@ export default function CategoryPage() {
 						</button>
 					</div>
 				</div>
-				<ProductSwiper  />
+				<ProductSwiper />
 				<div className="w-full flex justify-between pb-0 p-6">
 					<div className="text-lg	font-extrabold	">Best Deals </div>
 					<div className="">
@@ -241,7 +241,7 @@ export default function CategoryPage() {
 						</button>
 					</div>
 				</div>
-				<ProductSwiper  />
+				<ProductSwiper />
 				<ElectronForEvery items={ElectronicSecFour} />
 				<div className="w-full flex justify-between pb-0 p-6">
 					<div className="text-lg	font-extrabold	">Best Deals </div>
@@ -251,7 +251,7 @@ export default function CategoryPage() {
 						</button>
 					</div>
 				</div>
-				<ProductSwiper  />
+				<ProductSwiper />
 				<div className="mt-3 flex-col bg-[#e5e5e5] py-5">
 					<div>
 						<Image className=" " src={Sec4Slider1} alt="hhhkjy" />
@@ -264,7 +264,7 @@ export default function CategoryPage() {
 							<Image className=" cursor-pointer" src={Sec4Slider3} alt="hhhkjy" />
 						</div>
 					</div>
-						<ImageList items={imgListData} />
+					<ImageList items={imgListData} />
 				</div>
 				<div className="w-full flex justify-between pb-0 p-6">
 					<div className="text-lg	font-extrabold	">Best Deals </div>
@@ -274,7 +274,7 @@ export default function CategoryPage() {
 						</button>
 					</div>
 				</div>
-				<ProductSwiper  />
+				<ProductSwiper />
 				<div className="w-full flex justify-between pb-0 p-6">
 					<div className="text-lg	font-extrabold	">Best Deals </div>
 					<div className="">
@@ -284,7 +284,7 @@ export default function CategoryPage() {
 					</div>
 				</div>
 
-				<ProductSwiper  />
+				<ProductSwiper />
 				<div className="">
 					<ElectronicSecFive className="flex justify-center" items={ElectronicSecFiveData} />
 				</div>
@@ -296,7 +296,7 @@ export default function CategoryPage() {
 						</button>
 					</div>
 				</div>
-				<ProductSwiper  />
+				<ProductSwiper />
 				<div className="w-full flex justify-between pb-0 p-6">
 					<div className="text-lg	font-extrabold	">Best Deals </div>
 					<div className="">
@@ -305,7 +305,7 @@ export default function CategoryPage() {
 						</button>
 					</div>
 				</div>
-				<ProductSwiper  />
+				<ProductSwiper />
 				<div className="">
 					<ElectronicSecFive className="flex justify-center" items={ElectronicSecFiveData} />
 				</div>
@@ -317,7 +317,7 @@ export default function CategoryPage() {
 						</button>
 					</div>
 				</div>
-				<ProductSwiper  />
+				<ProductSwiper />
 			</div>
 			<Footer />
 		</>

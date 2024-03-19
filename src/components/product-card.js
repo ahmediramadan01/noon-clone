@@ -62,7 +62,7 @@ export function ProductCard() {
 			</CardHeader>
 			<CardBody>
 				<div className="mb-3 flex items-center justify-between">
-					<Link href="/product">
+					<Link href="/product/1">
 						<Typography variant="h6" color="blue-gray" className="font-medium text-sm">
 							Sony PlayStation 5 Console (Disc Version) With Controller
 						</Typography>

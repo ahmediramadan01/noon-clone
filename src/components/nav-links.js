@@ -11,7 +11,7 @@ import { ChevronDownIcon } from "@heroicons/react/24/solid";
 export function MegaMenuWithHover() {
 	// Define the links array
 	const links = [
-		{ title: "Electronics", href: "/category" },
+		{ title: "Electronics", href: "/category/1" },
 		{ title: "Mobile", href: "#" },
 		{ title: "Baby Toys", href: "#" },
 		{ title: "Men", href: "#" },
