@@ -28,18 +28,17 @@ const SearchBar = () => {
                     <TextInput
                         style={{ flex: 1, paddingHorizontal: 5, fontSize: 16,backgroundColor: 'rgba(255, 255, 255, 0.1)' }}
                         placeholder="Search"
-
                     />
-
+                      <Image
+                        source={require('../assets/search.png')}
+                    /> 
                 </View>
                 <View style={styles.noonLogoStyle}>
                     <Image
                         source={require('../assets/noon.png')}
-                    />
+                    /> 
                 </View>
              </View>
-
-
             </View>
         </>
     );
