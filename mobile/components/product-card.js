@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Image } from "react-native";
 import { Avatar, Button, Card, Title, Paragraph, IconButton } from "react-native-paper";
 
 const ProductCard = () => {
-  const imageHeight = 300; 
+  const imageHeight = 100; 
   const coverHeight = Math.round((imageHeight * 16) / 9);
 
   return (
@@ -16,13 +16,13 @@ const ProductCard = () => {
         <IconButton
           icon="heart"
           color="#fff"
-          size={20}
+          size={15}
           style={styles.topRightButton}
         />
         <IconButton
           icon="cart"
           color="#fff"
-          size={20}
+          size={15}
           style={styles.bottomRightButton}
         />
       </View>
@@ -53,20 +53,21 @@ const styles = StyleSheet.create({
   card: {
     borderWidth: 1,
     borderColor: "gray",
-    margin: 10,
-    padding: 0,
+    margin: 5,
+    padding: 5,
+    width: 170,
   },
   coverContainer: {
     position: 'relative',
   },
   topRightButton: {
     position: 'absolute',
-    top: 10,
-    right: 10,
+    top: 2,
+    right: 2,
     backgroundColor: '#fff',
     borderRadius: 30,
-    width: 40,
-    height: 40,
+    width: 20,
+    height: 20,
     alignItems: 'center',
     justifyContent: 'center',
     shadowColor: "#000",
@@ -80,12 +81,12 @@ const styles = StyleSheet.create({
   },
   bottomRightButton: {
     position: 'absolute',
-    bottom: 10,
-    right: 10,
+    bottom: 5,
+    right: 5,
     backgroundColor: '#fff',
     borderRadius: 30,
-    width: 40,
-    height: 40,
+    width: 20,
+    height: 20,
     alignItems: 'center',
     justifyContent: 'center',
     shadowColor: "#000",
@@ -98,14 +99,16 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   title: {
-    fontSize: 18,
-    marginBottom: 5,
+    fontSize: 10,
+    marginBottom: 0,
+    lineHeight: 15,
   },
   subtitle: {
-    fontSize: 16,
+    fontSize: 10,
     color: "#888",
     marginBottom: 10,
   },
+
   imageContainer: {
     alignItems: 'left',
     justifyContent: 'center',
@@ -115,7 +118,7 @@ const styles = StyleSheet.create({
   image: {
     width: 60,
     height: 20,
-    
+    marginBottom: 10,
   },
 });
 
