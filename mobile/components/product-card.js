@@ -1,9 +1,16 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
-import { Avatar, Button, Card, Title, Paragraph, IconButton } from "react-native-paper";
+import {
+  Avatar,
+  Button,
+  Card,
+  Title,
+  Paragraph,
+  IconButton,
+} from "react-native-paper";
 
 const ProductCard = () => {
-  const imageHeight = 100; 
+  const imageHeight = 100;
   const coverHeight = Math.round((imageHeight * 16) / 9);
 
   return (
@@ -33,17 +40,18 @@ const ProductCard = () => {
         </Title>
         <Paragraph style={styles.subtitle}>
           EGP <Text style={{ fontWeight: "bold" }}>38,700</Text>
-          
-          <Text style={{ textDecorationLine: "line-through", flex: "1"}}>40,999</Text>
+        </Paragraph>
+
+        <Paragraph style={styles.subtitle}>
+          <Text style={{ textDecorationLine: "line-through", flex: "1" }}>
+            40,999
+          </Text>
           <Text style={{ color: "green", fontWeight: "bold" }}>5%</Text>
         </Paragraph>
       </Card.Content>
-      
+
       <View style={styles.imageContainer}>
-        <Image
-          source={require("../assets/express.svg")}
-          style={styles.image}
-        />
+        <Image source={require("../assets/express.svg")} style={styles.image} />
       </View>
     </Card>
   );
@@ -58,18 +66,18 @@ const styles = StyleSheet.create({
     width: 170,
   },
   coverContainer: {
-    position: 'relative',
+    position: "relative",
   },
   topRightButton: {
-    position: 'absolute',
+    position: "absolute",
     top: 2,
     right: 2,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     borderRadius: 30,
     width: 20,
     height: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -80,15 +88,15 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   bottomRightButton: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 5,
     right: 5,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     borderRadius: 30,
     width: 20,
     height: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -106,12 +114,12 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 10,
     color: "#888",
-    marginBottom: 10,
+    marginBottom: 0,
   },
 
   imageContainer: {
-    alignItems: 'left',
-    justifyContent: 'center',
+    alignItems: "left",
+    justifyContent: "center",
     marginTop: 5,
     paddingLeft: 15,
   },

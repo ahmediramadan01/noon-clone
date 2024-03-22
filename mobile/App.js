@@ -1,12 +1,12 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import MainCard from "./components/product-card";
+import ProductPage from "./screens/product-page";
 
 export default function App() {
   return (
     <>
       <View style={styles.container}>
-        <MainCard />
+        <ProductPage />
       </View>
     </>
   );
