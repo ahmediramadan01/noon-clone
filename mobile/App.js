@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import APPbar from "./components/appbar";
 import Wishlist from "./wishlist/Wishlist"
 import Profile from "./profile/Profile";
+import Footer from "./components/footer";
 
 
 
@@ -13,8 +14,8 @@ export default function App() {
 
         {/* <Wishlist></Wishlist> */}
 
-        <Profile></Profile>
-
+        {/* <Profile></Profile> */}
+        <Footer></Footer>
         <APPbar></APPbar>
       </View>
     </>
