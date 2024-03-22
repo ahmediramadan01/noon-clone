@@ -14,8 +14,8 @@ export default function App() {
 
         {/* <Wishlist></Wishlist> */}
 
-        {/* <Profile></Profile> */}
-        <Footer></Footer>
+        <Profile></Profile>
+        {/* <Footer></Footer> */}
         <APPbar></APPbar>
       </View>
     </>
