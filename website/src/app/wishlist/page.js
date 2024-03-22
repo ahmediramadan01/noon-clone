@@ -37,7 +37,6 @@ export default function WishlistPage() {
 
 	return (
 		<>
-			<Header></Header>
 			<div className="mx-auto px-4 ms:max-width: 640px ">
 				<div className="bg-gray-50 w-full">
 					<hr className="mt-3"></hr>
@@ -244,7 +243,6 @@ export default function WishlistPage() {
 					</div>
 				</div>
 			</div>
-			{/* <Footer></Footer> */}
 		</>
 	);
 }

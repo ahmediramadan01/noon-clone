@@ -8,7 +8,6 @@ import error404Image from "/public/images/error-404.svg";
 export default function NotFound() {
 	return (
 		<>
-			<Header></Header>
 			<main className="flex flex-col items-center min-h-[75vh] justify-center ">
 				<Image src={error404Image} className="mb-[30px]"></Image>
 				<p className="mb-[4px] text-[#404553] font-sans text-3xl font-bold">Uh-oh, something went wrong here</p>
@@ -17,7 +16,6 @@ export default function NotFound() {
 					BACK TO HOMEPAGE
 				</Link>
 			</main>
-			<Footer></Footer>
 		</>
 	);
 }

@@ -327,7 +327,6 @@ import { Header } from "@/components/header";
 export default function HomePage() {
 	return (
 		<>
-			<Header></Header>
 			<div className="mx-auto">
 				<Image src={bankInstallmentsImage} className="w-full"></Image>
 				<CarouselMain images={carouselImages}></CarouselMain>
@@ -475,7 +474,6 @@ export default function HomePage() {
 					</p>
 				</div>
 			</div>
-			<Footer></Footer>
 		</>
 	);
 }

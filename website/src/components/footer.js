@@ -3,7 +3,7 @@
 import { IconButton } from "@material-tailwind/react";
 import Image from "next/image";
 const linkFooter = ["Careers", "Warranty Policy", "Sell with us", "Terms of Use", "Terms of Sale", "Privacy Policy"];
-const imgIcons = ["icon1.svg", "icon2.svg", "icon3.svg", "cod-en.svg"];
+const imgIcons = ["/icon1.svg", "/icon2.svg", "/icon3.svg", "/cod-en.svg"];
 const svgSocialIcons = [
 	<svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 24 24" fill="none">
 		<title id="title">footer_fb_color</title>
@@ -180,7 +180,7 @@ export function Footer() {
 							</div>
 							{/* <div className=" w-1/2 flex flex-row rounded-full   p-2"> */}
 							{/* <div className="xl:flex xl:flex-row lg:flex lg:flex-row rounded-full lg:w-full xl:w-full p-2 justify-around  mt-4 md:mt-0 "> */}
-								<FooterIcon items={footerIcons} />
+							<FooterIcon items={footerIcons} />
 							{/* </div> */}
 						</div>
 					</div>
@@ -267,7 +267,9 @@ export function Footer() {
 					</div>
 					<div className=" w-1/2 flex flex-row rounded-full gap-4 sm:gap-8 justify-center p-2 mt-4 md:mt-0 sm:w-full sm:pt-3">
 						{linkFooter.map((item) => (
-							<p className="text-[8px] sm:text-sm text-[#404553] text-sm h-[19.6]	w-fit cursor-pointer hover:underline ">{item}</p>
+							<p className="text-[8px] sm:text-sm text-[#404553] text-sm h-[19.6]	w-fit cursor-pointer hover:underline ">
+								{item}
+							</p>
 						))}
 					</div>
 				</div>
