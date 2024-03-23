@@ -6,6 +6,7 @@ const APPbar = () => {
 
 
     return (
+
         <Appbar style={styles.bottom}>
             <TouchableOpacity
                 style={styles.iconContainer}
