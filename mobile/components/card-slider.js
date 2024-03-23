@@ -3,7 +3,7 @@ import { View, Text, ScrollView, StyleSheet } from "react-native";
 import ProductCard from "../components/product-card";
 
 const CardSlider = () => {
-  const numCards = 5;
+  const numCards = 6;
   const cards = [];
 
   for (let i = 0; i < numCards; i++) {
@@ -15,10 +15,12 @@ const CardSlider = () => {
   }
 
   return (
+    
     <View style={styles.container}>
       <View style={styles.headerContainer}>
         <Text style={styles.headerText}>More from Sony</Text>
       </View>
+
       <ScrollView
         horizontal
         pagingEnabled
@@ -45,7 +47,7 @@ const styles = StyleSheet.create({
   },
   cardsContainer: {
     flexGrow: 1,
-    overflow: "hidden",
+
   },
   cardContainer: {
     flex: 1,

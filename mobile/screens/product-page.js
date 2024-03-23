@@ -1,7 +1,7 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, Button } from "react-native";
+import { ScrollView, View, Text, StyleSheet, Image } from "react-native";
 import RoundedContainer from "../components/roundedContainer";
-import DeliveryInfo from "../components/delivery-info"; // Adjust import statement
+import DeliveryInfo from "../components/delivery-info";
 import MainDeliveryInfo from "../components/main-delivery-info";
 import Overview from "../components/overview";
 import CardSlider from "../components/card-slider";
@@ -10,7 +10,7 @@ import { IconButton } from "react-native-paper";
 
 const ProductPage = () => {
   return (
-    <>
+    <ScrollView>
       <View style={styles.container}>
         <View style={styles.imageContainer}>
           <View style={styles.detailsContainer}>
@@ -42,8 +42,6 @@ const ProductPage = () => {
               />
             </View>
 
-
-
             <Text style={styles.price}>
               EGP <Text style={{ fontWeight: "bold" }}>38,700</Text>
               <Text
@@ -64,57 +62,36 @@ const ProductPage = () => {
             </View>
           </View>
         </View>
-      </View>
 
-      <view>
         <View style={styles.container}>
-          <view>
-            <RoundedContainer
-              imageSource={require("../assets/valu.svg")}
-              description="Monthly payments available starting from EGP 13,000"
-            />
-          </view>
-
-          <view>
-            <RoundedContainer
-              imageSource={require("../assets/right-arrow.png")}
-              description="Monthly payments plans from EGP 15,000"
-            />
-          </view>
-
-          <view>
-            <DeliveryInfo />
-          </view>
-
-          <View>
-            <Image
-              source={require("../assets/visa-banner.avif")}
-              style={styles.visaBannerImage}
-              resizeMode="cover"
-            />
-          </View>
-
-          <View>
-            <MainDeliveryInfo />
-          </View>
-
-          <View>
-            <Overview
-              title="Overview"
-              content="This is the overview product content and explanation and all product info."
-            />
-          </View>
-
+          <RoundedContainer
+            imageSource={require("../assets/valu.svg")}
+            description="Monthly payments available starting from EGP 13,000"
+          />
+          <RoundedContainer
+            imageSource={require("../assets/right-arrow.png")}
+            description="Monthly payments plans from EGP 15,000"
+          />
+          <DeliveryInfo />
+          <Image
+            source={require("../assets/visa-banner.avif")}
+            style={styles.visaBannerImage}
+            resizeMode="cover"
+          />
+          <MainDeliveryInfo />
+          <Overview
+            title="Overview"
+            content="This is the overview product content and explanation and all product info."
+          />
           <View style={styles.cardsSliderContainer}>
             <CardSlider />
           </View>
-
           <View style={styles.cartButton}>
             <AddToCartButton />
           </View>
         </View>
-      </view>
-    </>
+      </View>
+    </ScrollView>
   );
 };
 
@@ -196,7 +173,7 @@ const styles = StyleSheet.create({
 
   cardsSliderContainer: {
     flex: 1,
-    width: 420,
+    width: 400,
     overflow: "hidden",
     marginBottom: 50,
   },
