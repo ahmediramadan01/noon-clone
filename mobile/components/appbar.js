@@ -4,6 +4,7 @@ import { Appbar, Text } from 'react-native-paper';
 
 const APPbar = () => {
     return (
+
         <Appbar style={styles.bottom}>
             <TouchableOpacity
                 style={styles.iconContainer}

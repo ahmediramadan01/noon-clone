@@ -327,7 +327,6 @@ import { Header } from "@/components/header";
 export default function HomePage() {
 	return (
 		<>
-			<Header></Header>
 			<div className="mx-auto">
 				<Image src={bankInstallmentsImage} className="w-full"></Image>
 				<CarouselMain images={carouselImages}></CarouselMain>
@@ -366,7 +365,7 @@ export default function HomePage() {
 				<Image src={sponsoredImage} className="my-4 w-full"></Image>
 				<CategoriesCards images={mothersdayImages} bgColor="#fff1f1"></CategoriesCards>
 				<div className="bg-[#f1e8c5] py-2">
-					<Image src={joyImage} className="pb-4 w-full"></Image>
+					<Image src={joyImage} unoptimized className="pb-4 w-full"></Image>
 					<div className="p-4">
 						<ProductSwiper></ProductSwiper>
 					</div>
@@ -475,7 +474,6 @@ export default function HomePage() {
 					</p>
 				</div>
 			</div>
-			<Footer></Footer>
 		</>
 	);
 }

@@ -7,9 +7,7 @@ export default function App() {
   return (
     <>
       <View style={styles.container}>
-        {/* <Text>Hello</Text> */}
-        <SearchBar></SearchBar >
-        {/* <APPbar></APPbar> */}
+        <ProductPage />
       </View>
     </>
   );
@@ -20,6 +18,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "center",
   },
 });

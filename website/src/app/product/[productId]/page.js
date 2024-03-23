@@ -40,7 +40,6 @@ function ProductPage() {
 
 	return (
 		<>
-			<Header></Header>
 			<div className="mx-auto my-2">
 				<div className="flex flex-wrap">
 					<div className="w-full md:w-1/2 lg:w-1/3 px-2">
@@ -202,8 +201,6 @@ function ProductPage() {
 					</div>
 				</div>
 			</div>
-
-			<Footer />
 		</>
 	);
 }

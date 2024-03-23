@@ -190,8 +190,6 @@ const smallSliderImg = [
 export default function CategoryPage() {
 	return (
 		<>
-			<NavbarSimple />
-			<MegaMenuWithHover />
 			<div className="mx-auto">
 				<div className="w-full ">
 					<Image className=" cursor-pointer  w-full" src={AnnonceMent} alt="hhhkjy" />
@@ -319,7 +317,6 @@ export default function CategoryPage() {
 				</div>
 				<ProductSwiper />
 			</div>
-			<Footer />
 		</>
 	);
 }

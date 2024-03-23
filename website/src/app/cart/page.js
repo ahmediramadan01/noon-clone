@@ -13,7 +13,6 @@ import Image9 from "../../../public/cart-1.png";
 export default function CartPage() {
 	return (
 		<>
-			<Header></Header>
 			<div className="bg-gray-100 mx-auto px-6 ">
 				<div className="flex flex-wrap ">
 					<div className="w-full md:w-8/12 px-4">
@@ -39,8 +38,6 @@ export default function CartPage() {
 					</div>
 				</div>
 			</div>
-
-			{/* <Footer></Footer> */}
 		</>
 	);
 }
