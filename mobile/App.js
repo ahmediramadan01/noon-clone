@@ -1,17 +1,15 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import Account from "./account/Account";
-import Profile from "./profile/Profile";
-import Wishlist from "./wishlist/Wishlist";
-import Category from "./category/category";
+import Category from "./category/category.js";
+import Footer from "./components/footer.js";
 
 export default function App() {
-	return (
-		<View style={styles.container}>
-			<Category></Category>
-			<StatusBar style="auto" />
-		</View>
-	);
+  return (
+    <>
+      <View style={styles.container}>
+        <Category />
+      </View>
+    </>
+  );
 }
 
 const styles = StyleSheet.create({
