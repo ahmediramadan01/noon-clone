@@ -6,6 +6,7 @@ import MiniCardsSlider from "../components/mini-cards-slider";
 import CardSlider from "../components/card-slider";
 import { Button } from "react-native-paper";
 import OfferZone from "../components/offer-zone";
+import BrandsSlider from "../components/brands-slider";
 
 const miniCardsData = [
   { imageSource: require("../assets/ps5.png"), text: "Item 1" },
@@ -49,9 +50,10 @@ const HomeScreen = () => {
       </View>
       {/* offers zone */}
 
-      <View>
+      <View style={styles.offerZone}>
         <OfferZone />
       </View>
+
       {/* ramdnan deals */}
       <View style={styles.cardsSliderContainer}>
         <View style={styles.sliderTitleContainer}>
@@ -70,6 +72,7 @@ const HomeScreen = () => {
           style={styles.offerBanner}
         />
       </View>
+
       {/* ramdan groceries */}
       <View style={styles.cardsSliderContainer}>
         <View style={styles.sliderTitleContainer}>
@@ -82,14 +85,13 @@ const HomeScreen = () => {
       </View>
 
       {/* Top Brands */}
-      <View style={styles.cardsSliderContainer}>
-        <View style={styles.sliderTitleContainer}>
+      <View style={styles.brandsContainer}>
+        <View >
           <Text style={styles.silderTitle}>TOP BRANDS</Text>
         </View>
-        
-        <CardSlider />
-      </View>
 
+        <BrandsSlider />
+      </View>
     </ScrollView>
   );
 };
@@ -112,6 +114,7 @@ const styles = StyleSheet.create({
   offerBanner: {
     height: 80,
     marginVertical: 10,
+    marginTop: 30,
   },
 
   miniSlider: {
@@ -126,8 +129,8 @@ const styles = StyleSheet.create({
   cardsSliderContainer: {
     flex: 1,
     width: 400,
-    overflow: "hidden",
-    marginTop: 20,
+    marginTop: 30,
+    marginBottom: 10,
     paddingBottom: 10,
   },
   sliderTitleContainer: {
@@ -136,10 +139,22 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     marginBottom: 10,
   },
+
+  brandsContainer: {
+    width: 400,
+    marginTop: 30,
+    marginBottom: 30,
+    paddingBottom: 10,
+  },
+
   silderTitle: {
     fontWeight: "bold",
     fontSize: 17,
   },
+  offerZone: { 
+    marginTop: 20
+},
+
   shopNowButton: {
     height: 40,
     borderRadius: 2,

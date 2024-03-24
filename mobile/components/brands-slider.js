@@ -1,58 +1,51 @@
-// import React from 'react';
-// import { View, StyleSheet, Image } from 'react-native';
-// import Swiper from 'react-native-swiper';
+import React from 'react';
+import { View, StyleSheet, Image, FlatList } from 'react-native';
 
-// const BrandsSlider = () => {
-//   const brandsData = [
-//     require('../assets/brand1.avif'),
-//     require('../assets/brand2.avif'),
-//     require('../assets/brand3.avif'),
-//     require('../assets/brand4.avif'),
-//     require('../assets/brand1.avif'),
-//     require('../assets/brand2.avif'),
-//     require('../assets/brand3.avif'),
-//     require('../assets/brand4.avif'),
-//     require('../assets/brand1.avif'),
-//     require('../assets/brand2.avif'),
-//     require('../assets/brand3.avif'),
-//     require('../assets/brand4.avif'),
-//   ];
+const BrandsSlider = () => {
+  const brandsData = [
+    require('../assets/brand1.avif'),
+    require('../assets/brand2.avif'),
+    require('../assets/brand3.avif'),
+    require('../assets/brand4.avif'),
+    require('../assets/brand1.avif'),
+    require('../assets/brand2.avif'),
+    require('../assets/brand3.avif'),
+    require('../assets/brand4.avif'),
+    require('../assets/brand1.avif'),
+    require('../assets/brand2.avif'),
+    require('../assets/brand3.avif'),
+    require('../assets/brand4.avif'),
+    require('../assets/brand4.avif'),
+    require('../assets/brand4.avif'),
+  ];
 
-//   // Group brands data into two rows
-//   const firstRowBrands = brandsData.slice(0, 7);
-//   const secondRowBrands = brandsData.slice(7, 14);
+  return (
+    <FlatList
+      data={brandsData}
+      horizontal={true}
+      showsHorizontalScrollIndicator={false}
+      keyExtractor={(item, index) => index.toString()}
+      renderItem={({ item }) => (
+        <View style={styles.imageContainer}>
+          <Image source={item} style={styles.image} />
+        </View>
+      )}
+    />
+  );
+};
 
-//   return (
-//     <Swiper style={styles.container} showsPagination={false}>
-//       <View style={styles.row}>
-//         {firstRowBrands.map((brand, index) => (
-//           <Image key={index} source={brand} style={styles.image} />
-//         ))}
-//       </View>
-//       <View style={styles.row}>
-//         {secondRowBrands.map((brand, index) => (
-//           <Image key={index} source={brand} style={styles.image} />
-//         ))}
-//       </View>
-//     </Swiper>
-//   );
-// };
+const styles = StyleSheet.create({
+  imageContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  image: {
+    width: 80,
+    height: 40,
+    borderRadius: 5,
+    marginRight: 10,
+  },
+});
 
-// const styles = StyleSheet.create({
-//   container: {
-//     height: 200, // Adjust height as needed
-//   },
-//   row: {
-//     flexDirection: 'row',
-//     justifyContent: 'space-around',
-//     alignItems: 'center',
-//     flexWrap: 'wrap',
-//   },
-//   image: {
-//     width: 80, // Adjust width as needed
-//     height: 80, // Adjust height as needed
-//     marginVertical: 10,
-//   },
-// });
-
-// export default BrandsSlider;
+export default BrandsSlider;

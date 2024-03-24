@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, FlatList, Image, StyleSheet, Dimensions } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
+import Swiper from 'react-native-swiper/src';
 
 const OffersSlider = () => {
   const images = [
@@ -9,30 +10,35 @@ const OffersSlider = () => {
   ];
 
   return (
-    <FlatList
-      data={images}
-      keyExtractor={(item) => item.id}
-      renderItem={({ item }) => (
-        <View style={styles.itemContainer}>
+    <Swiper
+      style={styles.wrapper}
+      showsButtons={false}
+      showsPagination={false}
+      loop={true}
+      autoplay={true}
+      autoplayTimeout={2}
+    >
+      {images.map((item) => (
+        <View key={item.id} style={styles.slide}>
           <Image source={item.source} style={styles.image} />
         </View>
-      )}
-      horizontal
-      pagingEnabled
-      showsHorizontalScrollIndicator={false}
-    />
+      ))}
+    </Swiper>
   );
 };
 
 const styles = StyleSheet.create({
-  itemContainer: {
-    width: 400,
-    marginHorizontal: 10,
-  },
-
-  image: {
-    width: 390,
+  wrapper: {
     height: 150,
+  },
+  slide: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  image: {
+    width: '98%',
+    height: '100%',
     borderRadius: 10,
   },
 });
