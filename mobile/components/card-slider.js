@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, ScrollView, StyleSheet } from "react-native";
 import ProductCard from "../components/product-card";
 
-const CardSlider = () => {
+const CardSlider = ({title}) => {
   const numCards = 6;
   const cards = [];
 
@@ -18,7 +18,7 @@ const CardSlider = () => {
     
     <View style={styles.container}>
       <View style={styles.headerContainer}>
-        <Text style={styles.headerText}>More from Sony</Text>
+        <Text style={styles.headerText}>{title}</Text>
       </View>
 
       <ScrollView

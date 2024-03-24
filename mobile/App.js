@@ -1,12 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import ProductPage from "./screens/product-page";
+import HomeScreen from "./screens/home-page";
 
 export default function App() {
   return (
     <>
       <View style={styles.container}>
-        <ProductPage />
+        <HomeScreen />
       </View>
     </>
   );

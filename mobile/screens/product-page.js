@@ -63,7 +63,7 @@ const ProductPage = () => {
 					content="This is the overview product content and explanation and all product info."
 				/>
 				<View style={styles.cardsSliderContainer}>
-					<CardSlider />
+					<CardSlider title={"More From Sony"}/>
 				</View>
 				<View style={styles.cartButton}>
 					<AddToCartButton />
