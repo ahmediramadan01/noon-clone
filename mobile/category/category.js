@@ -1,4 +1,4 @@
-import { View, StyleSheet, Image,Text,TouchableOpacity  } from "react-native";
+import { View, StyleSheet, Image,Text,TouchableOpacity, ScrollView  } from "react-native";
 import CircleCardItem from "../components/squareCardItem.js";
 import SquareBrandItems from "../components/squareBrandItem.js";
 import CircleTitlesScroll from "../components/circle-title-scroll.js";
@@ -6,6 +6,7 @@ import VerticalCardSlide from "../components/cardSlider-vertical.js";
 import Footer from "../components/footer.js";
 import { Icon, IconButton } from "react-native-paper";
 import TitlesLink from "../components/titles-link.js";
+// import TitlesLink from "../components/titles-link.js";
 
 const Category = () => {
     const squareImg_Filterd_Price = [
@@ -45,13 +46,15 @@ const Category = () => {
     return (
         // Page Electronic Category 
         <View style={styles.container}>
-            <View style={{display:'flex' ,flexDirection:'row',margin:10,justifyContent:'center',width:350,marginLeft:25}}>
+            <View style={{display:'flex' ,flexDirection:'row',justifyContent:'center',width:360,marginLeft:25}}>
+               {/* <TitlesLink titles={headerTitle}/> */}
+               {/* {TitlesLink(headerTitle)} */}
                <TitlesLink titles={headerTitle}/>
 
                 
             </View>
             {/* Section Two ==>( Main Slider ) */}
-            <View style={styles.sliderImg1}>
+            <View style={{width:400,justifyContent:'center'}}>
                 <Image
                     style={styles.sliderSqrImg}
                     source={require('../assets/category_Mobile_Slider.avif')}
@@ -106,17 +109,27 @@ const Category = () => {
         </View>
     );
 
-   
+    }
 
-    // function TitlesLink() {
+    // function TitlesLink(items) {
     //     return (
-    //       <TouchableOpacity style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', margin: 5 }}>
-    //         <Text style={{ fontSize: 13, color: 'gray' }}>Home</Text>
-    //         <IconButton icon="arrow-right" size={10} />
-    //       </TouchableOpacity>
+    //         <>
+    //          <ScrollView
+    //     horizontal
+    //     pagingEnabled
+    //     showsHorizontalScrollIndicator={false}
+    //     contentContainerStyle={styles.cardsContainer}
+    //   >
+    //             {items.map((item, index) => (
+    //                 <TouchableOpacity key={index} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center',margin:0,padding:0}}>
+    //                     <Text style={{ fontSize: 13, color: 'gray' }}>{item}</Text>
+    //                     <IconButton icon="chevron-right" size={20} />
+    //                 </TouchableOpacity>
+    //             ))}
+    //             </ScrollView>
+    //         </>
     //     );
-    //   }
-}
+    // }
 
 const styles = StyleSheet.create({
     container: {
@@ -143,6 +156,9 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'column'
     },
+    slidermainIMG:{
+
+    },
     sliderSqrImg: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -157,6 +173,10 @@ const styles = StyleSheet.create({
         marginTop:10
         
     },
+    cardsContainer:{
+        margin:0,
+        padding:0
+    }
 });
 
 export default Category;
