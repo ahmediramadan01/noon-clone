@@ -21,7 +21,6 @@ export async function GET(_request, { params }) {
 			status: 200,
 		});
 	} catch (error) {
-		console.error("Error fetching product:", error);
 		return new Response("Internal Server Error", { status: 500 });
 	}
 }
@@ -35,16 +34,11 @@ export async function PATCH(request, { params }) {
 			return new Response("Title is required", { status: 400 });
 		}
 
-		console.log("Updating product with ID:", params.id);
-
-		// Update the product
 		const updatedProduct = await collection.findOneAndUpdate(
 			{ _id: new ObjectId(params.id) },
 			{ $set: { title: title } },
 			{ returnDocument: "after" }
 		);
-
-		console.log("Updated product:", updatedProduct);
 
 		if (!updatedProduct) {
 			return new Response("Product not found", { status: 404 });
@@ -57,7 +51,6 @@ export async function PATCH(request, { params }) {
 			status: 200,
 		});
 	} catch (error) {
-		console.error("Error updating product:", error);
 		return new Response("Internal Server Error", { status: 500 });
 	}
 }
@@ -77,7 +70,6 @@ export async function DELETE(_request, { params }) {
 			status: 200,
 		});
 	} catch (error) {
-		console.error("Error deleting product:", error);
 		return new Response("Internal Server Error", { status: 500 });
 	}
 }

@@ -1,7 +1,6 @@
 import { MongoClient } from "mongodb";
 
 const client = new MongoClient("mongodb+srv://ahmediramadan01:team5@cluster.g1pbl8a.mongodb.net/");
-
 await client.connect();
 const database = client.db("noon-clone");
 const collection = database.collection("products");
@@ -22,7 +21,6 @@ export async function GET(request) {
 			status: 200,
 		});
 	} catch (error) {
-		console.error("Error fetching products:", error);
 		return new Response("Internal Server Error", { status: 500 });
 	}
 }
@@ -58,7 +56,6 @@ export async function POST(request) {
 			status: 201,
 		});
 	} catch (error) {
-		console.error("Error creating product:", error);
 		return new Response("Internal Server Error", { status: 500 });
 	}
 }

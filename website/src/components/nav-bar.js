@@ -1,7 +1,27 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { Navbar, Collapse, Typography, IconButton, Input } from "@material-tailwind/react";
+import {
+	Navbar,
+	Collapse,
+	Typography,
+	IconButton,
+	Input,
+	Button,
+	Dialog,
+	Card,
+	CardHeader,
+	CardBody,
+	CardFooter,
+	Checkbox,
+	Tabs,
+	TabsHeader,
+	TabsBody,
+	Tab,
+	TabPanel,
+	Select,
+	Option,
+} from "@material-tailwind/react";
 import {
 	Bars3Icon,
 	ChevronDownIcon,
@@ -14,6 +34,11 @@ import Image from "next/image";
 import { ArrowDownIcon } from "@heroicons/react/24/solid";
 
 function NavList() {
+	const [open, setOpen] = React.useState(false);
+	const handleOpen = () => setOpen((cur) => !cur);
+
+	const [type, setType] = React.useState("login");
+
 	return (
 		<ul className="my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-4">
 			<li className="p-1 font-medium text-sm">
@@ -33,12 +58,126 @@ function NavList() {
 				</Link>
 			</li>
 
-			{/* <li className="px-2 font-medium border-black h-6 w-32 flex items-center" style={{ borderLeftWidth: "1px" }}>
-				<a href="#" className="flex items-center hover:text-blue-500 transition-colors">
-					<span className="font-bold text-sm">Login</span>
+			<li className="px-2 font-medium border-black h-6 w-auto flex items-center" style={{ borderLeftWidth: "1px" }}>
+				<button onClick={handleOpen} className="flex items-center hover:text-blue-500 transition-colors">
+					<span className="font-bold text-sm">Log In</span>
 					<UserIcon className="w-5 h-5 ml-1" />
-				</a>
-			</li> */}
+				</button>
+				<Dialog size="sm" open={open} handler={handleOpen} className="bg-transparent shadow-none">
+					<Card className="w-full">
+						<CardHeader floated={false} shadow={false} className="m-0 grid place-items-center px-4 py-8 text-center">
+							<Typography className="text-[#404553] text-2xl font-bold">Hala! Let's get started</Typography>
+						</CardHeader>
+						<CardBody>
+							<Tabs value={type} className="overflow-visible">
+								<TabsHeader className="relative z-0 bg-[#404553cc] max-w-[250px] mx-auto">
+									<Tab
+										value="login"
+										onClick={() => setType("login")}
+										className={type === "signup" ? "text-white" : "text-[#404553cc]"}
+									>
+										Log In
+									</Tab>
+									<Tab
+										value="signup"
+										onClick={() => setType("signup")}
+										className={type === "login" ? "text-white" : "text-[#404553cc]"}
+									>
+										Sign Up
+									</Tab>
+								</TabsHeader>
+								<TabsBody
+									className="!overflow-x-hidden"
+									animate={{
+										initial: {
+											x: type === "login" ? 400 : -400,
+										},
+										mount: {
+											x: 0,
+										},
+										unmount: {
+											x: type === "login" ? 400 : -400,
+										},
+									}}
+								>
+									<TabPanel value="login" className="p-0">
+										<form className="mt-12 flex flex-col gap-4">
+											<div className="mb-1 flex flex-col gap-6">
+												<Typography variant="h6" color="blue-gray" className="-mb-3">
+													Your Email
+												</Typography>
+												<Input
+													size="lg"
+													className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+													labelProps={{
+														className: "before:content-none after:content-none",
+													}}
+												/>
+												<Typography variant="h6" color="blue-gray" className="-mb-3">
+													Password
+												</Typography>
+												<Input
+													type="password"
+													size="lg"
+													className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+													labelProps={{
+														className: "before:content-none after:content-none",
+													}}
+												/>
+											</div>
+
+											<Button className="mt-6 text-base bg-[#3866df]" fullWidth>
+												LOG IN
+											</Button>
+										</form>
+									</TabPanel>
+									<TabPanel value="signup" className="p-0">
+										<form className="mt-12 flex flex-col gap-4">
+											<div className="mb-1 flex flex-col gap-6">
+												<Typography variant="h6" color="blue-gray" className="-mb-3">
+													Your Name
+												</Typography>
+												<Input
+													size="lg"
+													className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+													labelProps={{
+														className: "before:content-none after:content-none",
+													}}
+												/>
+												<Typography variant="h6" color="blue-gray" className="-mb-3">
+													Your Email
+												</Typography>
+												<Input
+													size="lg"
+													className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+													labelProps={{
+														className: "before:content-none after:content-none",
+													}}
+												/>
+												<Typography variant="h6" color="blue-gray" className="-mb-3">
+													Password
+												</Typography>
+												<Input
+													type="password"
+													size="lg"
+													className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+													labelProps={{
+														className: "before:content-none after:content-none",
+													}}
+												/>
+											</div>
+
+											<Button className="mt-6 text-base bg-[#3866df]" fullWidth>
+												SIGN UP
+											</Button>
+										</form>
+									</TabPanel>
+								</TabsBody>
+							</Tabs>
+						</CardBody>
+					</Card>
+				</Dialog>
+			</li>
 
 			<li className="px-2 font-medium border-black h-6 w-auto flex items-center" style={{ borderLeftWidth: "1px" }}>
 				<Link href="/wishlist" className="flex items-center hover:text-blue-500 transition-colors">
