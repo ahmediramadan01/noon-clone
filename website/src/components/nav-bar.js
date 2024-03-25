@@ -1,5 +1,8 @@
 "use client";
+
 import React from "react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import {
 	Navbar,
@@ -39,6 +42,54 @@ function NavList() {
 
 	const [type, setType] = React.useState("login");
 
+	const [error, setError] = useState("");
+	const router = useRouter();
+
+	const isValidEmail = (email) => {
+		const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+		return emailRegex.test(email);
+	};
+
+	const signupUser = async (event) => {
+		event.preventDefault();
+
+		const name = event.target[0].value;
+		const email = event.target[1].value;
+		const password = event.target[2].value;
+
+		if (!isValidEmail(email)) {
+			setError("Invalid Email");
+			return;
+		}
+
+		if (!password || password.length < 8) {
+			setError("Invalid Password");
+			return;
+		}
+
+		try {
+			const response = await fetch("/api/signup", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({
+					name,
+					email,
+					password,
+				}),
+			});
+
+			if (response.ok) {
+				console.log("Signup successful");
+			} else {
+				console.error("Signup failed:", response.status);
+				setError("Email is already registered");
+			}
+		} catch (error) {
+			console.error("Signup failed:", error);
+			setError("Signup failed. Please try again later.");
+		}
+	};
+
 	return (
 		<ul className="my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-4">
 			<li className="p-1 font-medium text-sm">
@@ -65,23 +116,23 @@ function NavList() {
 				</button>
 				<Dialog size="sm" open={open} handler={handleOpen} className="bg-transparent shadow-none">
 					<Card className="w-full">
-						<CardHeader floated={false} shadow={false} className="m-0 grid place-items-center px-4 py-8 text-center">
+						<CardHeader floated={false} shadow={false} className="m-0 grid place-items-center px-4 pt-4 text-center">
 							<Typography className="text-[#404553] text-2xl font-bold">Hala! Let's get started</Typography>
 						</CardHeader>
 						<CardBody>
 							<Tabs value={type} className="overflow-visible">
-								<TabsHeader className="relative z-0 bg-[#404553cc] max-w-[250px] mx-auto">
+								<TabsHeader className="relative z-0 bg-[#404553cc] max-w-[250px] mx-auto rounded-3xl">
 									<Tab
 										value="login"
 										onClick={() => setType("login")}
-										className={type === "signup" ? "text-white" : "text-[#404553cc]"}
+										className={`rounded-3xl overflow-hidden ${type === "signup" ? "text-white" : "text-[#404553cc]"}`}
 									>
 										Log In
 									</Tab>
 									<Tab
 										value="signup"
 										onClick={() => setType("signup")}
-										className={type === "login" ? "text-white" : "text-[#404553cc]"}
+										className={`rounded-3xl overflow-hidden ${type === "login" ? "text-white" : "text-[#404553cc]"}`}
 									>
 										Sign Up
 									</Tab>
@@ -103,73 +154,82 @@ function NavList() {
 									<TabPanel value="login" className="p-0">
 										<form className="mt-12 flex flex-col gap-4">
 											<div className="mb-1 flex flex-col gap-6">
-												<Typography variant="h6" color="blue-gray" className="-mb-3">
-													Your Email
+												<Typography variant="h6" color="blue-gray" className="">
+													Email
 												</Typography>
 												<Input
+													type="email"
 													size="lg"
-													className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+													className="form-control !border-t-blue-gray-200 focus:!border-t-gray-900"
 													labelProps={{
 														className: "before:content-none after:content-none",
 													}}
+													required
 												/>
-												<Typography variant="h6" color="blue-gray" className="-mb-3">
+												<Typography variant="h6" color="blue-gray" className="">
 													Password
 												</Typography>
 												<Input
 													type="password"
 													size="lg"
-													className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+													className="form-control !border-t-blue-gray-200 focus:!border-t-gray-900"
 													labelProps={{
 														className: "before:content-none after:content-none",
 													}}
+													required
 												/>
 											</div>
 
-											<Button className="mt-6 text-base bg-[#3866df]" fullWidth>
+											<Button type="submit" className="mt-6 text-base bg-[#3866df]" fullWidth>
 												LOG IN
 											</Button>
 										</form>
 									</TabPanel>
 									<TabPanel value="signup" className="p-0">
-										<form className="mt-12 flex flex-col gap-4">
+										<form onSubmit={signupUser} className="mt-12 flex flex-col gap-4">
 											<div className="mb-1 flex flex-col gap-6">
-												<Typography variant="h6" color="blue-gray" className="-mb-3">
-													Your Name
+												<Typography variant="h6" color="blue-gray" className="">
+													Name
 												</Typography>
 												<Input
+													type="text"
 													size="lg"
-													className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+													className="form-control !border-t-blue-gray-200 focus:!border-t-gray-900"
 													labelProps={{
 														className: "before:content-none after:content-none",
 													}}
+													required
 												/>
-												<Typography variant="h6" color="blue-gray" className="-mb-3">
-													Your Email
+												<Typography variant="h6" color="blue-gray" className="">
+													Email
 												</Typography>
 												<Input
+													type="email"
 													size="lg"
-													className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+													className="form-control !border-t-blue-gray-200 focus:!border-t-gray-900"
 													labelProps={{
 														className: "before:content-none after:content-none",
 													}}
+													required
 												/>
-												<Typography variant="h6" color="blue-gray" className="-mb-3">
+												<Typography variant="h6" color="blue-gray" className="">
 													Password
 												</Typography>
 												<Input
 													type="password"
 													size="lg"
-													className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+													className="form-control !border-t-blue-gray-200 focus:!border-t-gray-900"
 													labelProps={{
 														className: "before:content-none after:content-none",
 													}}
+													required
 												/>
 											</div>
 
-											<Button className="mt-6 text-base bg-[#3866df]" fullWidth>
+											<Button type="submit" className="mt-6 text-base bg-[#3866df]" fullWidth>
 												SIGN UP
 											</Button>
+											<p className="text-red-600 text-[16px] mt-4">{error && error}</p>
 										</form>
 									</TabPanel>
 								</TabsBody>
