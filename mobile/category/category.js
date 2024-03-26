@@ -6,6 +6,7 @@ import VerticalCardSlide from "../components/cardSlider-vertical.js";
 import Footer from "../components/footer.js";
 import { Icon, IconButton } from "react-native-paper";
 import TitlesLink from "../components/titles-link.js";
+import FooterToolbar from "../components/toolBars.js";
 // import TitlesLink from "../components/titles-link.js";
 
 const Category = () => {
@@ -27,11 +28,11 @@ const Category = () => {
     ];
 
     const chipsData = [
-        'React',
-        'React Native',
-        'JavaScript',
-        'UI',
-        'Components'
+        'Brand',
+        'Mobile Ram Size',
+        'Mobile Internal Mobile',
+        'Mobile Phones',
+        'Mobile Pam Size : 8 GB'
     ];
     const headerTitle=[
         'Home',
@@ -103,6 +104,9 @@ const Category = () => {
             <VerticalCardSlide/>
            </View>
            <View>
+           <View style={{ width:400,marginTop:10,marginBottom:2,justifyContent:'center'}}>
+            <FooterToolbar />
+            </View>
            <Footer />
            </View>
 
@@ -170,8 +174,7 @@ const styles = StyleSheet.create({
         width: 425,
         overflow: "hidden",
         marginBottom: 10,
-        marginTop:10
-        
+        marginTop:10,
     },
     cardsContainer:{
         margin:0,
