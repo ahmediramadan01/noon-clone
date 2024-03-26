@@ -6,6 +6,7 @@ import SectionTwoCart from '../components/cart-sec-two';
 
 const Cart = () => {
     return (
+        <>
         <View style={styles.container}>
             <View style={{ width: '100%',height:50, marginLeft: 10, justifyContent: 'space-between', flexDirection: 'row', marginTop: 15, alignContent: 'center', alignItems: 'center',backgroundColor:'#f7f9fe',marginBottom:7 }}>
             <View style={{ flexDirection: 'row', paddingLeft: 25 }}>
@@ -29,8 +30,20 @@ const Cart = () => {
             <CartItem />
             <CartItem />
             <SectionTwoCart />
-           
-        </View>
+       </View>
+       <View>
+       <TouchableOpacity style={{width:'100%',backgroundColor:'#fff', height:80,
+	position: "fixed",
+    bottom:0,
+    left:0,
+    right:0,}}>
+       <TouchableOpacity style={styles.btnCart4}>
+            <Text style={{ marginLeft: 20, fontSize: 16, fontStyle: 'normal', fontWeight: '700', color: '#fff' }}> Check Out</Text>
+
+</TouchableOpacity>
+</TouchableOpacity>
+       </View>
+       </>
     );
 };
 
@@ -40,11 +53,26 @@ const styles = StyleSheet.create({
         width: '100%',
         justifyContent: 'flex-start',
         alignItems: 'center',
-        marginBottom:25
+        marginBottom:75
     },
     sliderIMG:{
         width:400,
         height:150
+    },
+    btnCart4:{
+	
+        margin:'auto',
+        borderRadius: 5,
+        borderColor: '#fff',
+        borderWidth: 1.5,
+        backgroundColor:'#3866df',
+        height:49,
+        display:'flex',
+        flexDirection:'row',
+        justifyContent:'center',
+        width:'90%',
+        alignItems:'center',
+        alignContent:'center',
     },
     
 });
