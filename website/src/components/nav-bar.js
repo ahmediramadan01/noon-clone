@@ -33,13 +33,6 @@ function NavList() {
 				</Link>
 			</li>
 
-			{/* <li className="px-2 font-medium border-black h-6 w-32 flex items-center" style={{ borderLeftWidth: "1px" }}>
-				<a href="#" className="flex items-center hover:text-blue-500 transition-colors">
-					<span className="font-bold text-sm">Login</span>
-					<UserIcon className="w-5 h-5 ml-1" />
-				</a>
-			</li> */}
-
 			<li className="px-2 font-medium border-black h-6 w-auto flex items-center" style={{ borderLeftWidth: "1px" }}>
 				<Link href="/wishlist" className="flex items-center hover:text-blue-500 transition-colors">
 					<span className="font-bold text-sm">Wishlist</span>
@@ -86,7 +79,7 @@ export function NavbarSimple() {
 					></Image>
 				</Link>
 
-				<div className="px-1 w-2/3 relative flex gap-2 ">
+				<div className="px-1 w-3/3 md:w-2/3 relative flex gap-2 ">
 					<Input
 						type="search"
 						placeholder="What are you looking for?"

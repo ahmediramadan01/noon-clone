@@ -56,7 +56,7 @@ export function MegaMenuWithHover() {
 					>
 						<MenuHandler>
 							<Button className="text-black bg-white rounded-none border-none">
-								<a href="#" className="nav-link flex items-center md:px-5 w-28 md:w-50 text-xs md:text-sm text-nowrap">
+								<a href="#" className="nav-link flex items-center md:px-2 w-28 md:w-auto text-xs md:text-sm text-nowrap">
 									ALL CATEGORIES
 									<span className="ml-2">
 										<ChevronDownIcon className="h-5 w-5" />
