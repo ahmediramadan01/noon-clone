@@ -74,7 +74,7 @@ export default function SectionTwoCart() {
                     resizeMode="stretch" />
             </View>
             <View>
-                <Text style={{ marginLeft: 25, fontSize: 14, fontStyle: 'normal', fontWeight: 'normal' }}> Monthly installments plans available</Text>
+                <Text style={{ marginLeft: 5, fontSize: 14, fontStyle: 'normal', fontWeight: 'normal' }}> Monthly installments plans available</Text>
 
             </View>
         </TouchableOpacity>
