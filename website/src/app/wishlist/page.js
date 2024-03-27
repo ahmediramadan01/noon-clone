@@ -1,4 +1,10 @@
 "use client";
+
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
+import React, { useEffect } from "react";
+
 import {
 	Card,
 	CardHeader,
@@ -16,7 +22,7 @@ import {
 	Textarea,
 	Checkbox,
 } from "@material-tailwind/react";
-import React from "react";
+
 import Image from "next/image";
 import ProductImage from "/public/images/product.jpg";
 import Script from "next/script";
@@ -34,6 +40,15 @@ export default function WishlistPage() {
 	const [openshare, setOpenshare] = React.useState(false);
 
 	const handleOpenshare = () => setOpenshare(!openshare);
+
+	const router = useRouter();
+	const session = useSession();
+
+	useEffect(() => {
+		if (session?.status !== "authenticated") {
+			router?.replace("/");
+		}
+	}, [session, router]);
 
 	return (
 		<>

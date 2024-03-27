@@ -1,6 +1,8 @@
 "use client";
 
 import React from "react";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 import { Footer } from "@/components/footer";
 import Image from "next/image";
 import CartCard from "@/components/CartCard";
@@ -11,6 +13,15 @@ import { Header } from "@/components/header";
 import Image9 from "../../../public/cart-1.png";
 
 export default function CartPage() {
+	const router = useRouter();
+	const session = useSession();
+
+	useEffect(() => {
+		if (session?.status !== "authenticated") {
+			router?.replace("/");
+		}
+	}, [session, router]);
+
 	return (
 		<>
 			<div className="bg-gray-100 mx-auto px-6 ">
