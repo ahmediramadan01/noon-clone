@@ -1,9 +1,9 @@
 "use client";
 
 import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
 import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import { useSession } from "next-auth/react";
+import React, { useEffect, useState } from "react";
 
 import {
 	Card,
