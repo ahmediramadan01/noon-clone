@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
 import {
@@ -135,9 +135,8 @@ function NavList() {
 			</li>
 
 			<li
-				className={`${
-					session?.status === "authenticated" || "hidden"
-				} px-2 font-medium border-black h-6 w-32 flex items-center`}
+				className={`${session?.status === "authenticated" || "hidden"
+					} px-2 font-medium border-black h-6 w-32 flex items-center`}
 				style={{ borderLeftWidth: "1px" }}
 			>
 				<Link href="/profile" className="flex items-center hover:text-blue-500 transition-colors">
@@ -151,9 +150,8 @@ function NavList() {
 			</li>
 
 			<li
-				className={`${
-					session?.status === "authenticated" && "hidden"
-				} px-2 font-medium border-black h-6 w-auto flex items-center`}
+				className={`${session?.status === "authenticated" && "hidden"
+					} px-2 font-medium border-black h-6 w-auto flex items-center`}
 				style={{ borderLeftWidth: "1px" }}
 			>
 				<button onClick={handleOpen} className="flex items-center hover:text-blue-500 transition-colors">
@@ -286,9 +284,8 @@ function NavList() {
 				</Dialog>
 			</li>
 			<li
-				className={`${
-					session?.status === "authenticated" || "hidden"
-				} px-2 font-medium border-black h-6 w-auto flex items-center`}
+				className={`${session?.status === "authenticated" || "hidden"
+					} px-2 font-medium border-black h-6 w-auto flex items-center`}
 				style={{ borderLeftWidth: "1px" }}
 			>
 				<button
@@ -303,9 +300,8 @@ function NavList() {
 			</li>
 
 			<li
-				className={`${
-					session?.status === "authenticated" || "hidden"
-				} px-2 font-medium border-black h-6 w-auto flex items-center`}
+				className={`${session?.status === "authenticated" || "hidden"
+					} px-2 font-medium border-black h-6 w-auto flex items-center`}
 				style={{ borderLeftWidth: "1px" }}
 			>
 				<Link href="/wishlist" className="flex items-center hover:text-blue-500 transition-colors">
@@ -314,9 +310,8 @@ function NavList() {
 				</Link>
 			</li>
 			<li
-				className={`${
-					session?.status === "authenticated" || "hidden"
-				} px-2 font-medium border-black h-6 w-auto flex items-center`}
+				className={`${session?.status === "authenticated" || "hidden"
+					} px-2 font-medium border-black h-6 w-auto flex items-center`}
 				style={{ borderLeftWidth: "1px" }}
 			>
 				<Link href="/cart" className="flex items-center hover:text-blue-500 transition-colors">
@@ -332,6 +327,18 @@ export function NavbarSimple() {
 	const [openNav, setOpenNav] = React.useState(false);
 
 	const handleWindowResize = () => window.innerWidth >= 960 && setOpenNav(false);
+	const [searchedProduct, setSearchedProduct] = useState("");
+	const handleTypedProduct = (event) => {
+		setSearchedProduct(event.target.value);
+
+	};
+	const router = useRouter();
+	const searchProduct = (event) => {
+		event.preventDefault();
+		if (!searchedProduct) return;
+		router.redirect(`/search/${searchedProduct}`)
+	}
+
 
 	React.useEffect(() => {
 		window.addEventListener("resize", handleWindowResize);
@@ -359,18 +366,24 @@ export function NavbarSimple() {
 				</Link>
 
 				<div className="px-1 w-2/3 relative flex gap-2 ">
-					<Input
-						type="search"
-						placeholder="What are you looking for?"
-						containerProps={{
-							className: "w-full bg-white rounded-lg",
-						}}
-						className="!border-t-blue-gray-300 pl-7 placeholder-text-blue-gray-300 focus:!border-blue-gray-300"
-						labelProps={{
-							className: "before:content-none after:content-none",
-						}}
-					/>
-
+					<form onSubmit={(event) => {
+						searchProduct(event);
+					}}>
+						<Input
+							onChange={(event) => {
+								handleTypedProduct(event);
+							}}
+							type="search"
+							placeholder="What are you looking for?"
+							containerProps={{
+								className: "w-full bg-white rounded-lg",
+							}}
+							className="!border-t-blue-gray-300 pl-7 placeholder-text-blue-gray-300 focus:!border-blue-gray-300"
+							labelProps={{
+								className: "before:content-none after:content-none",
+							}}
+						/>
+					</form>
 					<div className="!absolute left-3 top-[13px]">
 						<svg width="13" height="14" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path

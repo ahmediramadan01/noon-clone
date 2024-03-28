@@ -1,7 +1,7 @@
 
 import { SearchSwiper } from "@/components/searchSwiper";
 import HomePage from "./home/page";
-import SearchPage from "./search/page";
+import SearchPage from "./search/[product]/page";
 
 
 export default function Home() {

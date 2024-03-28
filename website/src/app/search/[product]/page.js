@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
     Menu,
     MenuHandler,
@@ -13,13 +13,14 @@ import {
     CardBody,
     Checkbox,
 } from "@material-tailwind/react";
+
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { SearchSidebar } from "@/components/searchSidebar";
 
 import { ProductCard } from "@/components/product-card";
-import { SearchSwiper } from "@/components/searchSwiper";
 
-export default function SearchPage() {
+
+export default function SearchPage({ params }) {
     const [openMenu, setOpenMenu] = React.useState(false);
     const [openMenu2, setOpenMenu2] = React.useState(false);
     const [open, setOpen] = React.useState(false);
@@ -27,6 +28,17 @@ export default function SearchPage() {
 
     const toggleOpen = () => setOpen((cur) => !cur);
     const toggleOpen2 = () => setOpen2((cur) => !cur);
+
+    const [products, setProducts] = useState([]);
+    
+    useEffect(() => {
+        fetch(`http://localhost:3000/api/products?query=${params.product}`)
+            .then((response) => response.json())
+            .then((data) => {
+                setProducts([...data]);
+            })
+            .catch((error) => console.error(error));
+    }, []);
     return (
         <>
             <div className="mx-auto bg-blue-gray-50">
@@ -41,16 +53,7 @@ export default function SearchPage() {
 
 
                         <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 gap-3 w-full mt-7 justify-items-center">
-                            <ProductCard></ProductCard>
-                            <ProductCard></ProductCard>
-                            <ProductCard></ProductCard>
-                            <ProductCard></ProductCard>
-                            <ProductCard></ProductCard>
-                            <ProductCard></ProductCard>
-                            <ProductCard></ProductCard>
-                            <ProductCard></ProductCard>
-                            <ProductCard></ProductCard>
-                            <ProductCard></ProductCard>
+                            {products && products.map((product, index) => <ProductCard key={index} data={product} />)}
                         </div>
 
                     </div>
