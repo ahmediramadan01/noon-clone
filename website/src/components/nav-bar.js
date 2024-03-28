@@ -335,8 +335,8 @@ export function NavbarSimple() {
 	const router = useRouter();
 	const searchProduct = (event) => {
 		event.preventDefault();
-		if (!searchedProduct) return;
-		router.redirect(`/search/${searchedProduct}`)
+		if (!searchedProduct) router.push(`/search`);
+		router.push(`/search/${searchedProduct}`)
 	}
 
 

@@ -20,7 +20,7 @@ import { SearchSidebar } from "@/components/searchSidebar";
 import { ProductCard } from "@/components/product-card";
 
 
-export default function SearchPage({ params }) {
+export default function SearchPage() {
     const [openMenu, setOpenMenu] = React.useState(false);
     const [openMenu2, setOpenMenu2] = React.useState(false);
     const [open, setOpen] = React.useState(false);
@@ -32,7 +32,7 @@ export default function SearchPage({ params }) {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/api/products?query=${params.product}`)
+        fetch(`http://localhost:3000/api/products`)
             .then((response) => response.json())
             .then((data) => {
                 setProducts([...data]);
@@ -48,7 +48,7 @@ export default function SearchPage({ params }) {
                     </div>
                     <div className="basis-9/12">
                         <div className="lg:flex md:block  w-full ">
-                            <div className="mt-3 ">{products.length} Results for "{params.product}"</div>
+                            <div className="mt-3 ">{products.length} Results</div>
                         </div>
 
 
