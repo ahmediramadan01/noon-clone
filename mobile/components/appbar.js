@@ -3,8 +3,6 @@ import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { Appbar, Text } from 'react-native-paper';
 
 const APPbar = () => {
-
-
     return (
 
         <Appbar style={styles.bottom}>
