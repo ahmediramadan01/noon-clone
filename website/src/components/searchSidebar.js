@@ -28,6 +28,7 @@ export function SearchSidebar() {
 
     return (
         <>
+
             <List>
                 <Accordion
                     open={open === 1}
@@ -103,87 +104,39 @@ export function SearchSidebar() {
                             <Typography color="blue-gray" className="mr-auto font-normal">
                                 Category
                             </Typography>
-
                         </AccordionHeader>
                     </ListItem>
-                    <AccordionBody className="py-1">
-                        <List>
-                            <Accordion
-                                open={open === 2}
-                                icon={
-                                    <ChevronDownIcon
-                                        strokeWidth={2.5}
-                                        className={`mx-auto h-4 w-4 transition-transform ${open === 2 ? "rotate-180" : ""}`}
-                                    />
-                                }
-                            >
-                                <ListItem className="p-0" selected={open === 2}>
-                                    <AccordionHeader onClick={() => handleOpen(2)} className="border-b-0 p-3">
+                    <AccordionBody className="py-2 ">
+                        <List className="p-0 block ">
+                            <div className="flex justify-between">
+                                <Link href={"#"} className="mt-3 ms-4 hover:text-blue-700 ">Electronics</Link>
+                                <Checkbox color="blue" />
 
-                                        <Typography color="blue-gray" className="mr-auto font-normal ms-4">
-                                            Electronics & Mobiles
-                                        </Typography>
-                                    </AccordionHeader>
-                                </ListItem>
-                                <AccordionBody className="py-1">
-                                    <Link href={"./../app/category"} className="mr-auto font-normal ms-6">All Electronics & Mobiles</Link>
-                                    <List className="p-0">
-                                        <ListItem className="mr-auto font-normal ms-6">
-                                            <Link href={"#"}>Video Game</Link>
-                                        </ListItem>
-                                        <ListItem className="mr-auto font-normal ms-6">
+                            </div>
+                            <div className="flex justify-between">
+                                <Link href={"#"} className="mt-3 ms-4 hover:text-blue-700 ">Beauty</Link>
+                                <Checkbox color="blue" />
 
-                                            <Link href={"#"}>Mobiles & Accessories</Link>
-                                        </ListItem>
-                                        <ListItem className="mr-auto font-normal ms-6">
+                            </div>
+                            <div className="flex justify-between">
+                                <Link href={"#"} className="mt-3 ms-4 hover:text-blue-700 ">Fashion</Link>
+                                <Checkbox color="blue" />
 
-                                            <Link href={"#"}>Television & Video</Link>
-                                        </ListItem>
-                                        <ListItem className="mr-auto font-normal ms-6">
+                            </div>
+                            <div className="flex justify-between">
+                                <Link href={"#"} className="mt-3 ms-4 hover:text-blue-700 ">Stationary</Link>
+                                <Checkbox color="blue" />
 
-                                            <Link href={"#"}>Camera & Photo</Link>
-                                        </ListItem>
-                                    </List>
-                                </AccordionBody>
-                            </Accordion>
+                            </div>
+                            <div className="flex justify-between">
+                                <Link href={"#"} className="mt-3 ms-4 hover:text-blue-700 ">Grocery</Link>
+                                <Checkbox color="blue" />
+
+                            </div>
                         </List>
-                        <Accordion
-                            open={open === 2}
-                            icon={
-                                <ChevronDownIcon
-                                    strokeWidth={2.5}
-                                    className={`mx-auto h-4 w-4 transition-transform ${open === 2 ? "rotate-180" : ""}`}
-                                />
-                            }
-                        >
-                            <ListItem className="p-0" selected={open === 2}>
-                                <AccordionHeader onClick={() => handleOpen(2)} className="border-b-0 p-3">
-
-                                    <Typography color="blue-gray" className="mr-auto font-normal ms-4">
-                                        Fashion
-                                    </Typography>
-                                </AccordionHeader>
-                            </ListItem>
-                            <AccordionBody className="py-1">
-                                <Link href={"./../app/category"} className="mr-auto font-normal ms-6">All Fashion</Link>
-                                <List className="p-0">
-                                    <ListItem className="mr-auto font-normal ms-6">
-                                        <Link href={"#"}>Bags & Luggage</Link>
-                                    </ListItem>
-                                    <ListItem className="mr-auto font-normal ms-6">
-
-                                        <Link href={"#"}>Men</Link>
-                                    </ListItem>
-                                    <ListItem className="mr-auto font-normal ms-6">
-
-                                        <Link href={"#"}>Women</Link>
-                                    </ListItem>
-
-                                </List>
-                            </AccordionBody>
-                        </Accordion>
                     </AccordionBody>
                 </Accordion>
+
                 <Accordion
                     open={open === 3}
                     icon={
@@ -206,9 +159,9 @@ export function SearchSidebar() {
                             <div className="block">
                                 <Input
                                     label="Search"
-                                    containerProps={{
-                                        className: "mb-4 bg-white rounded-lg",
-                                    }}
+
+                                    className="mb-4 bg-white rounded-none h-10 w-16"
+
                                 />
                                 <div className="flex">
                                     <Checkbox color="blue" />
@@ -221,7 +174,7 @@ export function SearchSidebar() {
                                 <div className="flex">
                                     <Checkbox color="blue" />
                                     <Link href={"#"} className="mt-2">
-                                        <span className="text-sm mt-6 hover:text-blue-500">Sony<span className=" ms-56 ">(477)</span></span>
+                                        <span className="text-sm mt-6 hover:text-blue-500">Generic<span className=" ms-52 ">(839)</span></span>
 
                                     </Link>
 
@@ -229,7 +182,7 @@ export function SearchSidebar() {
                                 <div className="flex">
                                     <Checkbox color="blue" />
                                     <Link href={"#"} className="mt-2">
-                                        <span className="text-sm mt-6 hover:text-blue-500">Sony<span className=" ms-56 ">(477)</span></span>
+                                        <span className="text-sm mt-6 hover:text-blue-500">Zoot<span className=" ms-56 ">(546)</span></span>
 
                                     </Link>
 
@@ -237,7 +190,7 @@ export function SearchSidebar() {
                                 <div className="flex">
                                     <Checkbox color="blue" />
                                     <Link href={"#"} className="mt-2">
-                                        <span className="text-sm mt-6 hover:text-blue-500">Sony<span className=" ms-56 ">(477)</span></span>
+                                        <span className="text-sm mt-6 hover:text-blue-500">Declac<span className=" ms-56 ">(361)</span></span>
 
                                     </Link>
 
@@ -245,7 +198,23 @@ export function SearchSidebar() {
                                 <div className="flex">
                                     <Checkbox color="blue" />
                                     <Link href={"#"} className="mt-2">
-                                        <span className="text-sm mt-6 hover:text-blue-500">Sony<span className=" ms-56 ">(477)</span></span>
+                                        <span className="text-sm mt-6 hover:text-blue-500">3M<span className=" ms-56 ">(135)</span></span>
+
+                                    </Link>
+
+                                </div>
+                                <div className="flex">
+                                    <Checkbox color="blue" />
+                                    <Link href={"#"} className="mt-2">
+                                        <span className="text-sm mt-6 hover:text-blue-500">OZO<span className=" ms-56 ">(20)</span></span>
+
+                                    </Link>
+
+                                </div>
+                                <div className="flex">
+                                    <Checkbox color="blue" />
+                                    <Link href={"#"} className="mt-2">
+                                        <span className="text-sm mt-6 hover:text-blue-500">VILTROX<span className=" ms-56 ">(135)</span></span>
 
                                     </Link>
 
@@ -344,50 +313,79 @@ export function SearchSidebar() {
                     <AccordionBody className="py-2 ">
                         <List className="p-0 ">
                             <div className="block">
+                                <div className="flex justify-between">
+                                    <div className="flex">
+                                        <Checkbox color="blue" />
 
-                                <div className="flex">
-                                    <Checkbox color="blue" />
-                                    <Link href={"#"} className="mt-2">
-                                        <span className="text-sm mt-6 hover:text-blue-500">Sony<span className=" ms-56 ">(477)</span></span>
+                                        <span className="text-md mt-3 text-sm">Sony</span>
 
-                                    </Link>
-
+                                    </div>
+                                    <span className=" mt-2 text-gray-400 text-sm">(477)</span>
                                 </div>
-                                <div className="flex">
-                                    <Checkbox color="blue" />
-                                    <Link href={"#"} className="mt-2">
-                                        <span className="text-sm mt-6 hover:text-blue-500">Sony<span className=" ms-56 ">(477)</span></span>
-
-                                    </Link>
-
+                                <div className="flex justify-between">
+                                    <div className="flex">
+                                        <Checkbox color="blue" />
+                                        <span className="text-md mt-3 text-sm">PlayStation 4 (PS4)</span>
+                                    </div>
+                                    <span className=" mt-2 text-gray-400 text-sm">(876)</span>
                                 </div>
-                                <div className="flex">
-                                    <Checkbox color="blue" />
-                                    <Link href={"#"} className="mt-2">
-                                        <span className="text-sm mt-6 hover:text-blue-500">Sony<span className=" ms-56 ">(477)</span></span>
+                                <div className="flex justify-between">
+                                    <div className="flex">
+                                        <Checkbox color="blue" />
 
-                                    </Link>
+                                        <span className="text-md mt-3 text-sm">PlayStation 4 (PS4)</span>
 
+                                    </div>
+                                    <span className=" mt-2 text-gray-400 text-sm">(876)</span>
                                 </div>
-                                <div className="flex">
-                                    <Checkbox color="blue" />
-                                    <Link href={"#"} className="mt-2">
-                                        <span className="text-sm mt-6 hover:text-blue-500">Sony<span className=" ms-56 ">(477)</span></span>
+                                <div className="flex justify-between">
+                                    <div className="flex">
+                                        <Checkbox color="blue" />
 
-                                    </Link>
+                                        <span className="text-md mt-3 text-sm">PS4/PS5</span>
 
+                                    </div>
+                                    <span className=" mt-2 text-gray-400 text-sm">(95)</span>
                                 </div>
-                                <div className="flex">
-                                    <Checkbox color="blue" />
-                                    <Link href={"#"} className="mt-2">
-                                        <span className="text-sm mt-6 hover:text-blue-500">Sony<span className=" ms-56 ">(477)</span></span>
+                                <div className="flex justify-between">
+                                    <div className="flex">
+                                        <Checkbox color="blue" />
 
-                                    </Link>
+                                        <span className="text-md mt-3 text-sm">PC Games</span>
 
+                                    </div>
+                                    <span className=" mt-2 text-gray-400 text-sm">(4)</span>
+                                </div>
+                                <div className="flex justify-between">
+                                    <div className="flex">
+                                        <Checkbox color="blue" />
+
+                                        <span className="text-md mt-3 text-sm">PlayStation 3 (PS3)</span>
+
+                                    </div>
+                                    <span className=" mt-2 text-gray-400 text-sm">(4)</span>
+                                </div>
+                                <div className="flex justify-between">
+                                    <div className="flex">
+                                        <Checkbox color="blue" />
+
+                                        <span className="text-md mt-3 text-sm">PlayStation 2 (PS2)</span>
+
+                                    </div>
+                                    <span className=" mt-2 text-gray-400 text-sm">(2)</span>
+                                </div>
+                                <div className="flex justify-between">
+                                    <div className="flex">
+                                        <Checkbox color="blue" />
+
+                                        <span className="text-md mt-3 text-sm">PlayStation Portable (PSP) (PS2)</span>
+
+                                    </div>
+                                    <span className=" mt-2 text-gray-400 text-sm">(1)</span>
                                 </div>
 
 
-                                <Link href={"#"} className="text-blue-700 ms-3 text-sm underline">See All</Link>
+
                             </div>
                         </List>
                     </AccordionBody>
@@ -405,6 +403,55 @@ export function SearchSidebar() {
                         <AccordionHeader onClick={() => handleOpen(7)} className="border-b-0 p-3">
 
                             <Typography color="blue-gray" className="mr-auto font-normal">
+                                New Arrivals
+                            </Typography>
+                        </AccordionHeader>
+                    </ListItem>
+                    <AccordionBody className="py-2 ">
+                        <List className="p-0 ">
+                            <div className="block">
+                                <div className="flex justify-between">
+                                    <div className="flex">
+                                        <Checkbox color="blue" />
+
+                                        <span className="text-md mt-3 text-sm">Last 7 Days</span>
+
+                                    </div>
+                                    <span className=" mt-2 text-gray-400 text-sm">(1)</span>
+                                </div>
+                                <div className="flex justify-between">
+                                    <div className="flex">
+                                        <Checkbox color="blue" />
+                                        <span className="text-md mt-3 text-sm">Last 30 Days</span>
+                                    </div>
+                                    <span className=" mt-2 text-gray-400 text-sm">(11)</span>
+                                </div>
+                                <div className="flex justify-between">
+                                    <div className="flex">
+                                        <Checkbox color="blue" />
+
+                                        <span className="text-md mt-3 text-sm">Last 60 Days</span>
+
+                                    </div>
+                                    <span className=" mt-2 text-gray-400 text-sm">(12)</span>
+                                </div>
+                            </div>
+                        </List>
+                    </AccordionBody>
+                </Accordion>
+                <Accordion
+                    open={open === 8}
+                    icon={
+                        <ChevronDownIcon
+                            strokeWidth={2.5}
+                            className={`mx-auto h-4 w-4 transition-transform ${open === 8 ? "rotate-180" : ""}`}
+                        />
+                    }
+                >
+                    <ListItem className="p-0" selected={open === 8}>
+                        <AccordionHeader onClick={() => handleOpen(8)} className="border-b-0 p-3">
+
+                            <Typography color="blue-gray" className="mr-auto font-normal">
                                 Seller
                             </Typography>
                         </AccordionHeader>
@@ -412,56 +459,85 @@ export function SearchSidebar() {
                     <AccordionBody className="py-2 ">
                         <List className="p-0 ">
                             <div className="block">
+                                <div className="flex justify-between">
+                                    <div className="flex">
+                                        <Checkbox color="blue" />
 
-                                <div className="flex">
-                                    <Checkbox color="blue" />
-                                    <Link href={"#"} className="mt-2">
-                                        <span className="text-sm mt-6 hover:text-blue-500">Sony<span className=" ms-56 ">(477)</span></span>
+                                        <span className="text-md mt-3 text-sm">Genius</span>
 
-                                    </Link>
-
+                                    </div>
+                                    <span className=" mt-2 text-gray-400 text-sm">(1271)</span>
                                 </div>
-                                <div className="flex">
-                                    <Checkbox color="blue" />
-                                    <Link href={"#"} className="mt-2">
-                                        <span className="text-sm mt-6 hover:text-blue-500">Sony<span className=" ms-56 ">(477)</span></span>
-
-                                    </Link>
-
+                                <div className="flex justify-between">
+                                    <div className="flex">
+                                        <Checkbox color="blue" />
+                                        <span className="text-md mt-3 text-sm">Covers line</span>
+                                    </div>
+                                    <span className=" mt-2 text-gray-400 text-sm">(546)</span>
                                 </div>
-                                <div className="flex">
-                                    <Checkbox color="blue" />
-                                    <Link href={"#"} className="mt-2">
-                                        <span className="text-sm mt-6 hover:text-blue-500">Sony<span className=" ms-56 ">(477)</span></span>
+                                <div className="flex justify-between">
+                                    <div className="flex">
+                                        <Checkbox color="blue" />
 
-                                    </Link>
+                                        <span className="text-md mt-3 text-sm">Egy Gamers</span>
 
+                                    </div>
+                                    <span className=" mt-2 text-gray-400 text-sm">(370)</span>
                                 </div>
-                                <div className="flex">
-                                    <Checkbox color="blue" />
-                                    <Link href={"#"} className="mt-2">
-                                        <span className="text-sm mt-6 hover:text-blue-500">Sony<span className=" ms-56 ">(477)</span></span>
+                                <div className="flex justify-between">
+                                    <div className="flex">
+                                        <Checkbox color="blue" />
 
-                                    </Link>
+                                        <span className="text-md mt-3 text-sm">TheGameCave</span>
 
+                                    </div>
+                                    <span className=" mt-2 text-gray-400 text-sm">(56)</span>
                                 </div>
-                                <div className="flex">
-                                    <Checkbox color="blue" />
-                                    <Link href={"#"} className="mt-2">
-                                        <span className="text-sm mt-6 hover:text-blue-500">Sony<span className=" ms-56 ">(477)</span></span>
+                                <div className="flex justify-between">
+                                    <div className="flex">
+                                        <Checkbox color="blue" />
 
-                                    </Link>
+                                        <span className="text-md mt-3 text-sm">gamesworldegypt</span>
 
+                                    </div>
+                                    <span className=" mt-2 text-gray-400 text-sm">(38)</span>
                                 </div>
+                                <div className="flex justify-between">
+                                    <div className="flex">
+                                        <Checkbox color="blue" />
 
+                                        <span className="text-md mt-3 text-sm">Gamers colony</span>
 
+                                    </div>
+                                    <span className=" mt-2 text-gray-400 text-sm">(35)</span>
+                                </div>
+                                <div className="flex justify-between">
+                                    <div className="flex">
+                                        <Checkbox color="blue" />
+
+                                        <span className="text-md mt-3 text-sm">Brand House</span>
+
+                                    </div>
+                                    <span className=" mt-2 text-gray-400 text-sm">(21)</span>
+                                </div>
+                                <div className="flex justify-between">
+                                    <div className="flex">
+                                        <Checkbox color="blue" />
+
+                                        <span className="text-md mt-3 text-sm">Walaa abd elaziz</span>
+
+                                    </div>
+                                    <span className=" mt-2 text-gray-400 text-sm">(20)</span>
+                                </div>
                                 <Link href={"#"} className="text-blue-700 ms-3 text-sm underline">See All</Link>
+
+
+
                             </div>
                         </List>
                     </AccordionBody>
                 </Accordion>
-
-            </List>
+            </List >
 
         </>
 
