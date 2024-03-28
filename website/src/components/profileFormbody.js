@@ -5,15 +5,19 @@ import {
 } from "@material-tailwind/react";
 import { useCountries } from "use-react-countries";
 import { Select, Option } from "@material-tailwind/react";
+import OrderCard from "./order-card";
 export function ProfileFormbody() {
     const { countries } = useCountries();
     return (<>
 
         <div className="basis-5/6">
 
-            <div className=" top-52 absolute right-16 text-sm text-blue-500">Need Help?</div>
+            <div className=" mx-5 my-5 h-32 text-sm text-blue-500 bg-white text-right p-5">Need Help?</div>
 
-            <div className="flex-row  bg-white ms-5 h-28 mt-20 mr-5 col-span-10"></div>
+            {/* orders cards */}
+            <div className=" text-sm text-blue-500 bg-white mx-5 my-5 h-32">
+                <OrderCard />
+            </div>
 
             <div className="bg-white mx-5 h-auto mb-10 mt-8 mr-5 md:col-span-10 md:grid md:grid-cols-3 md:gap-4">
                 <Typography variant="h5" color="blue-gray">
