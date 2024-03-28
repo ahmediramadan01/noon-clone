@@ -11,18 +11,22 @@ import "swiper/css/scrollbar";
 
 import { ProductCard } from "./product-card";
 
-export function ProductSwiper() {
+export function ProductSwiper({ data }) {
 	const [slidesPerView, setSlidesPerView] = useState(6);
+	const [products, setProducts] = useState([]);
 
 	useEffect(() => {
+		setProducts(data);
+
 		const updateSlidesPerView = () => {
-			if (window.innerWidth < 640) {
+			const windowWidth = window.innerWidth;
+			if (windowWidth < 640) {
 				setSlidesPerView(2);
-			} else if (window.innerWidth < 768) {
+			} else if (windowWidth < 768) {
 				setSlidesPerView(3);
-			} else if (window.innerWidth < 1024) {
+			} else if (windowWidth < 1024) {
 				setSlidesPerView(4);
-			} else if (window.innerWidth < 1280) {
+			} else if (windowWidth < 1280) {
 				setSlidesPerView(5);
 			} else {
 				setSlidesPerView(6);
@@ -31,63 +35,37 @@ export function ProductSwiper() {
 
 		updateSlidesPerView();
 
-		window.addEventListener("resize", updateSlidesPerView);
+		const handleResize = () => {
+			updateSlidesPerView();
+		};
+
+		window.addEventListener("resize", handleResize);
 
 		return () => {
-			window.removeEventListener("resize", updateSlidesPerView);
+			window.removeEventListener("resize", handleResize);
 		};
-	}, []);
+	}, [data]);
+
+	useEffect(() => {
+		console.log(products);
+	}, [products]);
+
 	return (
-		<>
-			<Swiper
-				className="py-5"
-				modules={[Navigation, Pagination, Scrollbar, A11y]}
-				spaceBetween={12}
-				slidesPerView={slidesPerView}
-				navigation
-				onSwiper={(swiper) => console.log(swiper)}
-				onSlideChange={() => console.log("slide change")}
-			>
-				<SwiperSlide>
-					<ProductCard></ProductCard>
-				</SwiperSlide>
-				<SwiperSlide>
-					<ProductCard></ProductCard>
-				</SwiperSlide>
-				<SwiperSlide>
-					<ProductCard></ProductCard>
-				</SwiperSlide>
-				<SwiperSlide>
-					<ProductCard></ProductCard>
-				</SwiperSlide>
-				<SwiperSlide>
-					<ProductCard></ProductCard>
-				</SwiperSlide>
-				<SwiperSlide>
-					<ProductCard></ProductCard>
-				</SwiperSlide>
-				<SwiperSlide>
-					<ProductCard></ProductCard>
-				</SwiperSlide>
-				<SwiperSlide>
-					<ProductCard></ProductCard>
-				</SwiperSlide>
-				<SwiperSlide>
-					<ProductCard></ProductCard>
-				</SwiperSlide>
-				<SwiperSlide>
-					<ProductCard></ProductCard>
-				</SwiperSlide>
-				<SwiperSlide>
-					<ProductCard></ProductCard>
-				</SwiperSlide>
-				<SwiperSlide>
-					<ProductCard></ProductCard>
-				</SwiperSlide>
-				<SwiperSlide>
-					<ProductCard></ProductCard>
-				</SwiperSlide>
-			</Swiper>
-		</>
+		<Swiper
+			className="py-5"
+			modules={[Navigation, Pagination, Scrollbar, A11y]}
+			spaceBetween={12}
+			slidesPerView={slidesPerView}
+			navigation
+			onSwiper={(swiper) => console.log(swiper)}
+			onSlideChange={() => console.log("slide change")}
+		>
+			{products &&
+				products.slice(0, 12).map((product, index) => (
+					<SwiperSlide key={index}>
+						<ProductCard data={product} />
+					</SwiperSlide>
+				))}
+		</Swiper>
 	);
 }

@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 
 import bankInstallmentsImage from "../../../public/images/bank-installments.jpg";
@@ -323,8 +325,43 @@ import { ProductSwiper } from "@/components/productsSwiper";
 import { TopBrands } from "@/components/top-brands";
 import { CategoriesCards } from "@/components/categories-cards";
 import { Header } from "@/components/header";
+import { useEffect, useState } from "react";
 
 export default function HomePage() {
+	const [products, setProducts] = useState([]);
+	const [electronicsProducts, setElectronicsProducts] = useState([]);
+	const [beautyProducts, setBeautyProducts] = useState([]);
+	const [stationaryProducts, setStationaryProducts] = useState([]);
+	const [fashionProducts, setFashionProducts] = useState([]);
+	const [groceryProducts, setGroceryProducts] = useState([]);
+
+	useEffect(() => {
+		fetch("http://localhost:3000/api/products/")
+			.then((response) => response.json())
+			.then((data) => {
+				setProducts([...data]);
+			})
+			.catch((error) => console.error(error));
+	}, []);
+
+	useEffect(() => {
+		if (products.length > 0) {
+			setElectronicsProducts(products.filter((product) => product.category === "electronics"));
+			setBeautyProducts(products.filter((product) => product.category === "beauty"));
+			setStationaryProducts(products.filter((product) => product.category === "stationary"));
+			setFashionProducts(products.filter((product) => product.category === "fashion"));
+			setGroceryProducts(products.filter((product) => product.category === "grocery"));
+		}
+	}, [products]);
+
+	useEffect(() => {
+		console.log(electronicsProducts);
+		console.log(beautyProducts);
+		console.log(stationaryProducts);
+		console.log(fashionProducts);
+		console.log(groceryProducts);
+	}, [electronicsProducts]);
+
 	return (
 		<>
 			<div className="mx-auto">
@@ -360,21 +397,21 @@ export default function HomePage() {
 				</div>
 				<div>
 					<h2 className="text-2xl font-bold my-5">Recommended for you</h2>
-					<ProductSwiper></ProductSwiper>
+					<ProductSwiper data={electronicsProducts}></ProductSwiper>
 				</div>
 				<Image src={sponsoredImage} className="my-4 w-full"></Image>
 				<CategoriesCards images={mothersdayImages} bgColor="#fff1f1"></CategoriesCards>
 				<div className="bg-[#f1e8c5] py-2">
 					<Image src={joyImage} unoptimized className="pb-4 w-full"></Image>
 					<div className="p-4">
-						<ProductSwiper></ProductSwiper>
+						<ProductSwiper data={fashionProducts}></ProductSwiper>
 					</div>
 				</div>
 				<CategoriesCards images={offersImages} bgColor="#fff1e2]"></CategoriesCards>
 				<div className="bg-white py-2">
 					<Image src={ramadanDealsImage} className="pb-4 w-full"></Image>
 					<div className="p-4">
-						<ProductSwiper></ProductSwiper>
+						<ProductSwiper data={groceryProducts}></ProductSwiper>
 					</div>
 				</div>
 				<CategoriesCards images={savingsImages} bgColor="#fff3e4"></CategoriesCards>
@@ -383,21 +420,21 @@ export default function HomePage() {
 				<div className="bg-[#fffcef] py-2">
 					<Image src={ramadanGroceriesImage} className="pb-4 w-full"></Image>
 					<div className="p-4">
-						<ProductSwiper></ProductSwiper>
+						<ProductSwiper data={groceryProducts}></ProductSwiper>
 					</div>
 				</div>
 				<CategoriesCards images={kitchenImages} bgColor="#fff2e2"></CategoriesCards>
 				<div className="bg-[#fff2e2] py-2">
 					<Image src={ramadanEssentialsImage} className="pb-4 w-full"></Image>
 					<div className="p-4">
-						<ProductSwiper></ProductSwiper>
+						<ProductSwiper data={groceryProducts}></ProductSwiper>
 					</div>
 				</div>
 				<CategoriesCards images={appliancesImages} bgColor="#fffcef"></CategoriesCards>
 				<div className="bg-[#fffcef] py-2">
 					<Image src={topAppliancesImage} className="pb-4 w-full"></Image>
 					<div className="p-4">
-						<ProductSwiper></ProductSwiper>
+						<ProductSwiper data={beautyProducts}></ProductSwiper>
 					</div>
 				</div>
 				<CategoriesCards images={ramadanStyleImages} bgColor="#fff2ed"></CategoriesCards>
@@ -412,28 +449,28 @@ export default function HomePage() {
 				<div className="bg-[#fffcef] py-2">
 					<Image src={topBeautyDealsImage} className="pb-4 w-full"></Image>
 					<div className="p-4">
-						<ProductSwiper></ProductSwiper>
+						<ProductSwiper data={beautyProducts}></ProductSwiper>
 					</div>
 				</div>
 				<CategoriesCards images={electronicsImages} bgColor="#fff2e2"></CategoriesCards>
 				<div className="bg-[#fff2e2] py-2">
 					<Image src={topElectronicsDealsImage} className="pb-4 w-full"></Image>
 					<div className="p-4">
-						<ProductSwiper></ProductSwiper>
+						<ProductSwiper data={electronicsProducts}></ProductSwiper>
 					</div>
 				</div>
 				<CategoriesCards images={babyImages} bgColor="#fffcef"></CategoriesCards>
 				<div className="bg-[#fffcef] py-2">
 					<Image src={topBabyDealsImage} className="pb-4 w-full"></Image>
 					<div className="p-4">
-						<ProductSwiper></ProductSwiper>
+						<ProductSwiper data={beautyProducts}></ProductSwiper>
 					</div>
 				</div>
 				<CategoriesCards images={automotiveImages} bgColor="#fff2e2"></CategoriesCards>
 				<div className="bg-[#fff2e2] py-2">
 					<Image src={topAutomotiveDealsImage} className="pb-4 w-full"></Image>
 					<div className="p-4">
-						<ProductSwiper></ProductSwiper>
+						<ProductSwiper data={electronicsProducts}></ProductSwiper>
 					</div>
 				</div>
 				<CategoriesCards images={sportsImages} bgColor="#fffcef"></CategoriesCards>

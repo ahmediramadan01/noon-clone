@@ -1,15 +1,38 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Card, CardHeader, CardBody, CardFooter, Typography, IconButton } from "@material-tailwind/react";
 import Image from "next/image";
 import Link from "next/link";
 import ProductImage from "/public/images/product.jpg";
 
-export function ProductCard() {
+export function ProductCard({ data }) {
+	const [product, setProduct] = useState({});
+
+	useEffect(() => {
+		setProduct({ ...data });
+	}, [data]);
+
+	useEffect(() => {
+		console.log(product.title);
+	}, [product]);
+
 	return (
 		<Card className="w-full max-w-[26rem] shadow-lg">
 			<CardHeader floated={false} color="transparent" className="flex justify-center">
-				<Image src={ProductImage} width="auto" height="auto" alt="Product Image" className="m-10" />
+				<Image
+					src={product.thumbnail}
+					width="175"
+					height="240"
+					alt="Product Image"
+					className="m-10"
+					style={{
+						objectFit: "contain",
+						width: "175px",
+						height: "240px",
+					}}
+				/>
+
 				<div className="to-bg-black-10 absolute inset-0 h-full w-full bg-black/5 " />
 				<IconButton size="md" color="white" variant="text" className="!absolute top-4 right-4 bg-white shadow-lg">
 					<svg width="25" height="25" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -44,7 +67,7 @@ export function ProductCard() {
 					</svg>
 				</IconButton>
 				<Typography color="black" className="!absolute bottom-4 left-4 flex items-center gap-1.5 font-normal">
-					4.5
+					{product.rating}
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 24 24"
@@ -57,20 +80,21 @@ export function ProductCard() {
 							clipRule="evenodd"
 						/>
 					</svg>
-					<span className="text-gray-400">(8.1K)</span>
+					<span className="text-gray-400">{product.ratingQuantity}</span>
 				</Typography>
 			</CardHeader>
 			<CardBody>
 				<div className="mb-3 flex items-center justify-between">
-					<Link href="/product/1">
+					<Link href={`/product/${product._id}`}>
 						<Typography variant="h6" color="blue-gray" className="font-medium text-sm">
-							Sony PlayStation 5 Console (Disc Version) With Controller
+							{product.title}
 						</Typography>
 					</Link>
 				</div>
 				<p className="text-xs">
-					EGP <span className="font-bold text-sm">38,700</span> <span className="line-through">40,999</span>{" "}
-					<span className="text-green-700 font-semibold">5%</span>
+					EGP <span className="font-bold text-sm">{product.price}</span>{" "}
+					<span className="line-through">{product.price + (product.price * product.discountPercentage) / 100}</span>{" "}
+					<span className="text-green-700 font-semibold">{product.discountPercentage}%</span>
 				</p>
 			</CardBody>
 			<CardFooter className="pt-3">

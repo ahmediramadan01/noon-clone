@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Footer } from "@/components/footer";
 import { NavbarSimple } from "@/components/nav-bar";
 import { ProductGallery } from "@/components/product-gallery";
@@ -14,10 +14,9 @@ import WarrantyInfo from "@/components/warranty-info";
 import MegaMenuWithHover from "@/components/nav-links";
 import { Header } from "@/components/header";
 
-function ProductPage() {
+function ProductPage({ params }) {
 	const productImages = ["/ps5-1.png", "/ps5-2.png", "/ps5-3.png", "/ps5-4.png"];
 
-	// Data for price divs
 	const pricesData = [
 		{ label: "Was", currency: "EGP", amount: "299", className: "old-price" },
 		{ label: "Now", currency: "EGP", amount: "400", className: "current-price font-extrabold" },
@@ -38,6 +37,21 @@ function ProductPage() {
 		{ icon: "/non_returnable.svg", text: "This item cannot be exchanged or returned", href: "#" },
 	];
 
+	const [product, setProduct] = useState({});
+
+	useEffect(() => {
+		fetch(`http://localhost:3000/api/products/${params.productId}`)
+			.then((response) => response.json())
+			.then((data) => {
+				setProduct({ ...data });
+			})
+			.catch((error) => console.error(error));
+	}, []);
+
+	useEffect(() => {
+		console.log(product);
+	}, [product]);
+
 	return (
 		<>
 			<div className="mx-auto my-2">
@@ -49,8 +63,8 @@ function ProductPage() {
 
 					{/* product info */}
 					<div className="w-full md:w-1/2 lg:w-1/3 px-2 py-2" style={{ borderRight: "1px solid #DDD" }}>
-						<span className="brand">Sony</span>
-						<h1 className="font-semibold text-2xl my-5">PlayStation 5 Console (Disc Version) With Controller</h1>
+						<span className="brand">{product.brand}</span>
+						<h1 className="font-semibold text-2xl my-5">{product.title}</h1>
 
 						{/* product price */}
 						<ProductPrice prices={pricesData} />
