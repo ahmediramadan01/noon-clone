@@ -1,7 +1,26 @@
 "use client";
-import React from "react";
+
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Navbar, Collapse, Typography, IconButton, Input } from "@material-tailwind/react";
+import { signIn, signOut, useSession } from "next-auth/react";
+import {
+	Navbar,
+	Collapse,
+	Typography,
+	IconButton,
+	Input,
+	Button,
+	Dialog,
+	Card,
+	CardHeader,
+	CardBody,
+	Tabs,
+	TabsHeader,
+	TabsBody,
+	Tab,
+	TabPanel,
+} from "@material-tailwind/react";
 import {
 	Bars3Icon,
 	ChevronDownIcon,
@@ -14,6 +33,99 @@ import Image from "next/image";
 import { ArrowDownIcon } from "@heroicons/react/24/solid";
 
 function NavList() {
+	const [open, setOpen] = React.useState(false);
+	const handleOpen = () => setOpen((cur) => !cur);
+
+	const [type, setType] = React.useState("login");
+
+	const [error, setError] = useState("");
+	const [logInError, setLogInError] = useState("");
+
+	const router = useRouter();
+	const session = useSession();
+
+	// useEffect(() => {
+	// 	if (!session?.status === "authenticated") {
+	// 		router.replace("/");
+	// 	}
+	// }, [session, router]);
+
+	const isValidEmail = (email) => {
+		const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+		return emailRegex.test(email);
+	};
+
+	const signupUser = async (event) => {
+		event.preventDefault();
+
+		const name = event.target[0].value;
+		const email = event.target[1].value;
+		const password = event.target[2].value;
+
+		if (!isValidEmail(email)) {
+			setError("Invalid Email");
+			return;
+		}
+
+		if (!password || password.length < 8) {
+			setError("Invalid Password");
+			return;
+		}
+
+		try {
+			const response = await fetch("/api/signup", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({
+					name,
+					email,
+					password,
+				}),
+			});
+
+			if (response.ok) {
+				console.log("Signup successful");
+				setOpen(false);
+			} else {
+				console.error("Signup failed:", response.status);
+				setError("Email is already registered");
+			}
+		} catch (error) {
+			console.error("Signup failed:", error);
+			setError("Signup failed. Please try again later.");
+		}
+	};
+
+	const loginUser = async function (event) {
+		event.preventDefault();
+
+		const email = event.target[0].value;
+		const password = event.target[1].value;
+
+		if (!isValidEmail(email)) {
+			setError("Invalid Email");
+			return;
+		}
+
+		if (!password || password.length < 8) {
+			setError("Invalid Password");
+			return;
+		}
+
+		const response = await signIn("credentials", {
+			redirect: false,
+			email,
+			password,
+		});
+
+		if (response?.error) {
+			setLogInError("Invalid email or password");
+		} else {
+			setLogInError("");
+			setOpen(false);
+		}
+	};
+
 	return (
 		<ul className="my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-4">
 			<li className="p-1 font-medium text-sm">
@@ -22,7 +134,12 @@ function NavList() {
 				</a>
 			</li>
 
-			<li className="px-2 font-medium border-black h-6 w-32 flex items-center" style={{ borderLeftWidth: "1px" }}>
+			<li
+				className={`${
+					session?.status === "authenticated" || "hidden"
+				} px-2 font-medium border-black h-6 w-32 flex items-center`}
+				style={{ borderLeftWidth: "1px" }}
+			>
 				<Link href="/profile" className="flex items-center hover:text-blue-500 transition-colors">
 					<span className="font-bold text-left text-sm">
 						<span className="text-xs font-light whitespace-no-wrap">Ahlan Ahmed!</span>
@@ -33,20 +150,175 @@ function NavList() {
 				</Link>
 			</li>
 
-			{/* <li className="px-2 font-medium border-black h-6 w-32 flex items-center" style={{ borderLeftWidth: "1px" }}>
-				<a href="#" className="flex items-center hover:text-blue-500 transition-colors">
-					<span className="font-bold text-sm">Login</span>
+			<li
+				className={`${
+					session?.status === "authenticated" && "hidden"
+				} px-2 font-medium border-black h-6 w-auto flex items-center`}
+				style={{ borderLeftWidth: "1px" }}
+			>
+				<button onClick={handleOpen} className="flex items-center hover:text-blue-500 transition-colors">
+					<span className="font-bold text-sm">Log In</span>
 					<UserIcon className="w-5 h-5 ml-1" />
-				</a>
-			</li> */}
+				</button>
+				<Dialog size="sm" open={open} handler={handleOpen} className="bg-transparent shadow-none">
+					<Card className="w-full">
+						<CardHeader floated={false} shadow={false} className="m-0 grid place-items-center px-4 pt-4 text-center">
+							<Typography className="text-[#404553] text-2xl font-bold">Hala! Let's get started</Typography>
+						</CardHeader>
+						<CardBody>
+							<Tabs value={type} className="overflow-visible">
+								<TabsHeader className="relative z-0 bg-[#404553cc] max-w-[250px] mx-auto">
+									<Tab
+										value="login"
+										onClick={() => setType("login")}
+										className={`${type === "signup" ? "text-white" : "text-[#404553cc]"}`}
+									>
+										Log In
+									</Tab>
+									<Tab
+										value="signup"
+										onClick={() => setType("signup")}
+										className={`${type === "login" ? "text-white" : "text-[#404553cc]"}`}
+									>
+										Sign Up
+									</Tab>
+								</TabsHeader>
+								<TabsBody
+									className="!overflow-x-hidden"
+									animate={{
+										initial: {
+											x: type === "login" ? 400 : -400,
+										},
+										mount: {
+											x: 0,
+										},
+										unmount: {
+											x: type === "login" ? 400 : -400,
+										},
+									}}
+								>
+									<TabPanel value="login" className="p-0">
+										<form onSubmit={loginUser} className="mt-12 flex flex-col gap-4">
+											<div className="mb-1 flex flex-col gap-6">
+												<Typography variant="h6" color="blue-gray" className="">
+													Email
+												</Typography>
+												<Input
+													type="email"
+													size="lg"
+													className="form-control !border-t-blue-gray-200 focus:!border-t-gray-900"
+													labelProps={{
+														className: "before:content-none after:content-none",
+													}}
+													required
+												/>
+												<Typography variant="h6" color="blue-gray" className="">
+													Password
+												</Typography>
+												<Input
+													type="password"
+													size="lg"
+													className="form-control !border-t-blue-gray-200 focus:!border-t-gray-900"
+													labelProps={{
+														className: "before:content-none after:content-none",
+													}}
+													required
+												/>
+											</div>
 
-			<li className="px-2 font-medium border-black h-6 w-auto flex items-center" style={{ borderLeftWidth: "1px" }}>
+											<Button type="submit" className="mt-6 text-base bg-[#3866df]" fullWidth>
+												LOG IN
+											</Button>
+											<p className="text-red-600 text-[16px] mt-4">{logInError && logInError}</p>
+										</form>
+									</TabPanel>
+									<TabPanel value="signup" className="p-0">
+										<form onSubmit={signupUser} className="mt-12 flex flex-col gap-4">
+											<div className="mb-1 flex flex-col gap-6">
+												<Typography variant="h6" color="blue-gray" className="">
+													Name
+												</Typography>
+												<Input
+													type="text"
+													size="lg"
+													className="form-control !border-t-blue-gray-200 focus:!border-t-gray-900"
+													labelProps={{
+														className: "before:content-none after:content-none",
+													}}
+													required
+												/>
+												<Typography variant="h6" color="blue-gray" className="">
+													Email
+												</Typography>
+												<Input
+													type="email"
+													size="lg"
+													className="form-control !border-t-blue-gray-200 focus:!border-t-gray-900"
+													labelProps={{
+														className: "before:content-none after:content-none",
+													}}
+													required
+												/>
+												<Typography variant="h6" color="blue-gray" className="">
+													Password
+												</Typography>
+												<Input
+													type="password"
+													size="lg"
+													className="form-control !border-t-blue-gray-200 focus:!border-t-gray-900"
+													labelProps={{
+														className: "before:content-none after:content-none",
+													}}
+													required
+												/>
+											</div>
+
+											<Button type="submit" className="mt-6 text-base bg-[#3866df]" fullWidth>
+												SIGN UP
+											</Button>
+											<p className="text-red-600 text-[16px] mt-4">{error && error}</p>
+										</form>
+									</TabPanel>
+								</TabsBody>
+							</Tabs>
+						</CardBody>
+					</Card>
+				</Dialog>
+			</li>
+			<li
+				className={`${
+					session?.status === "authenticated" || "hidden"
+				} px-2 font-medium border-black h-6 w-auto flex items-center`}
+				style={{ borderLeftWidth: "1px" }}
+			>
+				<button
+					onClick={() => {
+						signOut();
+					}}
+					className="flex items-center hover:text-blue-500 transition-colors"
+				>
+					<span className="font-bold text-sm">Sign Out</span>
+					<UserIcon className="w-5 h-5 ml-1" />
+				</button>
+			</li>
+
+			<li
+				className={`${
+					session?.status === "authenticated" || "hidden"
+				} px-2 font-medium border-black h-6 w-auto flex items-center`}
+				style={{ borderLeftWidth: "1px" }}
+			>
 				<Link href="/wishlist" className="flex items-center hover:text-blue-500 transition-colors">
 					<span className="font-bold text-sm">Wishlist</span>
 					<HeartIcon className="w-5 h-5 ml-1" />
 				</Link>
 			</li>
-			<li className="px-2 font-medium border-black h-6 w-auto flex items-center" style={{ borderLeftWidth: "1px" }}>
+			<li
+				className={`${
+					session?.status === "authenticated" || "hidden"
+				} px-2 font-medium border-black h-6 w-auto flex items-center`}
+				style={{ borderLeftWidth: "1px" }}
+			>
 				<Link href="/cart" className="flex items-center hover:text-blue-500 transition-colors">
 					<span className="font-bold text-sm">Cart</span>
 					<ShoppingCartIcon className="w-5 h-5 ml-1" />
