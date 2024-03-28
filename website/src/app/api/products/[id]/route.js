@@ -3,7 +3,7 @@ import { MongoClient, ObjectId } from "mongodb";
 const client = new MongoClient("mongodb+srv://ahmediramadan01:team5@cluster.g1pbl8a.mongodb.net/");
 await client.connect();
 
-const database = client.db("noon-clone");
+const database = client.db("");
 const collection = database.collection("products");
 
 export async function GET(_request, { params }) {
@@ -21,22 +21,44 @@ export async function GET(_request, { params }) {
 			status: 200,
 		});
 	} catch (error) {
-		return new Response("Internal Server Error", { status: 500 });
+		return new Response(error, { status: 500 });
 	}
 }
 
 export async function PATCH(request, { params }) {
 	try {
 		const body = await request.json();
-		const { title } = body;
+		const { title, description, brand, thumbnail, images, category, quantityInStock, price, discountPercentage } = body;
 
-		if (!title) {
-			return new Response("Title is required", { status: 400 });
+		if (
+			!title ||
+			!description ||
+			!brand ||
+			!thumbnail ||
+			!images ||
+			!category ||
+			!quantityInStock ||
+			!price ||
+			!discountPercentage
+		) {
+			return new Response("Missing required fields", { status: 400 });
 		}
 
 		const updatedProduct = await collection.findOneAndUpdate(
 			{ _id: new ObjectId(params.id) },
-			{ $set: { title: title } },
+			{
+				$set: {
+					title,
+					description,
+					brand,
+					thumbnail,
+					images,
+					category,
+					quantityInStock,
+					price,
+					discountPercentage,
+				},
+			},
 			{ returnDocument: "after" }
 		);
 
@@ -51,7 +73,7 @@ export async function PATCH(request, { params }) {
 			status: 200,
 		});
 	} catch (error) {
-		return new Response("Internal Server Error", { status: 500 });
+		return new Response(error, { status: 500 });
 	}
 }
 
@@ -70,6 +92,6 @@ export async function DELETE(_request, { params }) {
 			status: 200,
 		});
 	} catch (error) {
-		return new Response("Internal Server Error", { status: 500 });
+		return new Response(error, { status: 500 });
 	}
 }

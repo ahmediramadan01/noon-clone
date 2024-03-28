@@ -2,7 +2,7 @@ import { MongoClient } from "mongodb";
 
 const client = new MongoClient("mongodb+srv://ahmediramadan01:team5@cluster.g1pbl8a.mongodb.net/");
 await client.connect();
-const database = client.db("noon-clone");
+const database = client.db("");
 const collection = database.collection("products");
 
 export async function GET(request) {
@@ -21,7 +21,7 @@ export async function GET(request) {
 			status: 200,
 		});
 	} catch (error) {
-		return new Response("Internal Server Error", { status: 500 });
+		return new Response(error, { status: 500 });
 	}
 }
 
@@ -35,18 +35,40 @@ export async function POST(request) {
 
 		const body = await request.json();
 
-		if (!body || !body.title) {
-			return new Response("Title is required", { status: 400 });
-		}
+		// if (
+		// 	!body ||
+		// 	!body.title ||
+		// 	!body.description ||
+		// 	!body.brand ||
+		// 	!body.thumbnail ||
+		// 	!body.images ||
+		// 	!body.category ||
+		// 	!body.quantityInStock ||
+		// 	!body.price ||
+		// 	!body.discountPercentage
+		// ) {
+		// 	return new Response("Missing fields", { status: 400 });
+		// }
 
 		const newProduct = {
 			title: body.title,
+			description: body.description,
+			brand: body.brand,
+			thumbnail: body.thumbnail,
+			images: body.images,
+			category: body.category,
+			quantityInStock: body.quantityInStock,
+			price: body.price,
+			discountPercentage: body.discountPercentage,
+			rating: 0,
+			ratingQuantity: 0,
+			sold: 0,
 		};
 
 		const insertResult = await collection.insertOne(newProduct);
 
 		if (!insertResult.insertedId) {
-			return new Response("Failed to insert product", { status: 500 });
+			return new Response("Error inserting product", { status: 500 });
 		}
 
 		return new Response(JSON.stringify(newProduct), {
@@ -56,6 +78,6 @@ export async function POST(request) {
 			status: 201,
 		});
 	} catch (error) {
-		return new Response("Internal Server Error", { status: 500 });
+		return new Response(error, { status: 500 });
 	}
 }
