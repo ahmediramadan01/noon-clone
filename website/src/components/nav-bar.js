@@ -41,14 +41,14 @@ function NavList() {
 	const [error, setError] = useState("");
 	const [logInError, setLogInError] = useState("");
 
-	const router = useRouter();
 	const session = useSession();
+	const [userName, setUserName] = useState("");
 
-	// useEffect(() => {
-	// 	if (!session?.status === "authenticated") {
-	// 		router.replace("/");
-	// 	}
-	// }, [session, router]);
+	useEffect(() => {
+		if (session?.status === "authenticated") {
+			setUserName(session.data.user.name);
+		}
+	}, [session]);
 
 	const isValidEmail = (email) => {
 		const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -142,7 +142,7 @@ function NavList() {
 			>
 				<Link href="/profile" className="flex items-center hover:text-blue-500 transition-colors">
 					<span className="font-bold text-left text-sm">
-						<span className="text-xs font-light whitespace-no-wrap">Ahlan Ahmed!</span>
+						<span className="text-xs font-light whitespace-no-wrap">Ahlan {userName}!</span>
 						<br />
 						<span className="whitespace-no-wrap">My Account</span>
 					</span>
