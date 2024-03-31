@@ -135,8 +135,9 @@ function NavList() {
 			</li>
 
 			<li
-				className={`${session?.status === "authenticated" || "hidden"
-					} px-2 font-medium border-black h-6 w-32 flex items-center`}
+				className={`${
+					session?.status === "authenticated" || "hidden"
+				} px-2 font-medium border-black h-6 w-32 flex items-center`}
 				style={{ borderLeftWidth: "1px" }}
 			>
 				<Link href="/profile" className="flex items-center hover:text-blue-500 transition-colors">
@@ -150,8 +151,9 @@ function NavList() {
 			</li>
 
 			<li
-				className={`${session?.status === "authenticated" && "hidden"
-					} px-2 font-medium border-black h-6 w-auto flex items-center`}
+				className={`${
+					session?.status === "authenticated" && "hidden"
+				} px-2 font-medium border-black h-6 w-auto flex items-center`}
 				style={{ borderLeftWidth: "1px" }}
 			>
 				<button onClick={handleOpen} className="flex items-center hover:text-blue-500 transition-colors">
@@ -284,8 +286,9 @@ function NavList() {
 				</Dialog>
 			</li>
 			<li
-				className={`${session?.status === "authenticated" || "hidden"
-					} px-2 font-medium border-black h-6 w-auto flex items-center`}
+				className={`${
+					session?.status === "authenticated" || "hidden"
+				} px-2 font-medium border-black h-6 w-auto flex items-center`}
 				style={{ borderLeftWidth: "1px" }}
 			>
 				<button
@@ -299,21 +302,13 @@ function NavList() {
 				</button>
 			</li>
 
-			<li
-				className={`${session?.status === "authenticated" || "hidden"
-					} px-2 font-medium border-black h-6 w-auto flex items-center`}
-				style={{ borderLeftWidth: "1px" }}
-			>
+			<li className={`px-2 font-medium border-black h-6 w-auto flex items-center`} style={{ borderLeftWidth: "1px" }}>
 				<Link href="/wishlist" className="flex items-center hover:text-blue-500 transition-colors">
 					<span className="font-bold text-sm">Wishlist</span>
 					<HeartIcon className="w-5 h-5 ml-1" />
 				</Link>
 			</li>
-			<li
-				className={`${session?.status === "authenticated" || "hidden"
-					} px-2 font-medium border-black h-6 w-auto flex items-center`}
-				style={{ borderLeftWidth: "1px" }}
-			>
+			<li className={`px-2 font-medium border-black h-6 w-auto flex items-center`} style={{ borderLeftWidth: "1px" }}>
 				<Link href="/cart" className="flex items-center hover:text-blue-500 transition-colors">
 					<span className="font-bold text-sm">Cart</span>
 					<ShoppingCartIcon className="w-5 h-5 ml-1" />
@@ -330,15 +325,13 @@ export function NavbarSimple() {
 	const [searchedProduct, setSearchedProduct] = useState("");
 	const handleTypedProduct = (event) => {
 		setSearchedProduct(event.target.value);
-
 	};
 	const router = useRouter();
 	const searchProduct = (event) => {
 		event.preventDefault();
 		if (!searchedProduct) router.push(`/search`);
-		router.push(`/search/${searchedProduct}`)
-	}
-
+		router.push(`/search/${searchedProduct}`);
+	};
 
 	React.useEffect(() => {
 		window.addEventListener("resize", handleWindowResize);
@@ -366,9 +359,11 @@ export function NavbarSimple() {
 				</Link>
 
 				<div className="px-1 w-2/3 relative flex gap-2 ">
-					<form onSubmit={(event) => {
-						searchProduct(event);
-					}}>
+					<form
+						onSubmit={(event) => {
+							searchProduct(event);
+						}}
+					>
 						<Input
 							onChange={(event) => {
 								handleTypedProduct(event);
