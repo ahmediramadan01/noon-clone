@@ -368,7 +368,7 @@ export function NavbarSimple() {
 				<div className="px-1 w-2/3 relative flex gap-2 ">
 					<form onSubmit={(event) => {
 						searchProduct(event);
-					}}>
+					}} className="w-full">
 						<Input
 							onChange={(event) => {
 								handleTypedProduct(event);
