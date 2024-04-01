@@ -1,6 +1,5 @@
 "use client";
 
-import { getServerSession } from "next-auth";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
@@ -23,23 +22,18 @@ import {
 	Checkbox,
 } from "@material-tailwind/react";
 
-import Image from "next/image";
-import ProductImage from "/public/images/product.jpg";
-import Script from "next/script";
 import { MainCard } from "@/components/mainCard";
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
 
 export default function WishlistPage() {
 	const [open, setOpen] = React.useState(false);
 
 	const toggleOpen = () => setOpen((cur) => !cur);
-	const [openn, setOpenn] = React.useState(false);
+	const [open2, setOpen2] = React.useState(false);
 
-	const handleOpen = () => setOpenn(!openn);
-	const [openshare, setOpenshare] = React.useState(false);
+	const handleOpen = () => setOpen2(!open);
+	const [openShare, setOpenShare] = React.useState(false);
 
-	const handleOpenshare = () => setOpenshare(!openshare);
+	const handleOpenShare = () => setOpenShare(!openShare);
 
 	const router = useRouter();
 	const session = useSession();
@@ -62,7 +56,7 @@ export default function WishlistPage() {
 								<Button className="w-200 font-bold bg-blue-800 absolute right-20 mt-2" onClick={handleOpen}>
 									CREATE NEW WISHLIST
 								</Button>
-								<Dialog open={openn} className="opacity-100" size="sm" handler={handleOpen}>
+								<Dialog open={open2} className="opacity-100" size="sm" handler={handleOpen}>
 									<div className="flex items-center justify-between">
 										<DialogHeader className="flex flex-col items-start">
 											{" "}
@@ -128,7 +122,7 @@ export default function WishlistPage() {
 								<div className="w-full">
 									<div className="flex flex-wrap items-start mt-4">
 										<div className="w-full lg:w-1/4 md:w-1/4 sm:w-full">
-											<p className="font-bold w-full lg:w-32 md:w-32 mt-2 ps-2">menna ismail</p>
+											<p className="font-bold w-full lg:w-32 md:w-32 mt-2 ps-2">Menna Ismail</p>
 										</div>
 										<div className="w-full lg:w-1/4 md:w-1/4 sm:w-1/4">
 											<button className="rounded-full bg-blue-700 ms-2 mt-2 text-white w-full lg:w-24 md:w-24">
@@ -139,7 +133,7 @@ export default function WishlistPage() {
 										<div className="w-full lg:w-1/4 md:w-1/4 sm:w-1/4">
 											<button
 												className="rounded-full ms-4 lg:ms-auto mt-2 lg:mt-2 md:mt-2 border-2 border-black-50 text-black w-full lg:w-24 md:w-24 flex"
-												onClick={handleOpenshare}
+												onClick={handleOpenShare}
 											>
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
@@ -154,7 +148,7 @@ export default function WishlistPage() {
 												</svg>
 												<p className="ms-2">Share</p>
 											</button>
-											<Dialog open={openshare} className="opacity-100" size="sm" handler={handleOpenshare}>
+											<Dialog open={openShare} className="opacity-100" size="sm" handler={handleOpenShare}>
 												<div className="flex items-center justify-between">
 													<DialogHeader className="flex flex-col items-start">
 														{" "}
@@ -167,7 +161,7 @@ export default function WishlistPage() {
 														viewBox="0 0 24 24"
 														fill="currentColor"
 														className="mr-3 h-5 w-5"
-														onClick={handleOpenshare}
+														onClick={handleOpenShare}
 													>
 														<path
 															fillRule="evenodd"

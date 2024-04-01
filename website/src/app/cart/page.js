@@ -1,16 +1,13 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { getServerSession } from "next-auth";
-import { redirect, useRouter } from "next/navigation";
+import React, { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { Footer } from "@/components/footer";
 import Image from "next/image";
 import CartCard from "@/components/CartCard";
 import CartCard2 from "@/components/CartCard2";
 import CartCard3 from "@/components/CartCard3";
 import CartCard4 from "@/components/CartCard4";
-import { Header } from "@/components/header";
 import Image9 from "../../../public/cart-1.png";
 
 export default function CartPage() {

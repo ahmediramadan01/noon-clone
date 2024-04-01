@@ -14,7 +14,7 @@ export function ProductCard({ data }) {
 	}, [data]);
 
 	useEffect(() => {
-		console.log(product.title);
+		// console.log(product.title);
 	}, [product]);
 
 	return (

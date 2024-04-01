@@ -1,13 +1,12 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { getServerSession } from "next-auth";
-import { redirect, useRouter } from "next/navigation";
+import React, { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 
 import { ProfileSidebar } from "@/components/profileSidebar";
 import { ProfileFooter } from "@/components/profileFooter";
-import { ProfileFormbody } from "@/components/profileFormbody";
+import { ProfileFormBody } from "@/components/profileFormBody";
 
 export default function ProfilePage() {
 	const router = useRouter();
@@ -22,12 +21,11 @@ export default function ProfilePage() {
 	return (
 		<>
 			<div className="mx-auto bg-blue-gray-50">
-				<div className="flex ">
-					<div className="lg:basis-1/6 md:basis-1/5  flex-col ">
+				<div className="flex">
+					<div className="lg:basis-1/6 md:basis-1/5  flex-col">
 						<ProfileSidebar></ProfileSidebar>
 					</div>
-
-					<ProfileFormbody></ProfileFormbody>
+					<ProfileFormBody></ProfileFormBody>
 				</div>
 				<hr></hr>
 			</div>

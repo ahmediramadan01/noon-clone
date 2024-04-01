@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 const userSchema = new Schema(
 	{
-		name: {
+		firstName: {
 			type: String,
 			required: true,
 		},
@@ -17,8 +17,38 @@ const userSchema = new Schema(
 			type: String,
 			required: true,
 		},
+		lastName: {
+			type: String,
+			default: "",
+		},
+		phoneNumber: {
+			type: String,
+			default: "",
+		},
+		birthday: {
+			type: String,
+			default: "",
+		},
+		gender: {
+			type: String,
+			default: "",
+		},
+		nationality: {
+			type: String,
+			default: "",
+		},
+		wishlist: {
+			type: Array,
+			default: [],
+		},
+		cart: {
+			type: Array,
+			default: [],
+		},
 	},
 	{ timestamps: true }
 );
 
-export default mongoose.models.User || mongoose.model("User", userSchema);
+const User = mongoose.models.User || mongoose.model("User", userSchema);
+
+export default User;

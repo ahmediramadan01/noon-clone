@@ -1,19 +1,18 @@
 "use client";
+import React, { useState, useEffect } from "react";
 import { signOut, useSession } from "next-auth/react";
-import { useState, useEffect } from "react";
 import { Card, Typography, List, ListItem, ListItemPrefix } from "@material-tailwind/react";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
-import React from "react";
 
 import Link from "next/link";
 export function ProfileSidebar() {
 	const session = useSession();
-	const [userName, setUserName] = useState("");
+	const [userFirstName, setUserFirstName] = useState("");
 	const [userEmail, setUserEmail] = useState("");
 
 	useEffect(() => {
 		if (session.status === "authenticated") {
-			setUserName(session.data.user.name);
+			setUserFirstName(session.data.user.firstName);
 			setUserEmail(session.data.user.email);
 		}
 	}, [session]);
@@ -23,7 +22,7 @@ export function ProfileSidebar() {
 			<Card className=" h-full w-full max-w-[20rem] p-4 shadow-none rounded-none  hidden lg:flex flex-col">
 				<div className="mb-2 p-4">
 					<Typography variant="h5" color="blue-gray">
-						Hala {userName}!
+						Hala {userFirstName}!
 						<br />
 						<span className="text-sm font-normal text-blue-gray-500">{userEmail}</span>
 					</Typography>

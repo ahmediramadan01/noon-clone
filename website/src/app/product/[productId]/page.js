@@ -1,18 +1,14 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Footer } from "@/components/footer";
-import { NavbarSimple } from "@/components/nav-bar";
 import { ProductGallery } from "@/components/product-gallery";
 import Image from "next/image";
 import { HeartIcon } from "@heroicons/react/24/outline";
 import { Overview } from "@/components/overview";
-import { Freatures } from "@/components/features";
+import { Features } from "@/components/features";
 import { ProductCard } from "@/components/product-card";
 import DeliveryInfoItems from "@/components/delivery-info";
 import ProductPrice from "@/components/product-price";
 import WarrantyInfo from "@/components/warranty-info";
-import MegaMenuWithHover from "@/components/nav-links";
-import { Header } from "@/components/header";
 
 function ProductPage({ params }) {
 	const productImages = ["/ps5-1.png", "/ps5-2.png", "/ps5-3.png", "/ps5-4.png"];
@@ -23,14 +19,12 @@ function ProductPage({ params }) {
 		{ label: "Saving", currency: "EGP", amount: "100", className: "saving-amount" },
 	];
 
-	// Data for delivery info divs
 	const DeliveryInfo = [
 		{ imgSrc: "/secure_transaction.png", text: "Delivery by noon" },
 		{ imgSrc: "/delivery_by_noon.png", text: "High Rated Seller" },
 		{ imgSrc: "/high_rated_seller.png", text: "Secure Transaction" },
 	];
 
-	// Data for warranty info items
 	const warrantyInfoItems = [
 		{ icon: "/warranty.svg", text: "1 year warranty", href: "#" },
 		{ icon: "/noon-locker.svg", text: "Free delivery on Pickup Points", href: "#" },
@@ -90,7 +84,7 @@ function ProductPage({ params }) {
 
 						<div className="visa">
 							<a href="#">
-								<img src="/visa-banner.avif" alt="visabanner" />
+								<img src="/visa-banner.avif" alt="visa-banner" />
 							</a>
 						</div>
 
@@ -117,7 +111,7 @@ function ProductPage({ params }) {
 							</div>
 						</div>
 
-						{/* releated products */}
+						{/* related products */}
 					</div>
 
 					{/* seller and warranty info */}
@@ -192,14 +186,14 @@ function ProductPage({ params }) {
 				{/* overview section */}
 				<div>
 					<Overview
-						overviewText="lorem ipsum dort playstation 5 for gaming and fun for my team 5 best group ever iam happy to work with you and i expect to be the best projcet lorem ipsum dort playstation 5 for gaming and fun for my team 5 best group everiam happy to work with you and i expect to be the best projcet"
+						overviewText="lorem ipsum dort playstation 5 for gaming and fun for my team 5 best group ever iam happy to work with you and i expect to be the best project lorem ipsum dort playstation 5 for gaming and fun for my team 5 best group ever iam happy to work with you and i expect to be the best project"
 						productData={{ brand: "Sony", name: "PlayStation 5", color: "Black", modelNo: "PS5-1234" }}
 					/>
 				</div>
 
 				{/* product features section */}
 				<div className="my-5">
-					<Freatures featuresImgSrc="/ps5-features.jpg" />
+					<Features featuresImgSrc="/ps5-features.jpg" />
 				</div>
 
 				{/* related products */}

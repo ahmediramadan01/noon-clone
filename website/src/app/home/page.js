@@ -318,14 +318,12 @@ const othersCategoriesImages = [
 	othersCategoriesImage4,
 ];
 
+import React, { useEffect, useState } from "react";
 import { DealsCard } from "@/components/deals-card";
-import { Footer } from "@/components/footer";
 import { CategorySwiper } from "@/components/categorySwiper";
 import { ProductSwiper } from "@/components/productsSwiper";
 import { TopBrands } from "@/components/top-brands";
 import { CategoriesCards } from "@/components/categories-cards";
-import { Header } from "@/components/header";
-import { useEffect, useState } from "react";
 
 export default function HomePage() {
 	const [products, setProducts] = useState([]);
@@ -355,11 +353,11 @@ export default function HomePage() {
 	}, [products]);
 
 	useEffect(() => {
-		console.log(electronicsProducts);
-		console.log(beautyProducts);
-		console.log(stationaryProducts);
-		console.log(fashionProducts);
-		console.log(groceryProducts);
+		// console.log(electronicsProducts);
+		// console.log(beautyProducts);
+		// console.log(stationaryProducts);
+		// console.log(fashionProducts);
+		// console.log(groceryProducts);
 	}, [electronicsProducts]);
 
 	return (

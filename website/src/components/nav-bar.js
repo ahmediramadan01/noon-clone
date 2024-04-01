@@ -1,9 +1,11 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
+import { getServerSession } from "next-auth";
 import {
 	Navbar,
 	Collapse,
@@ -24,9 +26,6 @@ import {
 	MenuHandler,
 	MenuList,
 	MenuItem,
-	List,
-	ListItem,
-	ListItemPrefix,
 } from "@material-tailwind/react";
 import {
 	Bars3Icon,
@@ -49,11 +48,12 @@ function NavList() {
 	const [logInError, setLogInError] = useState("");
 
 	const session = useSession();
-	const [userName, setUserName] = useState("");
+	const [userFirstName, setUserFirstName] = useState("");
 
 	useEffect(() => {
-		if (session.status === "authenticated") {
-			setUserName(session.data.user.name);
+		if (session?.status === "authenticated") {
+			console.log(session);
+			setUserFirstName(session.data.user.firstName);
 		}
 	}, [session]);
 
@@ -65,7 +65,7 @@ function NavList() {
 	const signupUser = async (event) => {
 		event.preventDefault();
 
-		const name = event.target[0].value;
+		const firstName = event.target[0].value;
 		const email = event.target[1].value;
 		const password = event.target[2].value;
 
@@ -84,9 +84,16 @@ function NavList() {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({
-					name,
+					firstName,
 					email,
 					password,
+					lastName: "",
+					phoneNumber: "",
+					birthday: "",
+					gender: "",
+					nationality: "",
+					wishlist: [],
+					cart: [],
 				}),
 			});
 
@@ -152,7 +159,7 @@ function NavList() {
 					<MenuHandler className="cursor-pointer flex items-center gap-3 tracking-normal">
 						<span variant="text" className="flex items-center gap-3 tracking-normal">
 							<span className="font-bold text-left text-sm">
-								<span className="text-xs font-light whitespace-no-wrap">Ahlan {userName}!</span>
+								<span className="text-xs font-light whitespace-no-wrap">Ahlan {userFirstName}!</span>
 								<br />
 								<span className="whitespace-no-wrap">My Account</span>
 							</span>
@@ -420,7 +427,7 @@ function NavList() {
 									<TabPanel value="login" className="p-0">
 										<form onSubmit={loginUser} className="mt-12 flex flex-col gap-4">
 											<div className="mb-1 flex flex-col gap-6">
-												<Typography variant="h6" color="blue-gray" className="">
+												<Typography variant="h6" color="blue-gray">
 													Email
 												</Typography>
 												<Input
@@ -432,7 +439,7 @@ function NavList() {
 													}}
 													required
 												/>
-												<Typography variant="h6" color="blue-gray" className="">
+												<Typography variant="h6" color="blue-gray">
 													Password
 												</Typography>
 												<Input
@@ -455,7 +462,7 @@ function NavList() {
 									<TabPanel value="signup" className="p-0">
 										<form onSubmit={signupUser} className="mt-12 flex flex-col gap-4">
 											<div className="mb-1 flex flex-col gap-6">
-												<Typography variant="h6" color="blue-gray" className="">
+												<Typography variant="h6" color="blue-gray">
 													Name
 												</Typography>
 												<Input
@@ -467,7 +474,7 @@ function NavList() {
 													}}
 													required
 												/>
-												<Typography variant="h6" color="blue-gray" className="">
+												<Typography variant="h6" color="blue-gray">
 													Email
 												</Typography>
 												<Input
@@ -479,7 +486,7 @@ function NavList() {
 													}}
 													required
 												/>
-												<Typography variant="h6" color="blue-gray" className="">
+												<Typography variant="h6" color="blue-gray">
 													Password
 												</Typography>
 												<Input

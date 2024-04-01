@@ -47,7 +47,7 @@ export function ProductSwiper({ data }) {
 	}, [data]);
 
 	useEffect(() => {
-		console.log(products);
+		// console.log(products);
 	}, [products]);
 
 	return (
