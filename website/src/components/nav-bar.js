@@ -4,8 +4,6 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
-import { getSession } from "next-auth/react";
-import { getServerSession } from "next-auth";
 import {
 	Navbar,
 	Collapse,
@@ -39,6 +37,8 @@ import Image from "next/image";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 
 function NavList() {
+	const session = useSession();
+
 	const [open, setOpen] = React.useState(false);
 	const handleOpen = () => setOpen((cur) => !cur);
 
@@ -47,7 +47,6 @@ function NavList() {
 	const [error, setError] = useState("");
 	const [logInError, setLogInError] = useState("");
 
-	const session = useSession();
 	const [userFirstName, setUserFirstName] = useState("");
 
 	useEffect(() => {

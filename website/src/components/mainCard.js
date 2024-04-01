@@ -1,46 +1,85 @@
 "use client";
-import { Card, CardHeader, CardBody, CardFooter, Typography } from "@material-tailwind/react";
-import React from "react";
+import {
+	Card,
+	CardHeader,
+	CardBody,
+	CardFooter,
+	Typography,
+	Menu,
+	MenuHandler,
+	MenuItem,
+	MenuList,
+} from "@material-tailwind/react";
+import React, { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
-import ProductImage from "/public/images/product.jpg";
+import Link from "next/link";
 
-export function MainCard() {
+export function MainCard({ data }) {
+	const session = useSession();
+	const [product, setProduct] = useState({});
+
+	useEffect(() => {
+		setProduct({ ...data });
+	}, [data]);
+
+	useEffect(() => {
+		// console.log(product.title);
+	}, [product]);
+
+	const deleteFromWishlist = () => {
+		session.update({
+			...session.data.user,
+			wishlist: [...session.data.user.wishlist.filter((productId) => productId !== product._id)],
+		});
+	};
+
 	return (
 		<>
 			<Card className="w-[18rem] shadow-lg ms-3 mt-2 rounded-none">
 				<CardHeader floated={false} color="transparent" className="relative rounded-none">
 					<div className="flex justify-center">
-						<Image src={ProductImage} width="200" height="200" alt="Product Image" className="m-10" />
+						<Image
+							src={product.thumbnail}
+							width="175"
+							height="240"
+							alt="Product Image"
+							className="m-10"
+							style={{
+								objectFit: "contain",
+								width: "175px",
+								height: "240px",
+							}}
+						/>
 						<div className="absolute inset-0 h-full w-full bg-black/5" />
-						<Typography
-							color="black"
-							className="absolute bottom-4 left-4 flex items-center gap-1.5 font-normal">
-							4.2
+						<Typography color="black" className="absolute bottom-4 left-4 flex items-center gap-1.5 font-normal">
+							{product.rating}
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								viewBox="0 0 24 24"
 								fill="currentColor"
-								className="-mt-0.5 h-5 w-5 text-green-500">
+								className="-mt-0.5 h-5 w-5 text-green-500"
+							>
 								<path
 									fillRule="evenodd"
 									d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
 									clipRule="evenodd"
 								/>
 							</svg>
-							<p className="text-gray-400">(70)</p>
+							<p className="text-gray-400">({product.ratingQuantity})</p>
 						</Typography>
 					</div>
 				</CardHeader>
 				<CardBody>
-					<div className="mb-3 flex items-center justify-between">
-						<Typography variant="h5" color="blue-gray" className="text-sm font-medium">
-							Sony PlayStation 5 Console (Disc Version) With Controller
+					<Link href={`/product/${product._id}`}>
+						<Typography variant="h6" color="blue-gray" className="font-medium text-sm">
+							{product.title}
 						</Typography>
-					</div>
+					</Link>
 					<p>
-						EGP <span className="font-bold text-xl">38,700</span>{" "}
-						<span className="line-through">40,999</span>{" "}
-						<span className="text-xs">Only 2 days left In stock</span>
+						EGP <span className="font-bold text-xl">{product.price}</span>{" "}
+						<span className="line-through">{product.price + (product.price * product.discountPercentage) / 100}</span>{" "}
+						<span className="text-green-700 font-semibold">{product.discountPercentage}%</span>
 					</p>
 				</CardBody>
 				<CardFooter className="pt-1">
@@ -81,12 +120,24 @@ export function MainCard() {
 					<div className="pt-3 flex flex-row items-center justify-center lg:justify-between">
 						<button
 							className="flex-1 select-none rounded bg-[#3866df] py-2 px-1 sm:px-2 xm:px-2 lg:px-5  text-center align-middle font-sans text-xs lg:text-sm font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none mb-2 sm:mb-0"
-							type="button">
+							type="button"
+						>
 							ADD TO CART
 						</button>
-						<button className="ms-3 w-10 py-1 px-3 text-center align-middle text-[#3866df] rounded border-2 border-[#3866df]">
-							...
-						</button>
+						<Menu>
+							<MenuHandler>
+								<button className="ms-3 w-10 py-1 px-3 text-center align-middle text-[#3866df] rounded border-2 border-[#3866df]">
+									...
+								</button>
+							</MenuHandler>
+							<MenuList>
+								<MenuItem>
+									<button onClick={deleteFromWishlist} className="text-[#dc2626]">
+										Delete
+									</button>
+								</MenuItem>
+							</MenuList>
+						</Menu>
 					</div>
 				</CardFooter>
 			</Card>

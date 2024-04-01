@@ -18,6 +18,7 @@ export function ProductCard({ data }) {
 	}, [product]);
 
 	const session = useSession();
+
 	const addToWishlist = () => {
 		if (!session.data.user.wishlist.includes(product._id)) {
 			session.update({

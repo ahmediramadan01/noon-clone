@@ -1,8 +1,8 @@
 "use client";
 
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import React, { useEffect, useState } from "react";
 
 import {
 	Card,
@@ -26,6 +26,8 @@ import { MainCard } from "@/components/mainCard";
 
 export default function WishlistPage() {
 	const [open, setOpen] = React.useState(false);
+	const router = useRouter();
+	const session = useSession();
 
 	const toggleOpen = () => setOpen((cur) => !cur);
 	const [open2, setOpen2] = React.useState(false);
@@ -35,12 +37,33 @@ export default function WishlistPage() {
 
 	const handleOpenShare = () => setOpenShare(!openShare);
 
-	const router = useRouter();
-	const session = useSession();
+	const [userWishlist, setUserWishlist] = useState([]);
+
+	useEffect(() => {
+		const fetchWishlistProducts = async () => {
+			try {
+				const wishlistProducts = await Promise.all(
+					session.data.user.wishlist.map(async (productId) => {
+						const response = await fetch(`http://localhost:3000/api/products/${productId}`);
+						if (!response.ok) {
+							throw new Error(`Failed to fetch product with ID ${productId}`);
+						}
+						return await response.json();
+					})
+				);
+
+				setUserWishlist(wishlistProducts);
+			} catch (error) {
+				console.error(error);
+			}
+		};
+
+		fetchWishlistProducts();
+	});
 
 	useEffect(() => {
 		if (session?.status !== "authenticated") {
-			router?.replace("/");
+			router?.refresh();
 		}
 	}, [session, router]);
 
@@ -98,7 +121,7 @@ export default function WishlistPage() {
 							<div className="basis-1/3 hidden md:flex flex-col flex-1">
 								<div className=" p-1 bg-gray-200 mr-9 mt-4">
 									<div className="flex mt-4">
-										<p className="font-bold">Menna Ismail</p>
+										<p className="font-bold">default</p>
 										<button className="rounded-full bg-blue-700 ms-8 text-white w-24">Default</button>
 									</div>
 									<div className="flex mt-3">
@@ -122,7 +145,7 @@ export default function WishlistPage() {
 								<div className="w-full">
 									<div className="flex flex-wrap items-start mt-4">
 										<div className="w-full lg:w-1/4 md:w-1/4 sm:w-full">
-											<p className="font-bold w-full lg:w-32 md:w-32 mt-2 ps-2">Menna Ismail</p>
+											<p className="font-bold w-full lg:w-32 md:w-32 mt-2 ps-2">default</p>
 										</div>
 										<div className="w-full lg:w-1/4 md:w-1/4 sm:w-1/4">
 											<button className="rounded-full bg-blue-700 ms-2 mt-2 text-white w-full lg:w-24 md:w-24">
@@ -132,7 +155,7 @@ export default function WishlistPage() {
 
 										<div className="w-full lg:w-1/4 md:w-1/4 sm:w-1/4">
 											<button
-												className="rounded-full ms-4 lg:ms-auto mt-2 lg:mt-2 md:mt-2 border-2 border-black-50 text-black w-full lg:w-24 md:w-24 flex"
+												className="px-2 rounded-full ms-4 lg:ms-auto mt-2 lg:mt-2 md:mt-2 border-2 border-black-50 text-black flex"
 												onClick={handleOpenShare}
 											>
 												<svg
@@ -187,7 +210,7 @@ export default function WishlistPage() {
 
 										<div className="w-full lg:w-1/4 md:w-1/4 sm:w-full">
 											<button
-												className="rounded-full ms-2  mt-2 lg:mt-2 md:mt-2 border-2 border-black-50 text-black w-full lg:w-16 md:w-16 sm:w-16 flex"
+												className="px-2 rounded-full ms-2  mt-2 lg:mt-2 md:mt-2 border-2 border-black-50 text-black flex"
 												onClick={toggleOpen}
 											>
 												...More
@@ -236,16 +259,7 @@ export default function WishlistPage() {
 
 								<hr className="mt-2 w-full sm:w-full"></hr>
 								<div className="flex flex-wrap items-center content-center w-full">
-									<MainCard></MainCard>
-									<MainCard></MainCard>
-									<MainCard></MainCard>
-									<MainCard></MainCard>
-									<MainCard></MainCard>
-									<MainCard></MainCard>
-									<MainCard></MainCard>
-									<MainCard></MainCard>
-									<MainCard></MainCard>
-									<MainCard></MainCard>
+									{userWishlist && userWishlist.map((product, index) => <MainCard key={index} data={product} />)}
 								</div>
 							</div>
 						</div>
