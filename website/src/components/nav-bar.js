@@ -51,7 +51,7 @@ function NavList() {
 
 	useEffect(() => {
 		if (session?.status === "authenticated") {
-			console.log(session);
+			// console.log(session);
 			setUserFirstName(session.data.user.firstName);
 		}
 	}, [session]);
@@ -140,6 +140,7 @@ function NavList() {
 	};
 
 	const [openMenu, setOpenMenu] = React.useState(false);
+
 	return (
 		<ul className="my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-4">
 			<li className="p-1 font-medium text-sm">

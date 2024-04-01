@@ -6,9 +6,7 @@ import { useSession } from "next-auth/react";
 
 import {
 	Card,
-	CardHeader,
 	CardBody,
-	CardFooter,
 	Typography,
 	Button,
 	Collapse,
@@ -18,7 +16,6 @@ import {
 	DialogBody,
 	DialogFooter,
 	Input,
-	Textarea,
 	Checkbox,
 } from "@material-tailwind/react";
 
@@ -40,25 +37,23 @@ export default function WishlistPage() {
 	const [userWishlist, setUserWishlist] = useState([]);
 
 	useEffect(() => {
-		const fetchWishlistProducts = async () => {
+		const getWishlistProducts = async () => {
 			try {
 				const wishlistProducts = await Promise.all(
 					session.data.user.wishlist.map(async (productId) => {
 						const response = await fetch(`http://localhost:3000/api/products/${productId}`);
 						if (!response.ok) {
-							throw new Error(`Failed to fetch product with ID ${productId}`);
+							throw new Error(`Error getting ${productId} product`);
 						}
 						return await response.json();
 					})
 				);
-
 				setUserWishlist(wishlistProducts);
 			} catch (error) {
 				console.error(error);
 			}
 		};
-
-		fetchWishlistProducts();
+		getWishlistProducts();
 	});
 
 	useEffect(() => {

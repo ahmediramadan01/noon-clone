@@ -13,10 +13,6 @@ export function ProductCard({ data }) {
 		setProduct({ ...data });
 	}, [data]);
 
-	useEffect(() => {
-		// console.log(product.title);
-	}, [product]);
-
 	const session = useSession();
 
 	const addToWishlist = () => {

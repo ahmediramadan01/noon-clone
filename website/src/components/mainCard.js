@@ -23,15 +23,22 @@ export function MainCard({ data }) {
 		setProduct({ ...data });
 	}, [data]);
 
-	useEffect(() => {
-		// console.log(product.title);
-	}, [product]);
-
 	const deleteFromWishlist = () => {
 		session.update({
 			...session.data.user,
 			wishlist: [...session.data.user.wishlist.filter((productId) => productId !== product._id)],
 		});
+	};
+
+	const addToCart = () => {
+		if (!session.data.user.cart.some((item) => item.id === product._id)) {
+			session.update({
+				...session.data.user,
+				cart: [...session.data.user.cart, { id: product._id, quantity: 1 }],
+			});
+		}
+
+		deleteFromWishlist();
 	};
 
 	return (
@@ -121,6 +128,7 @@ export function MainCard({ data }) {
 						<button
 							className="flex-1 select-none rounded bg-[#3866df] py-2 px-1 sm:px-2 xm:px-2 lg:px-5  text-center align-middle font-sans text-xs lg:text-sm font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none mb-2 sm:mb-0"
 							type="button"
+							onClick={addToCart}
 						>
 							ADD TO CART
 						</button>
