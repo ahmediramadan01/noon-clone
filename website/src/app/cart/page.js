@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
@@ -13,6 +13,28 @@ import Image9 from "../../../public/cart-1.png";
 export default function CartPage() {
 	const router = useRouter();
 	const session = useSession();
+
+	const [userCart, setUserCart] = useState([]);
+
+	useEffect(() => {
+		const getCartProducts = async () => {
+			try {
+				const cartProducts = await Promise.all(
+					session.data.user.cart.map(async (product) => {
+						const response = await fetch(`http://localhost:3000/api/products/${product.id}`);
+						if (!response.ok) {
+							throw new Error(`Error getting ${product.id} product`);
+						}
+						return await response.json();
+					})
+				);
+				setUserCart(cartProducts);
+			} catch (error) {
+				console.error(error);
+			}
+		};
+		getCartProducts();
+	});
 
 	useEffect(() => {
 		if (session?.status !== "authenticated") {
@@ -31,12 +53,7 @@ export default function CartPage() {
 							</h1>
 							<Image className="py-2  2xl:w-auto " src={Image9} layout="responsive"></Image>
 							<CartCard2 />
-							<CartCard />
-							<CartCard />
-							<CartCard />
-							<CartCard />
-							<CartCard />
-							<CartCard />
+							{userCart && userCart.map((product, index) => <CartCard key={index} data={product} />)}
 						</div>
 					</div>
 					<div className="w-full md:w-4/12 px-2 relative ">

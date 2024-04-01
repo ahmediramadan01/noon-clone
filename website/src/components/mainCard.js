@@ -30,15 +30,14 @@ export function MainCard({ data }) {
 		});
 	};
 
-	const addToCart = () => {
+	const addToCart = async () => {
 		if (!session.data.user.cart.some((item) => item.id === product._id)) {
-			session.update({
+			await session.update({
 				...session.data.user,
 				cart: [...session.data.user.cart, { id: product._id, quantity: 1 }],
 			});
+			// deleteFromWishlist();
 		}
-
-		deleteFromWishlist();
 	};
 
 	return (
