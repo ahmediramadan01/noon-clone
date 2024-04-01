@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
     Card,
     Typography,
@@ -25,6 +25,8 @@ export function SearchSidebar() {
     const handleOpen = (value) => {
         setOpen(open === value ? 0 : value);
     };
+
+
 
     return (
         <>
@@ -293,152 +295,7 @@ export function SearchSidebar() {
                         </List>
                     </AccordionBody>
                 </Accordion>
-                <Accordion
-                    open={open === 6}
-                    icon={
-                        <ChevronDownIcon
-                            strokeWidth={2.5}
-                            className={`mx-auto h-4 w-4 transition-transform ${open === 6 ? "rotate-180" : ""}`}
-                        />
-                    }
-                >
-                    <ListItem className="p-0" selected={open === 6}>
-                        <AccordionHeader onClick={() => handleOpen(6)} className="border-b-0 p-3">
 
-                            <Typography color="blue-gray" className="mr-auto font-normal">
-                                Type of Console Software
-                            </Typography>
-                        </AccordionHeader>
-                    </ListItem>
-                    <AccordionBody className="py-2 ">
-                        <List className="p-0 ">
-                            <div className="block">
-                                <div className="flex justify-between">
-                                    <div className="flex">
-                                        <Checkbox color="blue" />
-
-                                        <span className="text-md mt-3 text-sm">Sony</span>
-
-                                    </div>
-                                    <span className=" mt-2 text-gray-400 text-sm">(477)</span>
-                                </div>
-                                <div className="flex justify-between">
-                                    <div className="flex">
-                                        <Checkbox color="blue" />
-                                        <span className="text-md mt-3 text-sm">PlayStation 4 (PS4)</span>
-                                    </div>
-                                    <span className=" mt-2 text-gray-400 text-sm">(876)</span>
-                                </div>
-                                <div className="flex justify-between">
-                                    <div className="flex">
-                                        <Checkbox color="blue" />
-
-                                        <span className="text-md mt-3 text-sm">PlayStation 4 (PS4)</span>
-
-                                    </div>
-                                    <span className=" mt-2 text-gray-400 text-sm">(876)</span>
-                                </div>
-                                <div className="flex justify-between">
-                                    <div className="flex">
-                                        <Checkbox color="blue" />
-
-                                        <span className="text-md mt-3 text-sm">PS4/PS5</span>
-
-                                    </div>
-                                    <span className=" mt-2 text-gray-400 text-sm">(95)</span>
-                                </div>
-                                <div className="flex justify-between">
-                                    <div className="flex">
-                                        <Checkbox color="blue" />
-
-                                        <span className="text-md mt-3 text-sm">PC Games</span>
-
-                                    </div>
-                                    <span className=" mt-2 text-gray-400 text-sm">(4)</span>
-                                </div>
-                                <div className="flex justify-between">
-                                    <div className="flex">
-                                        <Checkbox color="blue" />
-
-                                        <span className="text-md mt-3 text-sm">PlayStation 3 (PS3)</span>
-
-                                    </div>
-                                    <span className=" mt-2 text-gray-400 text-sm">(4)</span>
-                                </div>
-                                <div className="flex justify-between">
-                                    <div className="flex">
-                                        <Checkbox color="blue" />
-
-                                        <span className="text-md mt-3 text-sm">PlayStation 2 (PS2)</span>
-
-                                    </div>
-                                    <span className=" mt-2 text-gray-400 text-sm">(2)</span>
-                                </div>
-                                <div className="flex justify-between">
-                                    <div className="flex">
-                                        <Checkbox color="blue" />
-
-                                        <span className="text-md mt-3 text-sm">PlayStation Portable (PSP) (PS2)</span>
-
-                                    </div>
-                                    <span className=" mt-2 text-gray-400 text-sm">(1)</span>
-                                </div>
-
-
-
-                            </div>
-                        </List>
-                    </AccordionBody>
-                </Accordion>
-                <Accordion
-                    open={open === 7}
-                    icon={
-                        <ChevronDownIcon
-                            strokeWidth={2.5}
-                            className={`mx-auto h-4 w-4 transition-transform ${open === 7 ? "rotate-180" : ""}`}
-                        />
-                    }
-                >
-                    <ListItem className="p-0" selected={open === 7}>
-                        <AccordionHeader onClick={() => handleOpen(7)} className="border-b-0 p-3">
-
-                            <Typography color="blue-gray" className="mr-auto font-normal">
-                                New Arrivals
-                            </Typography>
-                        </AccordionHeader>
-                    </ListItem>
-                    <AccordionBody className="py-2 ">
-                        <List className="p-0 ">
-                            <div className="block">
-                                <div className="flex justify-between">
-                                    <div className="flex">
-                                        <Checkbox color="blue" />
-
-                                        <span className="text-md mt-3 text-sm">Last 7 Days</span>
-
-                                    </div>
-                                    <span className=" mt-2 text-gray-400 text-sm">(1)</span>
-                                </div>
-                                <div className="flex justify-between">
-                                    <div className="flex">
-                                        <Checkbox color="blue" />
-                                        <span className="text-md mt-3 text-sm">Last 30 Days</span>
-                                    </div>
-                                    <span className=" mt-2 text-gray-400 text-sm">(11)</span>
-                                </div>
-                                <div className="flex justify-between">
-                                    <div className="flex">
-                                        <Checkbox color="blue" />
-
-                                        <span className="text-md mt-3 text-sm">Last 60 Days</span>
-
-                                    </div>
-                                    <span className=" mt-2 text-gray-400 text-sm">(12)</span>
-                                </div>
-                            </div>
-                        </List>
-                    </AccordionBody>
-                </Accordion>
                 <Accordion
                     open={open === 8}
                     icon={
