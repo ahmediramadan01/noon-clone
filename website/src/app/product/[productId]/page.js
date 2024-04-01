@@ -3,9 +3,6 @@ import React, { useEffect, useState } from "react";
 import { ProductGallery } from "@/components/product-gallery";
 import Image from "next/image";
 import { HeartIcon } from "@heroicons/react/24/outline";
-import { Overview } from "@/components/overview";
-import { Features } from "@/components/features";
-import { ProductCard } from "@/components/product-card";
 import DeliveryInfoItems from "@/components/delivery-info";
 import ProductPrice from "@/components/product-price";
 import WarrantyInfo from "@/components/warranty-info";
@@ -13,11 +10,16 @@ import WarrantyInfo from "@/components/warranty-info";
 function ProductPage({ params }) {
 	const productImages = ["/ps5-1.png", "/ps5-2.png", "/ps5-3.png", "/ps5-4.png"];
 
-	const pricesData = [
-		{ label: "Was", currency: "EGP", amount: "299", className: "old-price" },
-		{ label: "Now", currency: "EGP", amount: "400", className: "current-price font-extrabold" },
-		{ label: "Saving", currency: "EGP", amount: "100", className: "saving-amount" },
-	];
+	const [product, setProduct] = useState({});
+
+	useEffect(() => {
+		fetch(`http://localhost:3000/api/products/${params.productId}`)
+			.then((response) => response.json())
+			.then((data) => {
+				setProduct({ ...data });
+			})
+			.catch((error) => console.error(error));
+	}, []);
 
 	const DeliveryInfo = [
 		{ imgSrc: "/secure_transaction.png", text: "Delivery by noon" },
@@ -31,28 +33,13 @@ function ProductPage({ params }) {
 		{ icon: "/non_returnable.svg", text: "This item cannot be exchanged or returned", href: "#" },
 	];
 
-	const [product, setProduct] = useState({});
-
-	useEffect(() => {
-		fetch(`http://localhost:3000/api/products/${params.productId}`)
-			.then((response) => response.json())
-			.then((data) => {
-				setProduct({ ...data });
-			})
-			.catch((error) => console.error(error));
-	}, []);
-
-	useEffect(() => {
-		console.log(product);
-	}, [product]);
-
 	return (
 		<>
 			<div className="mx-auto my-2">
 				<div className="flex flex-wrap">
 					<div className="w-full md:w-1/2 lg:w-1/3 px-2">
 						{/* product images gallery */}
-						<ProductGallery images={productImages} />
+						<ProductGallery data={product.images} />
 					</div>
 
 					{/* product info */}
@@ -61,7 +48,7 @@ function ProductPage({ params }) {
 						<h1 className="font-semibold text-2xl my-5">{product.title}</h1>
 
 						{/* product price */}
-						<ProductPrice prices={pricesData} />
+						<ProductPrice data={product} />
 
 						<div className="delivery my-5 flex">
 							<Image src={"/express.svg"} width={80} height={20}></Image>
@@ -185,19 +172,16 @@ function ProductPage({ params }) {
 
 				{/* overview section */}
 				<div>
-					<Overview
-						overviewText="lorem ipsum dort playstation 5 for gaming and fun for my team 5 best group ever iam happy to work with you and i expect to be the best project lorem ipsum dort playstation 5 for gaming and fun for my team 5 best group ever iam happy to work with you and i expect to be the best project"
-						productData={{ brand: "Sony", name: "PlayStation 5", color: "Black", modelNo: "PS5-1234" }}
-					/>
+					<p className="p-2">{product.description}</p>
 				</div>
 
 				{/* product features section */}
-				<div className="my-5">
+				{/* <div className="my-5">
 					<Features featuresImgSrc="/ps5-features.jpg" />
-				</div>
+				</div> */}
 
 				{/* related products */}
-				<div className="my-10">
+				{/* <div className="my-10">
 					<h1 className="text-2xl font-semibold text-gray-900 h-20 flex items-center px-2">More Form Sony</h1>
 
 					<div className="my-10 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
@@ -207,7 +191,7 @@ function ProductPage({ params }) {
 						<ProductCard />
 						<ProductCard />
 					</div>
-				</div>
+				</div> */}
 			</div>
 		</>
 	);
