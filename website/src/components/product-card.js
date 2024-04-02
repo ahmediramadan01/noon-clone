@@ -7,13 +7,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 export function ProductCard({ data }) {
+	const session = useSession();
 	const [product, setProduct] = useState({});
 
 	useEffect(() => {
 		setProduct({ ...data });
 	}, [data]);
-
-	const session = useSession();
 
 	const addToWishlist = () => {
 		if (!session.data.user.wishlist.includes(product._id)) {

@@ -81,7 +81,7 @@ export default function CartCard({ data }) {
 							<label className="text-xs  sm:px-0 md:px-1 lg:px-2" for="op">
 								Qty
 							</label>
-							<select id="op" className="p-2 px-3 bg-white border-2 text-sm text-center rounded-md">
+							<select className="p-2 px-3 bg-white border-2 text-sm text-center rounded-md">
 								{product &&
 									Array.from({ length: product.quantityInStock }, (_, index) => (
 										<option key={index + 1} value={index + 1}>

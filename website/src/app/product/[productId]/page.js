@@ -1,16 +1,27 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
 import { ProductGallery } from "@/components/product-gallery";
 import Image from "next/image";
 import { HeartIcon } from "@heroicons/react/24/outline";
 import DeliveryInfoItems from "@/components/delivery-info";
 import ProductPrice from "@/components/product-price";
 import WarrantyInfo from "@/components/warranty-info";
+import { IconButton } from "@material-tailwind/react";
 
 function ProductPage({ params }) {
-	const productImages = ["/ps5-1.png", "/ps5-2.png", "/ps5-3.png", "/ps5-4.png"];
+	const session = useSession();
 
 	const [product, setProduct] = useState({});
+
+	const addToWishlist = () => {
+		if (!session.data.user.wishlist.includes(product._id)) {
+			session.update({
+				...session.data.user,
+				wishlist: [...session.data.user.wishlist, product._id],
+			});
+		}
+	};
 
 	useEffect(() => {
 		fetch(`http://localhost:3000/api/products/${params.productId}`)
@@ -83,19 +94,50 @@ function ProductPage({ params }) {
 						</div>
 
 						{/* add to cart/wishlist buttons */}
-						<div className="flex items-center shadow-md p-2 my-3">
+						<div className="flex items-end justify-around p-2 my-3">
 							<div className="w-1/6 flex items-center flex-col">
-								<span className="text-black-600 text-sm">Quantity: </span>
-								<input type="number" className="border border-gray-300 rounded-lg p-2 w-16 h-10 mb-4" />
+								<span className="text-black-600 text-sm mb-2">Quantity</span>
+								{/* <input type="number" className="border border-gray-300 rounded-lg p-2 w-16 h-10" /> */}
+								<select className="w-16 h-10 p-2 px-3 bg-white border-2 text-sm text-center rounded-md">
+									{product &&
+										Array.from({ length: product.quantityInStock }, (_, index) => (
+											<option key={index + 1} value={index + 1}>
+												{index + 1}
+											</option>
+										))}
+								</select>
 							</div>
 
-							<div className="w-4/6 h-10 mx-2">
-								<button className="bg-purple-500 text-white px-4 py-2 rounded-lg w-full">Add To Cart</button>
+							<div className="w-4/6 h-10">
+								<button className="bg-[#3866df] text-white px-4 py-2 rounded-lg w-full">Add To Cart</button>
 							</div>
 
-							<div className="w-1/6 h-10  flex items-center bg-purple-50 rounded-lg">
-								<HeartIcon className="w-6 h-6 m-auto" />
-							</div>
+							{/* <div className="w-1/6 h-10  flex items-center  rounded-lg"> */}
+							{/* <HeartIcon className="w-6 h-6 m-auto" /> */}
+							<IconButton
+								size="md"
+								color="white"
+								variant="text"
+								className=" bg-white shadow-lg h-10 "
+								onClick={addToWishlist}
+							>
+								<svg
+									width="25"
+									height="25"
+									viewBox="0 0 20 20"
+									fill={session.data?.user.wishlist.includes(product._id) ? "#3866df" : "none"}
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M17.3667 3.84172C16.941 3.41589 16.4357 3.0781 15.8795 2.84763C15.3232 2.61716 14.7271 2.49854 14.125 2.49854C13.5229 2.49854 12.9268 2.61716 12.3705 2.84763C11.8143 3.0781 11.309 3.41589 10.8833 3.84172L10 4.72506L9.11666 3.84172C8.25692 2.98198 7.09086 2.49898 5.875 2.49898C4.65914 2.49898 3.49307 2.98198 2.63333 3.84172C1.77359 4.70147 1.29059 5.86753 1.29059 7.08339C1.29059 8.29925 1.77359 9.46531 2.63333 10.3251L3.51666 11.2084L10 17.6917L16.4833 11.2084L17.3667 10.3251C17.7925 9.89943 18.1303 9.39407 18.3608 8.83785C18.5912 8.28164 18.7099 7.68546 18.7099 7.08339C18.7099 6.48132 18.5912 5.88514 18.3608 5.32893C18.1303 4.77271 17.7925 4.26735 17.3667 3.84172V3.84172Z"
+										stroke={session.data?.user.wishlist.includes(product._id) ? "none" : "#7E859B"}
+										strokeWidth="2"
+										strokeLinecap="round"
+										strokeLinejoin="round"
+									/>
+								</svg>
+							</IconButton>
+							{/* </div> */}
 						</div>
 
 						{/* related products */}
@@ -174,24 +216,6 @@ function ProductPage({ params }) {
 				<div>
 					<p className="p-2">{product.description}</p>
 				</div>
-
-				{/* product features section */}
-				{/* <div className="my-5">
-					<Features featuresImgSrc="/ps5-features.jpg" />
-				</div> */}
-
-				{/* related products */}
-				{/* <div className="my-10">
-					<h1 className="text-2xl font-semibold text-gray-900 h-20 flex items-center px-2">More Form Sony</h1>
-
-					<div className="my-10 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
-						<ProductCard />
-						<ProductCard />
-						<ProductCard />
-						<ProductCard />
-						<ProductCard />
-					</div>
-				</div> */}
 			</div>
 		</>
 	);
