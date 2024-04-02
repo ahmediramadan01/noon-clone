@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { ProductGallery } from "@/components/product-gallery";
 import Image from "next/image";
-import { HeartIcon } from "@heroicons/react/24/outline";
 import DeliveryInfoItems from "@/components/delivery-info";
 import ProductPrice from "@/components/product-price";
 import WarrantyInfo from "@/components/warranty-info";
@@ -14,11 +13,21 @@ function ProductPage({ params }) {
 
 	const [product, setProduct] = useState({});
 
+	useEffect(() => {
+		fetch(`http://localhost:3000/api/products/${params.productId}`)
+			.then((response) => response.json())
+			.then((data) => {
+				setProduct({ ...data });
+			})
+			.catch((error) => console.error(error));
+	}, []);
+
 	const addToWishlist = () => {
 		if (!session.data.user.wishlist.includes(product._id)) {
 			session.update({
 				...session.data.user,
 				wishlist: [...session.data.user.wishlist, product._id],
+				cart: [...session.data.user.cart.filter((item) => item.id !== product._id)],
 			});
 		} else {
 			session.update({
@@ -28,14 +37,20 @@ function ProductPage({ params }) {
 		}
 	};
 
-	useEffect(() => {
-		fetch(`http://localhost:3000/api/products/${params.productId}`)
-			.then((response) => response.json())
-			.then((data) => {
-				setProduct({ ...data });
-			})
-			.catch((error) => console.error(error));
-	}, []);
+	const addToCart = () => {
+		if (!session.data.user.cart.some((item) => item.id === product._id)) {
+			session.update({
+				...session.data.user,
+				cart: [...session.data.user.cart, { id: product._id, quantity: 1 }],
+				wishlist: [...session.data.user.wishlist.filter((productId) => productId !== product._id)],
+			});
+		} else {
+			session.update({
+				...session.data.user,
+				cart: [...session.data.user.cart.filter((item) => item.id !== product._id)],
+			});
+		}
+	};
 
 	const DeliveryInfo = [
 		{ imgSrc: "/secure_transaction.png", text: "Delivery by noon" },
@@ -114,7 +129,9 @@ function ProductPage({ params }) {
 							</div>
 
 							<div className="w-4/6 h-10">
-								<button className="bg-[#3866df] text-white px-4 py-2 rounded-lg w-full">Add To Cart</button>
+								<button onClick={addToCart} className="bg-[#3866df] text-white px-4 py-2 rounded-lg w-full">
+									Add To Cart
+								</button>
 							</div>
 
 							{/* <div className="w-1/6 h-10  flex items-center  rounded-lg"> */}

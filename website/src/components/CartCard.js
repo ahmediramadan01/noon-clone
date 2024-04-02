@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { Card, CardHeader, CardBody, Typography } from "@material-tailwind/react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function CartCard({ data }) {
 	const session = useSession();
@@ -24,6 +25,12 @@ export default function CartCard({ data }) {
 			session.update({
 				...session.data.user,
 				wishlist: [...session.data.user.wishlist, product._id],
+				cart: [...session.data.user.cart.filter((item) => item.id !== product._id)],
+			});
+		} else {
+			session.update({
+				...session.data.user,
+				cart: [...session.data.user.cart.filter((item) => item.id !== product._id)],
 			});
 		}
 	};
@@ -46,13 +53,15 @@ export default function CartCard({ data }) {
 					/>
 				</CardHeader>
 				<CardBody>
-					<Typography
-						variant=" md:h6"
-						color="blue-gray"
-						className="md:mb-2 sm:text-sm sm:font-bold md:text-sm md:font-bold"
-					>
-						{product.title}
-					</Typography>
+					<Link href={`/product/${product._id}`}>
+						<Typography
+							variant=" md:h6"
+							color="blue-gray"
+							className="md:mb-2 sm:text-sm sm:font-bold md:text-sm md:font-bold"
+						>
+							{product.title}
+						</Typography>
+					</Link>
 					<Typography color="gray" className="mb-8 text-xs font-xs">
 						Order in the next 57 m <br />
 						Get it <span className="p-0 font-extrabold text-green-900">Tomorrow.</span>
