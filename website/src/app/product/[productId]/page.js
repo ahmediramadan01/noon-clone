@@ -20,6 +20,11 @@ function ProductPage({ params }) {
 				...session.data.user,
 				wishlist: [...session.data.user.wishlist, product._id],
 			});
+		} else {
+			session.update({
+				...session.data.user,
+				wishlist: [...session.data.user.wishlist.filter((productId) => productId !== product._id)],
+			});
 		}
 	};
 
