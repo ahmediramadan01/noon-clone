@@ -24,6 +24,7 @@ import {
 	MenuHandler,
 	MenuList,
 	MenuItem,
+	Badge,
 } from "@material-tailwind/react";
 import {
 	Bars3Icon,
@@ -48,13 +49,22 @@ function NavList() {
 	const [logInError, setLogInError] = useState("");
 
 	const [userFirstName, setUserFirstName] = useState("");
+	const [wishlistLength, setWishlistLength] = useState(0);
+	const [cartLength, setCartLength] = useState(0);
 
 	useEffect(() => {
 		if (session?.status === "authenticated") {
 			// console.log(session);
 			setUserFirstName(session.data.user.firstName);
+			setWishlistLength(session.data.user.wishlist.length);
+			setCartLength(session.data.user.cart.length);
 		}
 	}, [session]);
+
+	useEffect(() => {
+		console.log(session.data.user.wishlist.length);
+		console.log(session.data.user.cart.length);
+	}, [userFirstName]);
 
 	const isValidEmail = (email) => {
 		const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -516,13 +526,25 @@ function NavList() {
 			<li className={`px-2 font-medium border-black h-6 w-auto flex items-center`} style={{ borderLeftWidth: "1px" }}>
 				<Link href="/wishlist" className="flex items-center hover:text-blue-500 transition-colors">
 					<span className="font-bold text-sm">Wishlist</span>
-					<HeartIcon className="w-5 h-5 ml-1" />
+					{wishlistLength > 0 ? (
+						<Badge content={wishlistLength} color="blue">
+							<HeartIcon className="w-5 h-5 ml-1" />
+						</Badge>
+					) : (
+						<HeartIcon className="w-5 h-5 ml-1" />
+					)}
 				</Link>
 			</li>
 			<li className={`px-2 font-medium border-black h-6 w-auto flex items-center`} style={{ borderLeftWidth: "1px" }}>
 				<Link href="/cart" className="flex items-center hover:text-blue-500 transition-colors">
 					<span className="font-bold text-sm">Cart</span>
-					<ShoppingCartIcon className="w-5 h-5 ml-1" />
+					{cartLength > 0 ? (
+						<Badge content={cartLength} color="blue">
+							<ShoppingCartIcon className="w-5 h-5 ml-1" />
+						</Badge>
+					) : (
+						<ShoppingCartIcon className="w-5 h-5 ml-1" />
+					)}
 				</Link>
 			</li>
 		</ul>

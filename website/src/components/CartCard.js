@@ -34,14 +34,14 @@ export default function CartCard({ data }) {
 				<CardHeader shadow={false} floated={false} className="m-0 w-1/5 shrink-0 rounded-r-none">
 					<Image
 						src={product.thumbnail}
-						width="175"
-						height="240"
+						width="120"
+						height="165"
 						alt="Product Image"
 						className="m-10"
 						style={{
 							objectFit: "contain",
-							width: "175px",
-							height: "240px",
+							width: "120px",
+							height: "165px",
 						}}
 					/>
 				</CardHeader>
