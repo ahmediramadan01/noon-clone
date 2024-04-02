@@ -61,10 +61,10 @@ function NavList() {
 		}
 	}, [session]);
 
-	useEffect(() => {
-		console.log(session.data.user.wishlist.length);
-		console.log(session.data.user.cart.length);
-	}, [userFirstName]);
+	// useEffect(() => {
+	// 	console.log(session.data.user.wishlist.length);
+	// 	console.log(session.data.user.cart.length);
+	// }, [userFirstName]);
 
 	const isValidEmail = (email) => {
 		const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;

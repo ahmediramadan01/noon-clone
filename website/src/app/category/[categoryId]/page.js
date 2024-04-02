@@ -1,3 +1,5 @@
+"use client";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 //==> ==//> // Components Of Electronic Page
 import { CarouselMain } from "@/components/carousel-main";
@@ -188,6 +190,24 @@ const smallSliderImg = [
 ];
 
 export default function CategoryPage() {
+	const [products, setProducts] = useState([]);
+	const [electronicsProducts, setElectronicsProducts] = useState([]);
+
+	useEffect(() => {
+		fetch("http://localhost:3000/api/products/")
+			.then((response) => response.json())
+			.then((data) => {
+				setProducts([...data]);
+			})
+			.catch((error) => console.error(error));
+	}, []);
+
+	useEffect(() => {
+		if (products.length > 0) {
+			setElectronicsProducts(products.filter((product) => product.category === "electronics"));
+		}
+	}, [products]);
+
 	return (
 		<>
 			<div className="mx-auto">
@@ -220,7 +240,7 @@ export default function CategoryPage() {
 						</button>
 					</div>
 				</div>
-				<ProductSwiper />
+				<ProductSwiper data={electronicsProducts}></ProductSwiper>
 
 				<div className="w-full flex justify-between pb-0 p-6">
 					<div className="text-lg	font-extrabold	">Best Deals </div>
@@ -230,7 +250,7 @@ export default function CategoryPage() {
 						</button>
 					</div>
 				</div>
-				<ProductSwiper />
+				<ProductSwiper data={electronicsProducts}></ProductSwiper>
 				<div className="w-full flex justify-between pb-0 p-6">
 					<div className="text-lg	font-extrabold	">Best Deals </div>
 					<div className="">
@@ -239,7 +259,7 @@ export default function CategoryPage() {
 						</button>
 					</div>
 				</div>
-				<ProductSwiper />
+				<ProductSwiper data={electronicsProducts}></ProductSwiper>
 				<ElectronForEvery items={ElectronicSecFour} />
 				<div className="w-full flex justify-between pb-0 p-6">
 					<div className="text-lg	font-extrabold	">Best Deals </div>
@@ -249,7 +269,7 @@ export default function CategoryPage() {
 						</button>
 					</div>
 				</div>
-				<ProductSwiper />
+				<ProductSwiper data={electronicsProducts}></ProductSwiper>
 				<div className="mt-3 flex-col bg-[#e5e5e5] py-5">
 					<div>
 						<Image className=" " src={Sec4Slider1} alt="hhhkjy" />
@@ -272,7 +292,7 @@ export default function CategoryPage() {
 						</button>
 					</div>
 				</div>
-				<ProductSwiper />
+				<ProductSwiper data={electronicsProducts}></ProductSwiper>
 				<div className="w-full flex justify-between pb-0 p-6">
 					<div className="text-lg	font-extrabold	">Best Deals </div>
 					<div className="">
@@ -282,7 +302,7 @@ export default function CategoryPage() {
 					</div>
 				</div>
 
-				<ProductSwiper />
+				<ProductSwiper data={electronicsProducts}></ProductSwiper>
 				<div className="">
 					<ElectronicSecFive className="flex justify-center" items={ElectronicSecFiveData} />
 				</div>
@@ -294,7 +314,7 @@ export default function CategoryPage() {
 						</button>
 					</div>
 				</div>
-				<ProductSwiper />
+				<ProductSwiper data={electronicsProducts}></ProductSwiper>
 				<div className="w-full flex justify-between pb-0 p-6">
 					<div className="text-lg	font-extrabold	">Best Deals </div>
 					<div className="">
@@ -303,7 +323,7 @@ export default function CategoryPage() {
 						</button>
 					</div>
 				</div>
-				<ProductSwiper />
+				<ProductSwiper data={electronicsProducts}></ProductSwiper>
 				<div className="">
 					<ElectronicSecFive className="flex justify-center" items={ElectronicSecFiveData} />
 				</div>
@@ -315,7 +335,7 @@ export default function CategoryPage() {
 						</button>
 					</div>
 				</div>
-				<ProductSwiper />
+				<ProductSwiper data={electronicsProducts}></ProductSwiper>
 			</div>
 		</>
 	);
