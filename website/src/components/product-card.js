@@ -57,10 +57,16 @@ export function ProductCard({ data }) {
 					className="!absolute top-4 right-4 bg-white shadow-lg"
 					onClick={addToWishlist}
 				>
-					<svg width="25" height="25" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<svg
+						width="25"
+						height="25"
+						viewBox="0 0 20 20"
+						fill={session.data?.user.wishlist.includes(product._id) ? "#3866df" : "none"}
+						xmlns="http://www.w3.org/2000/svg"
+					>
 						<path
 							d="M17.3667 3.84172C16.941 3.41589 16.4357 3.0781 15.8795 2.84763C15.3232 2.61716 14.7271 2.49854 14.125 2.49854C13.5229 2.49854 12.9268 2.61716 12.3705 2.84763C11.8143 3.0781 11.309 3.41589 10.8833 3.84172L10 4.72506L9.11666 3.84172C8.25692 2.98198 7.09086 2.49898 5.875 2.49898C4.65914 2.49898 3.49307 2.98198 2.63333 3.84172C1.77359 4.70147 1.29059 5.86753 1.29059 7.08339C1.29059 8.29925 1.77359 9.46531 2.63333 10.3251L3.51666 11.2084L10 17.6917L16.4833 11.2084L17.3667 10.3251C17.7925 9.89943 18.1303 9.39407 18.3608 8.83785C18.5912 8.28164 18.7099 7.68546 18.7099 7.08339C18.7099 6.48132 18.5912 5.88514 18.3608 5.32893C18.1303 4.77271 17.7925 4.26735 17.3667 3.84172V3.84172Z"
-							stroke="#7E859B"
+							stroke={session.data?.user.wishlist.includes(product._id) ? "none" : "#7E859B"}
 							strokeWidth="2"
 							strokeLinecap="round"
 							strokeLinejoin="round"
@@ -71,27 +77,45 @@ export function ProductCard({ data }) {
 					size="md"
 					color="white"
 					variant="text"
-					className="!absolute bottom-4 right-4 bg-white shadow-lg"
+					className={`!absolute bottom-4 right-4 ${
+						session.data?.user.cart.some((item) => item.id === product._id) ? "bg-[#3866df]" : "bg-[#fff]"
+					} shadow-lg`}
 					onClick={addToCart}
 				>
-					<svg width="25" height="25" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<svg
+						width="25"
+						height="25"
+						viewBox="0 0 20 20"
+						fill={session.data?.user.cart.some((item) => item.id === product._id) ? "#3866df" : "#fff"}
+						xmlns="http://www.w3.org/2000/svg"
+					>
 						<path
 							d="M1.125 4.56689H3.18573L3.803 7.31653L5.13521 13.2495H14.7469L16.3343 7.87281"
-							stroke="#454956"
+							stroke={session.data?.user.cart.some((item) => item.id === product._id) ? "#fff" : "#454956"}
 							strokeWidth="1.5"
 							strokeLinecap="round"
 							strokeLinejoin="round"
 						/>
 						<path
 							d="M6.94436 16.5C7.50644 16.5 7.96209 16.0444 7.96209 15.4823C7.96209 14.9202 7.50644 14.4646 6.94436 14.4646C6.38229 14.4646 5.92664 14.9202 5.92664 15.4823C5.92664 16.0444 6.38229 16.5 6.94436 16.5Z"
-							fill="#454956"
+							fill={session.data?.user.cart.some((item) => item.id === product._id) ? "#fff" : "#454956"}
 						/>
 						<path
 							d="M13.3427 16.5C13.9048 16.5 14.3604 16.0444 14.3604 15.4823C14.3604 14.9202 13.9048 14.4646 13.3427 14.4646C12.7806 14.4646 12.325 14.9202 12.325 15.4823C12.325 16.0444 12.7806 16.5 13.3427 16.5Z"
-							fill="#454956"
+							fill={session.data?.user.cart.some((item) => item.id === product._id) ? "#fff" : "#454956"}
 						/>
-						<path d="M10.162 3V8.97255" stroke="#454956" strokeWidth="1.5" strokeLinecap="round" />
-						<path d="M13.1483 5.98631H7.17544" stroke="#454956" strokeWidth="1.5" strokeLinecap="round" />
+						<path
+							d="M10.162 3V8.97255"
+							stroke={session.data?.user.cart.some((item) => item.id === product._id) ? "#fff" : "#454956"}
+							strokeWidth="1.5"
+							strokeLinecap="round"
+						/>
+						<path
+							d="M13.1483 5.98631H7.17544"
+							stroke={session.data?.user.cart.some((item) => item.id === product._id) ? "#fff" : "#454956"}
+							strokeWidth="1.5"
+							strokeLinecap="round"
+						/>
 					</svg>
 				</IconButton>
 				<Typography color="black" className="!absolute bottom-4 left-4 flex items-center gap-1.5 font-normal">
