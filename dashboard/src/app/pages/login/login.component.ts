@@ -46,25 +46,26 @@ export class LoginComponent {
   loginFunc() {
     const val = this.userLoginForm.value;
     if (val.email && val.password) {
-      this.router.navigateByUrl('/');
+      // this.router.navigateByUrl('/');
       console.log(val.name);
 
-      // this.adminAuth.login(val.name, val.password).subscribe({
-      //   next: (data) => {
-      //     this.checked
-      //       ? this.adminAuth.setCookie(data)
-      //       : this.adminAuth.setSession(data);
+      this.adminAuth.login(val.email, val.password).subscribe({
+        next: (data) => {
+          console.log(data);
+          this.checked
+            ? this.adminAuth.setCookie(data)
+            : this.adminAuth.setSession(data);
 
-      //     this.router.navigateByUrl('/');
-      //   },
-      //   error: (err) => {
-      //     this.tost.error({
-      //       detail: 'Error',
-      //       summary: err.error.message,
-      //       duration: 5000,
-      //     });
-      //   },
-      // });
+          this.router.navigateByUrl('/');
+        },
+        error: (err) => {
+          this.tost.error({
+            detail: 'Error',
+            summary: err.error.message,
+            duration: 5000,
+          });
+        },
+      });
     } else {
       this.fillform = true;
     }

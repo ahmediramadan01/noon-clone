@@ -128,11 +128,13 @@
     <div class="my-3 mx-2">
       <div class="row">
         <div class="col-md-1">
-          <img [src]="product.image" class="w-100" />
+          <img [src]="product.thumbnail" class="w-100" />
         </div>
         <div class="col-md-11 d-flex justify-content-between">
           <div>
-            <h6><span class="grn h6">Name :</span> {{ product.title }}</h6>
+            <h6 class="text-black">
+              <span class="grn h6">Name :</span> {{ product.title }}
+            </h6>
             <h6>
               <span class="grn h6">price :</span>
               {{ product.price }}EGP
@@ -142,13 +144,13 @@
               {{ product.rating.rate }}
             </h6> -->
             <button
-              (click)="removeProduct(product.id)"
+              (click)="removeProduct(product._id)"
               class="btn text-secondar btn-outline-secondary"
             >
               <i class="fa-regular text-secondary mx-2 fa-trash-can"></i>Remove
             </button>
             <button
-              [routerLink]="['/product/editproduct', product.id]"
+              [routerLink]="['/product/editproduct', product._id]"
               class="btn btn-outline-secondary mx-1"
             >
               <i class="fa-solid fa-pen-nib text-secondary mx-2"></i>update

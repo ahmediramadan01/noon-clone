@@ -10,7 +10,9 @@ import { Products } from '../../../models/products';
 import { ProductRequestsService } from '../../../services/product-requests.service';
 import { NgToastService } from 'ng-angular-popup';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 Router;
+Location;
 
 @Component({
   selector: 'app-product',
@@ -29,7 +31,8 @@ export class ProductComponent implements OnInit {
     private _ActivatedRoute: ActivatedRoute,
     private breakpointObserver: BreakpointObserver,
     public productService: ProductRequestsService,
-    public tost: NgToastService
+    public tost: NgToastService,
+    private _Location: Location
   ) {}
   ngOnInit(): void {
     this.breakpointObserver
@@ -41,21 +44,22 @@ export class ProductComponent implements OnInit {
     this.productService.getProducts().subscribe({
       next: (response) => {
         this.AllProducts = response;
-        console.log(this.AllProducts);
+        // this.AllProducts = this.AllProducts.slice(0, 9);
+        console.log(this.AllProducts[1].title);
         this._ActivatedRoute.params.subscribe((updatedObj) => {
-          for (var i = 0; i < this.AllProducts.length; i++) {
-            if (this.AllProducts[i].id == updatedObj.id) {
-              this.AllProducts[i] = updatedObj as Products;
-              console.log(this.AllProducts);
-              return this.AllProducts;
-            }
-          }
+          // for (var i = 0; i < this.AllProducts.length; i++) {
+          //   if (this.AllProducts[i].id == updatedObj.id) {
+          //     this.AllProducts[i] = updatedObj as Products;
+          //     console.log(this.AllProducts);
+          //     return this.AllProducts;
+          //   }
+          // }
         });
-        this._ActivatedRoute.params.subscribe((newprod) => {
-          console.log(newprod);
-          this.AllProducts.push(newprod as Products);
-          console.log(this.AllProducts);
-        });
+        // this._ActivatedRoute.params.subscribe((newprod) => {
+        //   console.log(newprod);
+        //   this.AllProducts.push(newprod as Products);
+        //   console.log(this.AllProducts);
+        // });
       },
       error: (err) => {
         console.log(err);
@@ -79,12 +83,13 @@ export class ProductComponent implements OnInit {
         this.AllProducts = this.AllProducts.filter(
           (product) => product.id !== productId
         );
+        this.ngOnInit();
         console.log(this.AllProducts);
-        // this.tost.success({
-        //   detail: 'success Message',
-        //   summary: 'product deleted successfuly',
-        //   duration: 5000,
-        // });
+        this.tost.success({
+          detail: 'success Message',
+          summary: 'product deleted successfuly',
+          duration: 5000,
+        });
       });
     }
   }
@@ -113,18 +118,47 @@ export class ProductComponent implements OnInit {
   // }
   //===================< next & previes >==================================================
   nextPage() {
-    this.AllProducts = this.AllProducts.slice(9, 15);
-    // console.log();
+    // this.productService.getProducts().subscribe({
+    //   next: (response) => {
+    //     this.AllProducts = response;
+    //     this.AllProducts = this.AllProducts.slice(0, 9)
     // if (this.currentPage < 4) {
     //   this.currentPage++;
     //   this.getAllProducts(this.currentPage);
     // } else {
     //   this.isNextButtonDisabled = true;
     // }
+    // if (this.currentPage == 1) {
+    //   this.productService.getProducts().subscribe({
+    //     next: (resp) => {
+    //       console.log(resp);
+    //       this.AllProducts = resp;
+    //       this.AllProducts = this.AllProducts.slice(10, 19);
+    //       this.currentPage++;
+    //     },
+    //   });
+    // }
+    // if (this.currentPage == 3) {
+    //   this.productService.getProducts().subscribe({
+    //     next: (resp) => {
+    //       console.log(resp);
+    //       this.AllProducts = resp;
+    //       this.AllProducts = this.AllProducts.slice(20, 150);
+    //     },
+    //   });
+    // }
   }
 
+  // console.log();
+  // if (this.currentPage < 4) {
+  //   this.currentPage++;
+  //   this.getAllProducts(this.currentPage);
+  // } else {
+  //   this.isNextButtonDisabled = true;
+  // }
+
   prevPage() {
-    this.AllProducts = this.AllProducts.slice(0, 9);
+    // this.ngOnInit();
     // if (this.currentPage > 1) {
     //   this.currentPage--;
     //   this.getAllProducts(this.currentPage);

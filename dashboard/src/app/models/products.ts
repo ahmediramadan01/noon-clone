@@ -16,4 +16,5 @@ export interface Products {
   brand?: string;
   rating?: number;
   ratingQuantity?: number;
+  quantityInStock?: number;
 }

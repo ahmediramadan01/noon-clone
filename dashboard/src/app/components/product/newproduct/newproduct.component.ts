@@ -130,13 +130,13 @@ export class NewproductComponent implements OnInit {
       next: (data) => {
         let newprod = data;
         console.log(data);
-        // this.tost.success({
-        //   detail: 'success Message',
-        //   summary: 'product created successfuly',
-        //   duration: 5000,
-        // });
+        this.tost.success({
+          detail: 'success Message',
+          summary: 'product created successfuly',
+          duration: 5000,
+        });
 
-        this.router.navigate(['/product/product', newprod]);
+        this.router.navigate(['/product/product']);
       },
       error: (err) => {
         console.log(err);

@@ -24,12 +24,12 @@ export class AdminAuthService {
 
   login(email: any, password: any): Observable<object> {
     let x = JSON.stringify({
-      email: 'mor_2314',
-      password: '83r5^_',
+      email: 'mohamed.fathy@gmail.com',
+      password: '123456',
     });
     return this.httpClient
       .post<IUser>(
-        `${environment.BAseApiURL}/auth/login`,
+        `${environment.BAseApiURL}/sign-in`,
         { x },
         // user,
         this.httpHeader
