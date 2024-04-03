@@ -2,13 +2,9 @@ module.exports = {
 	images: {
 		domains: ["m.media-amazon.com", "images.unsplash.com"],
 	},
-};
-
-const nextConfig = {
 	async headers() {
 		return [
 			{
-				// matching all API routes
 				source: "/api/:path*",
 				headers: [
 					{ key: "Access-Control-Allow-Credentials", value: "true" },
@@ -24,5 +20,3 @@ const nextConfig = {
 		];
 	},
 };
-
-module.exports = nextConfig;

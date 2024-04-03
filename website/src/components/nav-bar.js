@@ -527,7 +527,7 @@ function NavList() {
 				<Link href="/wishlist" className="flex items-center hover:text-blue-500 transition-colors">
 					<span className="font-bold text-sm">Wishlist</span>
 					{wishlistLength > 0 ? (
-						<Badge content={wishlistLength} color="blue">
+						<Badge content={wishlistLength} color="blue" className="bg-[#3866df] min-w-[20px] min-h-[20px]">
 							<HeartIcon className="w-5 h-5 ml-1" />
 						</Badge>
 					) : (
@@ -539,7 +539,7 @@ function NavList() {
 				<Link href="/cart" className="flex items-center hover:text-blue-500 transition-colors">
 					<span className="font-bold text-sm">Cart</span>
 					{cartLength > 0 ? (
-						<Badge content={cartLength} color="blue">
+						<Badge content={cartLength} color="blue" className="bg-[#3866df] min-w-[20px] min-h-[20px]">
 							<ShoppingCartIcon className="w-5 h-5 ml-1" />
 						</Badge>
 					) : (
