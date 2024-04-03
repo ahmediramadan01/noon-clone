@@ -13,6 +13,8 @@ function ProductPage({ params }) {
 
 	const [product, setProduct] = useState({});
 
+	const [cartQuantity, setCartQuantity] = useState(1);
+
 	useEffect(() => {
 		fetch(`http://localhost:3000/api/products/${params.productId}`)
 			.then((response) => response.json())
@@ -21,6 +23,12 @@ function ProductPage({ params }) {
 			})
 			.catch((error) => console.error(error));
 	}, []);
+
+	useEffect(() => {
+		if (session.data?.user.cart.some((item) => item.id === product._id)) {
+			setCartQuantity(session.data?.user.cart.find((item) => item.id === product._id).quantity);
+		}
+	}, [product]);
 
 	const addToWishlist = () => {
 		if (!session.data.user.wishlist.includes(product._id)) {
@@ -41,14 +49,28 @@ function ProductPage({ params }) {
 		if (!session.data.user.cart.some((item) => item.id === product._id)) {
 			session.update({
 				...session.data.user,
-				cart: [...session.data.user.cart, { id: product._id, quantity: 1 }],
+				cart: [...session.data.user.cart, { id: product._id, quantity: cartQuantity }],
 				wishlist: [...session.data.user.wishlist.filter((productId) => productId !== product._id)],
 			});
+			// } else if (cartQuantity !== session.data?.user.cart.find((item) => item.id === product._id).quantity) {
 		} else {
-			session.update({
-				...session.data.user,
-				cart: [...session.data.user.cart.filter((item) => item.id !== product._id)],
-			});
+			// session.update({
+			// 	...session.data.user,
+			// 	cart: [...session.data.user.cart.filter((item) => item.id !== product._id)],
+			// });
+			let newQuantity = session.data?.user.cart.find((item) => item.id === product._id).quantity + cartQuantity;
+			if (newQuantity <= product.quantity) {
+				session.update({
+					...session.data.user,
+					cart: [
+						...session.data.user.cart.filter((item) => item.id !== product._id),
+						{
+							id: product._id,
+							quantity: newQuantity,
+						},
+					],
+				});
+			}
 		}
 	};
 
@@ -115,10 +137,15 @@ function ProductPage({ params }) {
 
 						{/* add to cart/wishlist buttons */}
 						<div className="flex items-end justify-around p-2 my-3">
-							<div className="w-1/6 flex items-center flex-col">
+							<div className=" flex items-center flex-col">
 								<span className="text-black-600 text-sm mb-2">Quantity</span>
-								{/* <input type="number" className="border border-gray-300 rounded-lg p-2 w-16 h-10" /> */}
-								<select className="w-16 h-10 p-2 px-3 bg-white border-2 text-sm text-center rounded-md">
+								<select
+									className="w-16 h-10 p-2 px-3 bg-white border-2 text-sm text-center rounded-md"
+									value={cartQuantity}
+									onChange={(event) => {
+										setCartQuantity(parseInt(event.target.value));
+									}}
+								>
 									{product &&
 										Array.from({ length: product.quantityInStock }, (_, index) => (
 											<option key={index + 1} value={index + 1}>
@@ -129,18 +156,28 @@ function ProductPage({ params }) {
 							</div>
 
 							<div className="w-4/6 h-10">
-								<button onClick={addToCart} className="bg-[#3866df] text-white px-4 py-2 rounded-lg w-full">
-									Add To Cart
-								</button>
+								{session.data?.user.cart.some((item) => item.id === product._id) ? (
+									<button
+										onClick={addToCart}
+										className="bg-[#3866df] text-white px-4 py-2 rounded-lg w-full flex gap-2 items-center justify-center"
+									>
+										<span className="text-[#3866df] rounded-full flex items-center justify-center bg-white border border-[#3866df] w-6 h-6 text-xs">
+											{session.data.user.cart.find((item) => item.id === product._id).quantity}
+										</span>
+										Added To Cart
+									</button>
+								) : (
+									<button onClick={addToCart} className="bg-[#3866df] text-white px-4 py-2 rounded-lg w-full">
+										Add To Cart
+									</button>
+								)}
 							</div>
 
-							{/* <div className="w-1/6 h-10  flex items-center  rounded-lg"> */}
-							{/* <HeartIcon className="w-6 h-6 m-auto" /> */}
 							<IconButton
 								size="md"
 								color="white"
 								variant="text"
-								className=" bg-white shadow-lg h-10 "
+								className="bg-white shadow-lg w-10 h-10"
 								onClick={addToWishlist}
 							>
 								<svg
@@ -159,7 +196,6 @@ function ProductPage({ params }) {
 									/>
 								</svg>
 							</IconButton>
-							{/* </div> */}
 						</div>
 
 						{/* related products */}
