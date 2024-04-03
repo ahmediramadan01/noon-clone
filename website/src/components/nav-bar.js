@@ -154,7 +154,7 @@ function NavList() {
 	return (
 		<ul className="my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-4">
 			<li className="p-1 font-medium text-sm">
-				<a href="#" className="flex items-center hover:text-blue-500 transition-colors">
+				<a href="#" className="flex items-center hover:text-[#3866df] transition-colors">
 					<span className="font-bold">العربية</span>
 				</a>
 			</li>
@@ -524,7 +524,7 @@ function NavList() {
 			</li>
 
 			<li className={`px-2 font-medium border-black h-6 w-auto flex items-center`} style={{ borderLeftWidth: "1px" }}>
-				<Link href="/wishlist" className="flex items-center hover:text-blue-500 transition-colors">
+				<Link href="/wishlist" className="flex items-center hover:text-[#3866df] transition-colors">
 					<span className="font-bold text-sm">Wishlist</span>
 					{wishlistLength > 0 ? (
 						<Badge content={wishlistLength} color="blue" className="bg-[#3866df] min-w-[20px] min-h-[20px]">
@@ -536,7 +536,7 @@ function NavList() {
 				</Link>
 			</li>
 			<li className={`px-2 font-medium border-black h-6 w-auto flex items-center`} style={{ borderLeftWidth: "1px" }}>
-				<Link href="/cart" className="flex items-center hover:text-blue-500 transition-colors">
+				<Link href="/cart" className="flex items-center hover:text-[#3866df] transition-colors">
 					<span className="font-bold text-sm">Cart</span>
 					{cartLength > 0 ? (
 						<Badge content={cartLength} color="blue" className="bg-[#3866df] min-w-[20px] min-h-[20px]">
