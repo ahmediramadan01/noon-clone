@@ -1,0 +1,92 @@
+<form class="w-50 mx-auto my-5" (ngSubmit)="add()" #updateuser="ngForm">
+  <div
+    class="row justify-content-center bg-light align-items-center p-0 m-0 w-100 g-2"
+    style="color: #fff"
+  >
+    <div class="border-bottom pb-2 mb-2 w-75">
+      <div class="text-center fs-1 mt-4" style="color: #2fe5a7"></div>
+      <div class="col-12 p-0" style="color: #2fe5a7">
+        <h2 class="h2 grn text-center">Edit User</h2>
+      </div>
+    </div>
+    <!-- cover -->
+    <!-- <div class="w-100 d-flex justify-content-around align-items-center">
+    <div class="mb-3 mt-3">
+      <ngx-dropzone class="cover" (change)="onSelectThumbnail($event)">
+        <ngx-dropzone-label
+          ><i class="fa-solid fa-camera-retro fs-3 camera"></i
+        ></ngx-dropzone-label>
+        <ngx-dropzone-image-preview
+          class="selected-image-container img-fluid"
+          ngProjectAs="ngx-dropzone-preview"
+          *ngFor="let f of file"
+          [file]="f"
+          [removable]="true"
+          (removed)="onRemove(f)"
+        >
+        </ngx-dropzone-image-preview>
+      </ngx-dropzone>
+    </div>
+  </div> -->
+
+    <div class="col-12">
+      <div class="mb-3">
+        <label for="userName" class="form-label grn">Name</label>
+        <input
+          type="text"
+          class="form-control loginInput"
+          id="userName"
+          placeholder=""
+          name="name"
+          [(ngModel)]="NewUser.username"
+          #userName="ngModel"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="userEmail" class="form-label grn">Email address</label>
+        <input
+          type="email"
+          class="form-control loginInput"
+          id="userEmail"
+          placeholder=""
+          name="email"
+          [(ngModel)]="NewUser.email"
+          #useremail="ngModel"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="userEmail" class="form-label grn"> user id</label>
+        <input
+          type="text"
+          class="form-control loginInput"
+          id="userEmail"
+          placeholder=""
+          name="id"
+          [(ngModel)]="NewUser.id"
+          #userid="ngModel"
+        />
+      </div>
+      <!-- <div class="mb-3">
+        <label for="userPassword" class="form-label text-warning"
+          >Password</label
+        >
+        <input
+          type="password"
+          class="form-control loginInput"
+          id="userPassword"
+          placeholder=""
+          name="password"
+          formControlName="password"
+        />
+      </div> -->
+    </div>
+    <div class="col-12 my-4 d-flex justify-content-center">
+      <input
+        type="submit"
+        value="Add"
+        class="loginInput py-2 border-0 rounded-2 px-5 bg-yellow"
+      />
+    </div>
+  </div>
+</form>

@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: rgba(238, 237, 237, 0.918) !important;
+  color: black !important;
+}
+
+app-dashboard {
+  width: 100%;
+}
+.bg-dark {
+  background-color: rgba(255, 255, 231, 0.918) !important;
+  color: black !important;
+}
+
+.bg-yellow {
+  background-color: rgba(236, 236, 26, 0.4);
+}
+.bg-red {
+  background-color: rgba(240, 10, 0, 0.5);
+}
+
+.bg-gray {
+  background-color: rgba(209, 209, 201, 0.8);
+}
+
+// .bg-gr {
+//   background-color: rgba(245, 245, 237, 0.4);
+// }
+
+// .pk-0 {
+//   padding-top: 25rem;
+// }
