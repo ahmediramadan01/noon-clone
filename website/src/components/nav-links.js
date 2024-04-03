@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -11,13 +10,11 @@ import { ChevronDownIcon } from "@heroicons/react/24/solid";
 export function MegaMenuWithHover() {
 	// Define the links array
 	const links = [
-		{ title: "Electronics", href: "/category/1" },
-		{ title: "Mobile", href: "#" },
-		{ title: "Baby Toys", href: "#" },
-		{ title: "Men", href: "#" },
-		{ title: "Women", href: "#" },
-		{ title: "Market", href: "#" },
-		{ title: "Home", href: "/" },
+		{ title: "Electronics", href: "/electronics" },
+		{ title: "Stationary", href: "#" },
+		{ title: "Fashion", href: "#" },
+		{ title: "Beauty", href: "#" },
+		{ title: "Grocery", href: "#" },
 		{ title: "Sell on Noon", href: "#" },
 		{ title: "Deals", href: "#" },
 	];
@@ -28,7 +25,7 @@ export function MegaMenuWithHover() {
 		// Update slides per view based on screen size
 		const handleResize = () => {
 			if (window.innerWidth >= 1024) {
-				setSlidesPerView(9); // Large screens
+				setSlidesPerView(7); // Large screens
 			} else if (window.innerWidth >= 768) {
 				setSlidesPerView(4); // Medium screens
 			} else {
@@ -82,10 +79,9 @@ export function MegaMenuWithHover() {
 
 				<div className="main-links overflow-hidden flex items-center px-2">
 					<Swiper
-						slidesPerView={slidesPerView}
-						spaceBetween={1} // Adjust the space between slides here
+						slidesPerView={slidesPerView} // Adjust the space between slides here
 						navigation={false}
-						speed={400}
+						speed={500}
 					>
 						{links.map((link, index) => (
 							<SwiperSlide key={index}>
