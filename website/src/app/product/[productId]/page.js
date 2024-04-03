@@ -10,9 +10,7 @@ import { IconButton } from "@material-tailwind/react";
 
 function ProductPage({ params }) {
 	const session = useSession();
-
 	const [product, setProduct] = useState({});
-
 	const [cartQuantity, setCartQuantity] = useState(1);
 
 	useEffect(() => {
@@ -46,29 +44,26 @@ function ProductPage({ params }) {
 	};
 
 	const addToCart = () => {
-		if (!session.data.user.cart.some((item) => item.id === product._id)) {
+		const cartItemIndex = session.data.user.cart.findIndex((item) => item.id === product._id);
+		if (cartItemIndex === -1) {
 			session.update({
 				...session.data.user,
 				cart: [...session.data.user.cart, { id: product._id, quantity: cartQuantity }],
 				wishlist: [...session.data.user.wishlist.filter((productId) => productId !== product._id)],
 			});
-			// } else if (cartQuantity !== session.data?.user.cart.find((item) => item.id === product._id).quantity) {
 		} else {
-			// session.update({
-			// 	...session.data.user,
-			// 	cart: [...session.data.user.cart.filter((item) => item.id !== product._id)],
-			// });
-			let newQuantity = session.data?.user.cart.find((item) => item.id === product._id).quantity + cartQuantity;
-			if (newQuantity <= product.quantity) {
+			const newQuantity = session.data.user.cart[cartItemIndex].quantity + cartQuantity;
+			if (newQuantity <= product.quantityInStock) {
+				const updatedCart = session.data.user.cart.map((item, index) => {
+					if (index === cartItemIndex) {
+						return { ...item, quantity: newQuantity };
+					}
+					return item;
+				});
+
 				session.update({
 					...session.data.user,
-					cart: [
-						...session.data.user.cart.filter((item) => item.id !== product._id),
-						{
-							id: product._id,
-							quantity: newQuantity,
-						},
-					],
+					cart: [...updatedCart],
 				});
 			}
 		}
