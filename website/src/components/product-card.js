@@ -19,6 +19,7 @@ export function ProductCard({ data }) {
 			session.update({
 				...session.data.user,
 				wishlist: [...session.data.user.wishlist, product._id],
+				cart: [...session.data.user.cart.filter((item) => item.id !== product._id)],
 			});
 		} else {
 			session.update({
@@ -33,6 +34,12 @@ export function ProductCard({ data }) {
 			session.update({
 				...session.data.user,
 				cart: [...session.data.user.cart, { id: product._id, quantity: 1 }],
+				wishlist: [...session.data.user.wishlist.filter((productId) => productId !== product._id)],
+			});
+		} else {
+			session.update({
+				...session.data.user,
+				cart: [...session.data.user.cart.filter((item) => item.id !== product._id)],
 			});
 		}
 	};
@@ -90,7 +97,7 @@ export function ProductCard({ data }) {
 						width="25"
 						height="25"
 						viewBox="0 0 20 20"
-						fill={session.data?.user.cart.some((item) => item.id === product._id) ? "#3866df" : "#fff"}
+						fill={session.data?.user.cart.some((item) => item.id === product._id) ? "none" : "#fff"}
 						xmlns="http://www.w3.org/2000/svg"
 					>
 						<path

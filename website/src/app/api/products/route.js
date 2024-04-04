@@ -9,10 +9,16 @@ export async function GET(request) {
 	try {
 		const searchParams = new URL(request.url).searchParams;
 		const query = searchParams.get("query");
+		const limit = parseInt(searchParams.get("limit")) || 10;
+		const page = parseInt(searchParams.get("page")) || 1;
 
-		const filteredProducts = query
-			? await collection.find({ title: { $regex: query, $options: "i" } }).toArray()
-			: await collection.find({}).toArray();
+		const filters = query ? { title: { $regex: query, $options: "i" } } : {};
+
+		const filteredProducts = await collection
+			.find(filters)
+			.limit(limit)
+			.skip(limit * (page - 1))
+			.toArray();
 
 		return new Response(JSON.stringify(filteredProducts), {
 			headers: {

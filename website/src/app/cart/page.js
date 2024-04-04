@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import CartCard from "@/components/CartCard";
@@ -11,7 +10,6 @@ import CartCard4 from "@/components/CartCard4";
 import Image9 from "../../../public/cart-1.png";
 
 export default function CartPage() {
-	const router = useRouter();
 	const session = useSession();
 
 	const [userCart, setUserCart] = useState([]);
@@ -35,12 +33,6 @@ export default function CartPage() {
 		};
 		getCartProducts();
 	});
-
-	useEffect(() => {
-		if (session?.status !== "authenticated") {
-			router?.replace("/");
-		}
-	}, [session, router]);
 
 	return (
 		<>

@@ -24,26 +24,28 @@ export function MainCard({ data }) {
 	}, [data]);
 
 	const deleteFromWishlist = () => {
-		session.update({
-			...session.data.user,
-			wishlist: [...session.data.user.wishlist.filter((productId) => productId !== product._id)],
-		});
+		if (session.data.user.wishlist.includes(product._id)) {
+			session.update({
+				...session.data.user,
+				wishlist: [...session.data.user.wishlist.filter((productId) => productId !== product._id)],
+			});
+		}
 	};
 
 	const addToCart = async () => {
 		if (!session.data.user.cart.some((item) => item.id === product._id)) {
-			await session.update({
+			session.update({
 				...session.data.user,
 				cart: [...session.data.user.cart, { id: product._id, quantity: 1 }],
+				wishlist: [...session.data.user.wishlist.filter((productId) => productId !== product._id)],
 			});
-			// deleteFromWishlist();
 		}
 	};
 
 	return (
 		<>
-			<Card className="w-[18rem] shadow-lg ms-3 mt-2 rounded-none">
-				<CardHeader floated={false} color="transparent" className="relative rounded-none">
+			<Card className="w-[18rem] shadow-lg ms-3 mt-2 rounded-sm">
+				<CardHeader floated={false} color="transparent" className="relative rounded-sm">
 					<div className="flex justify-center">
 						<Image
 							src={product.thumbnail}

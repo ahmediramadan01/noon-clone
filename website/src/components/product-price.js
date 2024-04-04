@@ -21,7 +21,7 @@ const ProductPrice = ({ data }) => {
 			<div className={`saving-amount my-3`}>
 				<span className="text-gray-600">Saving: </span>
 				<span className="text-gray-900">EG </span>
-				<span className="text-gray-900">{(product.price * product.discountPercentage) / 100}</span>
+				<span className="text-gray-900">{((product.price * product.discountPercentage) / 100).toFixed(1)}</span>
 			</div>
 		</>
 	);
