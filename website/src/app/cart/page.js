@@ -18,12 +18,16 @@ export default function CartPage() {
 		const getCartProducts = async () => {
 			try {
 				const cartProducts = await Promise.all(
-					session.data.user.cart.map(async (product) => {
-						const response = await fetch(`http://localhost:3000/api/products/${product.id}`);
+					session.data.user.cart.map(async (item) => {
+						const response = await fetch(`http://localhost:3000/api/products/${item.id}`);
 						if (!response.ok) {
-							throw new Error(`Error getting ${product.id} product`);
+							throw new Error(`Error getting ${item.id} product`);
 						}
-						return await response.json();
+						const product = await response.json();
+						return {
+							...product,
+							quantity: item.quantity,
+						};
 					})
 				);
 				setUserCart(cartProducts);
@@ -41,7 +45,11 @@ export default function CartPage() {
 					<div className="w-full md:w-8/12 px-4">
 						<div className=" p-4 ">
 							<h1 className="p-1 text-2xl fw-bolder font-extrabold  font-sans">
-								Cart <span className=" text-sm text-gray-500">(6 items)</span>
+								Cart
+								<span className=" text-sm text-gray-500">
+									({session.data?.user.cart.reduce((totalQuantity, product) => totalQuantity + product.quantity, 0)}{" "}
+									items)
+								</span>
 							</h1>
 							<Image className="py-2  2xl:w-auto " src={Image9} layout="responsive"></Image>
 							<CartCard2 />
@@ -50,7 +58,7 @@ export default function CartPage() {
 					</div>
 					<div className="w-full md:w-4/12 px-2 relative ">
 						<div className=" p-2 sticky top-0">
-							<CartCard3 />
+							<CartCard3 data={userCart} />
 							<CartCard4 />
 						</div>
 					</div>

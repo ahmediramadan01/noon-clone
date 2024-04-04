@@ -35,6 +35,23 @@ export default function CartCard({ data }) {
 		}
 	};
 
+	const changeCartQuantity = (event) => {
+		let newQuantity = parseInt(event.target.value);
+		setProduct((prevProduct) => ({ ...prevProduct, quantity: newQuantity }));
+
+		const productIndex = session.data.user.cart.findIndex((item) => item.id === product._id);
+
+		if (productIndex !== -1) {
+			const updatedCart = [...session.data.user.cart];
+			updatedCart[productIndex] = { ...updatedCart[productIndex], quantity: newQuantity };
+
+			session.update({
+				...session.data.user,
+				cart: updatedCart,
+			});
+		}
+	};
+
 	return (
 		<>
 			<Card className="w-full rounded-none  flex-row mt-2">
@@ -90,7 +107,11 @@ export default function CartCard({ data }) {
 							<label className="text-xs  sm:px-0 md:px-1 lg:px-2" for="op">
 								Qty
 							</label>
-							<select className="p-2 px-3 bg-white border-2 text-sm text-center rounded-md">
+							<select
+								className="p-2 px-3 bg-white border-2 text-sm text-center rounded-md"
+								value={product.quantity}
+								onChange={(event) => changeCartQuantity(event)}
+							>
 								{product &&
 									Array.from({ length: product.quantityInStock }, (_, index) => (
 										<option key={index + 1} value={index + 1}>
@@ -104,10 +125,10 @@ export default function CartCard({ data }) {
 					<div className="absolute top-4 right-1">
 						<p>
 							<h2 className=" xl:font-extrabold xl:text-xl sm:text-sm text-black">
-								<span className="text-xs font-thin">EGP </span> {product.price}
+								<span className="text-xs font-thin">EGP </span> {product.price * product.quantity}
 							</h2>{" "}
 							<span className="line-through text-xs">
-								{product.price + (product.price * product.discountPercentage) / 100}
+								{((product.price + (product.price * product.discountPercentage) / 100) * product.quantity).toFixed(1)}
 							</span>{" "}
 							<span className="text-green-700  text-xs font-semibold">{product.discountPercentage}%</span>
 							<Image className=" object-cover mt-2   " src="/cart-6.svg" width="60" height="60"></Image>
