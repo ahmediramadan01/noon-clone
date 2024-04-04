@@ -36,7 +36,7 @@ export default function CartPage() {
 			}
 		};
 		getCartProducts();
-	});
+	}, [session]);
 
 	return (
 		<>

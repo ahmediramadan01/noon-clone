@@ -54,7 +54,7 @@ export default function WishlistPage() {
 			}
 		};
 		getWishlistProducts();
-	});
+	}, [session]);
 
 	useEffect(() => {
 		if (session?.status !== "authenticated") {
