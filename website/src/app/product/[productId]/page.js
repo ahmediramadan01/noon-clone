@@ -6,7 +6,7 @@ import Image from "next/image";
 import DeliveryInfoItems from "@/components/delivery-info";
 import ProductPrice from "@/components/product-price";
 import WarrantyInfo from "@/components/warranty-info";
-import { IconButton } from "@material-tailwind/react";
+import { IconButton, Typography, Rating } from "@material-tailwind/react";
 
 function ProductPage({ params }) {
 	const session = useSession();
@@ -94,6 +94,13 @@ function ProductPage({ params }) {
 					<div className="w-full md:w-1/2 lg:w-1/3 px-2 py-2" style={{ borderRight: "1px solid #DDD" }}>
 						<span className="brand">{product.brand}</span>
 						<h1 className="font-semibold text-2xl my-5">{product.title}</h1>
+
+						<div className="flex items-center gap-2 font-bold text-blue-gray-500">
+							<Typography color="blue-gray" className="font-medium text-blue-gray-500">
+								{product.rating} Based on {product.ratingQuantity} Ratings
+							</Typography>
+							<Rating unratedColor="amber" ratedColor="amber" />
+						</div>
 
 						{/* product price */}
 						<ProductPrice data={product} />

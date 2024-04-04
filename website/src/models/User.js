@@ -45,6 +45,10 @@ const userSchema = new Schema(
 			type: Array,
 			default: [],
 		},
+		ratings: {
+			type: Array,
+			default: [],
+		},
 	},
 	{ timestamps: true }
 );
