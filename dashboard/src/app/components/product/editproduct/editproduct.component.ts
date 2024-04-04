@@ -132,11 +132,11 @@ export class EditproductComponent implements OnInit {
         next: (data) => {
           let updatedObject = data;
           console.log(updatedObject);
-          // this.tost.success({
-          //   detail: 'success Message',
-          //   summary: 'product updated successfuly',
-          //   duration: 5000,
-          // });
+          this.tost.success({
+            detail: 'success Message',
+            summary: 'product updated successfuly',
+            duration: 5000,
+          });
           this.router.navigate([`/product/product`, updatedObject]);
         },
         error: (err) => {

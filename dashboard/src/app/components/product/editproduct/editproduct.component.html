@@ -94,18 +94,18 @@
           >
             <!-- cover -->
             <div
-              class="d-flex justify-content-center align-items-center cver-content"
+              class="d-flex pb-4 justify-content-center align-items-center cver-content"
             >
               <div>
                 <div>
-                  <!-- <img
+                  <img
                     class="product-cover img-fluid"
                     [src]="product.thumbnail"
                     alt="product cover"
-                  /> -->
+                  />
                 </div>
               </div>
-              <div class="mb-3 mt-3 ms-3">
+              <!-- <div class="mb-3 mt-3 ms-3">
                 <ngx-dropzone
                   class="cover"
                   (change)="onSelectThumbnail($event)"
@@ -123,7 +123,7 @@
                   >
                   </ngx-dropzone-image-preview>
                 </ngx-dropzone>
-              </div>
+              </div> -->
             </div>
             <!-- images 1 -->
             <div
@@ -142,7 +142,7 @@
                   </div>
                 </div>
               </div>
-              <div class="mb-3 mt-3">
+              <!-- <div class="mb-3 mt-3">
                 <ngx-dropzone
                   class="product-images"
                   (change)="onSelectImage($event)"
@@ -160,7 +160,7 @@
                   >
                   </ngx-dropzone-image-preview>
                 </ngx-dropzone>
-              </div>
+              </div> -->
             </div>
           </div>
           <!-- info container -->
@@ -255,6 +255,94 @@
                   name="price"
                   required
                   #productPrice="ngModel"
+                  [ngClass]="{
+                    'is-invalid':
+                      (productPrice.touched || productPrice.dirty) &&
+                      productPrice.invalid
+                  }"
+                />
+                <span class="invalid-feedback">
+                  <span *ngIf="productPrice.errors?.['required']"
+                    >product price is required
+                  </span>
+                </span>
+              </div>
+              <!-- <div class="mt-3 mb-3">
+                <label class="me-2">quantity:</label>
+                <input
+                  class="form-control"
+                  type="number"
+                  [(ngModel)]="product.quantity"
+                  name="quantity"
+                  required
+                  #productquantity="ngModel"
+                  [ngClass]="{
+                    'is-invalid':
+                      (productquantity.touched || productquantity.dirty) &&
+                      productquantity.invalid
+                  }"
+                />
+                <span class="invalid-feedback">
+                  <span *ngIf="productquantity.errors?.['required']"
+                    >product quantity is required
+                  </span>
+                </span>
+              </div> -->
+            </div>
+            <div class="w-100 justify-content-around align-items-center price">
+              <div class="mt-3 mb-3">
+                <label class="me-2">discountPercentage:</label>
+                <input
+                  class="form-control"
+                  type="number"
+                  [(ngModel)]="product.discountPercentage"
+                  name="discountPercentage"
+                  required
+                  #productdiscountPercentage="ngModel"
+                  [ngClass]="{
+                    'is-invalid':
+                      (productPrice.touched || productPrice.dirty) &&
+                      productPrice.invalid
+                  }"
+                />
+                <span class="invalid-feedback">
+                  <span *ngIf="productPrice.errors?.['required']"
+                    >product price is required
+                  </span>
+                </span>
+              </div>
+              <!-- <div class="mt-3 mb-3">
+                <label class="me-2">quantity:</label>
+                <input
+                  class="form-control"
+                  type="number"
+                  [(ngModel)]="product.quantity"
+                  name="quantity"
+                  required
+                  #productquantity="ngModel"
+                  [ngClass]="{
+                    'is-invalid':
+                      (productquantity.touched || productquantity.dirty) &&
+                      productquantity.invalid
+                  }"
+                />
+                <span class="invalid-feedback">
+                  <span *ngIf="productquantity.errors?.['required']"
+                    >product quantity is required
+                  </span>
+                </span>
+              </div> -->
+            </div>
+            <div class="w-100 justify-content-around align-items-center price">
+              <div class="mt-3 mb-3">
+                <label class="me-2">quantityInStock:</label>
+                <input
+                  class="form-control"
+                  type="number"
+                  [(ngModel)]="product.quantityInStock"
+                  name="quantityInStock"
+                  required
+                  #productquantityInStock="ngModel"
                   [ngClass]="{
                     'is-invalid':
                       (productPrice.touched || productPrice.dirty) &&
