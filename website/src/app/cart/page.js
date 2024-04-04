@@ -45,7 +45,7 @@ export default function CartPage() {
 					<div className="w-full md:w-8/12 px-4">
 						<div className=" p-4 ">
 							<h1 className="p-1 text-2xl fw-bolder font-extrabold  font-sans">
-								Cart
+								Cart{" "}
 								<span className=" text-sm text-gray-500">
 									({session.data?.user.cart.reduce((totalQuantity, product) => totalQuantity + product.quantity, 0)}{" "}
 									items)
