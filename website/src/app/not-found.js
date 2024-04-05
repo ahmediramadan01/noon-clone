@@ -1,6 +1,3 @@
-import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
-
 import Image from "next/image";
 import Link from "next/link";
 import error404Image from "/public/images/error-404.svg";
