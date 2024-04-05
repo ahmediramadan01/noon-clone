@@ -81,6 +81,53 @@ function ProductPage({ params }) {
 		{ icon: "/non_returnable.svg", text: "This item cannot be exchanged or returned", href: "#" },
 	];
 
+	const [rated, setRated] = useState();
+
+	useEffect(() => {
+		setRated(session.data?.user.ratings?.find((item) => item.id === product._id)?.rating);
+	}, [product]);
+
+	useEffect(() => {
+		console.log(rated);
+	}, [rated]);
+
+	const rateProduct = (value) => {
+		setRated(0);
+		if (value == rated) {
+			const updatedRatings = session.data.user.ratings.filter((item) => item.id !== product._id);
+			session.update({
+				...session.data.user,
+				ratings: updatedRatings,
+			});
+		} else {
+			setRated(value);
+
+			const updatedRatings = session.data.user.ratings.filter((item) => item.id !== product._id);
+			session.update({
+				...session.data.user,
+				ratings: updatedRatings,
+			});
+
+			if (!session.data.user.ratings.some((item) => item.id === product._id)) {
+				session.update({
+					...session.data.user,
+					ratings: [...session.data.user.ratings, { id: product._id, rating: value }],
+				});
+			} else {
+				const updatedRatings = session.data.user.ratings.map((item) => {
+					if (item.id === product._id) {
+						return { ...item, rating: value };
+					}
+					return item;
+				});
+				session.update({
+					...session.data.user,
+					ratings: updatedRatings,
+				});
+			}
+		}
+	};
+
 	return (
 		<>
 			<div className="mx-auto my-2">
@@ -99,7 +146,13 @@ function ProductPage({ params }) {
 							<Typography color="blue-gray" className="font-medium text-blue-gray-500">
 								{product.rating} Based on {product.ratingQuantity} Ratings
 							</Typography>
-							<Rating unratedColor="amber" ratedColor="amber" />
+
+							<Rating
+								unratedColor="amber"
+								ratedColor="amber"
+								value={rated || 0} // Use `rated` directly as the value, default to 0 if `rated` is falsy
+								onChange={(value) => rateProduct(value)}
+							/>
 						</div>
 
 						{/* product price */}
