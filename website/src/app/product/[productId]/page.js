@@ -91,30 +91,108 @@ function ProductPage({ params }) {
 		console.log(rated);
 	}, [rated]);
 
-	const rateProduct = (value) => {
-		if (value === rated) {
-			setRated(0);
-			session.update({
-				...session.data.user,
-				ratings: session.data.user.ratings.filter((item) => item.id !== product._id),
-			});
-		} else {
-			setRated(value);
-			const updatedRatings = session.data.user.ratings.map((item) => {
-				if (item.id === product._id) {
-					return { ...item, rating: value };
-				}
-				return item;
-			});
+	const rateProduct = async (value) => {
+		if (value !== rated) {
+			if (!rated) {
+				let newProductRatingQuantity = product.ratingQuantity + 1;
+				let newProductRating = (product.ratingQuantity * product.rating + value) / newProductRatingQuantity;
+				try {
+					const response = await fetch(`http://localhost:3000/api/products/${product._id}`, {
+						method: "PATCH",
+						headers: {
+							"Content-Type": "application/json",
+						},
+						body: JSON.stringify({ rating: newProductRating, ratingQuantity: newProductRatingQuantity }),
+					});
 
-			if (!session.data.user.ratings.some((item) => item.id === product._id)) {
-				updatedRatings.push({ id: product._id, rating: value });
+					if (!response.ok) {
+						throw new Error("Failed to update product rating");
+					}
+
+					console.log("Product rating updated successfully");
+				} catch (error) {
+					console.error("Error updating product rating:", error.message);
+				}
+
+				const updatedRatings = session.data.user.ratings.map((item) => {
+					if (item.id === product._id) {
+						return { ...item, rating: value };
+					}
+					return item;
+				});
+
+				if (!session.data.user.ratings.some((item) => item.id === product._id)) {
+					updatedRatings.push({ id: product._id, rating: value });
+				}
+
+				session.update({
+					...session.data.user,
+					ratings: updatedRatings,
+				});
+				setRated(value);
+			} else {
+				let newProductRating = (product.ratingQuantity * product.rating + value - rated) / product.ratingQuantity;
+				try {
+					const response = await fetch(`http://localhost:3000/api/products/${product._id}`, {
+						method: "PATCH",
+						headers: {
+							"Content-Type": "application/json",
+						},
+						body: JSON.stringify({ rating: newProductRating }),
+					});
+
+					if (!response.ok) {
+						throw new Error("Failed to update product rating");
+					}
+
+					console.log("Product rating updated successfully");
+				} catch (error) {
+					console.error("Error updating product rating:", error.message);
+				}
+
+				const updatedRatings = session.data.user.ratings.map((item) => {
+					if (item.id === product._id) {
+						return { ...item, rating: value };
+					}
+					return item;
+				});
+
+				if (!session.data.user.ratings.some((item) => item.id === product._id)) {
+					updatedRatings.push({ id: product._id, rating: value });
+				}
+
+				session.update({
+					...session.data.user,
+					ratings: updatedRatings,
+				});
+				setRated(value);
+			}
+		} else {
+			let newProductRatingQuantity = product.ratingQuantity - 1;
+			let newProductRating = (product.ratingQuantity * product.rating - value) / newProductRatingQuantity;
+			try {
+				const response = await fetch(`http://localhost:3000/api/products/${product._id}`, {
+					method: "PATCH",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({ rating: newProductRating, ratingQuantity: newProductRatingQuantity }),
+				});
+
+				if (!response.ok) {
+					throw new Error("Failed to update product rating");
+				}
+
+				console.log("Product rating updated successfully");
+			} catch (error) {
+				console.error("Error updating product rating:", error.message);
 			}
 
 			session.update({
 				...session.data.user,
-				ratings: updatedRatings,
+				ratings: session.data.user.ratings.filter((item) => item.id !== product._id),
 			});
+			setRated();
 		}
 	};
 
