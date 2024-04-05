@@ -23,9 +23,30 @@ export default function CartCard3({ data }) {
 		setCartProducts([...data]);
 	}, [data]);
 
+	useEffect(() => {
+		console.log(cartProducts);
+	}, [cartProducts]);
+
 	const [open, setOpen] = React.useState(false);
 
 	const handleOpen = () => setOpen((cur) => !cur);
+
+	const checkout = async function () {
+		await fetch("http://localhost:3000/api/checkout", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ products: cartProducts }),
+		})
+			.then((response) => response.json())
+			.then((response) => {
+				console.log(response.url);
+				if (response.url) {
+					window.location.href = response.url;
+				}
+			});
+	};
 	return (
 		<>
 			<Card className="mt-3 rounded-none  lg:w-100 overflow-hidden   ">
@@ -177,7 +198,9 @@ export default function CartCard3({ data }) {
 						</Card>
 
 						<Button className=" w-full  bg-light-blue-800  rounded-sm  md:text-sm  2xl:text-xl ">
-							<span className=" inline-block">CHECKOUT</span>
+							<span className="inline-block" onClick={checkout}>
+								CHECKOUT
+							</span>
 						</Button>
 					</Typography>
 				</CardBody>
