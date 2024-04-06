@@ -36,21 +36,20 @@ export class UserRequestsService {
       .pipe(retry(3));
   }
 
-  addNewUser(user: IUser): Observable<IUser> {
-    return this.httpClient
-      .post<IUser>(
-        `${environment.BAseApiURL}/users`,
-        JSON.stringify(user),
-        this.httpheader
-      )
-      .pipe(
-        retry(3),
-        catchError((err) => {
-          return throwError(() => {
-            return new Error('Error While Adding user');
-          });
-        })
-      );
+  addNewUser(user: any): Observable<IUser> {
+    return this.httpClient.post<any>(
+      `${environment.BAseApiURL}/users`,
+      JSON.stringify(user)
+      // this.httpheader
+    );
+    // .pipe(
+    //   retry(3),
+    //   catchError((err) => {
+    //     return throwError(() => {
+    //       return new Error('Error While Adding user');
+    //     });
+    //   })
+    // );
   }
 
   getOneUser(id: string): Observable<IUser> {
@@ -60,9 +59,9 @@ export class UserRequestsService {
   editOneUser(id: string, updates: any): Observable<IUser> {
     console.log(updates);
 
-    return this.httpClient.put<IUser>(
+    return this.httpClient.patch<any>(
       `${environment.BAseApiURL}/users/${id}`,
-      updates
+      JSON.stringify(updates)
     );
   }
 

@@ -57,10 +57,10 @@ export class ProductRequestsService {
     );
   }
   //======================< Get All Products >=================================================
-  getProducts(): Observable<Products[]> {
+  getProducts(page: number = 1): Observable<Products[]> {
     // const params = { page: page.toString(), limit: limit.toString() };
     return this.httpClient.get<Products[]>(
-      `${environment.BAseApiURL}/products`,
+      `${environment.BAseApiURL}/products?page=${page}`,
       {
         // params,
       }

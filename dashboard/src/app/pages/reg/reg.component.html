@@ -1,8 +1,9 @@
 <form
   class="w-50 mx-auto my-5"
-  (ngSubmit)="update(user.id, user)"
+  (ngSubmit)="update(user._id, user)"
   #updateuser="ngForm"
 >
+  {{ user.firstName }}
   <div
     class="row justify-content-center bg-light align-items-center p-0 m-0 w-100 g-2"
     style="color: #fff"
@@ -35,40 +36,40 @@
 
     <div class="col-12">
       <div class="mb-3">
-        <label for="userName" class="form-label grn">Name</label>
+        <label for="userName" class="form-label grn">firstName</label>
         <input
           type="text"
           class="form-control loginInput"
-          id="userName"
+          id="firstName"
           placeholder=""
-          name="name"
-          [(ngModel)]="user.username"
-          #userName="ngModel"
+          name="firstName"
+          [(ngModel)]="user.firstName"
+          #firstName="ngModel"
         />
       </div>
       <div class="mb-3">
-        <label for="userEmail" class="form-label grn">Email address</label>
+        <label for="userEmail" class="form-label grn">email</label>
         <input
           type="email"
           class="form-control loginInput"
-          id="userEmail"
+          id="email"
           placeholder=""
           name="email"
           [(ngModel)]="user.email"
-          #useremail="ngModel"
+          #email="ngModel"
         />
       </div>
 
       <div class="mb-3">
-        <label for="userEmail" class="form-label grn"> user id</label>
+        <label for="userEmail" class="form-label grn">password</label>
         <input
           type="text"
           class="form-control loginInput"
-          id="userEmail"
+          id="password"
           placeholder=""
-          name="id"
-          [(ngModel)]="user.id"
-          #userid="ngModel"
+          name="password"
+          [(ngModel)]="user.password"
+          #password="ngModel"
         />
       </div>
       <!-- <div class="mb-3">

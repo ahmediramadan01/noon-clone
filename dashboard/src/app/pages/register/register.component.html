@@ -64,10 +64,7 @@
   </form> -->
 
 <div class="d-flex justify-content-end" [routerLink]="['newuser']">
-  <button
-    type="button"
-    class="btn bg-yellow text-white ho p-3 rounded-3 me-4 mt-3"
-  >
+  <button type="button" class="btn bg-yellow ho p-3 rounded-3 me-4 mt-3">
     Add New user
   </button>
 </div>
@@ -79,7 +76,7 @@
           <thead>
             <tr class="grn">
               <th class="grn" scope="col">username</th>
-              <th class="grn" scope="col">Id</th>
+              <th class="grn text-center" scope="col">Id</th>
               <th class="grn" scope="col">user email</th>
               <th class="grn" scope="col">Delete user</th>
               <th class="grn" scope="col">Edit user</th>
@@ -88,13 +85,13 @@
           <tbody>
             <tr class="" *ngFor="let use of users">
               <td scope="row">
-                {{ use.username }}
+                {{ use.firstName }}
               </td>
-              <td>{{ use.id }}</td>
+              <td>{{ use._id }}</td>
               <td>{{ use.email }}</td>
               <td>
                 <button
-                  (click)="deleteUser(use.id)"
+                  (click)="deleteUser(use._id)"
                   class="btn btn-outline-secondary"
                 >
                   Delte
@@ -102,7 +99,7 @@
               </td>
               <td>
                 <button
-                  [routerLink]="['/reg', use.id]"
+                  [routerLink]="['/reg', use._id]"
                   class="btn btn-outline-secondary"
                 >
                   Edit

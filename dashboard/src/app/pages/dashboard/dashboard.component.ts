@@ -23,13 +23,14 @@ export class DashboardComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     // get all products and show the count with interval
-    // this.productService.getProductCountPerYear().subscribe({
-    //   next: (data) => {
-    //     console.log(data);
+    this.productService.getAllProducts().subscribe({
+      next: (data) => {
+        this.productList = data as any;
+        console.log(this.productList.length);
 
-    //     this.productCounter = data.productCount;
-    //   },
-    // });
+        this.productCounter = this.productList.length;
+      },
+    });
     this.productService.getTopProducts().subscribe({
       next: (data) => {
         console.log(data);

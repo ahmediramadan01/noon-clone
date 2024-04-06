@@ -6,7 +6,9 @@
     <div
       class="smallCard bg-light rounded-3 bg-light p-3 mb-2 d-flex align-items-center"
     >
-      <div class="circle blueCircle rounded-circle col-6 fs-3 mx-2 text-center">
+      <div
+        class="circle yellowCircle rounded-circle col-6 fs-3 mx-2 text-center"
+      >
         <i class="fa-solid fa-users py-3 px-1"></i>
       </div>
       <div class="col-6 mx-2">
@@ -19,25 +21,13 @@
       class="smallCard rounded-3 bg-light p-3 mb-2 d-flex align-items-center"
     >
       <div
-        class="circle greenCircle rounded-circle col-6 fs-3 mx-2 text-center"
+        class="circle yellowCircle rounded-circle col-6 fs-3 mx-2 text-center"
       >
         <i class="fa-solid fa-bag-shopping py-3 px-1"></i>
       </div>
       <div class="col-6 mx-2">
         <h3>{{ productCounter }}</h3>
         <p>Products</p>
-      </div>
-    </div>
-
-    <div
-      class="smallCard rounded-3 bg-light p-3 mb-2 d-flex align-items-center"
-    >
-      <div class="circle redCircle rounded-circle col-6 fs-3 mx-2 text-center">
-        <i class="fa-solid fa-cart-flatbed py-3 px-1"></i>
-      </div>
-      <div class="col-6 mx-2">
-        <h3>{{ orderCounter }}</h3>
-        <p>Orders/ Month</p>
       </div>
     </div>
 
@@ -58,7 +48,7 @@
   <div class="d-flex flex-md-row flex-column flex-wrap">
     <div class="leftSection d-flex flex-column flex-wrap mx-4 col-lg-7 col-11">
       <div
-        class="d-flex justify-content-between flex-wrap mt-3 col-12 rounded-3"
+        class="d-flex justify-content-between ml flex-wrap mt-3 col-12 rounded-3"
       >
         <div
           class="align-items-center col-md-6 col-12 mb-3 rounded-3 p-2 bg-light"
@@ -71,7 +61,7 @@
           <app-area-last-chart></app-area-last-chart>
         </div>
       </div>
-      <div class="p-4 col-12 rounded-3 bg-light text-white">
+      <div class="p-4 col-12 rounded-3 ml bg-light text-white">
         <h6 class="text-black">Top Selling Products</h6>
         <table class="table table-secondary w-100 table-striped mt-4">
           <thead>

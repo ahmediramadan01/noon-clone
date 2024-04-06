@@ -24,7 +24,7 @@ export class LoginComponent {
     this.userLoginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       name: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.pattern('[a-z1-9]{6}')]],
+      password: ['', [Validators.required]],
     });
   }
 
@@ -46,7 +46,7 @@ export class LoginComponent {
   loginFunc() {
     const val = this.userLoginForm.value;
     if (val.email && val.password) {
-      // this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/');
       console.log(val.name);
 
       this.adminAuth.login(val.email, val.password).subscribe({
@@ -62,8 +62,10 @@ export class LoginComponent {
           this.tost.error({
             detail: 'Error',
             summary: err.error.message,
-            duration: 5000,
+
+            duration: 10000,
           });
+          console.log(err);
         },
       });
     } else {

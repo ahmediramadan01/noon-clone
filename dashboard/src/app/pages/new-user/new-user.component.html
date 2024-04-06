@@ -6,7 +6,7 @@
     <div class="border-bottom pb-2 mb-2 w-75">
       <div class="text-center fs-1 mt-4" style="color: #2fe5a7"></div>
       <div class="col-12 p-0" style="color: #2fe5a7">
-        <h2 class="h2 grn text-center">Edit User</h2>
+        <h2 class="h2 grn text-center">Add New User</h2>
       </div>
     </div>
     <!-- cover -->
@@ -31,6 +31,18 @@
 
     <div class="col-12">
       <div class="mb-3">
+        <label for="userName" class="form-label grn"> firstName</label>
+        <input
+          type="text"
+          class="form-control loginInput"
+          id="firstName"
+          placeholder=""
+          name="name"
+          [(ngModel)]="NewUser.firstName"
+          #firstName="ngModel"
+        />
+      </div>
+      <!-- <div class="mb-3">
         <label for="userName" class="form-label grn">Name</label>
         <input
           type="text"
@@ -41,9 +53,9 @@
           [(ngModel)]="NewUser.username"
           #userName="ngModel"
         />
-      </div>
+      </div> -->
       <div class="mb-3">
-        <label for="userEmail" class="form-label grn">Email address</label>
+        <label for="userEmail" class="form-label grn">email</label>
         <input
           type="email"
           class="form-control loginInput"
@@ -56,14 +68,14 @@
       </div>
 
       <div class="mb-3">
-        <label for="userEmail" class="form-label grn"> user id</label>
+        <label for="userEmail" class="form-label grn"> password</label>
         <input
-          type="text"
+          type="password"
           class="form-control loginInput"
-          id="userEmail"
+          id="Password"
           placeholder=""
-          name="id"
-          [(ngModel)]="NewUser.id"
+          name="password"
+          [(ngModel)]="NewUser.password"
           #userid="ngModel"
         />
       </div>
