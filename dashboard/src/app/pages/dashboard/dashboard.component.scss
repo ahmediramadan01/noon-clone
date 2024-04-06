@@ -3,7 +3,7 @@
   min-width: 160px;
   // margin: 0 1rem 0 0;
 }
-.smallCards{
+.smallCards {
   width: 70svw;
 }
 .circle {
@@ -32,15 +32,19 @@
   color: #ffba35;
 }
 
+.ml {
+  margin-left: 10rem;
+}
+
 @media only screen and (min-width: 10px) and (max-width: 768px) {
   // .leftSection table.table {
-    // width: 75%;
-    // tr {
-      // display: flex;
-      // flex-direction: column;
-    // }
+  // width: 75%;
+  // tr {
+  // display: flex;
+  // flex-direction: column;
   // }
-  .leftSection{
+  // }
+  .leftSection {
     width: fit-content;
   }
 }

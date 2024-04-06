@@ -31,10 +31,7 @@
     </div>
   </div>
   <div [routerLink]="['/product/newproduct']">
-    <button
-      type="button"
-      class="btn bg-yellow text-white ho p-3 rounded-3 me-4 mt-3"
-    >
+    <button type="button" class="btn bg-yellow ho p-3 rounded-3 me-4 mt-3">
       Add New Product
     </button>
   </div>
@@ -170,19 +167,19 @@
 <!-- </div>  -->
 
 <!-- product layout end -->
-<div class="pagination d-flex justify-content-center align-items-center">
+<!-- <div class="pagination d-flex justify-content-center align-items-center">
   <button class="btn btn-link" (click)="prevPage()">Previous</button>
   <span>Page {{ currentPage }}</span>
   <button class="btn btn-link" (click)="nextPage()">Next</button>
-</div>
+</div> -->
 
 <div class="d-flex justify-content-center align-items-center mt-3 mb-3">
   <div class="btn-group" role="group" aria-label="Basic mixed styles example">
     <button type="button" class="btn me-2 Previous" (click)="prevPage()">
-      Previous
+      Prev
     </button>
     <span>Page {{ currentPage }}</span>
-    <button type="button" class="btn ms-2 Next" (click)="nextPage()">
+    <button type="button" class="btn ms-2 Previous" (click)="nextPage()">
       Next
     </button>
   </div>

@@ -135,22 +135,22 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.userService.getAllUsers().subscribe((data) => {
       this.users = data as any;
-      console.log(this.users);
-      this._ActivatedRoute.params.subscribe((editedUser) => {
-        for (var i = 0; i < this.users.length; i++) {
-          if (this.users[i].id == editedUser.id) {
-            this.users[i] = editedUser;
-            console.log(this.users);
-            return this.users;
-          }
-        }
-      });
-      this._ActivatedRoute.params.subscribe((data) => {
-        this.users.push(data) as any;
-        console.log(data);
-        console.log(this.users);
-        return this.users;
-      });
+      console.log(data);
+      // this._ActivatedRoute.params.subscribe((editedUser) => {
+      //   for (var i = 0; i < this.users.length; i++) {
+      //     if (this.users[i].id == editedUser.id) {
+      //       this.users[i] = editedUser;
+      //       console.log(this.users);
+      //       return this.users;
+      //     }
+      //   }
+      // });
+      // this._ActivatedRoute.params.subscribe((data) => {
+      //   this.users.push(data) as any;
+      //   console.log(data);
+      //   console.log(this.users);
+      //   return this.users;
+      // });
     });
   }
   displayUsers() {
@@ -163,14 +163,18 @@ export class RegisterComponent implements OnInit {
     this.userService.deleteUser(deletedid).subscribe({
       next: (data) => {
         this.users = this.users.filter((useer) => {
-          return useer.id !== deletedid;
+          useer.id !== deletedid;
         });
-        // this.users = this.users.filter((user) => {
-        //   return user.id !== deletedid
-        // });
+        this.displayUsers();
       },
       error: (err) => {
         console.log(err);
+        this.displayUsers();
+        this.tost.success({
+          detail: 'Succeeded',
+          summary: 'User Deleted successfuly',
+          duration: 5000,
+        });
       },
     });
   }

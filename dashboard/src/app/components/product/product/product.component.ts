@@ -45,16 +45,16 @@ export class ProductComponent implements OnInit {
       next: (response) => {
         this.AllProducts = response;
         // this.AllProducts = this.AllProducts.slice(0, 9);
-        console.log(this.AllProducts[1].title);
-        this._ActivatedRoute.params.subscribe((updatedObj) => {
-          // for (var i = 0; i < this.AllProducts.length; i++) {
-          //   if (this.AllProducts[i].id == updatedObj.id) {
-          //     this.AllProducts[i] = updatedObj as Products;
-          //     console.log(this.AllProducts);
-          //     return this.AllProducts;
-          //   }
-          // }
-        });
+        // console.log(this.AllProducts[1].title);
+        // this._ActivatedRoute.params.subscribe((updatedObj) => {
+        //   // for (var i = 0; i < this.AllProducts.length; i++) {
+        //   //   if (this.AllProducts[i].id == updatedObj.id) {
+        //   //     this.AllProducts[i] = updatedObj as Products;
+        //   //     console.log(this.AllProducts);
+        //   //     return this.AllProducts;
+        //   //   }
+        //   // }
+        // });
         // this._ActivatedRoute.params.subscribe((newprod) => {
         //   console.log(newprod);
         //   this.AllProducts.push(newprod as Products);
@@ -118,52 +118,28 @@ export class ProductComponent implements OnInit {
   // }
   //===================< next & previes >==================================================
   nextPage() {
-    // this.productService.getProducts().subscribe({
-    //   next: (response) => {
-    //     this.AllProducts = response;
-    //     this.AllProducts = this.AllProducts.slice(0, 9)
-    // if (this.currentPage < 4) {
-    //   this.currentPage++;
-    //   this.getAllProducts(this.currentPage);
-    // } else {
-    //   this.isNextButtonDisabled = true;
-    // }
-    // if (this.currentPage == 1) {
-    //   this.productService.getProducts().subscribe({
-    //     next: (resp) => {
-    //       console.log(resp);
-    //       this.AllProducts = resp;
-    //       this.AllProducts = this.AllProducts.slice(10, 19);
-    //       this.currentPage++;
-    //     },
-    //   });
-    // }
-    // if (this.currentPage == 3) {
-    //   this.productService.getProducts().subscribe({
-    //     next: (resp) => {
-    //       console.log(resp);
-    //       this.AllProducts = resp;
-    //       this.AllProducts = this.AllProducts.slice(20, 150);
-    //     },
-    //   });
-    // }
+    if (this.currentPage < 13) {
+      this.currentPage++;
+      this.productService.getProducts(this.currentPage).subscribe({
+        next: (response) => {
+          this.AllProducts = response;
+        },
+      });
+    } else {
+      this.isNextButtonDisabled = true;
+    }
   }
 
-  // console.log();
-  // if (this.currentPage < 4) {
-  //   this.currentPage++;
-  //   this.getAllProducts(this.currentPage);
-  // } else {
-  //   this.isNextButtonDisabled = true;
-  // }
-
   prevPage() {
-    // this.ngOnInit();
-    // if (this.currentPage > 1) {
-    //   this.currentPage--;
-    //   this.getAllProducts(this.currentPage);
-    // } else {
-    //   this.isNextButtonDisabled = true;
-    // }
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.productService.getProducts(this.currentPage).subscribe({
+        next: (response) => {
+          this.AllProducts = response;
+        },
+      });
+    } else {
+      this.isNextButtonDisabled = true;
+    }
   }
 }
