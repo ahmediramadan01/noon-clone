@@ -12,9 +12,6 @@ export const POST = async function (request) {
 	const { products } = await request.json();
 	const data = products;
 
-	// const prods = await stripe.products.list();
-	// console.log(prods);
-
 	let activeProducts = await getActiveProducts();
 
 	try {

@@ -9,8 +9,8 @@ export async function GET(request) {
 	try {
 		const searchParams = new URL(request.url).searchParams;
 		const query = searchParams.get("query");
-		const limit = parseInt(searchParams.get("limit")) || 10;
-		const page = parseInt(searchParams.get("page")) || 1;
+		const limit = parseInt(searchParams.get("limit"));
+		const page = parseInt(searchParams.get("page"));
 
 		const filters = query ? { title: { $regex: query, $options: "i" } } : {};
 
