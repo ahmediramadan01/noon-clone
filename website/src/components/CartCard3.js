@@ -1,5 +1,6 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
 import {
 	Card,
 	CardBody,
@@ -14,10 +15,38 @@ import {
 } from "@material-tailwind/react";
 import Image from "next/image";
 
-export default function CartCard3() {
+export default function CartCard3({ data }) {
+	const session = useSession();
+	const [cartProducts, setCartProducts] = useState([]);
+
+	useEffect(() => {
+		setCartProducts([...data]);
+	}, [data]);
+
+	useEffect(() => {
+		console.log(cartProducts);
+	}, [cartProducts]);
+
 	const [open, setOpen] = React.useState(false);
 
 	const handleOpen = () => setOpen((cur) => !cur);
+
+	const checkout = async function () {
+		await fetch("http://localhost:3000/api/checkout", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ products: cartProducts }),
+		})
+			.then((response) => response.json())
+			.then((response) => {
+				console.log(response.url);
+				if (response.url) {
+					window.location.href = response.url;
+				}
+			});
+	};
 	return (
 		<>
 			<Card className="mt-3 rounded-none  lg:w-100 overflow-hidden   ">
@@ -128,8 +157,12 @@ export default function CartCard3() {
 						</Dialog>
 
 						<div className="mt-2 flex   w-full justify-between">
-							<h4 className="p-0 text-gray-500">Subtotal (6 items) </h4>
-							<h4 className="ml-5 text-black">EGP 94108.90</h4>
+							<h4 className="p-0 text-gray-500">
+								Subtotal ({cartProducts.reduce((totalQuantity, product) => totalQuantity + product.quantity, 0)} items)
+							</h4>
+							<h4 className="ml-5 text-black">
+								EGP {cartProducts.reduce((totalPrice, product) => totalPrice + product.price * product.quantity, 0)}
+							</h4>
 						</div>
 
 						<div className="mt-2 flex mb-3   w-full justify-between">
@@ -145,7 +178,9 @@ export default function CartCard3() {
 									(Inclusive of VAT)
 								</span>{" "}
 							</h2>
-							<h4 className="ml-5 sm:text-xs  md:text-xs lg:text-sm  xl:text-xl text-black">EGP 94108.90</h4>
+							<h4 className="ml-5 sm:text-xs  md:text-xs lg:text-sm  xl:text-xl text-black">
+								EGP {cartProducts.reduce((totalPrice, product) => totalPrice + product.price * product.quantity, 0)}
+							</h4>
 						</div>
 
 						<Card className="w-full  flex-row rounded-none py-2">
@@ -163,7 +198,9 @@ export default function CartCard3() {
 						</Card>
 
 						<Button className=" w-full  bg-light-blue-800  rounded-sm  md:text-sm  2xl:text-xl ">
-							<span className=" inline-block">CHECKOUT</span>
+							<span className="inline-block" onClick={checkout}>
+								CHECKOUT
+							</span>
 						</Button>
 					</Typography>
 				</CardBody>

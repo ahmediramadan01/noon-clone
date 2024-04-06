@@ -50,21 +50,16 @@ function NavList() {
 
 	const [userFirstName, setUserFirstName] = useState("");
 	const [wishlistLength, setWishlistLength] = useState(0);
-	const [cartLength, setCartLength] = useState(0);
+	const [cartQuantity, setCartQuantity] = useState(0);
 
 	useEffect(() => {
 		if (session?.status === "authenticated") {
 			// console.log(session);
 			setUserFirstName(session.data.user.firstName);
 			setWishlistLength(session.data.user.wishlist.length);
-			setCartLength(session.data.user.cart.length);
+			setCartQuantity(session.data.user.cart.reduce((totalQuantity, product) => totalQuantity + product.quantity, 0));
 		}
 	}, [session]);
-
-	// useEffect(() => {
-	// 	console.log(session.data.user.wishlist.length);
-	// 	console.log(session.data.user.cart.length);
-	// }, [userFirstName]);
 
 	const isValidEmail = (email) => {
 		const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -538,8 +533,8 @@ function NavList() {
 			<li className={`px-2 font-medium border-black h-6 w-auto flex items-center`} style={{ borderLeftWidth: "1px" }}>
 				<Link href="/cart" className="flex items-center hover:text-[#3866df] transition-colors">
 					<span className="font-bold text-sm">Cart</span>
-					{cartLength > 0 ? (
-						<Badge content={cartLength} color="blue" className="bg-[#3866df] min-w-[20px] min-h-[20px]">
+					{cartQuantity > 0 ? (
+						<Badge content={cartQuantity} color="blue" className="bg-[#3866df] min-w-[20px] min-h-[20px]">
 							<ShoppingCartIcon className="w-5 h-5 ml-1" />
 						</Badge>
 					) : (

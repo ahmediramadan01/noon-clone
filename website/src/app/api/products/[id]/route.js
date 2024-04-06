@@ -28,37 +28,43 @@ export async function GET(_request, { params }) {
 export async function PATCH(request, { params }) {
 	try {
 		const body = await request.json();
-		const { title, description, brand, thumbnail, images, category, quantityInStock, price, discountPercentage } = body;
+		const updatedFields = {};
 
-		if (
-			!title ||
-			!description ||
-			!brand ||
-			!thumbnail ||
-			!images ||
-			!category ||
-			!quantityInStock ||
-			!price ||
-			!discountPercentage
-		) {
-			return new Response("Missing required fields", { status: 400 });
+		const {
+			title,
+			description,
+			brand,
+			thumbnail,
+			images,
+			category,
+			quantityInStock,
+			price,
+			discountPercentage,
+			rating,
+			ratingQuantity,
+			sold,
+		} = body;
+
+		if (title) updatedFields.title = title;
+		if (description) updatedFields.description = description;
+		if (brand) updatedFields.brand = brand;
+		if (thumbnail) updatedFields.thumbnail = thumbnail;
+		if (images) updatedFields.images = images;
+		if (category) updatedFields.category = category;
+		if (quantityInStock) updatedFields.quantityInStock = quantityInStock;
+		if (price) updatedFields.price = price;
+		if (discountPercentage) updatedFields.discountPercentage = discountPercentage;
+		if (rating) updatedFields.rating = rating;
+		if (ratingQuantity) updatedFields.ratingQuantity = ratingQuantity;
+		if (sold) updatedFields.sold = sold;
+
+		if (Object.keys(updatedFields).length === 0) {
+			return new Response("No fields to update", { status: 400 });
 		}
 
 		const updatedProduct = await collection.findOneAndUpdate(
 			{ _id: new ObjectId(params.id) },
-			{
-				$set: {
-					title,
-					description,
-					brand,
-					thumbnail,
-					images,
-					category,
-					quantityInStock,
-					price,
-					discountPercentage,
-				},
-			},
+			{ $set: updatedFields },
 			{ returnDocument: "after" }
 		);
 

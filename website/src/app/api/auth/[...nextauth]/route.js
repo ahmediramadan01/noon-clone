@@ -53,6 +53,7 @@ export const authOptions = {
 					nationality: user.nationality,
 					wishlist: user.wishlist,
 					cart: user.cart,
+					ratings: user.ratings,
 				};
 			}
 
@@ -70,6 +71,7 @@ export const authOptions = {
 							nationality: token.nationality,
 							wishlist: token.wishlist,
 							cart: token.cart,
+							ratings: token.ratings,
 						},
 						{ new: true }
 					);
@@ -87,6 +89,7 @@ export const authOptions = {
 							nationality: updatedUser.nationality,
 							wishlist: updatedUser.wishlist,
 							cart: updatedUser.cart,
+							ratings: updatedUser.ratings,
 						};
 					}
 				} catch (error) {
@@ -112,6 +115,7 @@ export const authOptions = {
 					nationality: token.nationality,
 					wishlist: token.wishlist,
 					cart: token.cart,
+					ratings: token.ratings,
 				},
 			};
 			return session;
