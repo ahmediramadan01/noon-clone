@@ -382,6 +382,7 @@ function NavList() {
 				</Menu>
 			</li>
 
+<<<<<<< HEAD
 			<li
 				className={`${
 					session?.status === "authenticated" && "hidden"
@@ -520,6 +521,10 @@ function NavList() {
 
 			<li className={`px-2 font-medium border-black h-6 w-auto flex items-center`} style={{ borderLeftWidth: "1px" }}>
 				<Link href="/wishlist" className="flex items-center hover:text-[#3866df] transition-colors">
+=======
+			<li className="px-2 font-medium border-black h-6 w-auto flex items-center" style={{ borderLeftWidth: "1px" }}>
+				<Link href="/wishlist" className="flex items-center hover:text-blue-500 transition-colors">
+>>>>>>> origin/homePage
 					<span className="font-bold text-sm">Wishlist</span>
 					{wishlistLength > 0 ? (
 						<Badge content={wishlistLength} color="blue" className="bg-[#3866df] min-w-[20px] min-h-[20px]">
@@ -586,11 +591,20 @@ export function NavbarSimple() {
 					></Image>
 				</Link>
 
+<<<<<<< HEAD
 				<div className="px-1 w-2/3 relative flex gap-2 ">
 					<form
 						className="w-full"
 						onSubmit={(event) => {
 							searchProduct(event);
+=======
+				<div className="px-1 w-3/3 md:w-2/3 relative flex gap-2 ">
+					<Input
+						type="search"
+						placeholder="What are you looking for?"
+						containerProps={{
+							className: "w-full bg-white rounded-lg",
+>>>>>>> origin/homePage
 						}}
 					>
 						<Input
