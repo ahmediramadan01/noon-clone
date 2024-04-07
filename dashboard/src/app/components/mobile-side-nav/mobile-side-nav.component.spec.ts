@@ -8,10 +8,9 @@ describe('MobileSideNavComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MobileSideNavComponent]
-    })
-    .compileComponents();
-    
+      declarations: [MobileSideNavComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(MobileSideNavComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -8,10 +8,9 @@ describe('GroupOfRoutesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [GroupOfRoutesComponent]
-    })
-    .compileComponents();
-    
+      declarations: [GroupOfRoutesComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(GroupOfRoutesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

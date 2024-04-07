@@ -1,4 +1,4 @@
 export interface IPrdsQun {
-    id?: string;
-    quantity:number;
+  id?: string;
+  quantity: number;
 }

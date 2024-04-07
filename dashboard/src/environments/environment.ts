@@ -1,4 +1,4 @@
 export const environment = {
-  production:true,
-  BAseApiURL:"https://openmarket.onrender.com"
+  production: true,
+  BAseApiURL: 'https://openmarket.onrender.com',
 };

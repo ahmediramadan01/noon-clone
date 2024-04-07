@@ -7,11 +7,11 @@ import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
-  styleUrl: './reset-password.component.scss'
+  styleUrl: './reset-password.component.scss',
 })
 export class ResetPasswordComponent {
   resetPasswordForm: FormGroup;
-  displayForm: String = "mail"
+  displayForm: String = 'mail';
   get email() {
     return this.resetPasswordForm.get('email');
   }
@@ -24,8 +24,12 @@ export class ResetPasswordComponent {
   get conPassword() {
     return this.resetPasswordForm.get('conPassword');
   }
-  constructor(private formBuilder: FormBuilder,
-    private router: Router, private adminAuth: AdminAuthService, public tost: NgToastService){
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private adminAuth: AdminAuthService,
+    public tost: NgToastService
+  ) {
     this.resetPasswordForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       code: ['', [Validators.required, Validators.pattern(/[0-9]/)]],
@@ -33,49 +37,57 @@ export class ResetPasswordComponent {
       conPassword: ['', [Validators.required]],
     });
   }
-  goEnterEmail(){
-    
-  }
-  sendCode(){
+  goEnterEmail() {}
+  sendCode() {
     this.adminAuth.sendCode(this.email.value).subscribe({
-      next: (data)=>{
-        this.displayForm = "code"
+      next: (data) => {
+        this.displayForm = 'code';
       },
-      error: (err)=>{
+      error: (err) => {
         // console.log(err);
-      }
-    })
+      },
+    });
   }
-  verifyCode(){
+  verifyCode() {
     this.adminAuth.verifyCode(this.code.value).subscribe({
-      next: (data)=>{
-        this.displayForm = "password"
+      next: (data) => {
+        this.displayForm = 'password';
       },
-      error: (err)=>{
+      error: (err) => {
         // console.log(err);
-      }
-    })
+      },
+    });
   }
-  resetPassword(){
-    
-    this.adminAuth.resetPassword({ password:this.password.value , confirmPassword: this.conPassword.value }, this.code.value).subscribe({
-      next: (data)=>{
+  resetPassword() {
+    this.adminAuth
+      .resetPassword(
+        {
+          password: this.password.value,
+          confirmPassword: this.conPassword.value,
+        },
+        this.code.value
+      )
+      .subscribe({
+        next: (data) => {
           this.tost.success({
             detail: 'Succeeded',
-            summary: "Password has been changed",
+            summary: 'Password has been changed',
             duration: 5000,
           });
-        this.displayForm = "mail"
-        this.router.navigateByUrl("/")
-      },
-      error: (err)=>{
-        if(err.error.message !== "Password and confirm password are required"){
-        this.tost.error({
-          detail: 'Error',
-          summary: err.error.message,
-          duration: 5000,
-        });}
-      }
-    })
+          this.displayForm = 'mail';
+          this.router.navigateByUrl('/');
+        },
+        error: (err) => {
+          if (
+            err.error.message !== 'Password and confirm password are required'
+          ) {
+            this.tost.error({
+              detail: 'Error',
+              summary: err.error.message,
+              duration: 5000,
+            });
+          }
+        },
+      });
   }
 }

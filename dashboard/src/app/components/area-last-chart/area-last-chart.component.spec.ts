@@ -8,10 +8,9 @@ describe('AreaLastChartComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AreaLastChartComponent]
-    })
-    .compileComponents();
-    
+      declarations: [AreaLastChartComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(AreaLastChartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

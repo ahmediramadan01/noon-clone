@@ -8,10 +8,9 @@ describe('DetailsubcategoryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DetailsubcategoryComponent]
-    })
-    .compileComponents();
-    
+      declarations: [DetailsubcategoryComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(DetailsubcategoryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
