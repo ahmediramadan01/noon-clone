@@ -1,9 +1,11 @@
+import FashionPage from "./fashion/page";
 import HomePage from "./home/page";
 
 export default function Home() {
 	return (
 		<>
-			<HomePage></HomePage>
+			{ }
+			<FashionPage></FashionPage>
 		</>
 	);
 }

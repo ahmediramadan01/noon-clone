@@ -12,7 +12,7 @@ function ProductPage({ params }) {
 	const session = useSession();
 	const [product, setProduct] = useState({});
 	const [cartQuantity, setCartQuantity] = useState(1);
-
+	const [userRating, setUserRating] = useState(0);
 	useEffect(() => {
 		fetch(`http://localhost:3000/api/products/${params.productId}`)
 			.then((response) => response.json())
@@ -80,7 +80,22 @@ function ProductPage({ params }) {
 		{ icon: "/noon-locker.svg", text: "Free delivery on Pickup Points", href: "#" },
 		{ icon: "/non_returnable.svg", text: "This item cannot be exchanged or returned", href: "#" },
 	];
-
+	const handleRatingChange = async (newRating) => {
+		try {
+			const response = await fetch(`http://localhost:3000/api/products/${params.productId}`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ rating: newRating }),
+			});
+			const data = await response.json();
+			setProduct(data.product);
+			setUserRating(newRating);
+		} catch (error) {
+			console.error('Error at updating rating:', error);
+		}
+	};
 	return (
 		<>
 			<div className="mx-auto my-2">
@@ -95,13 +110,23 @@ function ProductPage({ params }) {
 						<span className="brand">{product.brand}</span>
 						<h1 className="font-semibold text-2xl my-5">{product.title}</h1>
 
-						<div className="flex items-center gap-2 font-bold text-blue-gray-500">
+						{/* <div className="flex items-center gap-2 font-bold text-blue-gray-500">
 							<Typography color="blue-gray" className="font-medium text-blue-gray-500">
 								{product.rating} Based on {product.ratingQuantity} Ratings
 							</Typography>
 							<Rating unratedColor="amber" ratedColor="amber" />
+						</div> */}
+						<div className="flex items-center gap-2 font-bold text-blue-gray-500">
+							<Typography color="blue-gray" className="font-medium text-blue-gray-500">
+								{product.rating} Based on {product.ratingQuantity} Ratings
+							</Typography>
+							<Rating
+								value={userRating}
+								onChange={(newValue) => handleRatingChange(newValue)}
+								unratedColor="amber"
+								ratedColor="amber"
+							/>
 						</div>
-
 						{/* product price */}
 						<ProductPrice data={product} />
 
