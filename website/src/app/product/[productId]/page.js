@@ -12,7 +12,7 @@ function ProductPage({ params }) {
 	const session = useSession();
 	const [product, setProduct] = useState({});
 	const [cartQuantity, setCartQuantity] = useState(1);
-
+	const [userRating, setUserRating] = useState(0);
 	useEffect(() => {
 		fetch(`http://localhost:3000/api/products/${params.productId}`)
 			.then((response) => response.json())
@@ -238,7 +238,6 @@ function ProductPage({ params }) {
 								</Typography>
 							)}
 						</div>
-
 						{/* product price */}
 						<ProductPrice data={product} />
 
