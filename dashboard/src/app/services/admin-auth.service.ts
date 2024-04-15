@@ -92,4 +92,13 @@ export class AdminAuthService {
       })
       .pipe(retry(3));
   }
+
+  register(userData: object): Observable<any> {
+    {
+      return this.httpClient.post(
+        'https://ecommerce.routemisr.com/api/v1/auth/signup',
+        userData
+      );
+    }
+  }
 }

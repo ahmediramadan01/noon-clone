@@ -20,7 +20,7 @@
             <h6 class="h6 text-center"></h6>
           </div>
 
-          <div class="col-12 text-black">
+          <!-- <div class="col-12 text-black">
             <div class="mb-3">
               <label for="userEmail" class="form-label">User Name</label>
               <input
@@ -32,7 +32,7 @@
                 formControlName="name"
               />
             </div>
-          </div>
+          </div> -->
 
           <div class="col-12 text-black">
             <div class="mb-3">
@@ -116,6 +116,11 @@
             <div [hidden]="!fillform" class="alert alert-danger h0">
               <p>must fill the form</p>
             </div>
+          </div>
+          <div class="d-flex justify-content-center">
+            <a class="ml-5 text-secondary" [routerLink]="['/signup']"
+              >sign up</a
+            >
           </div>
         </div>
       </form>

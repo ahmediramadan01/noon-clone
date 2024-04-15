@@ -118,7 +118,7 @@ export class ProductComponent implements OnInit {
   // }
   //===================< next & previes >==================================================
   nextPage() {
-    if (this.currentPage < 13) {
+    if (this.currentPage < 33) {
       this.currentPage++;
       this.productService.getProducts(this.currentPage).subscribe({
         next: (response) => {

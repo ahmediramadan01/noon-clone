@@ -11,6 +11,7 @@ import { IOrdersPrds } from '../models/iOrderPrds';
 export class OrderRequestsService {
   constructor(private httpClient: HttpClient) {}
 
+<<<<<<< HEAD
   getAllOrders(): Observable<{ allOrders: [] }> {
     return this.httpClient.get<{ allOrders: [] }>(
       `${environment.BAseApiURL}/orders`
@@ -20,6 +21,17 @@ export class OrderRequestsService {
   getOneOrderById(id: string): Observable<IOrders> {
     return this.httpClient.get<IOrders>(
       `${environment.BAseApiURL}/orders/${id}`
+=======
+  getAllOrders(): Observable<any> {
+    return this.httpClient.get<any>(
+      `https://ecommerce.routemisr.com/api/v1/orders/`
+    );
+  }
+
+  getOneOrderById(id: string): Observable<any> {
+    return this.httpClient.get<any>(
+      `https://ecommerce.routemisr.com/api/v1/orders/user/${id}`
+>>>>>>> origin/dashboard2
     );
   }
 

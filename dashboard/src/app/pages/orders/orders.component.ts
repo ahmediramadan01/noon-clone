@@ -9,7 +9,11 @@ import { IOrders } from '../../models/iorders';
   styleUrl: './orders.component.scss',
 })
 export class OrdersComponent {
+<<<<<<< HEAD
   allOrders: IOrders[] = [];
+=======
+  allOrders: any[] = [];
+>>>>>>> origin/dashboard2
 
   constructor(
     private orderService: OrderRequestsService,
@@ -19,9 +23,16 @@ export class OrdersComponent {
   ngOnInit(): void {
     this.orderService.getAllOrders().subscribe({
       next: (data) => {
+<<<<<<< HEAD
         console.log(data.allOrders);
 
         this.allOrders = data.allOrders.reverse();
+=======
+        console.log(data.data);
+        this.allOrders = data.data;
+
+        // this.allOrders = data.allOrders.reverse();
+>>>>>>> origin/dashboard2
       },
       error(err) {
         console.log(err);
