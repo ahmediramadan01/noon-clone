@@ -60,7 +60,7 @@ export class ProductRequestsService {
   getProducts(page: number = 1): Observable<Products[]> {
     // const params = { page: page.toString(), limit: limit.toString() };
     return this.httpClient.get<Products[]>(
-      `${environment.BAseApiURL}/products?page=${page}`,
+      `${environment.BAseApiURL}/products?page=${page}&limit=4`,
       {
         // params,
       }

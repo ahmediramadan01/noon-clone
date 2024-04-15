@@ -39,12 +39,13 @@ export class DashboardComponent implements OnInit {
     });
 
     // get all orders and show the count with interval
-    // this.orderService.getAllOrders().subscribe({
-    //   next: (data) => {
-    //     this.orderList = data.allOrders;
-    //     this.orderCounter = this.orderList.length;
-    //   },
-    // });
+    this.orderService.getAllOrders().subscribe({
+      next: (data) => {
+        console.log(data.data);
+        this.orderList = data.data;
+        this.orderCounter = this.orderList.length;
+      },
+    });
 
     // get all users and show the count with interval
     this.userService.getAllUsers().subscribe({

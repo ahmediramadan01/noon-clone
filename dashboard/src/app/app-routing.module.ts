@@ -15,6 +15,7 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { RegComponent } from './pages/reg/reg.component';
 import { NewUserComponent } from './pages/new-user/new-user.component';
+import { SignUpComponent } from './pages/sign-up/sign-up.component';
 
 const routes: Routes = [
   {
@@ -64,6 +65,12 @@ const routes: Routes = [
     component: LoginComponent,
     // canActivate: [adminLoginGuard],
     title: 'Login',
+  },
+  {
+    path: 'signup',
+    component: SignUpComponent,
+    // canActivate: [adminLoginGuard],
+    title: 'Signup',
   },
   {
     path: 'resetPassword',
