@@ -1,15 +1,15 @@
-import { AdminAuthService } from './../../services/admin-auth.service';
 import { Component } from '@angular/core';
+import { AuthenticationService } from '../../pages/authentication/authentication.service';
 
 @Component({
-  selector: 'app-side-nav',
-  templateUrl: './side-nav.component.html',
-  styleUrl: './side-nav.component.scss',
+	selector: 'app-side-nav',
+	templateUrl: './side-nav.component.html',
+	styleUrl: './side-nav.component.scss',
 })
 export class SideNavComponent {
-  constructor(private adminAuth: AdminAuthService) {}
+	constructor(private authenticationService: AuthenticationService) {}
 
-  signOut() {
-    this.adminAuth.logout();
-  }
+	onLogOut() {
+		this.authenticationService.logOut();
+	}
 }

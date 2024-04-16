@@ -37,6 +37,8 @@ import { NgToastModule } from 'ng-angular-popup';
 import { RegComponent } from './pages/reg/reg.component';
 import { NewUserComponent } from './pages/new-user/new-user.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { AuthenticationComponent } from './pages/authentication/authentication.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,8 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
     RegComponent,
     NewUserComponent,
     SignUpComponent,
+    AuthenticationComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,

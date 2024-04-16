@@ -1,26 +1,15 @@
-<div
-  class="row bg-dark justify-content-between align-items-center p-0 m-0 h-100"
->
-  <div
-    class="col-12 bg-light text-black col-sm-12 col-md-5 col-lg-3 h-100 m-0 p-0"
-  >
-    <div class="col-12 h-100 d-flex align-items-center p-0 px-3">
-      <!-- <router-outlet   ></router-outlet> -->
-      <form
-        class="text-black container-fluid m-0 p-0 mt-5 vh-100"
-        (ngSubmit)="loginFunc()"
-        [formGroup]="userLoginForm"
-      >
-        <div
-          class="row h-50 justify-content-center align-items-center p-0 m-0 w-100 g-2"
-          style="color: #fff"
-        >
-          <div class="col-12 p-0 text-black">
-            <h5 class="h4 text-center">Login</h5>
-            <h6 class="h6 text-center"></h6>
-          </div>
+<div class="row bg-dark justify-content-between align-items-center p-0 m-0 h-100">
+	<div class="col-12 bg-light text-black col-sm-12 col-md-5 col-lg-3 h-100 m-0 p-0">
+		<div class="col-12 h-100 d-flex align-items-center p-0 px-3">
+			<!-- <router-outlet   ></router-outlet> -->
+			<form class="text-black container-fluid m-0 p-0 mt-5 vh-100" (ngSubmit)="loginFunc()" [formGroup]="userLoginForm">
+				<div class="row h-50 justify-content-center align-items-center p-0 m-0 w-100 g-2" style="color: #fff">
+					<div class="col-12 p-0 text-black">
+						<h5 class="h4 text-center">Login</h5>
+						<h6 class="h6 text-center"></h6>
+					</div>
 
-          <!-- <div class="col-12 text-black">
+					<!-- <div class="col-12 text-black">
             <div class="mb-3">
               <label for="userEmail" class="form-label">User Name</label>
               <input
@@ -34,63 +23,46 @@
             </div>
           </div> -->
 
-          <div class="col-12 text-black">
-            <div class="mb-3">
-              <label for="userEmail" class="form-label">Email address</label>
-              <input
-                type="email"
-                class="form-control loginInput"
-                id="userEmail"
-                placeholder=""
-                name="email"
-                formControlName="email"
-              />
-              <div
-                class="alert alert-danger h0"
-                *ngIf="
-                  userLoginForm.get('email')?.errors &&
-                  userLoginForm.get('email')?.touched
-                "
-              >
-                <p *ngIf="userLoginForm.get('email')?.getError('required')">
-                  this required input
-                </p>
-                <p *ngIf="userLoginForm.get('email')?.getError('email')">
-                  enter avalid email
-                </p>
-              </div>
-            </div>
+					<div class="col-12 text-black">
+						<div class="mb-3">
+							<label for="userEmail" class="form-label">Email address</label>
+							<input
+								type="email"
+								class="form-control loginInput"
+								id="userEmail"
+								placeholder=""
+								name="email"
+								formControlName="email"
+							/>
+							<div
+								class="alert alert-danger h0"
+								*ngIf="userLoginForm.get('email')?.errors && userLoginForm.get('email')?.touched"
+							>
+								<p *ngIf="userLoginForm.get('email')?.getError('required')">this required input</p>
+								<p *ngIf="userLoginForm.get('email')?.getError('email')">enter avalid email</p>
+							</div>
+						</div>
 
-            <div class="mb-3">
-              <label for="userPassword" class="form-label">Password</label>
-              <input
-                type="password"
-                class="form-control loginInput"
-                id="userPassword"
-                placeholder=""
-                name="password"
-                formControlName="password"
-              />
-              <div
-                class="alert alert-danger h0"
-                *ngIf="
-                  userLoginForm.get('password')?.errors &&
-                  userLoginForm.get('password')?.touched
-                "
-              >
-                <p *ngIf="userLoginForm.get('password')?.getError('required')">
-                  this required input
-                </p>
-                <p
-                  *ngIf="userLoginForm.get('password')?.getError('pattern')"
-                  class=""
-                >
-                  must be more 6 char
-                </p>
-              </div>
-            </div>
-          </div>
-          <!-- <div class="col-6">
+						<div class="mb-3">
+							<label for="userPassword" class="form-label">Password</label>
+							<input
+								type="password"
+								class="form-control loginInput"
+								id="userPassword"
+								placeholder=""
+								name="password"
+								formControlName="password"
+							/>
+							<div
+								class="alert alert-danger h0"
+								*ngIf="userLoginForm.get('password')?.errors && userLoginForm.get('password')?.touched"
+							>
+								<p *ngIf="userLoginForm.get('password')?.getError('required')">this required input</p>
+								<p *ngIf="userLoginForm.get('password')?.getError('pattern')" class="">must be more 6 char</p>
+							</div>
+						</div>
+					</div>
+					<!-- <div class="col-6">
             <input
               class="form-check-input border border-2"
               type="checkbox"
@@ -101,7 +73,7 @@
               Remember me
             </label>
           </div> -->
-          <!-- <div class="col-6 text-end">
+					<!-- <div class="col-6 text-end">
             <small>
               <a
                 routerLink="/resetPassword"
@@ -111,26 +83,20 @@
               </a>
             </small>
           </div> -->
-          <div class="col-12 my-4">
-            <input type="submit" value="Login" class="loginInput bg-yellow" />
-            <div [hidden]="!fillform" class="alert alert-danger h0">
-              <p>must fill the form</p>
-            </div>
-          </div>
-          <div class="d-flex justify-content-center">
-            <a class="ml-5 text-secondary" [routerLink]="['/signup']"
-              >sign up</a
-            >
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-  <div class="col-12 col-sm-12 col-md-7 col-lg-9 align-items-center">
-    <img
-      src="../../../assets/noon-logo-en.svg"
-      alt=""
-      class="img-fluid d-block mx-auto"
-    />
-  </div>
+					<div class="col-12 my-4">
+						<input type="submit" value="Login" class="loginInput bg-yellow" />
+						<div [hidden]="!fillform" class="alert alert-danger h0">
+							<p>must fill the form</p>
+						</div>
+					</div>
+					<div class="d-flex justify-content-center">
+						<a class="ml-5 text-secondary" [routerLink]="['/signup']">sign up</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="col-12 col-sm-12 col-md-7 col-lg-9 align-items-center">
+		<img src="../../../assets/noon-logo-en.svg" alt="" class="img-fluid d-block mx-auto" />
+	</div>
 </div>

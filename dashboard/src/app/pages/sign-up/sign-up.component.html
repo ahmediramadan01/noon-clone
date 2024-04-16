@@ -1,72 +1,42 @@
 <div class="w-75 mx-auto py-4">
-  <h4>register now</h4>
-  <div *ngIf="apiError" class="alert alert-danger">{{ apiError }}</div>
-  <form (ngSubmit)="handelRegister(registerForm)" [formGroup]="registerForm">
-    <label for="name">name:</label>
-    <input
-      formControlName="name"
-      id="name"
-      class="form-control mb-2"
-      type="text"
-    />
-    <div
-      *ngIf="
-        registerForm.get('name')?.errors && registerForm.get('name')?.touched
-      "
-      class="alert alert-danger"
-    >
-      <p *ngIf="registerForm.get('name')?.getError('minlength')" class="m-0">
-        Name min length is 3
-      </p>
-      <p *ngIf="registerForm.get('name')?.getError('required')" class="m-0">
-        Name is required
-      </p>
-    </div>
-    <label for="name">email:</label>
-    <input
-      formControlName="email"
-      id="email"
-      class="form-control mb-2"
-      type="email"
-    />
-    <div
-      *ngIf="
-        registerForm.get('email')?.errors && registerForm.get('email')?.touched
-      "
-      class="alert alert-danger"
-    >
-      <p *ngIf="registerForm.get('email')?.getError('email')" class="m-0">
-        Invalid email
-      </p>
-      <p *ngIf="registerForm.get('email')?.getError('required')" class="m-0">
-        email is required
-      </p>
-    </div>
-    <label for="name">password:</label>
-    <input
-      formControlName="password"
-      id="password"
-      class="form-control mb-2"
-      type="password"
-    />
-    <div
-      *ngIf="
-        registerForm.get('password')?.errors &&
-        registerForm.get('password')?.touched
-      "
-      class="alert alert-danger"
-    >
-      <p *ngIf="registerForm.get('password')?.getError('pattern')" class="m-0">
-        must start with uppercase then from 3 to 10 numbers
-      </p>
-      <p *ngIf="registerForm.get('password')?.getError('required')" class="m-0">
-        password is required
-      </p>
-    </div>
+	<h4>register now</h4>
+	<div *ngIf="apiError" class="alert alert-danger">{{ apiError }}</div>
+	<form (ngSubmit)="handelRegister(registerForm)" [formGroup]="registerForm" #signupForm>
+		<label for="name">name:</label>
+		<input formControlName="name" id="name" class="form-control mb-2" type="text" required ngModel />
+		<div *ngIf="registerForm.get('name')?.errors && registerForm.get('name')?.touched" class="alert alert-danger">
+			<p *ngIf="registerForm.get('name')?.getError('minlength')" class="m-0">Name min length is 3</p>
+			<p *ngIf="registerForm.get('name')?.getError('required')" class="m-0">Name is required</p>
+		</div>
+		<label for="name">email:</label>
+		<input formControlName="email" id="email" class="form-control mb-2" type="email" required ngModel />
+		<div *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched" class="alert alert-danger">
+			<p *ngIf="registerForm.get('email')?.getError('email')" class="m-0">Invalid email</p>
+			<p *ngIf="registerForm.get('email')?.getError('required')" class="m-0">email is required</p>
+		</div>
+		<label for="name">password:</label>
+		<input
+			formControlName="password"
+			id="password"
+			class="form-control mb-2"
+			type="password"
+			minlength="6"
+			required
+			ngModel
+		/>
+		<div
+			*ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched"
+			class="alert alert-danger"
+		>
+			<p *ngIf="registerForm.get('password')?.getError('pattern')" class="m-0">
+				must start with uppercase then from 3 to 10 numbers
+			</p>
+			<p *ngIf="registerForm.get('password')?.getError('required')" class="m-0">password is required</p>
+		</div>
 
-    <button type="submit" class="btn bg-success border-0">
-      <!-- <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i> -->
-      <span>Register</span>
-    </button>
-  </form>
+		<button type="submit" class="btn bg-success border-0" [disabled]="!signupForm.valid">
+			<!-- <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i> -->
+			<span>Register</span>
+		</button>
+	</form>
 </div>

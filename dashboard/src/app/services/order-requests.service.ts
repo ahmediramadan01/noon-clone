@@ -6,73 +6,45 @@ import { IOrders } from '../models/iorders';
 import { IOrdersPrds } from '../models/iOrderPrds';
 
 @Injectable({
-  providedIn: 'root',
+	providedIn: 'root',
 })
 export class OrderRequestsService {
-  constructor(private httpClient: HttpClient) {}
+	constructor(private httpClient: HttpClient) {}
 
-<<<<<<< HEAD
-  getAllOrders(): Observable<{ allOrders: [] }> {
-    return this.httpClient.get<{ allOrders: [] }>(
-      `${environment.BAseApiURL}/orders`
-    );
-  }
+	getAllOrders(): Observable<any> {
+		return this.httpClient.get<any>(`https://ecommerce.routemisr.com/api/v1/orders/`);
+	}
 
-  getOneOrderById(id: string): Observable<IOrders> {
-    return this.httpClient.get<IOrders>(
-      `${environment.BAseApiURL}/orders/${id}`
-=======
-  getAllOrders(): Observable<any> {
-    return this.httpClient.get<any>(
-      `https://ecommerce.routemisr.com/api/v1/orders/`
-    );
-  }
+	getOneOrderById(id: string): Observable<any> {
+		return this.httpClient.get<any>(`https://ecommerce.routemisr.com/api/v1/orders/user/${id}`);
+	}
 
-  getOneOrderById(id: string): Observable<any> {
-    return this.httpClient.get<any>(
-      `https://ecommerce.routemisr.com/api/v1/orders/user/${id}`
->>>>>>> origin/dashboard2
-    );
-  }
-
-  toggleStatus(
-    id: string,
-    status: string,
-    payment: string
-  ): Observable<IOrders> {
-    if (payment == 'Paid Online') {
-      return this.httpClient.patch<IOrders>(
-        `${environment.BAseApiURL}/orders/${id}`,
-        { status: status }
-      );
-    } else if (status == 'shipped' && payment == 'Cash on delivery') {
-      return this.httpClient.patch<IOrders>(
-        `${environment.BAseApiURL}/orders/${id}`,
-        { status: status, paymentStatus: 'Completed' }
-      );
-    } else if (status == 'Waiting for Supplier' && payment == 'Completed') {
-      return this.httpClient.patch<IOrders>(
-        `${environment.BAseApiURL}/orders/${id}`,
-        { status: status, paymentStatus: 'Cash on delivery' }
-      );
-    }
-  }
-  cancelOrder(id: string, payment: string): Observable<IOrders> {
-    if (payment == 'Paid Online' || payment == 'Completed') {
-      return this.httpClient.patch<IOrders>(
-        `${environment.BAseApiURL}/orders/${id}`,
-        { status: 'canceled', paymentStatus: 'Refunded' }
-      );
-    } else {
-      return this.httpClient.delete<IOrders>(
-        `${environment.BAseApiURL}/orders/${id}`
-      );
-    }
-  }
-  orderCanceledPrds(id: string, quantity: number): Observable<IOrdersPrds> {
-    return this.httpClient.patch<IOrdersPrds>(
-      `${environment.BAseApiURL}/product/${id}`,
-      { quantity: quantity }
-    );
-  }
+	toggleStatus(id: string, status: string, payment: string): Observable<IOrders> {
+		if (payment == 'Paid Online') {
+			return this.httpClient.patch<IOrders>(`${environment.BAseApiURL}/orders/${id}`, { status: status });
+		} else if (status == 'shipped' && payment == 'Cash on delivery') {
+			return this.httpClient.patch<IOrders>(`${environment.BAseApiURL}/orders/${id}`, {
+				status: status,
+				paymentStatus: 'Completed',
+			});
+		} else if (status == 'Waiting for Supplier' && payment == 'Completed') {
+			return this.httpClient.patch<IOrders>(`${environment.BAseApiURL}/orders/${id}`, {
+				status: status,
+				paymentStatus: 'Cash on delivery',
+			});
+		}
+	}
+	cancelOrder(id: string, payment: string): Observable<IOrders> {
+		if (payment == 'Paid Online' || payment == 'Completed') {
+			return this.httpClient.patch<IOrders>(`${environment.BAseApiURL}/orders/${id}`, {
+				status: 'canceled',
+				paymentStatus: 'Refunded',
+			});
+		} else {
+			return this.httpClient.delete<IOrders>(`${environment.BAseApiURL}/orders/${id}`);
+		}
+	}
+	orderCanceledPrds(id: string, quantity: number): Observable<IOrdersPrds> {
+		return this.httpClient.patch<IOrdersPrds>(`${environment.BAseApiURL}/product/${id}`, { quantity: quantity });
+	}
 }

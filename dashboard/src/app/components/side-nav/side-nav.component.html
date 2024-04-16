@@ -1,57 +1,45 @@
 <div
-  class="d-flex pt-5 flex-column flex-shrink-0 p-3 text-dark bg-light border-light h-100 overflow-auto"
-  style="width: 332px"
+	class="d-flex pt-5 flex-column flex-shrink-0 p-3 text-dark bg-light border-light h-100 overflow-auto"
+	style="width: 332px"
 >
-  <!-- Personal img and title -->
-  <!-- <div class="text-center mt-2 mb-4 text-secondary">
-    <img
-      src="https://github.com/mdo.png"
-      alt=""
-      width="90"
-      height="90"
-      class="rounded-4 me-2 mb-2"
-    />
-    <h4>Edward Sameh</h4>
-    <p>CEO</p>
-  </div> -->
-  <ul class="nav nav-pills flex-column mb-auto fw-semibold text-light">
-    <!-- Dashboard -->
-    <li class="border rounded-4 mt-2 bg-gray">
-      <a
-        routerLink="/"
-        class="nav-link"
-        routerLinkActive="activeLink"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        <!-- <i class="fa-solid fa-chart-pie"></i> -->
-        <span class="ms-3 text-white px-5 fs-4">Dashboard</span>
-      </a>
-    </li>
-    <!-- Profile -->
-    <!-- <li>
-      <a routerLink="/profile" class="nav-link" routerLinkActive="activeLink">
+	<ul class="nav nav-pills flex-column mb-auto fw-semibold text-light">
+		<!-- Dashboard -->
+		<li class="border rounded-4 mt-2 bg-gray">
+			<a
+				routerLink="/dashboard/home"
+				class="nav-link"
+				routerLinkActive="activeLink"
+				[routerLinkActiveOptions]="{ exact: true }"
+			>
+				<!-- <i class="fa-solid fa-chart-pie"></i> -->
+				<span class="ms-3 text-white px-5 fs-4">Dashboard</span>
+			</a>
+		</li>
+		<!-- Profile -->
+		<!-- <li>
+      <a routerLink="/dashboard/profile" class="nav-link" routerLinkActive="activeLink">
         <i class="fa-solid fa-user"></i>
         <span class="ms-3">Profile</span>
       </a>
     </li> -->
-    <!-- Add Admin -->
-    <li class="border rounded-4 mt-2 bg-gray">
-      <a routerLink="/register" class="nav-link" routerLinkActive="activeLink">
-        <!-- <i class="fa-solid fa-user-plus"></i> -->
-        <span class="ms-5 text-white px-5 fs-4"> Users</span>
-      </a>
-    </li>
-    <!-- Orders -->
-    <li class="border rounded-4 mt-2 bg-gray">
-      <a routerLink="/orders" class="nav-link" routerLinkActive="activeLink">
-        <!-- <i class="fa-solid fa-cart-flatbed"></i> -->
-        <span class="ms-3 text-white pk-0 fs-4"> Orders</span>
-      </a>
-    </li>
-    <!-- Categories -->
-    <!-- <li>
+		<!-- Add Admin -->
+		<li class="border rounded-4 mt-2 bg-gray">
+			<a routerLink="/dashboard/register" class="nav-link" routerLinkActive="activeLink">
+				<!-- <i class="fa-solid fa-user-plus"></i> -->
+				<span class="ms-5 text-white px-5 fs-4"> Users</span>
+			</a>
+		</li>
+		<!-- Orders -->
+		<li class="border rounded-4 mt-2 bg-gray">
+			<a routerLink="/dashboard/orders" class="nav-link" routerLinkActive="activeLink">
+				<!-- <i class="fa-solid fa-cart-flatbed"></i> -->
+				<span class="ms-3 text-white pk-0 fs-4"> Orders</span>
+			</a>
+		</li>
+		<!-- Categories -->
+		<!-- <li>
       <a
-        routerLink="/category/category"
+        routerLink="/dashboard/category/category"
         class="nav-link"
         routerLinkActive="activeLink"
       >
@@ -70,41 +58,27 @@
         <span class="ms-3"> Categories</span>
       </a>
     </li> -->
-    <!-- SubCategories -->
-    <!-- <li>
-      <a routerLink="/subcategory/subcategory" class="nav-link" routerLinkActive="activeLink">
+		<!-- SubCategories -->
+		<!-- <li>
+      <a routerLink="/dashboard/subcategory/subcategory" class="nav-link" routerLinkActive="activeLink">
         <i class="fa-solid fa-network-wired"></i>
         <span class="ms-3">Manage SubCategories</span>
       </a>
     </li> -->
-    <!-- Products -->
-    <li class="border rounded-4 bg-gray mt-2">
-      <a
-        routerLink="/product/product"
-        class="nav-link"
-        routerLinkActive="activeLink"
-      >
-        <!-- <i class="fa-solid fa-bag-shopping"></i> -->
-        <span class="ms-3 pk-0 text-white fs-4"> Products</span>
-      </a>
-    </li>
+		<!-- Products -->
+		<li class="border rounded-4 bg-gray mt-2">
+			<a routerLink="/dashboard/product/product" class="nav-link" routerLinkActive="activeLink">
+				<!-- <i class="fa-solid fa-bag-shopping"></i> -->
+				<span class="ms-3 pk-0 text-white fs-4"> Products</span>
+			</a>
+		</li>
 
-    <li class="bg-trans out rounded-pill px-5 mt-5 border-red bg-red">
-      <a routerLink="/" class="nav-link" (click)="signOut()">
-        <!-- <i class="fa-solid fa-bag-shopping"></i> -->
-        <span class="ms-3 ps-4 text-red fs-4">Sign Out</span>
-      </a>
-    </li>
-  </ul>
-  <hr />
-  <!-- <div class="text-center d-none" (click)="signOut()">
-    <a
-      routerLink="/"
-      class="link-underline link-underline-opacity-0 text-danger fw-semibold"
-    >
-      <span class="me-3">Sign Out</span>
-    </a>
-  </div> -->
+		<li class="bg-trans out rounded-pill px-5 mt-5 border-red bg-red">
+			<a routerLink="/" class="nav-link" (click)="onLogOut()">
+				<!-- <i class="fa-solid fa-bag-shopping"></i> -->
+				<span class="ms-3 ps-4 text-red fs-4">Sign Out</span>
+			</a>
+		</li>
+	</ul>
+	<hr />
 </div>
-
-<!-- =========================================================================== -->

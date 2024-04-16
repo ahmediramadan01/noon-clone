@@ -4,39 +4,26 @@ import { Router } from '@angular/router';
 import { IOrders } from '../../models/iorders';
 
 @Component({
-  selector: 'app-orders',
-  templateUrl: './orders.component.html',
-  styleUrl: './orders.component.scss',
+	selector: 'app-orders',
+	templateUrl: './orders.component.html',
+	styleUrl: './orders.component.scss',
 })
 export class OrdersComponent {
-<<<<<<< HEAD
-  allOrders: IOrders[] = [];
-=======
-  allOrders: any[] = [];
->>>>>>> origin/dashboard2
+	allOrders: any[] = [];
 
-  constructor(
-    private orderService: OrderRequestsService,
-    private router: Router
-  ) {}
+	constructor(private orderService: OrderRequestsService, private router: Router) {}
 
-  ngOnInit(): void {
-    this.orderService.getAllOrders().subscribe({
-      next: (data) => {
-<<<<<<< HEAD
-        console.log(data.allOrders);
+	ngOnInit(): void {
+		this.orderService.getAllOrders().subscribe({
+			next: (data) => {
+				console.log(data.data);
+				this.allOrders = data.data;
 
-        this.allOrders = data.allOrders.reverse();
-=======
-        console.log(data.data);
-        this.allOrders = data.data;
-
-        // this.allOrders = data.allOrders.reverse();
->>>>>>> origin/dashboard2
-      },
-      error(err) {
-        console.log(err);
-      },
-    });
-  }
+				// this.allOrders = data.allOrders.reverse();
+			},
+			error(err) {
+				console.log(err);
+			},
+		});
+	}
 }
