@@ -1,7 +1,10 @@
 "use client";
+
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { CategorySwiper } from "@/components/categorySwiper";
 import { CarouselMain } from "@/components/carousel-main";
+import { Spinner } from "@material-tailwind/react";
 
 import Image1 from "../../../public/images/carousel-main-01.jpg";
 import Image2 from "../../../public/images/carousel-main-02.jpg";
@@ -169,6 +172,51 @@ const searchedFor = [
 ];
 const searchedFor1 = [Dedorantes, Shampoos, sunBlocks, Lipgloss, Lipsticks, Dedorantes, Lipgloss, Lipsticks, sunBlocks];
 function Beauty() {
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(null);
+	const [products, setProducts] = useState([]);
+	const [electronicsProducts, setElectronicsProducts] = useState([]);
+	const [beautyProducts, setBeautyProducts] = useState([]);
+	const [stationaryProducts, setStationaryProducts] = useState([]);
+	const [fashionProducts, setFashionProducts] = useState([]);
+	const [groceryProducts, setGroceryProducts] = useState([]);
+
+	useEffect(() => {
+		fetch("http://localhost:3000/api/products/")
+			.then((response) => {
+				if (!response.ok) {
+					throw new Error("Failed to fetch data");
+				}
+				return response.json();
+			})
+			.then((data) => {
+				setProducts([...data]);
+				setLoading(false);
+			})
+			.catch((error) => {
+				setError(error.message);
+				setLoading(false);
+			});
+	}, []);
+
+	useEffect(() => {
+		if (products.length > 0) {
+			setBeautyProducts(products.filter((product) => product.category === "beauty"));
+		}
+	}, [products]);
+
+	if (loading) {
+		return (
+			<div className="h-[80vh] flex items-center justify-center">
+				<Spinner color="amber" className="h-16 w-16" />
+			</div>
+		);
+	}
+
+	if (error) {
+		return <div>{error}</div>;
+	}
+
 	return (
 		<div className="w-full flex-col">
 			{/* //Carousel Main    */}
@@ -197,7 +245,7 @@ function Beauty() {
 			<div className="row p-2">
 				<Image src={beautySlider_3} className="w-full" />
 			</div>
-			<ProductSwiper />
+			<ProductSwiper data={beautyProducts} />
 			<div className="row p-2">
 				<Image src={OfficialStores_Img} className="w-full" />
 			</div>
