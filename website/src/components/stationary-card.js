@@ -20,7 +20,7 @@ function StationaryCard({ titleImg, images }) {
 				<div className="w-full my-1 py-1">
 					<Image src={titleImg} alt={"stationery-item"} width={50} height={5} layout="responsive" />
 				</div>
-				<div className={`grid grid-cols-3 md:grid-cols-${numCols} gap-4`}>
+				<div className={`grid grid-cols-${numCols} gap-4`}>
 					{images.map((image, index) => (
 						<div key={index}>
 							<img src={image.src} alt={`Image ${index + 1}`} className="w-full h-auto" />

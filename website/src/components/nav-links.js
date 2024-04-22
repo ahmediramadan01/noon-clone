@@ -11,7 +11,7 @@ export function MegaMenuWithHover() {
 	// Define the links array
 	const links = [
 		{ title: "Electronics", href: "/electronics" },
-		{ title: "Stationary", href: "/stationary" },
+		{ title: "Stationery", href: "/stationery" },
 		{ title: "Fashion", href: "/fashion" },
 		{ title: "Beauty", href: "/beauty" },
 		{ title: "Sell on Noon", href: "http://localhost:3000" },

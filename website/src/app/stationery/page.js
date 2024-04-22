@@ -12,6 +12,8 @@ import { ProductSwiper } from "@/components/productsSwiper";
 import Image from "next/image";
 import StationaryCard from "@/components/stationary-card";
 
+import { Spinner } from "@material-tailwind/react";
+
 function Stationery() {
 	// images for first items section
 	const artsImages = [
@@ -74,40 +76,46 @@ function Stationery() {
 
 	// main carousel images
 	const carouselImages = [Image1, Image2, Image3, Image4];
-
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(null);
 	const [products, setProducts] = useState([]);
-	const [electronicsProducts, setElectronicsProducts] = useState([]);
-	const [beautyProducts, setBeautyProducts] = useState([]);
 	const [stationaryProducts, setStationaryProducts] = useState([]);
-	const [fashionProducts, setFashionProducts] = useState([]);
-	const [groceryProducts, setGroceryProducts] = useState([]);
 
 	useEffect(() => {
 		fetch("http://localhost:3000/api/products/")
-			.then((response) => response.json())
+			.then((response) => {
+				if (!response.ok) {
+					throw new Error("Failed to fetch data");
+				}
+				return response.json();
+			})
 			.then((data) => {
 				setProducts([...data]);
+				setLoading(false);
 			})
-			.catch((error) => console.error(error));
+			.catch((error) => {
+				setError(error.message);
+				setLoading(false);
+			});
 	}, []);
 
 	useEffect(() => {
 		if (products.length > 0) {
-			setElectronicsProducts(products.filter((product) => product.category === "electronics"));
-			setBeautyProducts(products.filter((product) => product.category === "beauty"));
-			setStationaryProducts(products.filter((product) => product.category === "stationary"));
-			setFashionProducts(products.filter((product) => product.category === "fashion"));
-			setGroceryProducts(products.filter((product) => product.category === "grocery"));
+			setStationaryProducts(products.filter((product) => product.category === "stationery"));
 		}
 	}, [products]);
 
-	useEffect(() => {
-		// console.log(electronicsProducts);
-		// console.log(beautyProducts);
-		// console.log(stationaryProducts);
-		// console.log(fashionProducts);
-		// console.log(groceryProducts);
-	}, [stationaryProducts]);
+	if (loading) {
+		return (
+			<div className="h-[80vh] flex items-center justify-center">
+				<Spinner color="amber" className="h-16 w-16" />
+			</div>
+		);
+	}
+
+	if (error) {
+		return <div>{error}</div>;
+	}
 
 	return (
 		<>
@@ -119,7 +127,7 @@ function Stationery() {
 					</div>
 					<div>
 						<h2 className="text-2xl font-bold my-5">Best Seller</h2>
-						<ProductSwiper></ProductSwiper>
+						<ProductSwiper data={stationaryProducts} />
 					</div>
 					<Image src={bannerImage} className="my-4 w-full"></Image>
 
@@ -130,7 +138,7 @@ function Stationery() {
 					<StationaryCard titleImg={"/images/stationery/title5.png"} images={officeToolsImages} />
 					{/* top brands */}
 					<StationaryCard titleImg={"/images/stationery/top-brands.avif"} images={topBrandsImgs} />
-					{/* other stantionery */}
+					{/* other stationery */}
 					<StationaryCard titleImg={"/images/stationery/title-others.avif"} images={otherStaioneryImgs} />
 				</div>
 			</div>
