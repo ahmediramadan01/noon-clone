@@ -54,6 +54,7 @@ export const authOptions = {
 					wishlist: user.wishlist,
 					cart: user.cart,
 					ratings: user.ratings,
+					orders: user.orders,
 				};
 			}
 
@@ -72,6 +73,7 @@ export const authOptions = {
 							wishlist: token.wishlist,
 							cart: token.cart,
 							ratings: token.ratings,
+							orders: token.orders,
 						},
 						{ new: true }
 					);
@@ -90,6 +92,7 @@ export const authOptions = {
 							wishlist: updatedUser.wishlist,
 							cart: updatedUser.cart,
 							ratings: updatedUser.ratings,
+							orders: updatedUser.orders,
 						};
 					}
 				} catch (error) {
@@ -116,6 +119,7 @@ export const authOptions = {
 					wishlist: token.wishlist,
 					cart: token.cart,
 					ratings: token.ratings,
+					orders: token.orders,
 				},
 			};
 			return session;
