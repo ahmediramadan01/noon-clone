@@ -105,7 +105,7 @@ export function ProfileFormBody() {
 								<br />
 								<span className=" text-xs md:ms-4">Get offers on your special day!</span>
 							</div>
-							<div className="block w-full md:w-1/3">
+							{/* <div className="block w-full md:w-1/3">
 								<label className="md:ms-4 text-sm">Gender</label>
 								<br />
 								<div className="flex mt-2">
@@ -130,9 +130,9 @@ export function ProfileFormBody() {
 										<p className="ms-2">Female</p>
 									</Button>
 								</div>
-							</div>
+							</div> */}
 						</div>
-						<div className="md:flex md:flex-wrap mt-4">
+						{/* <div className="md:flex md:flex-wrap mt-4">
 							<div className="block w-full md:w-1/3 md:pr-4 ms-4">
 								<label className="text-sm">Nationality</label>
 								<br />
@@ -156,7 +156,7 @@ export function ProfileFormBody() {
 									</Select>
 								</div>
 							</div>
-						</div>
+						</div> */}
 						<Button
 							className="mt-8 ms-4 px-6 bg-blue-800 rounded-sm"
 							onClick={() =>
