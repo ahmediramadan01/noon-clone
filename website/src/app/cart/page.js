@@ -2,19 +2,25 @@
 
 import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import CartCard from "@/components/CartCard";
 import CartCard2 from "@/components/CartCard2";
 import CartCard3 from "@/components/CartCard3";
 import CartCard4 from "@/components/CartCard4";
 import Image9 from "../../../public/cart-1.png";
+import { Spinner } from "@material-tailwind/react";
 
 export default function CartPage() {
 	const session = useSession();
+	const router = useRouter();
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(null);
 
 	const [userCart, setUserCart] = useState([]);
 
 	useEffect(() => {
+		setLoading(true);
 		const getCartProducts = async () => {
 			try {
 				const cartProducts = await Promise.all(
@@ -33,10 +39,31 @@ export default function CartPage() {
 				setUserCart(cartProducts);
 			} catch (error) {
 				console.error(error);
+			} finally {
+				setLoading(false);
 			}
 		};
 		getCartProducts();
 	}, [session]);
+
+	useEffect(() => {
+		if (session?.status !== "authenticated") {
+			setLoading(false);
+			router?.refresh();
+		}
+	}, [session, router]);
+
+	if (loading) {
+		return (
+			<div className="h-[80vh] flex items-center justify-center">
+				<Spinner color="amber" className="h-16 w-16" />
+			</div>
+		);
+	}
+
+	if (error) {
+		return <div>{error}</div>;
+	}
 
 	return (
 		<>
