@@ -49,6 +49,10 @@ const userSchema = new Schema(
 			type: Array,
 			default: [],
 		},
+		orders: {
+			type: Array,
+			default: [],
+		},
 	},
 	{ timestamps: true }
 );
