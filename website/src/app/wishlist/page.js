@@ -20,8 +20,11 @@ import {
 } from "@material-tailwind/react";
 
 import { MainCard } from "@/components/mainCard";
+import { Spinner } from "@material-tailwind/react";
 
 export default function WishlistPage() {
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(null);
 	const [open, setOpen] = React.useState(false);
 	const router = useRouter();
 	const session = useSession();
@@ -37,6 +40,7 @@ export default function WishlistPage() {
 	const [userWishlist, setUserWishlist] = useState([]);
 
 	useEffect(() => {
+		setLoading(true);
 		const getWishlistProducts = async () => {
 			try {
 				const wishlistProducts = await Promise.all(
@@ -51,6 +55,8 @@ export default function WishlistPage() {
 				setUserWishlist(wishlistProducts);
 			} catch (error) {
 				console.error(error);
+			} finally {
+				setLoading(false);
 			}
 		};
 		getWishlistProducts();
@@ -58,9 +64,30 @@ export default function WishlistPage() {
 
 	useEffect(() => {
 		if (session?.status !== "authenticated") {
+			setLoading(false);
 			router?.refresh();
 		}
 	}, [session, router]);
+
+	// if (loading) {
+	// 	return (
+	// 		<div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50">
+	// 			<Spinner color="amber" className="h-16 w-16" />
+	// 		</div>
+	// 	);
+	// }
+
+	if (loading) {
+		return (
+			<div className="h-[80vh] flex items-center justify-center">
+				<Spinner color="amber" className="h-16 w-16" />
+			</div>
+		);
+	}
+
+	if (error) {
+		return <div>{error}</div>;
+	}
 
 	return (
 		<>
