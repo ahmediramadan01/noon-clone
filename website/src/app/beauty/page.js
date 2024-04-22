@@ -287,7 +287,7 @@ function Beauty() {
 				<div className="row py-3">
 					<Image src={GlameTime} className="w-full " />
 				</div>
-				<div className="grid grid-cols-4 gap-5  w-full bg-[#ffffff] py-3 px-4 bg-[#faefe7]">
+				<div className="grid grid-cols-4 gap-5 w-full py-3 px-4 bg-[#faefe7]">
 					{glameTimeArr.map((item, index) => (
 						<div key={index}>
 							<Image src={item} className="w-full" />
@@ -299,7 +299,7 @@ function Beauty() {
 				<div className="row py-3">
 					<Image src={PersonalEsseintialsSlider} className="w-full " />
 				</div>
-				<div className="grid grid-cols-7 gap-5  w-full bg-[#ffffff] py-3 px-4 bg-[#faefe7]">
+				<div className="grid grid-cols-7 gap-5 w-full py-3 px-4 bg-[#faefe7]">
 					{PersonalEsseintialsArr.map((item, index) => (
 						<div key={index}>
 							<Image src={item} className="w-full" />
