@@ -401,21 +401,16 @@ export default function HomePage() {
 					</div>
 					<div className="bg-[#ffddb2] py-2">
 						<Image src={dealsImage0} className="w-full"></Image>
-						<div className="grid grid-cols-2 gap-4 px-4 sm:grid-cols-1 xs:grid-cols-1">
-							<DealsCard deal="Fashion deals" image={dealsImage1} title="Footwear" discount="Up to 80% Off"></DealsCard>
+						<div className="lg:grid grid-cols-2 gap-4 px-4">
+							<DealsCard deal="Fashion deals" image={dealsImage1} title="Footwear" discount="Up to 80% Off" />
 							<DealsCard
 								deal="Camera deals"
 								image={dealsImage2}
 								title="Cameras and accessories"
 								discount="Up to 40% Off"
-							></DealsCard>
-							<DealsCard
-								deal="Health deals"
-								image={dealsImage3}
-								title="Health care"
-								discount="Up to 50% Off"
-							></DealsCard>
-							<DealsCard deal="Home deals" image={dealsImage4} title="Lighting" discount="Up to 55% Off"></DealsCard>
+							/>
+							<DealsCard deal="Health deals" image={dealsImage3} title="Health care" discount="Up to 50% Off" />
+							<DealsCard deal="Home deals" image={dealsImage4} title="Lighting" discount="Up to 55% Off" />
 						</div>
 					</div>
 					<div className="bg-white py-2">
