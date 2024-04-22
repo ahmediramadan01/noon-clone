@@ -7,9 +7,12 @@ import DeliveryInfoItems from "@/components/delivery-info";
 import ProductPrice from "@/components/product-price";
 import WarrantyInfo from "@/components/warranty-info";
 import { IconButton, Typography, Rating } from "@material-tailwind/react";
+import { Spinner } from "@material-tailwind/react";
 
 function ProductPage({ params }) {
 	const session = useSession();
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(null);
 	const [product, setProduct] = useState({});
 	const [cartQuantity, setCartQuantity] = useState(1);
 	const [userRating, setUserRating] = useState(0);
@@ -18,8 +21,12 @@ function ProductPage({ params }) {
 			.then((response) => response.json())
 			.then((data) => {
 				setProduct({ ...data });
+				setLoading(false);
 			})
-			.catch((error) => console.error(error));
+			.catch((error) => {
+				setError(error.message);
+				setLoading(false);
+			});
 	}, []);
 
 	useEffect(() => {
@@ -196,6 +203,18 @@ function ProductPage({ params }) {
 		}
 	};
 
+	if (loading) {
+		return (
+			<div className="h-[80vh] flex items-center justify-center">
+				<Spinner color="amber" className="h-16 w-16" />
+			</div>
+		);
+	}
+
+	if (error) {
+		return <div>{error}</div>;
+	}
+
 	return (
 		<>
 			<div className="mx-auto my-2">
@@ -210,7 +229,7 @@ function ProductPage({ params }) {
 						<span className="brand">{product.brand}</span>
 						<div color="black" className="flex items-center gap-1.5 font-normal">
 							<h1 className="font-semibold text-2xl my-5 mr-5">{product.title}</h1>
-							{product.rating}
+							{product.rating.toFixed(1)}
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								viewBox="0 0 24 24"
