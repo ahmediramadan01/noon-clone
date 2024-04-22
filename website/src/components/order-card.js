@@ -2,19 +2,27 @@
 import Image from "next/image";
 import orderImg from "../../public/ps5-1.png";
 import React from "react";
-import { ArrowPathIcon, BanknotesIcon, CalendarDaysIcon, CheckIcon, ShoppingBagIcon } from "@heroicons/react/24/outline";
+import {
+	ArrowPathIcon,
+	BanknotesIcon,
+	CalendarDaysIcon,
+	CheckIcon,
+	ShoppingBagIcon,
+} from "@heroicons/react/24/outline";
 
-function OrderCard() {
+export function OrderCard() {
 	return (
-		<div className="w-full h-full p-2 flex flex-col-reverse items-center justify-center gap-2">
+		<div className="w-full h-full p-2 flex flex-col-reverse items-center justify-center gap-2 border">
 			<div className="w-full h-1/3 font-bold text-base flex items-center">
-				Status: 
+				Status:
 				<span className="mx-2 font-normal flex items-center text-red-500">
-                    <ArrowPathIcon className="w-5 h-5 mx-1"/>
-                    Pending</span>
-                    <span className="mx-2 font-normal flex items-center text-green-500">
-                    <CheckIcon className="w-5 h-5 mx-1"/>
-                    Completed</span>
+					<ArrowPathIcon className="w-5 h-5 mx-1" />
+					Pending
+				</span>
+				<span className="mx-2 font-normal flex items-center text-green-500">
+					<CheckIcon className="w-5 h-5 mx-1" />
+					Completed
+				</span>
 			</div>
 			<div className="flex w-full h-2/3">
 				<div className="hidden">ID</div>
@@ -65,5 +73,3 @@ function OrderCard() {
 		</div>
 	);
 }
-
-export default OrderCard;
