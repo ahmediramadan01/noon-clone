@@ -14,8 +14,11 @@ import {
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { ProductCard } from "@/components/product-card";
 import Link from "next/link";
+import { Spinner } from "@material-tailwind/react";
 
 export default function SearchPage({ params }) {
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(null);
 	const [open, setOpen] = React.useState(0);
 
 	const handleOpen = (value) => {
@@ -33,8 +36,12 @@ export default function SearchPage({ params }) {
 			.then((response) => response.json())
 			.then((data) => {
 				setProducts([...data]);
+				setLoading(false);
 			})
-			.catch((error) => console.error(error));
+			.catch((error) => {
+				console.error(error);
+				setLoading(false);
+			});
 	}, [selectedCategories, selectedBrands]);
 
 	const handleCategoryChange = (category) => {
@@ -70,6 +77,18 @@ export default function SearchPage({ params }) {
 
 		return categoryFilter && brandFilter && priceFilter;
 	});
+
+	if (loading) {
+		return (
+			<div className="h-[80vh] flex items-center justify-center">
+				<Spinner color="amber" className="h-16 w-16" />
+			</div>
+		);
+	}
+
+	if (error) {
+		return <div>{error}</div>;
+	}
 
 	return (
 		<>
