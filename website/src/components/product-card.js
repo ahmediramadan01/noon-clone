@@ -130,7 +130,10 @@ export function ProductCard({ data }) {
 					</svg>
 				</IconButton>
 				<Typography color="black" className="!absolute bottom-4 left-4 flex items-center gap-1.5 font-normal">
-					{product.rating}
+					{typeof product?.rating === "number" && !isNaN(product.rating) && product.rating > 0
+						? product.rating.toFixed(1)
+						: "0"}
+
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 24 24"

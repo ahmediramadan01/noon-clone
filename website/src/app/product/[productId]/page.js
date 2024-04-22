@@ -229,7 +229,9 @@ function ProductPage({ params }) {
 						<span className="brand">{product.brand}</span>
 						<div color="black" className="flex items-center gap-1.5 font-normal">
 							<h1 className="font-semibold text-2xl my-5 mr-5">{product.title}</h1>
-							{product.rating.toFixed(1)}
+							{typeof product?.rating === "number" && !isNaN(product.rating) && product.rating > 0
+								? product.rating.toFixed(1)
+								: "0"}
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								viewBox="0 0 24 24"
