@@ -12,6 +12,7 @@ import { ElectronicSecFive } from "@/components/electronicSecFive";
 import { SmallCarousel } from "@/components/smllCarsouel";
 import { ProductSwiper } from "@/components/productsSwiper";
 import { ImageList } from "@/components/imageList";
+import { Spinner } from "@material-tailwind/react";
 
 //==> ==//> // Images Of Electronic Page
 import Image1 from "/public/images/carousel-main-01.jpg";
@@ -67,12 +68,12 @@ import AnnonceMent from "/public/Section5/sliderAnnoncement.png";
 const carouselImages = [Image1, Image2, Image3, Image4, Image5, Image6, Image7];
 const secTwo = [
 	{
-		title: "TELEVISION DEALSS",
-		description: "  This is The Description  of TELEVISION DEALSS",
+		title: "TELEVISION DEALS",
+		description: "  This is The Description  of TELEVISION DEALS",
 		pricebefore: "1569",
 		priceAfter: "865",
 		imgSrc: imgsec1,
-		imgalt: "hhhh",
+		imgalt: "TELEVISION",
 	},
 	{
 		title: "Mobile Iphone",
@@ -80,39 +81,39 @@ const secTwo = [
 		pricebefore: "1120",
 		priceAfter: "875",
 		imgSrc: imgsec2,
-		imgalt: "hhhh1",
+		imgalt: "Mobile Iphone",
 	},
 	{
-		title: "Mobile Androide ",
-		description: "  This is The Description  of Mobile Androide",
+		title: "Android Mobile",
+		description: "  This is The Description  of Mobile Android",
 		pricebefore: "1490",
 		priceAfter: "999.5",
 		imgSrc: imgsec3,
-		imgalt: "hhhh2",
+		imgalt: "Android Mobile",
 	},
 	{
-		title: "Tablet DEALSS",
-		description: "  This is The Description  of Tablet DEALSS",
+		title: "Tablet DEALS",
+		description: "  This is The Description  of Tablet DEALS",
 		pricebefore: "1569",
 		priceAfter: "865",
 		imgSrc: imgsec4,
-		imgalt: "dhhhh",
+		imgalt: "Tablet",
 	},
 	{
 		title: "Airbuds Iphone",
-		description: " This is The Description  of Airbuds Iphone",
+		description: " This is The Description of airbuds Iphone",
 		pricebefore: "1120",
 		priceAfter: "875",
 		imgSrc: imgsec5,
-		imgalt: "hddhhh1",
+		imgalt: "Airbuds",
 	},
 	{
-		title: "Sounding sub  ",
-		description: "  This is The Description  of Sounding sub",
+		title: "Sounding Sub",
+		description: "  This is The Description  of Sounding Sub",
 		pricebefore: "1490",
 		priceAfter: "999.5",
 		imgSrc: imgsec6,
-		imgalt: "hhhdh2",
+		imgalt: "Sub",
 	},
 ];
 
@@ -190,6 +191,8 @@ const smallSliderImg = [
 ];
 
 export default function CategoryPage() {
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(null);
 	const [products, setProducts] = useState([]);
 	const [electronicsProducts, setElectronicsProducts] = useState([]);
 
@@ -198,8 +201,12 @@ export default function CategoryPage() {
 			.then((response) => response.json())
 			.then((data) => {
 				setProducts([...data]);
+				setLoading(false);
 			})
-			.catch((error) => console.error(error));
+			.catch((error) => {
+				setError(error.message);
+				setLoading(false);
+			});
 	}, []);
 
 	useEffect(() => {
@@ -207,6 +214,18 @@ export default function CategoryPage() {
 			setElectronicsProducts(products.filter((product) => product.category === "electronics"));
 		}
 	}, [products]);
+
+	if (loading) {
+		return (
+			<div className="h-[80vh] flex items-center justify-center">
+				<Spinner color="amber" className="h-16 w-16" />
+			</div>
+		);
+	}
+
+	if (error) {
+		return <div>{error}</div>;
+	}
 
 	return (
 		<>
@@ -217,23 +236,15 @@ export default function CategoryPage() {
 				<CarouselMain images={carouselImages} />
 				<SmallCarousel images={smallSliderImg} />
 				<div className="flex-col bg-[#fef08a]">
-					<div className="font-extrabold text-bold align-top p-5"> Mega Deals</div>
+					<div className="font-extrabold text-bold align-top p-5">Mega Deals</div>
 					<div className="flex grid-cols-3">
 						<SectionTwo items={secTwo} />
 					</div>
 				</div>
-				<div className="w-full flex justify-between pb-0 p-6">
-					<div className="text-lg	font-extrabold	">Best Deals </div>
-					<div className="">
-						<button class="bg-transparent hover:bg-[#f6e05e] hover:text-black text-black-700 font-semibold py-2 px-4 border border-black-[900] hover:border-transparent rounded">
-							Shop Now
-						</button>
-					</div>
-				</div>
-				<ProductSwiper />
+
 				<ElectronForEvery items={ElectronicSecFour} />
 				<div className="w-full flex justify-between pb-0 p-6">
-					<div className="text-lg	font-extrabold	">Best Deals </div>
+					<div className="text-lg	font-extrabold	">Best Deals</div>
 					<div className="">
 						<button class="bg-transparent hover:bg-[#f6e05e] hover:text-black text-black-700 font-semibold py-2 px-4 border border-black-[900] hover:border-transparent rounded">
 							Shop Now
@@ -242,24 +253,6 @@ export default function CategoryPage() {
 				</div>
 				<ProductSwiper data={electronicsProducts}></ProductSwiper>
 
-				<div className="w-full flex justify-between pb-0 p-6">
-					<div className="text-lg	font-extrabold	">Best Deals </div>
-					<div className="">
-						<button class="bg-transparent hover:bg-[#f6e05e] hover:text-black text-black-700 font-semibold py-2 px-4 border border-black-[900] hover:border-transparent rounded">
-							Shop Now
-						</button>
-					</div>
-				</div>
-				<ProductSwiper data={electronicsProducts}></ProductSwiper>
-				<div className="w-full flex justify-between pb-0 p-6">
-					<div className="text-lg	font-extrabold	">Best Deals </div>
-					<div className="">
-						<button class="bg-transparent hover:bg-[#f6e05e] hover:text-black text-black-700 font-semibold py-2 px-4 border border-black-[900] hover:border-transparent rounded">
-							Shop Now
-						</button>
-					</div>
-				</div>
-				<ProductSwiper data={electronicsProducts}></ProductSwiper>
 				<ElectronForEvery items={ElectronicSecFour} />
 				<div className="w-full flex justify-between pb-0 p-6">
 					<div className="text-lg	font-extrabold	">Best Deals </div>
@@ -293,16 +286,7 @@ export default function CategoryPage() {
 					</div>
 				</div>
 				<ProductSwiper data={electronicsProducts}></ProductSwiper>
-				<div className="w-full flex justify-between pb-0 p-6">
-					<div className="text-lg	font-extrabold	">Best Deals </div>
-					<div className="">
-						<button class="bg-transparent hover:bg-[#f6e05e] hover:text-black text-black-700 font-semibold py-2 px-4 border border-black-[900] hover:border-transparent rounded">
-							Shop Now
-						</button>
-					</div>
-				</div>
 
-				<ProductSwiper data={electronicsProducts}></ProductSwiper>
 				<div className="">
 					<ElectronicSecFive className="flex justify-center" items={ElectronicSecFiveData} />
 				</div>
@@ -315,15 +299,7 @@ export default function CategoryPage() {
 					</div>
 				</div>
 				<ProductSwiper data={electronicsProducts}></ProductSwiper>
-				<div className="w-full flex justify-between pb-0 p-6">
-					<div className="text-lg	font-extrabold	">Best Deals </div>
-					<div className="">
-						<button class="bg-transparent hover:bg-[#f6e05e] hover:text-black text-black-700 font-semibold py-2 px-4 border border-black-[900] hover:border-transparent rounded">
-							Shop Now
-						</button>
-					</div>
-				</div>
-				<ProductSwiper data={electronicsProducts}></ProductSwiper>
+
 				<div className="">
 					<ElectronicSecFive className="flex justify-center" items={ElectronicSecFiveData} />
 				</div>
