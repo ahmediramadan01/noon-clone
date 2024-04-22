@@ -11,11 +11,10 @@ export function MegaMenuWithHover() {
 	// Define the links array
 	const links = [
 		{ title: "Electronics", href: "/electronics" },
-		{ title: "Stationary", href: "#" },
-		{ title: "Fashion", href: "#" },
-		{ title: "Beauty", href: "#" },
-		{ title: "Grocery", href: "#" },
-		{ title: "Sell on Noon", href: "#" },
+		{ title: "Stationary", href: "/stationary" },
+		{ title: "Fashion", href: "/fashion" },
+		{ title: "Beauty", href: "/beauty" },
+		{ title: "Sell on Noon", href: "http://localhost:3000" },
 		{ title: "Deals", href: "#" },
 	];
 
@@ -25,7 +24,7 @@ export function MegaMenuWithHover() {
 		// Update slides per view based on screen size
 		const handleResize = () => {
 			if (window.innerWidth >= 1024) {
-				setSlidesPerView(7); // Large screens
+				setSlidesPerView(6); // Large screens
 			} else if (window.innerWidth >= 768) {
 				setSlidesPerView(4); // Medium screens
 			} else {
@@ -53,7 +52,10 @@ export function MegaMenuWithHover() {
 					>
 						<MenuHandler>
 							<Button className="text-black bg-white rounded-none border-none">
-								<a href="#" className="nav-link flex items-center md:px-2 w-28 md:w-auto text-xs md:text-sm text-nowrap">
+								<a
+									href="#"
+									className="nav-link flex items-center md:px-2 w-28 md:w-auto text-xs md:text-sm text-nowrap"
+								>
 									ALL CATEGORIES
 									<span className="ml-2">
 										<ChevronDownIcon className="h-5 w-5" />

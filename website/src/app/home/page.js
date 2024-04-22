@@ -20,6 +20,12 @@ import reasonsImage2 from "../../../public/images/reasons/reasons-02.png";
 import reasonsImage3 from "../../../public/images/reasons/reasons-03.png";
 import reasonsImage4 from "../../../public/images/reasons/reasons-04.png";
 
+import dealsImage0 from "../../../public/images/deals-00.png";
+import dealsImage1 from "../../../public/images/deals-01.jpg";
+import dealsImage2 from "../../../public/images/deals-02.jpg";
+import dealsImage3 from "../../../public/images/deals-03.jpg";
+import dealsImage4 from "../../../public/images/deals-04.jpg";
+
 import focusImage0 from "../../../public/images/focus/focus-00.png";
 import focusImage1 from "../../../public/images/focus/focus-01.png";
 import focusImage2 from "../../../public/images/focus/focus-02.png";
@@ -325,7 +331,11 @@ import { ProductSwiper } from "@/components/productsSwiper";
 import { TopBrands } from "@/components/top-brands";
 import { CategoriesCards } from "@/components/categories-cards";
 
+import { Spinner } from "@material-tailwind/react";
+
 export default function HomePage() {
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(null);
 	const [products, setProducts] = useState([]);
 	const [electronicsProducts, setElectronicsProducts] = useState([]);
 	const [beautyProducts, setBeautyProducts] = useState([]);
@@ -335,11 +345,20 @@ export default function HomePage() {
 
 	useEffect(() => {
 		fetch("http://localhost:3000/api/products/")
-			.then((response) => response.json())
+			.then((response) => {
+				if (!response.ok) {
+					throw new Error("Failed to fetch data");
+				}
+				return response.json();
+			})
 			.then((data) => {
 				setProducts([...data]);
+				setLoading(false);
 			})
-			.catch((error) => console.error(error));
+			.catch((error) => {
+				setError(error.message);
+				setLoading(false);
+			});
 	}, []);
 
 	useEffect(() => {
@@ -352,13 +371,17 @@ export default function HomePage() {
 		}
 	}, [products]);
 
-	useEffect(() => {
-		// console.log(electronicsProducts);
-		// console.log(beautyProducts);
-		// console.log(stationaryProducts);
-		// console.log(fashionProducts);
-		// console.log(groceryProducts);
-	}, [electronicsProducts]);
+	if (loading) {
+		return (
+			<div className="h-[80vh] flex items-center justify-center">
+				<Spinner color="amber" className="h-16 w-16" />
+			</div>
+		);
+	}
+
+	if (error) {
+		return <div>{error}</div>;
+	}
 
 	return (
 		<>
@@ -377,12 +400,22 @@ export default function HomePage() {
 						</div>
 					</div>
 					<div className="bg-[#ffddb2] py-2">
-						<Image src={reasonsImage0} className="w-full"></Image>
-						<div className="grid grid-cols-2 gap-4 px-4">
-							<DealsCard></DealsCard>
-							<DealsCard></DealsCard>
-							<DealsCard></DealsCard>
-							<DealsCard></DealsCard>
+						<Image src={dealsImage0} className="w-full"></Image>
+						<div className="grid grid-cols-2 gap-4 px-4 sm:grid-cols-1 xs:grid-cols-1">
+							<DealsCard deal="Fashion deals" image={dealsImage1} title="Footwear" discount="Up to 80% Off"></DealsCard>
+							<DealsCard
+								deal="Camera deals"
+								image={dealsImage2}
+								title="Cameras and accessories"
+								discount="Up to 40% Off"
+							></DealsCard>
+							<DealsCard
+								deal="Health deals"
+								image={dealsImage3}
+								title="Health care"
+								discount="Up to 50% Off"
+							></DealsCard>
+							<DealsCard deal="Home deals" image={dealsImage4} title="Lighting" discount="Up to 55% Off"></DealsCard>
 						</div>
 					</div>
 					<div className="bg-white py-2">
@@ -395,21 +428,21 @@ export default function HomePage() {
 				</div>
 				<div>
 					<h2 className="text-2xl font-bold my-5">Recommended for you</h2>
-					<ProductSwiper data={electronicsProducts}></ProductSwiper>
+					<ProductSwiper data={products.slice(0, 13)}></ProductSwiper>
 				</div>
 				<Image src={sponsoredImage} className="my-4 w-full"></Image>
 				<CategoriesCards images={mothersdayImages} bgColor="#fff1f1"></CategoriesCards>
 				<div className="bg-[#f1e8c5] py-2">
 					<Image src={joyImage} unoptimized className="pb-4 w-full"></Image>
 					<div className="p-4">
-						<ProductSwiper data={fashionProducts}></ProductSwiper>
+						<ProductSwiper data={groceryProducts}></ProductSwiper>
 					</div>
 				</div>
 				<CategoriesCards images={offersImages} bgColor="#fff1e2]"></CategoriesCards>
 				<div className="bg-white py-2">
 					<Image src={ramadanDealsImage} className="pb-4 w-full"></Image>
 					<div className="p-4">
-						<ProductSwiper data={groceryProducts}></ProductSwiper>
+						<ProductSwiper data={products.slice(0, 13)}></ProductSwiper>
 					</div>
 				</div>
 				<CategoriesCards images={savingsImages} bgColor="#fff3e4"></CategoriesCards>
@@ -432,7 +465,7 @@ export default function HomePage() {
 				<div className="bg-[#fffcef] py-2">
 					<Image src={topAppliancesImage} className="pb-4 w-full"></Image>
 					<div className="p-4">
-						<ProductSwiper data={beautyProducts}></ProductSwiper>
+						<ProductSwiper data={electronicsProducts}></ProductSwiper>
 					</div>
 				</div>
 				<CategoriesCards images={ramadanStyleImages} bgColor="#fff2ed"></CategoriesCards>
@@ -461,7 +494,7 @@ export default function HomePage() {
 				<div className="bg-[#fffcef] py-2">
 					<Image src={topBabyDealsImage} className="pb-4 w-full"></Image>
 					<div className="p-4">
-						<ProductSwiper data={beautyProducts}></ProductSwiper>
+						<ProductSwiper data={stationaryProducts}></ProductSwiper>
 					</div>
 				</div>
 				<CategoriesCards images={automotiveImages} bgColor="#fff2e2"></CategoriesCards>
