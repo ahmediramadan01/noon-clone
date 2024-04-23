@@ -45,7 +45,8 @@ export default function CartCard3({ data }) {
 				if (response.url) {
 					window.location.href = response.url;
 				}
-			});
+			})
+			.catch((error) => console.error(error));
 	};
 	return (
 		<>
