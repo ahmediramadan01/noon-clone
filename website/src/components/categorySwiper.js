@@ -31,8 +31,6 @@ export function CategorySwiper() {
 				spaceBetween={12}
 				slidesPerView={12}
 				navigation
-				onSwiper={(swiper) => console.log(swiper)}
-				onSlideChange={() => console.log("slide change")}
 			>
 				<SwiperSlide>
 					<Image src={CatImage1}></Image>

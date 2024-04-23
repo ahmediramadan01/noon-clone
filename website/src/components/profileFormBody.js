@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { Typography, Button } from "@material-tailwind/react";
 import { useCountries } from "use-react-countries";
-import { Select, Option } from "@material-tailwind/react";
 
 export function ProfileFormBody() {
 	const { countries } = useCountries();

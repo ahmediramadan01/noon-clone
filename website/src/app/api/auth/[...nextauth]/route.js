@@ -20,7 +20,6 @@ export const authOptions = {
 					if (user) {
 						const correctPassword = await bcrypt.compare(credentials.password, user.password);
 						if (correctPassword) {
-							console.log("user: ", user);
 							return user;
 						}
 					}
@@ -34,8 +33,6 @@ export const authOptions = {
 	],
 	callbacks: {
 		async jwt({ token, user, session, trigger }) {
-			console.log("JWT Callback: ", { token, user, session });
-
 			if (trigger === "update" && session) {
 				token = { ...session };
 			}
@@ -103,7 +100,6 @@ export const authOptions = {
 			return token;
 		},
 		async session({ session, token, user }) {
-			console.log("Session Callback: ", { session, token, user });
 			return {
 				...session,
 				user: {

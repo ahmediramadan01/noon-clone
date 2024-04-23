@@ -13,13 +13,11 @@ import {
 	DialogBody,
 	DialogFooter,
 	Input,
-	Textarea,
 	Checkbox,
 } from "@material-tailwind/react";
 import React from "react";
 import Image from "next/image";
 import ProductImage from "/public/images/product.jpg";
-import Script from "next/script";
 
 export function WishList() {
 	const [open, setOpen] = React.useState(false);

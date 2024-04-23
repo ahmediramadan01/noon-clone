@@ -9,21 +9,6 @@ export function Cards() {
 						<ProductCard />
 					</div>
 				))}
-				{/* <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div>
-                <div className="md:col-span-1 ">
-                    <ProductCard />
-                </div> */}
 			</div>
 		</>
 	);

@@ -44,8 +44,6 @@ export function TopBrands() {
 					spaceBetween={12}
 					slidesPerView={8}
 					navigation
-					onSwiper={(swiper) => console.log(swiper)}
-					onSlideChange={() => console.log("slide change")}
 				>
 					<SwiperSlide>
 						<div className="grid grid-col-2 gap-4">

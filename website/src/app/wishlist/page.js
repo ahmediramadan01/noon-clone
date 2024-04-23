@@ -69,14 +69,6 @@ export default function WishlistPage() {
 		}
 	}, [session, router]);
 
-	// if (loading) {
-	// 	return (
-	// 		<div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50">
-	// 			<Spinner color="amber" className="h-16 w-16" />
-	// 		</div>
-	// 	);
-	// }
-
 	if (loading) {
 		return (
 			<div className="h-[80vh] flex items-center justify-center">

@@ -23,9 +23,7 @@ export default function CartCard3({ data }) {
 		setCartProducts([...data]);
 	}, [data]);
 
-	useEffect(() => {
-		console.log(cartProducts);
-	}, [cartProducts]);
+	useEffect(() => {}, [cartProducts]);
 
 	const [open, setOpen] = React.useState(false);
 
@@ -41,7 +39,6 @@ export default function CartCard3({ data }) {
 		})
 			.then((response) => response.json())
 			.then((response) => {
-				console.log(response.url);
 				if (response.url) {
 					window.location.href = response.url;
 				}

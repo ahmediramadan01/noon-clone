@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useMemo } from "react";
+import React from "react";
 
 function StationaryCard({ titleImg, images }) {
 	let numCols = 3;

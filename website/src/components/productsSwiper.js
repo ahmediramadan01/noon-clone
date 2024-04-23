@@ -46,10 +46,6 @@ export function ProductSwiper({ data }) {
 		};
 	}, [data]);
 
-	useEffect(() => {
-		// console.log(products);
-	}, [products]);
-
 	return (
 		<Swiper
 			className="py-5"
@@ -57,8 +53,6 @@ export function ProductSwiper({ data }) {
 			spaceBetween={12}
 			slidesPerView={slidesPerView}
 			navigation
-			onSwiper={(swiper) => console.log(swiper)}
-			onSlideChange={() => console.log("slide change")}
 		>
 			{products &&
 				products.slice(0, 12).map((product, index) => (

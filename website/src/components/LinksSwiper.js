@@ -52,8 +52,7 @@ const LinksSwiper = () => {
 						}`}
 					>
 						{link.title}
-					</a>{" "}
-					{/* Responsive font size and text centering */}
+					</a>
 				</SwiperSlide>
 			))}
 		</Swiper>

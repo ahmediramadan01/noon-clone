@@ -1,6 +1,4 @@
 "use client";
-import Image from "next/image";
-import orderImg from "../../public/ps5-1.png";
 import React, { useEffect, useState } from "react";
 import {
 	ArrowPathIcon,
@@ -22,7 +20,6 @@ export function OrderCard({ data }) {
 	}, []);
 
 	useEffect(() => {
-		console.log(order);
 		setLoading(true);
 		const getOrderProducts = async () => {
 			try {
@@ -49,10 +46,6 @@ export function OrderCard({ data }) {
 		getOrderProducts();
 	}, [order]);
 
-	useEffect(() => {
-		console.log(products);
-	}, [products]);
-
 	if (loading) {
 		return (
 			<div className="w-full h-full p-2 flex flex-col-reverse items-center justify-center gap-2 bg-white rounded">
@@ -66,7 +59,7 @@ export function OrderCard({ data }) {
 	}
 
 	return (
-		<div className="w-full h-full p-2 flex flex-col-reverse items-center justify-center gap-2 bg-white rounded">
+		<div className="w-full p-2 flex flex-col-reverse items-center justify-center gap-2 bg-white rounded-lg h-[250px]">
 			<div className="w-full h-1/3 font-bold text-base flex items-center">
 				Status:
 				{order.orderStatus === "pending" ? (
@@ -83,7 +76,7 @@ export function OrderCard({ data }) {
 			</div>
 			<div className="flex w-full h-2/3">
 				<div className="hidden">ID</div>
-				<div className="border h-full w-1/4 flex items-center justify-center p-2">
+				<div className="border h-full w-1/4 flex items-center p-2">
 					<span className="font-bold text-md flex items-center flex-col lg:flex-row">
 						<CalendarDaysIcon className="w-7 h-7 mr-2" />
 						Date:
@@ -91,7 +84,7 @@ export function OrderCard({ data }) {
 					</span>
 				</div>
 
-				<div className="border h-full w-1/4 flex items-center justify-center">
+				<div className="border h-full w-1/4 flex items-center">
 					<span className="font-bold text-md flex items-center p-2 flex-col lg:flex-row">
 						<BanknotesIcon className="w-7 h-7 mr-2" />
 						Price:
@@ -111,8 +104,8 @@ export function OrderCard({ data }) {
 					<div className="h-full w-full flex flex-col items-center justify-evenly overflow-x-auto whitespace-nowrap">
 						{products &&
 							products.map((product, index) => (
-								<div className="h-1/5 w-full flex items-center justify-center p-1 bg-yellow-200 rounded my-1 py-2">
-									{product.title.slice(0, 15)}... | Q: {product.quantity}
+								<div className="h-1/5 w-full flex items-center p-1 bg-yellow-200 rounded my-1 py-2">
+									{product.title} | Q: {product.quantity}
 								</div>
 							))}
 					</div>

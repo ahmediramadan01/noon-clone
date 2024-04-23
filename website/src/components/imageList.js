@@ -10,7 +10,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 export function ImageList({ items }) {
-    const [slidesPerView, setSlidesPerView] = useState(12);
+	const [slidesPerView, setSlidesPerView] = useState(12);
 
 	useEffect(() => {
 		const updateSlidesPerView = () => {
@@ -35,27 +35,26 @@ export function ImageList({ items }) {
 			window.removeEventListener("resize", updateSlidesPerView);
 		};
 	}, []);
-	
-    return (
-        <>
-            <Swiper
-                className="py-5"
+
+	return (
+		<>
+			<Swiper
+				className="py-5"
 				modules={[Navigation, Pagination, Scrollbar, A11y]}
 				spaceBetween={12}
 				slidesPerView={slidesPerView}
 				navigation
 				onSwiper={(swiper) => console.log(swiper)}
 				onSlideChange={() => console.log("slide change")}
-            >
-                {items.map((item, index) => (
-                    <SwiperSlide key={index}>
-
-                        <div className="mx-4 my-4" key={index}>
-                            <Image className="cursor-pointer" src={item.img} alt={item.alt} width={120} height={90} />
-                        </div>
-                    </SwiperSlide>
-                ))}
-            </Swiper>
-        </>
-    );
+			>
+				{items.map((item, index) => (
+					<SwiperSlide key={index}>
+						<div className="mx-4 my-4" key={index}>
+							<Image className="cursor-pointer" src={item.img} alt={item.alt} width={120} height={90} />
+						</div>
+					</SwiperSlide>
+				))}
+			</Swiper>
+		</>
+	);
 }

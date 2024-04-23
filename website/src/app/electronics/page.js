@@ -1,13 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-//==> ==//> // Components Of Electronic Page
+
 import { CarouselMain } from "@/components/carousel-main";
-import { MegaMenuWithHover } from "@/components/nav-links";
+
 import { SectionTwo } from "@/components/electronicSecTwo";
 import { ElectronForEvery } from "@/components/electronicForEvery";
-import { Footer } from "@/components/footer";
-import { NavbarSimple } from "@/components/nav-bar";
+
 import { ElectronicSecFive } from "@/components/electronicSecFive";
 import { SmallCarousel } from "@/components/smllCarsouel";
 import { ProductSwiper } from "@/components/productsSwiper";
@@ -41,10 +40,6 @@ import smallImg10 from "/public/imgSlider/j.png";
 import smallImg11 from "/public/imgSlider/k.png";
 import smallImg12 from "/public/imgSlider/l.png";
 import slidersho from "/public/slid1.png";
-import slidersho1 from "/public/section3/to1png.png";
-import slidersho2 from "/public/section3/to2png.png";
-import slidersho3 from "/public/section3/to3png.png";
-import slidersho4 from "/public/section3/to4png.png";
 import Sec4Slider1 from "/public/section4/sec4slide1.png";
 import Sec4Slider2 from "/public/section4/sec4slider2.png";
 import Sec4Slider3 from "/public/section4/sec4slider3.png";

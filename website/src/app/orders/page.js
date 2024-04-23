@@ -21,11 +21,6 @@ export default function OrdersPage() {
 		}
 	}, [session, router]);
 
-	// useEffect(() => {
-	// 	if
-	// 	setOrders([...session.data.user.orders]);
-	// }, [session]);
-
 	useEffect(() => {
 		console.log(orders);
 	}, [orders]);
@@ -37,7 +32,7 @@ export default function OrdersPage() {
 					<div className="lg:basis-1/6 md:basis-1/5  flex-col">
 						<ProfileSidebar></ProfileSidebar>
 					</div>
-					<div className="grid grid-cols-2 gap-4 overflow-auto max-h-[80vh] w-full">
+					<div className="grid gap-4 overflow-auto max-h-[80vh] w-full p-4">
 						{orders && orders.map((order, index) => <OrderCard data={order} />)}
 					</div>
 				</div>

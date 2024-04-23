@@ -5,9 +5,6 @@ import {
     Typography,
     List,
     ListItem,
-    ListItemPrefix,
-    ListItemSuffix,
-    Chip,
     Accordion,
     AccordionHeader,
     AccordionBody,
@@ -16,7 +13,7 @@ import {
     Slider
 } from "@material-tailwind/react";
 
-import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
+import {  ChevronDownIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
 export function SearchSidebar() {

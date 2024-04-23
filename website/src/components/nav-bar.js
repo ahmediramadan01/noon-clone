@@ -54,7 +54,6 @@ function NavList() {
 
 	useEffect(() => {
 		if (session?.status === "authenticated") {
-			// console.log(session);
 			setUserFirstName(session.data.user.firstName);
 			setWishlistLength(session.data.user.wishlist.length);
 			setCartQuantity(session.data.user.cart.reduce((totalQuantity, product) => totalQuantity + product.quantity, 0));
@@ -102,7 +101,6 @@ function NavList() {
 			});
 
 			if (response.ok) {
-				console.log("Signup successful");
 				setOpen(false);
 			} else {
 				console.error("Signup failed:", response.status);
