@@ -9,9 +9,10 @@
 			<i class="fa-solid fa-phone me-2 fs-5"></i>
 			{{ order?.shippingAddress.phoneNumber }}
 		</p>
+		{{ obj }}
 	</div>
 	<div class="col-3 my-0 p-3">
-		<h3 class="h2" style="color: black"><i class="fa-solid fa-address-card me-2 fs-5"></i>address</h3>
+		<h3 class="h2" style="color: black"><i class="fa-solid fa-address-card me-2 fs-5"></i>{{ obj }}</h3>
 		<p class="lead" style="color: black">
 			{{ order?.shippingAddress.country }},
 			{{ order?.shippingAddress.city }}

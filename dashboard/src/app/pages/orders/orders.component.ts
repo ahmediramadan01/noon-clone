@@ -16,8 +16,8 @@ export class OrdersComponent {
 	ngOnInit(): void {
 		this.orderService.getAllOrders().subscribe({
 			next: (data) => {
-				console.log(data.data);
-				this.allOrders = data.data;
+				console.log(data);
+				this.allOrders = data[0].orders;
 
 				// this.allOrders = data.allOrders.reverse();
 			},

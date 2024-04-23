@@ -42,7 +42,7 @@ export class DashboardComponent implements OnInit {
 		this.orderService.getAllOrders().subscribe({
 			next: (data) => {
 				console.log(data.data);
-				this.orderList = data.data;
+				this.orderList = data;
 				this.orderCounter = this.orderList.length;
 			},
 		});

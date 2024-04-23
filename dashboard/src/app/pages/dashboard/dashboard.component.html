@@ -8,8 +8,8 @@
 				<i class="fa-solid fa-users py-3 px-1"></i>
 			</div>
 			<div class="col-6 mx-2">
-				<h4>{{ userCounter }}</h4>
-				<p>Users Count</p>
+				<h4 class="text-secondary">{{ userCounter }}</h4>
+				<p class="grn">Users Count</p>
 			</div>
 		</div>
 
@@ -18,8 +18,8 @@
 				<i class="fa-solid fa-bag-shopping py-3 px-1"></i>
 			</div>
 			<div class="col-6 mx-2">
-				<h3>{{ productCounter }}</h3>
-				<p>Products</p>
+				<h3 class="text-secondary">{{ productCounter }}</h3>
+				<p class="grn">Products</p>
 			</div>
 		</div>
 
@@ -28,8 +28,8 @@
 				<i class="fa-solid fa-hand-holding-dollar py-3 px-1"></i>
 			</div>
 			<div class="col-6 mx-2">
-				<h3>{{ orderCounter }}</h3>
-				<p>Total orders</p>
+				<h3 class="text-secondary">{{ topTen.length }}</h3>
+				<p class="grn">Top sellings</p>
 			</div>
 		</div>
 	</div>
@@ -43,16 +43,16 @@
 					<app-area-last-chart></app-area-last-chart>
 				</div>
 			</div>
-			<div class="p-4 col-12 rounded-3 ml bg-light text-white">
+			<div class="p-2 col-12 rounded-3 ml bg-light text-white">
 				<h6 class="text-black">Top Selling Products</h6>
 				<table class="table table-secondary w-100 table-striped mt-4">
 					<thead>
 						<tr>
-							<th scope="col">#</th>
-							<th scope="col">Name</th>
+							<th scope="col"></th>
+							<th class="text-center" scope="col">Name</th>
 							<th scope="col">Price</th>
-							<th scope="col">Total Order</th>
-							<th scope="col">Total Sales</th>
+							<th scope="col">Orders</th>
+							<!-- <th scope="col">Total Sales</th> -->
 						</tr>
 					</thead>
 					<tbody>
@@ -68,9 +68,9 @@
                 /> -->
 								{{ product.title }}
 							</td>
-							<td class="text-black">{{ product.price }} <small>E£</small></td>
-							<td>{{ product.boughtUnits }} <small>piece</small></td>
-							<td class="">{{ product.totalSellingPrice }} <small>E£</small></td>
+							<td class="text-black">{{ product.price }}</td>
+							<td>{{ product.quantityInStock }} <small>piece</small></td>
+							<!-- <td class="">{{ product.price }}*{{ product.quantityInStock }} <small>E£</small></td> -->
 						</tr>
 					</tbody>
 				</table>
@@ -79,7 +79,7 @@
 		</div>
 		<div class="rightSection d-flex flex-column col-lg-4 col-11">
 			<div class="d-flex justify-content-between flex-wrap ms-3 text-white mt-3 col-12 rounded-3 bg-light px-3 fs-4">
-				<app-bar-chart></app-bar-chart>
+				<!-- <app-bar-chart></app-bar-chart> -->
 			</div>
 		</div>
 	</div>

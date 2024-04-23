@@ -1,8 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OrderRequestsService } from '../../services/order-requests.service';
 import { IOrders } from '../../models/iorders';
 import { IPrdsQun } from '../../models/iPrdQun';
+import { JsonPipe } from '@angular/common';
 
 @Component({
 	selector: 'app-order-details',
@@ -16,8 +17,27 @@ export class OrderDetailsComponent {
 	statusEdited: boolean = false;
 	status: string;
 	itemsIds: IPrdsQun[];
+	obj: {};
+
+	address: any;
+
+	display: any;
 	constructor(private route: ActivatedRoute, private orderService: OrderRequestsService, private router: Router) {}
 	ngOnInit() {
+		this.orderService.onclickedbtn.subscribe((value) => {
+			this.obj = value;
+			console.log(this.obj);
+		});
+
+		this.route.params.subscribe({
+			next: (data) => {
+				this.address = data;
+				console.log(this.address);
+
+				this.display = this.address.user;
+			},
+		});
+
 		const routeParams = this.route.snapshot.paramMap;
 		const orderIdFromParams = routeParams.get('id');
 		console.log(orderIdFromParams);

@@ -15,13 +15,13 @@ import { RegComponent } from './pages/reg/reg.component';
 import { NewUserComponent } from './pages/new-user/new-user.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { AuthenticationComponent } from './pages/authentication/authentication.component';
-import { authenticationGuardFn } from './pages/authentication/authentication.guard';
+// import { authenticationGuardFn } from './pages/authentication/authentication.guard';
 
 const routes: Routes = [
 	{
 		path: 'dashboard',
 		component: GroupOfRoutesComponent,
-		canActivate: [authenticationGuardFn],
+		// canActivate: [authenticationGuardFn],
 		children: [
 			{ path: 'home', component: DashboardComponent, title: 'Admin Dashboard' },
 			{ path: 'orders', component: OrdersComponent, title: 'Orders Page' },
@@ -35,7 +35,7 @@ const routes: Routes = [
 			{ path: 'reg', component: RegComponent, title: 'Reg' },
 			{ path: 'reg/:id', component: RegComponent, title: 'Reg' },
 			{ path: 'register/newuser', component: NewUserComponent, title: 'Reg' },
-			{ path: 'products', component: ProductsComponent, title: 'Product Page' },
+			// { path: 'products', component: ProductsComponent, title: 'Product Page' },
 			{ path: 'profile', component: ProfileComponent, title: 'Admin Profile' },
 			{
 				path: 'subcategory',

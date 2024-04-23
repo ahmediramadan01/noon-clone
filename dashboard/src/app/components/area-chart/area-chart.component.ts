@@ -27,12 +27,12 @@ export class AreaChartComponent implements OnInit {
 				labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 				datasets: [
 					{
-						label: 'Sales in 2023',
+						label: 'Sales in 2024',
 						data: [26, 29, 31, 24, 30, 23, 24, 26, 24, 25, 24, 23],
 						// borderColor: 'rgb(54, 162, 235)',
-						backgroundColor: 'rgba(54, 162, 235, 1)',
-						borderWidth: 2,
-						pointRadius: 0,
+						backgroundColor: 'green',
+						borderWidth: 5,
+						pointRadius: 2,
 						// pointBackgroundColor: 'rgb(54, 162, 235)',
 						fill: true,
 					},
@@ -43,12 +43,12 @@ export class AreaChartComponent implements OnInit {
 				scales: {
 					x: {
 						ticks: {
-							color: '#ccc',
+							color: 'black',
 						},
 					},
 					y: {
 						ticks: {
-							color: '#ccc',
+							color: 'black',
 						},
 					},
 				},

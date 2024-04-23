@@ -6,70 +6,68 @@ import { AdminAuthService } from '../../services/admin-auth.service';
 import { NgToastService } from 'ng-angular-popup';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
+	selector: 'app-login',
+	templateUrl: './login.component.html',
+	styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-  fillform: boolean = false;
-  userLoginForm: FormGroup;
-  user: IUser = {} as IUser;
-  checked: boolean;
-  constructor(
-    private formBuilder: FormBuilder,
-    private router: Router,
-    private adminAuth: AdminAuthService,
-    public tost: NgToastService
-  ) {
-    this.userLoginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      name: ['', [Validators.required]],
-      password: ['', [Validators.required]],
-    });
-  }
+	fillform: boolean = false;
+	userLoginForm: FormGroup;
+	user: IUser = {} as IUser;
+	checked: boolean;
+	constructor(
+		private formBuilder: FormBuilder,
+		private router: Router,
+		private adminAuth: AdminAuthService,
+		public tost: NgToastService
+	) {
+		this.userLoginForm = this.formBuilder.group({
+			email: ['', [Validators.required, Validators.email]],
+			// name: ['', [Validators.required]],
+			password: ['', [Validators.required]],
+		});
+	}
 
-  logCheck(e) {
-    this.checked = e.target.checked;
-  }
+	logCheck(e) {
+		this.checked = e.target.checked;
+	}
 
-  get email() {
-    return this.userLoginForm.get('email');
-  }
-  get password() {
-    return this.userLoginForm.get('password');
-  }
+	get email() {
+		return this.userLoginForm.get('email');
+	}
+	get password() {
+		return this.userLoginForm.get('password');
+	}
 
-  moveToRegister() {
-    this.router.navigate(['/register']);
-  }
+	moveToRegister() {
+		this.router.navigate(['/register']);
+	}
 
-  loginFunc() {
-    const val = this.userLoginForm.value;
-    if (val.email && val.password) {
-      this.router.navigateByUrl('/');
-      console.log(val.name);
+	loginFunc() {
+		const val = this.userLoginForm.value;
+		if (val.email && val.password) {
+			this.router.navigateByUrl('/');
+			console.log(val.name);
 
-      this.adminAuth.login(val.email, val.password).subscribe({
-        next: (data) => {
-          console.log(data);
-          this.checked
-            ? this.adminAuth.setCookie(data)
-            : this.adminAuth.setSession(data);
+			this.adminAuth.login(val.email, val.password).subscribe({
+				next: (data) => {
+					console.log(data);
+					this.checked ? this.adminAuth.setCookie(data) : this.adminAuth.setSession(data);
 
-          this.router.navigateByUrl('/');
-        },
-        error: (err) => {
-          this.tost.error({
-            detail: 'Error',
-            summary: err.error.message,
+					this.router.navigateByUrl('/');
+				},
+				error: (err) => {
+					this.tost.error({
+						detail: 'Error',
+						summary: err.error.message,
 
-            duration: 10000,
-          });
-          console.log(err);
-        },
-      });
-    } else {
-      this.fillform = true;
-    }
-  }
+						duration: 10000,
+					});
+					console.log(err);
+				},
+			});
+		} else {
+			this.fillform = true;
+		}
+	}
 }

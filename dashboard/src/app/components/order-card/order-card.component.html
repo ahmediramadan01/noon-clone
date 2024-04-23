@@ -20,28 +20,46 @@
   </div>
 </div> -->
 
-<div class="card" style="width: 18rem">
+<div class="card" style="width: 21rem">
 	<div class="card-body position-relative">
 		<span class="badge position rounded-pill bg-success m-2">order No: {{ i + 1 }}</span>
 		<!-- <h5 class="card-title"></h5> -->
 		<p class="mb-2 mt-3">
 			<i class="fa-solid fa-pen-nib text-secondary"></i>
-			<span class="grn px-1">Name:</span>{{ order.user.name }}
+			<span class="grn px-1">orderDate:</span>{{ order.orderDate | date }}
 		</p>
 		<p class="">
 			<i class="fa-solid fa-truck text-secondary"></i>
-			<span class="grn px-1">isDelivered:</span>
-			{{ order.isDelivered }}
+			<span class="grn px-1">order Status:</span>
+			{{ order.orderStatus }}
 		</p>
-		<p class="">
+		<!-- <p class="">
 			<i class="fa-solid fa-calendar-days text-secondary"></i>
 			<span class="grn"> Posted on: </span>{{ postDate }}
-		</p>
+		</p> -->
 		<p class="">
 			<i class="fa-solid fa-comment-dollar text-secondary"></i>
 			<span class="grn"> total price:</span>
-			{{ order.totalOrderPrice | currency }}
+			{{ order.orderPrice | currency }}
 		</p>
-		<a [routerLink]="order._id" class="hov"> View order details </a>
+		<p class="">
+			<i class="fa-solid fa-comment-dollar text-secondary"></i>
+			<span class="grn"> order Items:</span>
+			{{ order.orderItems.length }}
+		</p>
+		<!-- <p class="">
+			<i class="fa-solid fa-phone text-secondary"></i>
+			<span class="grn"> order Status:</span>
+			{{ order }}
+		</p> -->
+		<!-- <button class="btn btn-success">tooogle</button> -->
+		<!-- <p class="">
+			<i class="fa-regular fa-envelope text-secondary"></i>
+			<span class="grn"> mail:</span>
+			{{ order.user.email }}
+		</p> -->
+		<!-- <a [routerLink]="[order._id, order]" (click)="onclickedbtn(order, order._id)" class="hov"> View order details </a> -->
 	</div>
 </div>
+<!-- [order.user | json, order.cartItems | json] -->
+<!-- [routerLink]="[order._id, order.cartItems]"  -->

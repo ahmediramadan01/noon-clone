@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment.development';
 import { IOrders } from '../models/iorders';
@@ -9,10 +9,13 @@ import { IOrdersPrds } from '../models/iOrderPrds';
 	providedIn: 'root',
 })
 export class OrderRequestsService {
+	onclickedbtn: EventEmitter<any> = new EventEmitter<any>();
+
 	constructor(private httpClient: HttpClient) {}
 
 	getAllOrders(): Observable<any> {
-		return this.httpClient.get<any>(`https://ecommerce.routemisr.com/api/v1/orders/`);
+		// return this.httpClient.get<any>(`https://ecommerce.routemisr.com/api/v1/orders/`);
+		return this.httpClient.get<any>(`${environment.BAseApiURL}/users`);
 	}
 
 	getOneOrderById(id: string): Observable<any> {
@@ -46,5 +49,9 @@ export class OrderRequestsService {
 	}
 	orderCanceledPrds(id: string, quantity: number): Observable<IOrdersPrds> {
 		return this.httpClient.patch<IOrdersPrds>(`${environment.BAseApiURL}/product/${id}`, { quantity: quantity });
+	}
+
+	onclickbtn(value: any) {
+		this.onclickedbtn.emit(value);
 	}
 }

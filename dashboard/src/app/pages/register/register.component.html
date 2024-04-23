@@ -63,54 +63,42 @@
     </div>
   </form> -->
 
-<div class="d-flex justify-content-end" [routerLink]="['newuser']">
-  <button type="button" class="btn bg-yellow ho p-3 rounded-3 me-4 mt-3">
-    Add New user
-  </button>
+<div class="d-flex justify-content-end" [routerLink]="['/dashboard/register/newuser']">
+	<button type="button" class="btn bg-yellow ho p-3 rounded-3 me-4 mt-3">Add New user</button>
 </div>
 <div class="container pt-4">
-  <div class="row">
-    <div class="col-12">
-      <div class="table-responsive pt-4">
-        <table class="table table-light">
-          <thead>
-            <tr class="grn">
-              <th class="grn" scope="col">username</th>
-              <th class="grn text-center" scope="col">Id</th>
-              <th class="grn" scope="col">user email</th>
-              <th class="grn" scope="col">Delete user</th>
-              <th class="grn" scope="col">Edit user</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="" *ngFor="let use of users">
-              <td scope="row">
-                {{ use.firstName }}
-              </td>
-              <td>{{ use._id }}</td>
-              <td>{{ use.email }}</td>
-              <td>
-                <button
-                  (click)="deleteUser(use._id)"
-                  class="btn btn-outline-secondary"
-                >
-                  Delte
-                </button>
-              </td>
-              <td>
-                <button
-                  [routerLink]="['/reg', use._id]"
-                  class="btn btn-outline-secondary"
-                >
-                  Edit
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
+	<div class="row">
+		<div class="col-12">
+			<div class="table-responsive pt-4">
+				<table class="table table-light">
+					<thead>
+						<tr class="grn">
+							<th class="grn" scope="col">username</th>
+							<th class="grn text-center" scope="col">Id</th>
+							<th class="grn" scope="col">user email</th>
+							<th class="grn" scope="col">Delete user</th>
+							<th class="grn" scope="col">Edit user</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="" *ngFor="let use of users">
+							<td scope="row">
+								{{ use.firstName }}
+							</td>
+							<td>{{ use._id }}</td>
+							<td>{{ use.email }}</td>
+							<td>
+								<button (click)="deleteUser(use._id)" class="btn btn-outline-secondary">Delete</button>
+							</td>
+							<td>
+								<button [routerLink]="['/dashboard/reg', use._id]" class="btn btn-outline-secondary">Edit</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 </div>
 
 <!-- <div class="pt-5 row bg-gr">

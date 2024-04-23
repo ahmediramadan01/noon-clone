@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IOrders } from '../../models/iorders';
+import { OrderRequestsService } from '../../services/order-requests.service';
+import { Router } from '@angular/router';
+OrderRequestsService;
 
 @Component({
 	selector: 'app-order-card',
@@ -11,22 +14,28 @@ export class OrderCardComponent {
 	@Input() i: any;
 	date: Date;
 	postDate: string = '';
-	constructor() {}
+	constructor(private _OrderRequestsService: OrderRequestsService, private _Router: Router) {}
 	ngOnInit(): void {
-		console.log(this.order);
+		// console.log(this.order);
 		this.date = new Date(this.order.createdAt);
 
-		console.log(
-			this.date.toLocaleDateString('en-US', {
-				year: 'numeric',
-				month: 'long',
-				day: 'numeric',
-			})
-		);
+		// console.log(
+		// 	this.date.toLocaleDateString('en-US', {
+		// 		year: 'numeric',
+		// 		month: 'long',
+		// 		day: 'numeric',
+		// 	})
+		// );
 		this.postDate = this.date.toLocaleDateString('en-US', {
 			year: 'numeric',
 			month: 'long',
 			day: 'numeric',
 		});
+	}
+
+	onclickedbtn(value: any, id: any) {
+		this._OrderRequestsService.onclickbtn(value);
+		console.log(value);
+		// this._Router.navigate([`/dashboard/orders/${id}`]);
 	}
 }
