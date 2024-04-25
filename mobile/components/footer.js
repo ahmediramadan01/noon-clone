@@ -339,7 +339,7 @@ const styles = StyleSheet.create({
 	container1: {
 		flexDirection: "row",
 		textAlign: "center",
-		marginLeft: "30%",
+		marginLeft: "20%",
 		marginTop: 16,
 	},
 	texthelp: {

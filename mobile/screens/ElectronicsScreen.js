@@ -1,166 +1,219 @@
-import { View, StyleSheet, Image, Text, TouchableOpacity, ScrollView } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, StyleSheet, Image } from "react-native";
 import CircleCardItem from "../components/squareCardItem.js";
 import SquareBrandItems from "../components/squareBrandItem.js";
 import CircleTitlesScroll from "../components/circle-title-scroll.js";
 import VerticalCardSlide from "../components/cardSlider-vertical.js";
 import Footer from "../components/footer.js";
-import { Icon, IconButton } from "react-native-paper";
 import TitlesLink from "../components/titles-link.js";
 import FooterToolbar from "../components/toolBars.js";
-// import TitlesLink from "../components/titles-link.js";
+import CardSlider from "../components/card-slider.js";
+import axios from "axios";
+import { ActivityIndicator } from "react-native-paper";
 
 const ElectronicsScreen = () => {
-	const squareImg_Filterd_Price = [
-		require("../assets/imagePrice_1.avif"),
-		require("../assets/imagePrice_2.avif"),
-		require("../assets/imagePrice_3.avif"),
-		require("../assets/imagePrice_4.avif"),
-		require("../assets/imagePrice_5.avif"),
-		require("../assets/imagePrice_6.avif"),
-	];
-	const squareImg_Brands = [
-		require("../assets/oppo_Brand.avif"),
-		require("../assets/realme_Brand.avif"),
-		require("../assets/xi_Brand.avif"),
-		require("../assets/samsung_Brand.avif"),
-		require("../assets/infinix_Brand.avif"),
-		require("../assets/Huawei_Brand.avif"),
-	];
+  const squareImg_Filterd_Price = [
+    require("../assets/imagePrice_1.avif"),
+    require("../assets/imagePrice_2.avif"),
+    require("../assets/imagePrice_3.avif"),
+    require("../assets/imagePrice_4.avif"),
+    require("../assets/imagePrice_5.avif"),
+    require("../assets/imagePrice_6.avif"),
+  ];
+  const squareImg_Brands = [
+    require("../assets/oppo_Brand.avif"),
+    require("../assets/realme_Brand.avif"),
+    require("../assets/xi_Brand.avif"),
+    require("../assets/samsung_Brand.avif"),
+    require("../assets/infinix_Brand.avif"),
+    require("../assets/Huawei_Brand.avif"),
+  ];
 
-	const chipsData = ["Brand", "Mobile Ram Size", "Mobile Internal Mobile", "Mobile Phones", "Mobile Pam Size : 8 GB"];
-	const headerTitle = ["Home", "Elecrtonic && Mobiles", "Mobiles && Accessories", "Mobile Phones"];
+  const chipsData = [
+    "Brand",
+    "Mobile Ram Size",
+    "Mobile Internal Mobile",
+    "Mobile Phones",
+    "Mobile Pam Size: 8 GB",
+  ];
+  const headerTitle = [
+    "Home",
+    "Electronics & Mobiles",
+    "Mobiles & Accessories",
+    "Mobile Phones",
+  ];
 
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [electronicsProducts, setElectronicsProducts] = useState([]);
+  const [beautyProducts, setBeautyProducts] = useState([]);
+  const [fashionProducts, setFashionProducts] = useState([]);
+  const [groceryProducts, setGroceryProducts] = useState([]);
+  const [stationaryProducts, setStationaryProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/api/products");
+        const products = response.data;
+        setData(products);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  //   filter data by category
+  useEffect(() => {
+    if (data) {
+      setElectronicsProducts(
+        data.filter((product) => product.category === "electronics")
+      );
+      setBeautyProducts(
+        data.filter((product) => product.category === "beauty")
+      );
+      setFashionProducts(
+        data.filter((product) => product.category === "fashion")
+      );
+      setGroceryProducts(
+        data.filter((product) => product.category === "grocery")
+      );
+    }
+  }, [data]);
+
+  if (loading) {
 	return (
-		// Page Electronic Category
-		<View style={styles.container}>
-			<View
-				style={{ display: "flex", flexDirection: "row", justifyContent: "center", width: 360, marginLeft: 25 }}>
-				{/* <TitlesLink titles={headerTitle}/> */}
-				{/* {TitlesLink(headerTitle)} */}
-				<TitlesLink titles={headerTitle} />
-			</View>
-			{/* Section Two ==>( Main Slider ) */}
-			<View style={{ width: 400, justifyContent: "center" }}>
-				<Image
-					style={styles.sliderSqrImg}
-					source={require("../assets/category_Mobile_Slider.avif")}
-					resizeMode="stretch"
-				/>
-			</View>
-			{/* End Of Section Two */}
-
-			{/* Section Three ==>( Square Imgs Filter Price  ) */}
-			<View style={styles.filterdPriceSec}>
-				<View style={styles.sliderSqrImg}>
-					<Image
-						style={styles.sliderSqrImg}
-						source={require("../assets/BuyinyPriceImg.avif")}
-						resizeMode="contain"
-					/>
-				</View>
-				{/* horezental scroll of Picees Filterd */}
-				<View style={styles.SquarSliderContainer}>
-					<CircleCardItem items={squareImg_Filterd_Price} />
-				</View>
-				{/* End Of Scroll */}
-			</View>
-			{/* End Of Section Three */}
-
-			{/* Section Four ==>( Square Imgs Brand   ) */}
-			<View style={styles.filterdPriceSec}>
-				<View style={styles.sliderSqrImg}>
-					<Image
-						style={styles.sliderSqrImg}
-						source={require("../assets/sliderBrand.avif")}
-						resizeMode="contain"
-					/>
-				</View>
-				{/* horezental scroll of Brands */}
-				<View style={styles.SquarSliderContainer}>
-					<SquareBrandItems items={squareImg_Brands} />
-				</View>
-				{/* End Of Scroll */}
-			</View>
-			{/* End Of Section Four */}
-			<View style={styles.SquarSliderContainer}>
-				<CircleTitlesScroll titles={chipsData} />
-			</View>
-			<View style={{ width: 400, marginTop: 10, marginBottom: 2, marginLeft: 20 }}>
-				<VerticalCardSlide />
-			</View>
-			<View>
-				<View style={{ width: 400, marginTop: 10, marginBottom: 2, justifyContent: "center" }}>
-					<FooterToolbar />
-				</View>
-				<Footer />
-			</View>
+		<View style={styles.spinner}>
+			<ActivityIndicator size="large" color="#0000ff" />
 		</View>
-	);
+	)
 };
 
-// function TitlesLink(items) {
-// 	return (
-// 		<>
-// 			<ScrollView
-// 				horizontal
-// 				pagingEnabled
-// 				showsHorizontalScrollIndicator={false}
-// 				contentContainerStyle={styles.cardsContainer}>
-// 				{items.map((item, index) => (
-// 					<TouchableOpacity
-// 						key={index}
-// 						style={{ display: "flex", flexDirection: "row", alignItems: "center", margin: 0, padding: 0 }}>
-// 						<Text style={{ fontSize: 13, color: "gray" }}>{item}</Text>
-// 						<IconButton icon="chevron-right" size={20} />
-// 					</TouchableOpacity>
-// 				))}
-// 			</ScrollView>
-// 		</>
-// 	);
-// }
+  return (
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <TitlesLink titles={headerTitle} />
+      </View>
+
+      <View style={styles.sliderContainer}>
+        <Image
+          style={styles.sliderImage}
+          source={require("../assets/category_Mobile_Slider.avif")}
+          resizeMode="stretch"
+        />
+      </View>
+
+      <View style={styles.section}>
+        <Image
+          style={styles.sectionImage}
+          source={require("../assets/BuyinyPriceImg.avif")}
+          resizeMode="contain"
+        />
+        <View style={styles.squareSliderContainer}>
+          <CircleCardItem items={squareImg_Filterd_Price} />
+        </View>
+      </View>
+
+      <View style={styles.section}>
+        <Image
+          style={styles.sectionImage}
+          source={require("../assets/sliderBrand.avif")}
+          resizeMode="contain"
+        />
+        <View style={styles.squareSliderContainer}>
+          <SquareBrandItems items={squareImg_Brands} />
+        </View>
+      </View>
+
+      <View style={styles.section}>
+        <CircleTitlesScroll titles={chipsData} />
+      </View>
+
+      {/* electronics slider */}
+      <View style={styles.cardsSliderContainer}>
+        <CardSlider title={"Electronics"} products={electronicsProducts} />
+      </View>
+
+      {/* Beauty slider */}
+      <View style={styles.cardsSliderContainer}>
+        <CardSlider title={"Beauty"} products={beautyProducts} />
+      </View>
+
+      {/* fashion slider */}
+      <View style={styles.cardsSliderContainer}>
+        <CardSlider title={"Fashion"} products={fashionProducts} />
+      </View>
+
+      {/* grocery slider */}
+      <View style={styles.cardsSliderContainer}>
+        <CardSlider title={"Grocery"} products={groceryProducts} />
+      </View>
+
+
+      <View style={styles.footerContainer}>
+        <FooterToolbar />
+        <Footer />
+      </View>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		padding: 20,
-		backgroundColor: "#fff",
-		marginBottom: 20,
-	},
-	sliderImg1: {
-		width: "100%",
-		padding: 0,
-		margin: 0,
-	},
-	sliderImg: {
-		flex: 2,
-		padding: 0,
-		width: "100%", // Set width to 100%
-		height: 100,
-		padding: 0,
-		margin: 0,
-	},
-	filterdPriceSec: {
-		display: "flex",
-		flexDirection: "column",
-	},
-	slidermainIMG: {},
-	sliderSqrImg: {
-		justifyContent: "center",
-		alignItems: "center",
-		width: "100%", // Set width to 100%
-		height: 45,
-	},
-	SquarSliderContainer: {
-		flex: 1,
-		width: 425,
-		overflow: "hidden",
-		marginBottom: 10,
-		marginTop: 10,
-	},
-	cardsContainer: {
-		margin: 0,
-		padding: 0,
-	},
+  container: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: "#fff",
+  },
+  header: {
+    flexDirection: "row",
+    justifyContent: "center",
+    marginBottom: 20,
+  },
+  sliderContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 20,
+  },
+  sliderImage: {
+    width: 400,
+    height: 100,
+  },
+  section: {
+    flexDirection: "row",
+    marginBottom: 20,
+  },
+  sectionImage: {
+    width: "30%",
+    height: 45,
+  },
+  squareSliderContainer: {
+    flex: 1,
+    marginLeft: 10,
+    overflow: "hidden",
+  },
+  verticalSliderContainer: {
+    width: 400,
+    marginBottom: 20,
+  },
+  cardsSliderContainer: {
+    flex: 1,
+    // width: 400,
+    marginTop: 30,
+    marginBottom: 10,
+    paddingBottom: 10,
+  },
+  footerContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  spinner: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
 
 export default ElectronicsScreen;

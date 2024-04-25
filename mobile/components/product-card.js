@@ -2,14 +2,14 @@ import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { Card, Title, Paragraph, IconButton } from "react-native-paper";
 
-const ProductCard = ({ product }) => {
-  const { title, price, images } = product;
+const ProductCard = ({ title, price, images }) => {
+  // const { title = "Default Title", price = "N/A", images = [] } = product;
 
   return (
     <Card style={styles.card}>
       <View style={styles.coverContainer}>
         <Card.Cover
-          source={{ uri: images[0] }}
+          source={{ uri: images[0] || "" }}
           style={styles.cover}
         />
         <IconButton
@@ -93,8 +93,7 @@ const styles = StyleSheet.create({
   cardContent: {
     paddingTop: 10,
   },
-
-  title: {
+  title: { 
     fontSize: 10,
     marginBottom: 0,
     lineHeight: 15,

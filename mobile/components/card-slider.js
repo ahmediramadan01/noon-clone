@@ -5,13 +5,13 @@ import ProductCard from "../components/product-card";
 const CardSlider = ({ title, products }) => {
 
   if (!products) {
-    return null; // or you can return a loading indicator or default message
+    return <Text style={{textAlign: "center"}}>No Products to display</Text>; // or you can return a loading indicator or default message
   }
   
   const renderCards = () => {
     return products.map((product, index) => (
       <View key={index} style={styles.cardContainer}>
-        <ProductCard product={product} />
+        <ProductCard title={product.title} price={product.price} images={product.images} />
       </View>
     ));
   };
