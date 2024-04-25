@@ -2,8 +2,8 @@ import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { Card, Title, Paragraph, IconButton } from "react-native-paper";
 
-const ProductCard = ({ title, price, images }) => {
-  // const { title = "Default Title", price = "N/A", images = [] } = product;
+const ProductCard = ({ product }) => {
+  const { title = "Default Title", price = "N/A", images = [] } = product;
 
   return (
     <Card style={styles.card}>

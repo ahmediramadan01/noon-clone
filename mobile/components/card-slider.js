@@ -11,7 +11,7 @@ const CardSlider = ({ title, products }) => {
   const renderCards = () => {
     return products.map((product, index) => (
       <View key={index} style={styles.cardContainer}>
-        <ProductCard title={product.title} price={product.price} images={product.images} />
+        <ProductCard product={product} />
       </View>
     ));
   };
