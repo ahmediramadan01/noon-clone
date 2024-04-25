@@ -1,37 +1,37 @@
-import { StyleSheet, Text, View } from "react-native";
-import Navigation from "./Navigation";
-import SearchBar from "./components/search-bar";
-import APPbar from "./components/appbar";
+import * as React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from "@react-navigation/native";
 import HomeScreen from "./screens/HomeScreen";
 import ElectronicsScreen from "./screens/ElectronicsScreen";
-import ProductScreen from "./screens/ProductScreen";
 import AccountScreen from "./screens/AccountScreen";
 import CartScreen from "./screens/CartScreen";
-import ProfileScreen from "./screens/ProfileScreen";
+import { View, StyleSheet } from "react-native";
+import APPbar from "./components/appbar";
+
+const Stack = createStackNavigator();
 
 export default function App() {
-	return (
-		<>
-			<View style={styles.container}>
-				<SearchBar />
-				{/* <Navigation /> */}
-				<HomeScreen></HomeScreen>
-				{/* <ElectronicsScreen></ElectronicsScreen>
-				<ProductScreen></ProductScreen>
-				<AccountScreen></AccountScreen>
-				<CartScreen></CartScreen>
-				<ProfileScreen></ProfileScreen> */}
-				<APPbar />
-			</View>
-		</>
-	);
+  return (
+    <View style={styles.container}>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Categories" component={ElectronicsScreen} />
+          <Stack.Screen name="Account" component={AccountScreen} />
+          <Stack.Screen name="Cart" component={CartScreen} />
+        </Stack.Navigator>
+        <APPbar styles={styles.appBar}/>
+      </NavigationContainer>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: "#fff",
-		alignItems: "center",
-		justifyContent: "center",
-	},
+  container: {
+    flex: 1,
+  },
+  appBar: {
+    position: "fixed",
+    top: 0,
+  }
 });

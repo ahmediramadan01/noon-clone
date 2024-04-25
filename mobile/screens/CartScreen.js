@@ -39,8 +39,6 @@ const CartScreen = () => {
 				<CartItem />
 				<CartItem />
 				<CartItem />
-				<CartItem />
-				<CartItem />
 				<SectionTwoCart />
 			</View>
 			<View style={styles.checkBtnContainer}>
@@ -58,10 +56,10 @@ const CartScreen = () => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		width: "100%",
+		// width: "100%",
 		justifyContent: "flex-start",
 		alignItems: "center",
-		marginBottom: 75,
+		marginBottom: 95,
 	},
 	sliderIMG: {
 		width: 400,

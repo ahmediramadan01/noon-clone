@@ -7,7 +7,7 @@ const AccountScreen = () => {
 		<>
 			<ScrollView>
 				<View style={styles.main}>
-					<View style={styles.container}>
+					{/* <View style={styles.container}>
 						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M19 11.6667H5" stroke="#404553" stroke-width="2" stroke-linecap="round" />
 							<path
@@ -18,7 +18,7 @@ const AccountScreen = () => {
 							/>
 						</svg>
 						<Text style={styles.text}>Profile</Text>
-					</View>
+					</View> */}
 					<View style={styles.container1}>
 						<View style={styles.container2}>
 							<Text>Email</Text>

@@ -24,9 +24,9 @@ const miniCardsData = [
 const HomeScreen = () => {
 	return (
 		<ScrollView style={styles.container}>
-			{/* <View style={styles.header}>
+			<View style={styles.header}>
 				<SearchBar />
-			</View> */}
+			</View>
 
 			<View style={styles.silder}>
 				<OffersSlider />
@@ -94,35 +94,38 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: "#fff",
-		overflowY: "hidden",
+		marginBottom: 40,
 	},
 	header: {
 		alignItems: "center",
 		justifyContent: "center",
-		paddingVertical: 20,
+		paddingVertical: 10,
 	},
 	silder: {
-		width: 400,
+		marginBottom: 1,
+		marginHorizontal: 10,
 	},
 
 	offerBanner: {
 		height: 80,
 		marginVertical: 10,
+		marginHorizontal: 10,
 		marginTop: 30,
+		
 	},
 
 	miniSlider: {
-		width: 400,
+		// width: 400,
 		justifyContent: "center",
 		alignItems: "center",
 		backgroundColor: "#DDD",
 		marginTop: 5,
-		marginHorizontal: 5,
+		marginHorizontal: 10,
 		borderRadius: 5,
 	},
 	cardsSliderContainer: {
 		flex: 1,
-		width: 400,
+		// width: 400,
 		marginTop: 30,
 		marginBottom: 10,
 		paddingBottom: 10,
@@ -132,13 +135,15 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		justifyContent: "space-between",
 		marginBottom: 10,
+		marginHorizontal: 10,
 	},
 
 	brandsContainer: {
-		width: 400,
+		// width: 400,
 		marginTop: 30,
 		marginBottom: 30,
 		paddingBottom: 10,
+		marginHorizontal: 10,
 	},
 
 	silderTitle: {
@@ -147,6 +152,7 @@ const styles = StyleSheet.create({
 	},
 	offerZone: {
 		marginTop: 20,
+		marginHorizontal: 10,
 	},
 
 	shopNowButton: {

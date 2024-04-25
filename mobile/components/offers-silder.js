@@ -12,7 +12,7 @@ const OffersSlider = () => {
   return (
     <Swiper
       style={styles.wrapper}
-      showsButtons={false}
+      showsButtons={true}
       showsPagination={false}
       loop={true}
       autoplay={true}
