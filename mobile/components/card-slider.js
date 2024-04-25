@@ -2,20 +2,21 @@ import React from "react";
 import { View, Text, ScrollView, StyleSheet } from "react-native";
 import ProductCard from "../components/product-card";
 
-const CardSlider = ({title}) => {
-  const numCards = 6;
-  const cards = [];
+const CardSlider = ({ title, products }) => {
 
-  for (let i = 0; i < numCards; i++) {
-    cards.push(
-      <View key={i} style={styles.cardContainer}>
-        <ProductCard />
-      </View>
-    );
+  if (!products) {
+    return null; // or you can return a loading indicator or default message
   }
+  
+  const renderCards = () => {
+    return products.map((product, index) => (
+      <View key={index} style={styles.cardContainer}>
+        <ProductCard product={product} />
+      </View>
+    ));
+  };
 
   return (
-    
     <View style={styles.container}>
       <View style={styles.headerContainer}>
         <Text style={styles.headerText}>{title}</Text>
@@ -27,11 +28,11 @@ const CardSlider = ({title}) => {
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.cardsContainer}
       >
-        {cards}
+        {renderCards()}
       </ScrollView>
     </View>
   );
-};
+};;
 
 const styles = StyleSheet.create({
   container: {

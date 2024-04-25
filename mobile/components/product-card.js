@@ -1,24 +1,16 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
-import {
-  Avatar,
-  Button,
-  Card,
-  Title,
-  Paragraph,
-  IconButton,
-} from "react-native-paper";
+import { Card, Title, Paragraph, IconButton } from "react-native-paper";
 
-const ProductCard = () => {
-  const imageHeight = 100;
-  const coverHeight = Math.round((imageHeight * 16) / 9);
+const ProductCard = ({ product }) => {
+  const { title, price, images } = product;
 
   return (
     <Card style={styles.card}>
       <View style={styles.coverContainer}>
         <Card.Cover
-          source={require("../assets/ps5.png")}
-          style={{ height: coverHeight }}
+          source={{ uri: images[0] }}
+          style={styles.cover}
         />
         <IconButton
           icon="heart"
@@ -34,25 +26,12 @@ const ProductCard = () => {
         />
       </View>
 
-      <Card.Content>
-        <Title style={styles.title}>
-          Sony PlayStation 5 Console (Disc Version) With Controller
-        </Title>
-        <Paragraph style={styles.subtitle}>
-          EGP <Text style={{ fontWeight: "bold" }}>38,700</Text>
-        </Paragraph>
-
-        <Paragraph style={styles.subtitle}>
-          <Text style={{ textDecorationLine: "line-through", flex: "1" }}>
-            40,999
-          </Text>
-          <Text style={{ color: "green", fontWeight: "bold" }}>5%</Text>
+      <Card.Content style={styles.cardContent}>
+        <Title style={styles.title}>{title}</Title>
+        <Paragraph style={styles.price}>
+          EGP <Text style={styles.priceValue}>{price}</Text>
         </Paragraph>
       </Card.Content>
-
-      <View style={styles.imageContainer}>
-        <Image source={require("../assets/express.svg")} style={styles.image} />
-      </View>
     </Card>
   );
 };
@@ -64,9 +43,14 @@ const styles = StyleSheet.create({
     margin: 5,
     padding: 5,
     width: 170,
+    height: 300
   },
   coverContainer: {
     position: "relative",
+  },
+  cover: {
+    height: 200,
+    objectFit: "cover",
   },
   topRightButton: {
     position: "absolute",
@@ -106,27 +90,23 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
+  cardContent: {
+    paddingTop: 10,
+  },
+
   title: {
     fontSize: 10,
     marginBottom: 0,
     lineHeight: 15,
+    fontWeight: 'bold',
   },
-  subtitle: {
+  price: {
     fontSize: 10,
     color: "#888",
     marginBottom: 0,
   },
-
-  imageContainer: {
-    alignItems: "left",
-    justifyContent: "center",
-    marginTop: 5,
-    paddingLeft: 15,
-  },
-  image: {
-    width: 60,
-    height: 20,
-    marginBottom: 10,
+  priceValue: {
+    fontWeight: "bold",
   },
 });
 
