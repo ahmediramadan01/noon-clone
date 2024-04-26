@@ -4,10 +4,18 @@ import { connect } from 'react-redux';
 import CartItem from "../components/cart-card-item";
 import SectionTwoCart from "../components/cart-sec-two";
 import { removeItemFromCart } from '../actions/cartActions';
+import { useEffect } from "react";
+
 
 const CartScreen = ({ cartItems, removeItem }) => {
 
   const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
+  
+  useEffect(() => {
+    
+    console.log("Cart items updated:", cartItems);
+  }, [cartItems]);
+
   return (
     <>
       <View style={styles.container}>
