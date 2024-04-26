@@ -1,11 +1,23 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { Card, Title, Paragraph, IconButton } from "react-native-paper";
+import { useNavigation } from '@react-navigation/native';
+import { TouchableOpacity } from "react-native-gesture-handler";
+
 
 const ProductCard = ({ product }) => {
+
+  const navigation = useNavigation();
+  
+  const handlePress = () => {
+    navigation.navigate('Product', { product });
+  }
+
   const { title = "Default Title", price = "N/A", images = [] } = product;
 
   return (
+    <>
+    <TouchableOpacity onPress={handlePress}>
     <Card style={styles.card}>
       <View style={styles.coverContainer}>
         <Card.Cover
@@ -33,6 +45,8 @@ const ProductCard = ({ product }) => {
         </Paragraph>
       </Card.Content>
     </Card>
+    </TouchableOpacity>
+    </>
   );
 };
 
