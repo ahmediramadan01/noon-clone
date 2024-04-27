@@ -1,9 +1,13 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 import { IconButton, Text, TextInput } from "react-native-paper";
-import CartItem from "../components/cart-card-item";
 
 export default function SectionTwoCart({ item, itemsLength, totalPrice }) {
+  
+  const navigation = useNavigation();
+
+
   return (
     <View style={styles.containerInput}>
       <View>
@@ -137,7 +141,8 @@ export default function SectionTwoCart({ item, itemsLength, totalPrice }) {
               fontWeight: "700",
               color: "blue",
             }}
-          >
+            onPress={() => navigation.navigate("Home")}
+            >
             {" "}
             Continue Shopping
           </Text>

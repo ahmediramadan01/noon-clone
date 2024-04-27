@@ -5,7 +5,7 @@ import ProductCard from "../components/product-card";
 const CardSlider = ({ title, products }) => {
 
   if (!products) {
-    return <Text style={{textAlign: "center"}}>No Products to display</Text>; // or you can return a loading indicator or default message
+    return <Text style={{textAlign: "center"}}>No Products to display</Text>; 
   }
   
   const renderCards = () => {

@@ -9,18 +9,18 @@ import OfferZone from "../components/offer-zone";
 import BrandsSlider from "../components/brands-slider";
 import axios from "axios";
 
-const miniCardsData = [
-  { imageSource: require("../assets/ps5.png"), text: "Item 1" },
-  { imageSource: require("../assets/ps5.png"), text: "Item 2" },
-  { imageSource: require("../assets/ps5.png"), text: "Item 3" },
-  { imageSource: require("../assets/ps5.png"), text: "Item 4" },
-  { imageSource: require("../assets/ps5.png"), text: "Item 5" },
-  { imageSource: require("../assets/ps5.png"), text: "Item 1" },
-  { imageSource: require("../assets/ps5.png"), text: "Item 2" },
-  { imageSource: require("../assets/ps5.png"), text: "Item 3" },
-  { imageSource: require("../assets/ps5.png"), text: "Item 4" },
-  { imageSource: require("../assets/ps5.png"), text: "Item 5" },
-];
+// const miniCardsData = [
+//   { imageSource: require("../assets/ps5.png"), text: "Item 1" },
+//   { imageSource: require("../assets/ps5.png"), text: "Item 2" },
+//   { imageSource: require("../assets/ps5.png"), text: "Item 3" },
+//   { imageSource: require("../assets/ps5.png"), text: "Item 4" },
+//   { imageSource: require("../assets/ps5.png"), text: "Item 5" },
+//   { imageSource: require("../assets/ps5.png"), text: "Item 1" },
+//   { imageSource: require("../assets/ps5.png"), text: "Item 2" },
+//   { imageSource: require("../assets/ps5.png"), text: "Item 3" },
+//   { imageSource: require("../assets/ps5.png"), text: "Item 4" },
+//   { imageSource: require("../assets/ps5.png"), text: "Item 5" },
+// ];
 
 const HomeScreen = () => {
   const [data, setData] = useState(null);
@@ -28,37 +28,57 @@ const HomeScreen = () => {
   const [electronicsProducts, setElectronicsProducts] = useState([]);
   const [beautyProducts, setBeautyProducts] = useState([]);
   const [fashionProducts, setFashionProducts] = useState([]);
+  const [miniCardsData, setMiniCardsData] = useState([]);
+  const [miniCardsData2, setMiniCardsData2] = useState([]);
 
   useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await axios.get('http://localhost:3000/api/products');
-          const products = response.data;
-          setData(products);
-          setLoading(false);
-        } catch (error) {
-          console.error('Error fetching data:', error);
-        }
-      };
-  
-      fetchData();
-    }, []);
-
-  useEffect(() => {
-      if (data) {
-          setElectronicsProducts(data.filter((product) => product.category === "electronics"));
-          setBeautyProducts(data.filter((product) => product.category === "beauty"));
-          setFashionProducts(data.filter((product) => product.category === "fashion"));
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/api/products");
+        const products = response.data;
+        setData(products);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
       }
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    if (data) {
+      const miniCards = data.slice(24, 34).map((product) => ({
+        imageSource: { uri: product.images[0] },
+        text: product.brand,
+      }));
+
+      const miniCards2 = data.slice(34, 44).map((product) => ({
+        imageSource: { uri: product.images[0] },
+        text: product.brand,
+      }));
+
+      setMiniCardsData(miniCards);
+      setMiniCardsData2(miniCards2);
+      setElectronicsProducts(
+        data.filter((product) => product.category === "electronics")
+      );
+      setBeautyProducts(
+        data.filter((product) => product.category === "beauty")
+      );
+      setFashionProducts(
+        data.filter((product) => product.category === "fashion")
+      );
+    }
   }, [data]);
 
   if (loading) {
-      return (
-          <View style={styles.spinner}>
-              <ActivityIndicator size="large" color="#0000ff" />
-          </View>
-      )
-  };
+    return (
+      <View style={styles.spinner}>
+        <ActivityIndicator size="large" color="#0000ff" />
+      </View>
+    );
+  }
 
   return (
     <ScrollView style={styles.container}>
@@ -80,12 +100,15 @@ const HomeScreen = () => {
       {/* mini slider items */}
       <View style={styles.miniSlider}>
         <MiniCardsSlider data={miniCardsData} />
-        <MiniCardsSlider data={miniCardsData} />
+        <MiniCardsSlider data={miniCardsData2} />
       </View>
 
       {/* electronics slider */}
       <View style={styles.cardsSliderContainer}>
-      <CardSlider title={"Recommended for you"} products={electronicsProducts} />
+        <CardSlider
+          title={"Recommended for you"}
+          products={electronicsProducts}
+        />
       </View>
 
       {/* offers zone */}
@@ -101,7 +124,7 @@ const HomeScreen = () => {
             <Text style={styles.shopNowText}>Shop Now</Text>
           </Button>
         </View>
-        <CardSlider products={beautyProducts}/>
+        <CardSlider products={beautyProducts} />
       </View>
 
       {/* advert banner here */}
@@ -120,7 +143,7 @@ const HomeScreen = () => {
             <Text style={styles.shopNowText}>Shop Now</Text>
           </Button>
         </View>
-        <CardSlider products={fashionProducts}/>
+        <CardSlider products={fashionProducts} />
       </View>
 
       {/* Top Brands */}

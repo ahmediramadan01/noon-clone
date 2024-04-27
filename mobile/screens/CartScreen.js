@@ -10,7 +10,7 @@ import { useEffect } from "react";
 const CartScreen = ({ cartItems, removeItem }) => {
 
   const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
-  
+
   useEffect(() => {
     
     console.log("Cart items updated:", cartItems);
