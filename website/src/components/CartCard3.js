@@ -30,7 +30,7 @@ export default function CartCard3({ data }) {
 	const handleOpen = () => setOpen((cur) => !cur);
 
 	const checkout = async function () {
-		await fetch("http://localhost:3000/api/checkout", {
+		await fetch("https://noon-clone-livid.vercel.app/api/checkout", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

@@ -25,7 +25,7 @@ export function OrderCard({ data }) {
 			try {
 				const orderProducts = await Promise.all(
 					order.orderItems.map(async (item) => {
-						const response = await fetch(`http://localhost:3000/api/products/${item.id}`);
+						const response = await fetch(`https://noon-clone-livid.vercel.app/api/products/${item.id}`);
 						if (!response.ok) {
 							throw new Error(`Error getting ${item.id} product`);
 						}

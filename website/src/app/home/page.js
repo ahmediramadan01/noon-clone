@@ -344,7 +344,7 @@ export default function HomePage() {
 	const [groceryProducts, setGroceryProducts] = useState([]);
 
 	useEffect(() => {
-		fetch("http://localhost:3000/api/products/")
+		fetch("https://noon-clone-livid.vercel.app/api/products/")
 			.then((response) => {
 				if (!response.ok) {
 					throw new Error("Failed to fetch data");

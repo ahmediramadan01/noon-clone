@@ -17,7 +17,7 @@ function ProductPage({ params }) {
 	const [cartQuantity, setCartQuantity] = useState(1);
 	const [userRating, setUserRating] = useState(0);
 	useEffect(() => {
-		fetch(`http://localhost:3000/api/products/${params.productId}`)
+		fetch(`https://noon-clone-livid.vercel.app/api/products/${params.productId}`)
 			.then((response) => response.json())
 			.then((data) => {
 				setProduct({ ...data });
@@ -104,7 +104,7 @@ function ProductPage({ params }) {
 				let newProductRatingQuantity = product.ratingQuantity + 1;
 				let newProductRating = (product.ratingQuantity * product.rating + value) / newProductRatingQuantity;
 				try {
-					const response = await fetch(`http://localhost:3000/api/products/${product._id}`, {
+					const response = await fetch(`https://noon-clone-livid.vercel.app/api/products/${product._id}`, {
 						method: "PATCH",
 						headers: {
 							"Content-Type": "application/json",
@@ -140,7 +140,7 @@ function ProductPage({ params }) {
 			} else {
 				let newProductRating = (product.ratingQuantity * product.rating + value - rated) / product.ratingQuantity;
 				try {
-					const response = await fetch(`http://localhost:3000/api/products/${product._id}`, {
+					const response = await fetch(`https://noon-clone-livid.vercel.app/api/products/${product._id}`, {
 						method: "PATCH",
 						headers: {
 							"Content-Type": "application/json",
@@ -178,7 +178,7 @@ function ProductPage({ params }) {
 			let newProductRatingQuantity = product.ratingQuantity - 1;
 			let newProductRating = (product.ratingQuantity * product.rating - value) / newProductRatingQuantity;
 			try {
-				const response = await fetch(`http://localhost:3000/api/products/${product._id}`, {
+				const response = await fetch(`https://noon-clone-livid.vercel.app/api/products/${product._id}`, {
 					method: "PATCH",
 					headers: {
 						"Content-Type": "application/json",

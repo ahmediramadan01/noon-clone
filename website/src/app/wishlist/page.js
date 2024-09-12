@@ -45,7 +45,7 @@ export default function WishlistPage() {
 			try {
 				const wishlistProducts = await Promise.all(
 					session.data.user.wishlist.map(async (productId) => {
-						const response = await fetch(`http://localhost:3000/api/products/${productId}`);
+						const response = await fetch(`https://noon-clone-livid.vercel.app/api/products/${productId}`);
 						if (!response.ok) {
 							throw new Error(`Error getting ${productId} product`);
 						}

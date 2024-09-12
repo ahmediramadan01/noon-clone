@@ -32,7 +32,7 @@ export default function SearchPage() {
 	const [maxPrice, setMaxPrice] = useState("");
 
 	useEffect(() => {
-		fetch(`http://localhost:3000/api/products`)
+		fetch(`https://noon-clone-livid.vercel.app/api/products`)
 			.then((response) => response.json())
 			.then((data) => {
 				setProducts(data);
